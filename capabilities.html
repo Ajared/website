@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capabilities — Ajared Research Inc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #e6f4f4;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-ink-lighter: #b2dbdb;
+            --grid-line: 1px solid var(--color-ink);
+            --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Roboto Mono', 'Courier New', monospace;
+            --radius-sm: 2px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-ink);
+            font-family: var(--font-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: var(--color-ink-darkest);
+        }
+
+        h1 { font-size: clamp(4rem, 10vw, 9rem); }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            max-width: 50ch;
+            color: var(--color-ink-dark);
+        }
+
+        .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        nav p { margin-bottom: 0.3rem; font-size: 1rem; }
+        nav a:hover { text-decoration: underline; }
+
+        /* Grid System */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 1fr;
+            min-height: 100vh;
+            border-left: var(--grid-line);
+            border-right: var(--grid-line);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .ruler-y {
+            width: 80px;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-align: right;
+            padding-right: 8px;
+            background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 100% 20px;
+            color: var(--color-ink-light);
+        }
+
+        .ruler-x {
+            height: 40px;
+            width: 100%;
+            border-bottom: var(--grid-line);
+            background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 20px 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--color-bg);
+        }
+
+        .main-content {
+            grid-column: 2 / -1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: var(--grid-line);
+        }
+
+        .header-cell {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+        .header-cell:last-child { border-right: none; }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+        }
+
+        /* Hero — 30vh full-bleed moiré */
+        .hero-fullbleed {
+            position: relative;
+            height: 30vh;
+            border-bottom: var(--grid-line);
+            overflow: hidden;
+        }
+
+        .moire-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .hero-center-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-center-text h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: var(--color-ink-darkest);
+            mix-blend-mode: multiply;
+        }
+
+        .hero-center-text .label {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: var(--color-ink-dark);
+        }
+
+        /* Accordion Capability Rows */
+        .capability-row {
+            display: grid;
+            grid-template-columns: 80px 2fr 1fr 60px;
+            border-bottom: var(--grid-line);
+            align-items: center;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+
+        .capability-header {
+            display: grid;
+            grid-template-columns: 80px 2fr 1fr 60px;
+            grid-column: 1 / -1;
+            padding: 2rem;
+            align-items: center;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .capability-header:hover {
+            background: var(--color-ink);
+        }
+
+        .capability-header:hover .cap-number,
+        .capability-header:hover .cap-title,
+        .capability-header:hover .cap-subtitle,
+        .capability-header:hover .cap-toggle {
+            color: var(--color-bg);
+        }
+
+        .cap-number {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-ink);
+        }
+
+        .cap-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+        }
+
+        .cap-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-ink-dark);
+        }
+
+        .cap-toggle {
+            font-size: 1.5rem;
+            text-align: right;
+            color: var(--color-ink);
+            transition: transform 0.3s;
+        }
+
+        .cap-toggle.open { transform: rotate(45deg); }
+
+        .capability-detail {
+            grid-column: 1 / -1;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: var(--color-bg);
+        }
+
+        .capability-detail.open {
+            max-height: 600px;
+        }
+
+        .detail-inner {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 1fr;
+            padding: 0 2rem 2rem 2rem;
+            gap: 2rem;
+        }
+
+        .detail-inner .spacer { grid-column: 1; }
+
+        .detail-block p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .detail-block .label { margin-bottom: 1rem; }
+
+        .detail-tag {
+            display: inline-block;
+            border: 1px solid var(--color-ink);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: var(--grid-line);
+        }
+
+        .stat-cell {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            text-align: center;
+        }
+        .stat-cell:last-child { border-right: none; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-ink-darkest);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .stat-label {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: var(--grid-line);
+        }
+        .footer h2 { color: var(--color-ink); }
+
+        @media (max-width: 900px) {
+            .grid-container { grid-template-columns: 40px 1fr; }
+            header { grid-template-columns: 1fr; }
+            .hero-fullbleed { height: 25vh; }
+            .header-cell { border-right: none; border-bottom: var(--grid-line); }
+            .hero-text { border-right: none; }
+            .capability-header { grid-template-columns: 50px 1fr 50px; }
+            .cap-subtitle { display: none; }
+            .detail-inner { grid-template-columns: 1fr; }
+            .detail-inner .spacer { display: none; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+            .stat-cell:nth-child(2) { border-right: none; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="ruler-y">
+        <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+        <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+        <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+    </div>
+
+    <div class="main-content">
+        <div class="ruler-x"></div>
+
+        <header>
+            <div class="header-cell">
+                <span class="label">Information Architecture</span>
+                <div class="logo-text">
+                    <span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span><br>Research<br>Inc.
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Section / 03</span>
+                <h2>Core<br>Capabilities</h2>
+                <div style="margin-top:auto">
+                    <span class="label">Disciplines</span>
+                    <p>4 Active Research Streams</p>
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Navigation</span>
+                <nav>
+                    <p><a href="index.html">Index</a></p>
+                    <p><a href="case-studies.html">Case Studies</a></p>
+                    <p><a href="capabilities.html" style="text-decoration:underline; font-weight:600;">Capabilities</a></p>
+                    <p><a href="contact.html">Contact</a></p>
+                </nav>
+                <div style="margin-top:auto; font-size:2rem;">↓</div>
+            </div>
+        </header>
+
+        <!-- Hero — 30vh full-bleed moiré -->
+        <section class="hero-fullbleed">
+            <canvas class="moire-canvas" id="moireCanvas"></canvas>
+            <div class="hero-center-text">
+                <span class="label">What We Build</span>
+                <h1>Capabilities</h1>
+            </div>
+        </section>
+
+        <div class="ruler-x" style="position:relative; z-index:1;"></div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-cell">
+                <div class="stat-number">127</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Core Disciplines</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">42</div>
+                <div class="stat-label">Researchers</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Retention Rate</div>
+            </div>
+        </div>
+
+        <!-- Capability Accordion Rows -->
+        <div id="capabilities">
+
+            <!-- 001 — Applied Research -->
+            <div class="capability-row">
+                <div class="capability-header" onclick="toggleCap(0)">
+                    <span class="cap-number">001</span>
+                    <span class="cap-title">Applied Research</span>
+                    <span class="cap-subtitle">Methodology & Analysis</span>
+                    <span class="cap-toggle" id="toggle-0">+</span>
+                </div>
+                <div class="capability-detail" id="detail-0">
+                    <div class="detail-inner">
+                        <div class="spacer"></div>
+                        <div class="detail-block">
+                            <span class="label">Overview</span>
+                            <p>We design and execute rigorous research programs that translate complex real-world problems into measurable, validated solutions. Our approach integrates UX research, market research, experimental design, and meta-analysis — drawing from behavioral science, statistics, and domain expertise.</p>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Methods</span>
+                            <div>
+                                <span class="detail-tag">UX Research</span>
+                                <span class="detail-tag">Market Research</span>
+                                <span class="detail-tag">Experimental Design</span>
+                                <span class="detail-tag">Meta-Analysis</span>
+                            </div>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Typical Duration</span>
+                            <p>8–16 weeks</p>
+                            <span class="label" style="margin-top:1rem;">Team Size</span>
+                            <p>2–4 researchers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 002 — AI Product Development & Management -->
+            <div class="capability-row">
+                <div class="capability-header" onclick="toggleCap(1)">
+                    <span class="cap-number">002</span>
+                    <span class="cap-title">AI Product Development & Management</span>
+                    <span class="cap-subtitle">Strategy & Delivery</span>
+                    <span class="cap-toggle" id="toggle-1">+</span>
+                </div>
+                <div class="capability-detail" id="detail-1">
+                    <div class="detail-inner">
+                        <div class="spacer"></div>
+                        <div class="detail-block">
+                            <span class="label">Overview</span>
+                            <p>End-to-end AI product strategy, development, and lifecycle management. We take AI products from ideation through launch, scaling, and continuous improvement.</p>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Capabilities</span>
+                            <div>
+                                <span class="detail-tag">Product Strategy</span>
+                                <span class="detail-tag">AI Roadmapping</span>
+                                <span class="detail-tag">LLM Integration</span>
+                                <span class="detail-tag">Go-to-Market</span>
+                                <span class="detail-tag">Product Analytics</span>
+                            </div>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Typical Duration</span>
+                            <p>12–24 weeks</p>
+                            <span class="label" style="margin-top:1rem;">Team Size</span>
+                            <p>3–6 engineers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 003 — Enterprise Agentic Enablement -->
+            <div class="capability-row">
+                <div class="capability-header" onclick="toggleCap(2)">
+                    <span class="cap-number">003</span>
+                    <span class="cap-title">Enterprise Agentic Enablement</span>
+                    <span class="cap-subtitle">Autonomous AI Systems</span>
+                    <span class="cap-toggle" id="toggle-2">+</span>
+                </div>
+                <div class="capability-detail" id="detail-2">
+                    <div class="detail-inner">
+                        <div class="spacer"></div>
+                        <div class="detail-block">
+                            <span class="label">Overview</span>
+                            <p>Designing and deploying enterprise-grade agentic AI systems that autonomously execute complex workflows, make decisions, and scale across business functions.</p>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Stack</span>
+                            <div>
+                                <span class="detail-tag">AI Agents</span>
+                                <span class="detail-tag">Workflow Automation</span>
+                                <span class="detail-tag">Multi-Agent Systems</span>
+                                <span class="detail-tag">RAG Pipelines</span>
+                                <span class="detail-tag">Enterprise LLM Ops</span>
+                            </div>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Typical Duration</span>
+                            <p>16–32 weeks</p>
+                            <span class="label" style="margin-top:1rem;">Team Size</span>
+                            <p>4–8 engineers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 004 — Data and AI Strategy -->
+            <div class="capability-row">
+                <div class="capability-header" onclick="toggleCap(3)">
+                    <span class="cap-number">004</span>
+                    <span class="cap-title">Data and AI Strategy</span>
+                    <span class="cap-subtitle">Governance, Advisory and Adoption</span>
+                    <span class="cap-toggle" id="toggle-3">+</span>
+                </div>
+                <div class="capability-detail" id="detail-3">
+                    <div class="detail-inner">
+                        <div class="spacer"></div>
+                        <div class="detail-block">
+                            <span class="label">Overview</span>
+                            <p>Comprehensive data audits and strategic roadmaps for organizations ready to become truly evidence-based. We align data capabilities with business goals and ensure governance, adoption, and AI discoverability are built in from the start.</p>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Deliverables</span>
+                            <div>
+                                <span class="detail-tag">Data Audit</span>
+                                <span class="detail-tag">Maturity Assessment</span>
+                                <span class="detail-tag">KPI Frameworks</span>
+                                <span class="detail-tag">Governance</span>
+                                <span class="detail-tag">GEO: SEO for AI</span>
+                            </div>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">Typical Duration</span>
+                            <p>4–8 weeks</p>
+                            <span class="label" style="margin-top:1rem;">Team Size</span>
+                            <p>1–3 strategists</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div>
+                <span class="label">Inquiries</span>
+                <h2>innovation@ajared.ca</h2>
+            </div>
+            <div style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; gap:0.5rem;">
+                <p>© 2026 Ajared Research Inc.</p>
+                <span class="label">Research, educate, design.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // === TRIANGLE MOIRÉ — Variation C style ===
+    const canvas = document.getElementById('moireCanvas');
+    const ctx = canvas.getContext('2d');
+    let mouseX = 0.5, mouseY = 0.5;
+
+    function resizeCanvas() {
+        const c = canvas.parentElement;
+        canvas.width = c.offsetWidth * 2;
+        canvas.height = c.offsetHeight * 2;
+        canvas.style.width = c.offsetWidth + 'px';
+        canvas.style.height = c.offsetHeight + 'px';
+        ctx.scale(2, 2);
+    }
+
+    function drawTriangle(cx, cy, size, rotation) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rotation);
+        ctx.beginPath();
+        ctx.moveTo(size * 0.5, -size * 0.5);
+        ctx.lineTo(-size * 0.5, 0);
+        ctx.lineTo(size * 0.5, size * 0.5);
+        ctx.closePath();
+        ctx.restore();
+    }
+
+    function drawLayer(ox, oy, maxR, step, rot, alpha) {
+        ctx.strokeStyle = `rgba(5, 140, 140, ${alpha})`;
+        ctx.lineWidth = 1.5;
+        for (let r = step; r < maxR; r += step) {
+            drawTriangle(ox, oy, r, rot);
+            ctx.stroke();
+        }
+    }
+
+    function render() {
+        const w = canvas.width / 2;
+        const h = canvas.height / 2;
+        ctx.clearRect(0, 0, w, h);
+
+        const ox = (mouseX - 0.5) * 50;
+        const oy = (mouseY - 0.5) * 50;
+        const maxDim = Math.max(w, h) * 2;
+
+        drawLayer(w * 0.48 + ox, h * 0.48 + oy, maxDim, 26, 0, 0.4);
+        drawLayer(w * 0.52 - ox, h * 0.52 - oy, maxDim, 26, Math.PI * 0.018, 0.25);
+        drawLayer(w * 0.5 + ox * 0.4, h * 0.45 + oy * 0.4, maxDim * 0.8, 34, -Math.PI * 0.01, 0.12);
+
+        requestAnimationFrame(render);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX / window.innerWidth;
+        mouseY = e.clientY / window.innerHeight;
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    render();
+
+    // === ACCORDION ===
+    function toggleCap(index) {
+        const detail = document.getElementById('detail-' + index);
+        const toggle = document.getElementById('toggle-' + index);
+
+        // Close all others
+        document.querySelectorAll('.capability-detail').forEach((d, i) => {
+            if (i !== index) {
+                d.classList.remove('open');
+                document.getElementById('toggle-' + i).classList.remove('open');
+                document.getElementById('toggle-' + i).textContent = '+';
+            }
+        });
+
+        detail.classList.toggle('open');
+        toggle.classList.toggle('open');
+        toggle.textContent = detail.classList.contains('open') ? '×' : '+';
+    }
+</script>
+
+</body>
+</html>

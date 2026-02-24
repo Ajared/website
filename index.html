@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajared Research Inc — Digital Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #e6f4f4;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-ink-lighter: #b2dbdb;
+            --color-neutral-dark: #323232;
+            --grid-line: 1px solid var(--color-ink);
+            --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Roboto Mono', 'Courier New', monospace;
+            --spacing-unit: 8px;
+            --radius-sm: 2px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-ink);
+            font-family: var(--font-primary);
+            overflow-x: hidden;
+            width: 100vw;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: var(--color-ink-darkest);
+        }
+
+        h1 { font-size: clamp(4rem, 10vw, 9rem); }
+        h2 { font-size: 2rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            max-width: 36ch;
+            font-weight: 400;
+            color: var(--color-ink-dark);
+        }
+
+        .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* Grid System */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 1fr;
+            min-height: 100vh;
+            border-left: var(--grid-line);
+            border-right: var(--grid-line);
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .ruler-y {
+            width: 80px;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-align: right;
+            padding-right: 8px;
+            position: relative;
+            background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 100% 20px;
+            color: var(--color-ink-light);
+        }
+
+        .ruler-x {
+            height: 40px;
+            width: 100%;
+            border-bottom: var(--grid-line);
+            display: flex;
+            align-items: flex-end;
+            background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 20px 100%;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding-bottom: 4px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--color-bg);
+        }
+
+        .main-content {
+            grid-column: 2 / -1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: var(--grid-line);
+        }
+
+        .header-cell {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+        .header-cell:last-child { border-right: none; }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+        }
+
+        nav p {
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            min-height: 70vh;
+            border-bottom: var(--grid-line);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-right: var(--grid-line);
+            position: relative;
+            z-index: 2;
+        }
+
+        .moire-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .ripple-center {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--color-ink);
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        .ripple-secondary {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--color-ink-light);
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            opacity: 0.4;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            border-bottom: var(--grid-line);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .service-card:nth-child(2n) { border-right: none; }
+        .service-card:nth-child(3),
+        .service-card:nth-child(4) { border-bottom: none; }
+
+        .service-card:hover {
+            background: var(--color-ink);
+            color: var(--color-bg);
+        }
+
+        .service-card:hover h3,
+        .service-card:hover p,
+        .service-card:hover .label {
+            color: var(--color-bg);
+        }
+
+        .service-card:hover .arrow-icon {
+            transform: translateX(10px);
+        }
+
+        /* Arrow */
+        .arrow-icon {
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow-icon::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -5px;
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid currentColor;
+            border-right: 1px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--color-ink);
+            text-decoration: none;
+            color: var(--color-ink-darkest);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn:hover {
+            background: var(--color-ink);
+            color: var(--color-bg);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: var(--grid-line);
+        }
+
+        .footer h2 { color: var(--color-ink); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-container { grid-template-columns: 40px 1fr; }
+            .ruler-y { width: 40px; }
+            header { grid-template-columns: 1fr; }
+            .header-cell { border-right: none; border-bottom: var(--grid-line); }
+            .hero-section { grid-template-columns: 1fr; }
+            .hero-text { border-right: none; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { border-right: none; border-bottom: var(--grid-line); }
+            .service-card:last-child { border-bottom: none; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="ruler-y">
+        <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+        <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+        <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+    </div>
+
+    <div class="main-content">
+        <div class="ruler-x"></div>
+
+        <header>
+            <div class="header-cell">
+                <span class="label">Information Architecture</span>
+                <div class="logo-text">
+                    <span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span><br>Research<br>Inc.
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Coordinates</span>
+                <p>Ajared Innovation<br>West End — Toronto, Canada<br>43.6331596, -79.4141207</p>
+                <div style="margin-top:auto">
+                    <span class="label">Status</span>
+                    <p>Open for Collaboration</p>
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Navigation</span>
+                <nav>
+                    <p><a href="index.html" style="text-decoration:underline; font-weight:600;">Index</a></p>
+                    <p><a href="case-studies.html">Case Studies</a></p>
+                    <p><a href="capabilities.html">Capabilities</a></p>
+                    <p><a href="contact.html">Contact</a></p>
+                </nav>
+                <div style="margin-top: auto; font-size: 2rem; line-height: 1;">
+                    ↗
+                </div>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-text">
+                <span class="label" style="margin-bottom: 2rem;">Applied Research for the AI Era</span>
+                <h1>Research<br>Driven<br>Innovation</h1>
+                <p style="margin-top: 2rem;">
+                    We combine rigorous applied research with AI-native product development. From enterprise agentic systems to data strategy, every engagement is evidence-led and built to last.
+                </p>
+                <a href="capabilities.html" class="btn">Explore Our Work</a>
+            </div>
+
+            <div class="moire-container" id="moire"></div>
+        </section>
+
+        <div class="ruler-x" style="position: relative; z-index: 1;"></div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <span class="label">001 — Research</span>
+                    <h3>Applied<br>Research</h3>
+                </div>
+                <div>
+                    <p>Multi-method research programs — UX, market, experimental design, and meta-analysis — that ground every decision in evidence.</p>
+                    <div style="margin-top: 2rem;"><div class="arrow-icon"></div></div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="label">002 — Product</span>
+                    <h3>AI Product<br>Development</h3>
+                </div>
+                <div>
+                    <p>End-to-end AI product strategy, LLM integration, and lifecycle management from ideation through continuous improvement.</p>
+                    <div style="margin-top: 2rem;"><div class="arrow-icon"></div></div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="label">003 — Agentic</span>
+                    <h3>Enterprise<br>Agentic AI</h3>
+                </div>
+                <div>
+                    <p>Enterprise-grade agentic AI systems that autonomously execute complex workflows and scale across business functions.</p>
+                    <div style="margin-top: 2rem;"><div class="arrow-icon"></div></div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="label">004 — Strategy</span>
+                    <h3>Data &amp; AI<br>Strategy</h3>
+                </div>
+                <div>
+                    <p>Governance, advisory, and adoption roadmaps — including GEO — that align data capability with long-term AI transformation.</p>
+                    <div style="margin-top: 2rem;"><div class="arrow-icon"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>
+                <span class="label">Inquiries</span>
+                <h2>innovation@ajared.ca</h2>
+            </div>
+            <div style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; gap:0.5rem;">
+                <p>© 2026 Ajared Research Inc.</p>
+                <span class="label">Research, educate, design.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const container = document.getElementById('moire');
+
+    function createRipple(cx, cy, maxRadius, step, className) {
+        for (let r = 0; r < maxRadius; r += step) {
+            const circle = document.createElement('div');
+            circle.classList.add(className);
+            circle.style.width = (r * 2) + 'px';
+            circle.style.height = (r * 2) + 'px';
+            container.appendChild(circle);
+        }
+    }
+
+    createRipple(30, 50, 1500, 25, 'ripple-center');
+    createRipple(80, 20, 1500, 25, 'ripple-secondary');
+
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        document.querySelectorAll('.ripple-center').forEach(c => {
+            c.style.transform = `translate(-50%, -50%) translate(${x * 20}px, ${y * 20}px)`;
+        });
+
+        document.querySelectorAll('.ripple-secondary').forEach(c => {
+            c.style.transform = `translate(-50%, -50%) translate(${-x * 20}px, ${-y * 20}px)`;
+        });
+    });
+</script>
+
+</body>
+</html>
