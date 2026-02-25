@@ -251,25 +251,32 @@
             left: 0;
         }
 
+        /* Refined, subtle ripple styling */
         .ripple-center {
             position: absolute;
             border-radius: 50%;
-            border: 2px solid var(--color-ink);
+            /* Use a much thinner line and lower opacity for the Teal */
+            border: 0.5px solid var(--color-ink);
             top: 50%;
             left: 30%;
             transform: translate(-50%, -50%);
-            opacity: 0.6;
+            opacity: 0.35;
+            /* Reduced from 0.6 */
+            pointer-events: none;
         }
 
         /* Change 10: Secondary ripple rings — subtle terra cotta tint */
         .ripple-secondary {
             position: absolute;
             border-radius: 50%;
-            border: 2px solid rgba(161, 102, 94, 0.45);
+            /* Use the Terracotta but at a very faint opacity */
+            border: 0.5px solid var(--color-terra);
             top: 20%;
             left: 80%;
             transform: translate(-50%, -50%);
-            opacity: 0.6;
+            opacity: 0.32;
+            /* Reduced from 0.6 */
+            pointer-events: none;
         }
 
         /* Services Grid */
