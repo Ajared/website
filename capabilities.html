@@ -652,8 +652,10 @@
         ctx.restore();
     }
 
-    function drawLayer(ox, oy, maxR, step, rot, alpha) {
-        ctx.strokeStyle = `rgba(5, 140, 140, ${alpha})`;
+    function drawLayer(ox, oy, maxR, step, rot, alpha, color) {
+        ctx.strokeStyle = color
+            ? `rgba(${color}, ${alpha})`
+            : `rgba(5, 140, 140, ${alpha})`;
         ctx.lineWidth = 1.5;
         for (let r = step; r < maxR; r += step) {
             drawTriangle(ox, oy, r, rot);
@@ -673,6 +675,7 @@
         drawLayer(w * 0.48 + ox, h * 0.48 + oy, maxDim, 26, 0, 0.4);
         drawLayer(w * 0.52 - ox, h * 0.52 - oy, maxDim, 26, Math.PI * 0.018, 0.25);
         drawLayer(w * 0.5 + ox * 0.4, h * 0.45 + oy * 0.4, maxDim * 0.8, 34, -Math.PI * 0.01, 0.12);
+        drawLayer(w * 0.5 - ox * 0.3, h * 0.52 + oy * 0.3, maxDim * 0.75, 30, Math.PI * 0.03, 0.07, '161, 102, 94');
 
         requestAnimationFrame(render);
     }
