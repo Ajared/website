@@ -358,8 +358,20 @@
                     </div>
 
                     <div class="instrument-field">
-                        <span class="label">03 / Project Scope / Brief</span>
-                        <textarea name="message" class="brief-textarea" placeholder="Tell us what you're working on and how we can help..."></textarea>
+                        <span class="label">03 / Specific Deliverable (Optional)</span>
+                        <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
+                            <option value="">Select a deliverable...</option>
+                        </select>
+                        <div class="technical-markings">
+                            <span>DYNAMIC</span>
+                            <span>TYPE: SELECT</span>
+                            <span>OPTIONAL</span>
+                        </div>
+                    </div>
+
+                    <div class="instrument-field">
+                        <span class="label">04 / Project Scope / Brief</span>
+                        <textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and how we can help..."></textarea>
                     </div>
 
                     <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
@@ -401,6 +413,34 @@
 </div>
 
 <script>
+    // Service-specific deliverables mapping
+    const deliverables = {
+        'Applied Research': ['UX Research', 'Market Research', 'Experimental Design', 'Meta-Analysis'],
+        'AI Product Development': ['Product Strategy', 'Roadmap', 'Model Selection & Integration', 'Launch', 'Product Analytics'],
+        'Enterprise AI Agents': ['AI Agents', 'Task Automation', 'Multi-Agent Coordination', 'RAG Pipelines', 'Production LLM Ops'],
+        'Data & AI Strategy': ['Data Audit', 'Readiness Assessment', 'Knowledge Graph', 'Governance', 'GEO (Generative Engine Optimization)']
+    };
+
+    // Read URL parameter and populate form
+    const urlParams = new URLSearchParams(window.location.search);
+    const service = urlParams.get('service');
+    const deliverableSelect = document.getElementById('deliverable-select');
+    const messageTextarea = document.getElementById('message-textarea');
+
+    if (service && deliverables[service]) {
+        // Populate dropdown with deliverables
+        deliverables[service].forEach(deliverable => {
+            const option = document.createElement('option');
+            option.value = deliverable;
+            option.textContent = deliverable;
+            deliverableSelect.appendChild(option);
+        });
+
+        // Prefill textarea with service name and helper text
+        const helperText = "Tell us what you're working on and how we can help...";
+        messageTextarea.value = service + '\n\n' + helperText;
+    }
+
     const map = document.getElementById('coord-map');
     const display = document.getElementById('coord-display');
     const chV = document.getElementById('ch-v');
