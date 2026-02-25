@@ -439,6 +439,25 @@
         // Prefill textarea with service name and helper text
         const helperText = "Tell us what you're working on and how we can help...";
         messageTextarea.value = service + '\n\n' + helperText;
+
+        // Track if user has started editing
+        let userHasEdited = false;
+
+        // Position cursor after service name on focus
+        messageTextarea.addEventListener('focus', function() {
+            if (!userHasEdited) {
+                const cursorPos = (service + '\n\n').length;
+                this.setSelectionRange(cursorPos, cursorPos);
+            }
+        });
+
+        // Remove helper text when user starts typing
+        messageTextarea.addEventListener('input', function() {
+            if (!userHasEdited && this.value.includes(helperText)) {
+                userHasEdited = true;
+                this.value = this.value.replace(helperText, '');
+            }
+        });
     }
 
     const map = document.getElementById('coord-map');
