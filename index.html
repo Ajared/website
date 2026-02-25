@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon-32x32.png">
     <title>Ajared Research Inc - AI 4 Innovation</title>
     <style>
         /* iA Writer Quattro S Font */
@@ -44,7 +39,6 @@
             --color-ink-light: #8ccaca;
             --color-ink-lighter: #b2dbdb;
             --color-neutral-dark: #323232;
-            --color-terra: #a1665e;
             --grid-line: 1px solid var(--color-ink);
             --font-primary: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
@@ -130,11 +124,6 @@
             color: var(--color-ink-light);
         }
 
-        /* Change 9: Major interval tick labels (every 500px: 0, 500, 1000) get terra cotta */
-        .ruler-y span:nth-child(5n+1) {
-            color: var(--color-terra);
-        }
-
         .ruler-x {
             height: 40px;
             width: 100%;
@@ -187,10 +176,8 @@
             font-size: 1rem;
         }
 
-        /* Change 11: Nav hover — terra cotta */
         nav a:hover {
             text-decoration: underline;
-            color: var(--color-terra);
         }
 
         /* Hero */
@@ -240,15 +227,14 @@
             opacity: 0.6;
         }
 
-        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
         .ripple-secondary {
             position: absolute;
             border-radius: 50%;
-            border: 2px solid rgba(161, 102, 94, 0.45);
+            border: 2px solid var(--color-ink-light);
             top: 20%;
             left: 80%;
             transform: translate(-50%, -50%);
-            opacity: 0.6;
+            opacity: 0.4;
         }
 
         /* Services Grid */
@@ -291,14 +277,18 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Arrow — Change 3: terra cotta by default */
+        /* Arrow */
         .arrow-icon {
             width: 40px;
             height: 1px;
-            background: var(--color-terra);
+            background: currentColor;
             position: relative;
             display: inline-block;
             transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        a:hover .arrow-icon {
+            background-color: #a1665e;
         }
 
         .arrow-icon::after {
@@ -308,30 +298,25 @@
             top: -5px;
             width: 10px;
             height: 10px;
-            border-top: 1px solid var(--color-terra);
-            border-right: 1px solid var(--color-terra);
+            border-top: 1px solid currentColor;
+            border-right: 1px solid currentColor;
             transform: rotate(45deg);
             transition: border-color 0.3s ease;
         }
 
-        /* When card is hovered (inverted), arrows flip to white */
-        .service-card:hover .arrow-icon {
-            background-color: var(--color-bg);
+        a:hover .arrow-icon::after {
+            border-top-color: #a1665e;
+            border-right-color: #a1665e;
         }
 
-        .service-card:hover .arrow-icon::after {
-            border-top-color: var(--color-bg);
-            border-right-color: var(--color-bg);
-        }
-
-        /* Button — Change 1: terra cotta border + text, fills on hover */
+        /* Button */
         .btn {
             display: inline-block;
             margin-top: 2rem;
             padding: 1rem 2rem;
-            border: 2px solid var(--color-terra);
+            border: 2px solid var(--color-ink);
             text-decoration: none;
-            color: var(--color-terra);
+            color: var(--color-ink-darkest);
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.9rem;
@@ -341,7 +326,7 @@
         }
 
         .btn:hover {
-            background: var(--color-terra);
+            background: var(--color-ink);
             color: var(--color-bg);
         }
 
@@ -412,8 +397,7 @@
 
         <header>
             <div class="header-cell">
-                <!-- Change 8: "Information Architecture" label in terra cotta -->
-                <span class="label" style="margin-bottom: 0.25rem; color: var(--color-terra);">Information Architecture</span>
+                <span class="label" style="margin-bottom: 0.25rem;">Information Architecture</span>
                 <div class="logo-text">
                     <span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span><br>Research<br>Inc.
                 </div>
@@ -423,21 +407,19 @@
                 <p>Ajared Innovation<br>West End — Toronto, Canada<br>43.6331596, -79.4141207</p>
                 <div style="margin-top:auto">
                     <span class="label">Status</span>
-                    <!-- Change 4: terra cotta pulse dot before status text -->
-                    <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span>Open for Collaboration</p>
+                    <p>Open for Collaboration</p>
                 </div>
             </div>
             <div class="header-cell">
                 <span class="label">Navigation</span>
                 <nav>
-                    <p><a href="index.html" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Index</a></p>
+                    <p><a href="index.html" style="text-decoration:underline; font-weight:600;">Index</a></p>
                     <p><a href="case-studies.html">Case Studies</a></p>
                     <p><a href="capabilities.html">Capabilities</a></p>
                     <p><a href="contact.html">Contact</a></p>
                     <p><a href="https://www.ajared.ng">Read</a></p>
                 </nav>
-                <!-- Change 2: ↗ nav arrow in terra cotta -->
-                <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">
+                <div style="margin-top: auto; font-size: 2rem; line-height: 1;">
                     ↗
                 </div>
             </div>
@@ -503,8 +485,7 @@
 
         <div class="footer">
             <div>
-                <!-- Change 6: "Inquiries" label in terra cotta -->
-                <span class="label" style="color: var(--color-terra);">Inquiries</span>
+                <span class="label">Inquiries</span>
                 <h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
             </div>
             <div style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; gap:0.5rem;">
