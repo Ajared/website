@@ -327,12 +327,32 @@
             .grid-container { grid-template-columns: 40px 1fr; }
             .ruler-y { width: 40px; }
             header { grid-template-columns: 1fr; }
-            .header-cell { border-right: none; border-bottom: var(--grid-line); }
+            .header-cell {
+                padding: 1.5rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
             .hero-section { grid-template-columns: 1fr; }
-            .hero-text { border-right: none; }
+            .hero-text {
+                padding: 2rem 1rem;
+                border-right: none;
+            }
             .services-grid { grid-template-columns: 1fr; }
-            .service-card { border-right: none; border-bottom: var(--grid-line); }
+            .service-card {
+                padding: 1.5rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
             .service-card:last-child { border-bottom: none; }
+            .footer {
+                padding: 3rem 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer > div:last-child {
+                text-align: left;
+            }
+            p { max-width: 100%; }
             h1 { font-size: 3.5rem; }
         }
     </style>

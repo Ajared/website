@@ -292,7 +292,18 @@
         @media (max-width: 900px) {
             .form-section { grid-template-columns: 1fr; }
             header { grid-template-columns: 1fr; }
-            .form-left { border-right: none; border-bottom: var(--grid-line); }
+            .header-cell {
+                padding: 1.5rem 1rem;
+            }
+            .form-left {
+                padding: 3rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
+            .form-right {
+                padding: 3rem 1rem;
+            }
+            p { max-width: 100%; }
         }
     </style>
 </head>

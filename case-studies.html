@@ -238,10 +238,30 @@
 
         @media (max-width: 900px) {
             .grid-container { grid-template-columns: 40px 1fr; }
-            .project-row { grid-template-columns: 40px 1fr; gap: 1rem; }
+            .project-row {
+                padding: 1.5rem 1rem;
+                grid-template-columns: 40px 1fr;
+                gap: 1rem;
+            }
             .project-meta, .project-year { display: none; }
             header { grid-template-columns: 1fr; }
-            .header-cell { border-right: none; border-bottom: var(--grid-line); }
+            .header-cell {
+                padding: 1.5rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
+            .hero-text {
+                padding: 2rem 1rem;
+            }
+            .footer {
+                padding: 3rem 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer > div:last-child {
+                text-align: left;
+            }
+            p { max-width: 100%; }
             h1 { font-size: 3.5rem; }
         }
     </style>

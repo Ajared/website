@@ -338,14 +338,33 @@
             .grid-container { grid-template-columns: 40px 1fr; }
             header { grid-template-columns: 1fr; }
             .hero-fullbleed { height: 25vh; }
-            .header-cell { border-right: none; border-bottom: var(--grid-line); }
+            .header-cell {
+                padding: 1.5rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
             .hero-text { border-right: none; }
-            .capability-header { grid-template-columns: 50px 1fr 50px; }
+            .capability-header {
+                padding: 1.5rem 1rem;
+                grid-template-columns: 50px 1fr 50px;
+            }
             .cap-subtitle { display: none; }
-            .detail-inner { grid-template-columns: 1fr; }
+            .detail-inner {
+                padding: 1.5rem 1rem;
+                grid-template-columns: 1fr;
+            }
             .detail-inner .spacer { display: none; }
             .stats-bar { grid-template-columns: 1fr 1fr; }
             .stat-cell:nth-child(2) { border-right: none; }
+            .footer {
+                padding: 3rem 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer > div:last-child {
+                text-align: left;
+            }
+            p { max-width: 100%; }
             h1 { font-size: 3.5rem; }
         }
     </style>
