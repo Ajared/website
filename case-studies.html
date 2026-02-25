@@ -221,7 +221,7 @@
             color: var(--color-bg);
         }
 
-        .project-id { font-family: var(--font-mono); font-weight: 700; color: var(--color-ink); }
+        .project-id { font-family: var(--font-mono); font-weight: 700; color: #a1665e; }
         .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
         .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
         .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
@@ -231,10 +231,18 @@
             padding: 4rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            border-top: var(--grid-line);
+            border-top: 2px solid #a1665e;
         }
 
         .footer h2 { color: var(--color-ink); }
+
+        .footer h2 a {
+            transition: color 0.3s ease;
+        }
+
+        .footer h2 a:hover {
+            color: #a1665e;
+        }
 
         @media (max-width: 900px) {
             .grid-container { grid-template-columns: 40px 1fr; }

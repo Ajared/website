@@ -292,6 +292,14 @@
             margin-bottom: 0.5rem;
             border-radius: 9999px;
             font-family: var(--font-mono);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .detail-tag:hover {
+            background-color: #a1665e;
+            border-color: #a1665e;
+            color: var(--color-bg);
         }
 
         /* Stats Bar */
@@ -330,9 +338,17 @@
             padding: 4rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            border-top: var(--grid-line);
+            border-top: 2px solid #a1665e;
         }
         .footer h2 { color: var(--color-ink); }
+
+        .footer h2 a {
+            transition: color 0.3s ease;
+        }
+
+        .footer h2 a:hover {
+            color: #a1665e;
+        }
 
         @media (max-width: 900px) {
             .grid-container { grid-template-columns: 40px 1fr; }

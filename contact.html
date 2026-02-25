@@ -185,6 +185,12 @@
             padding: 0.5rem 0;
             outline: none;
             cursor: crosshair;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instrument-input:focus {
+            border-bottom-color: #a1665e;
+            box-shadow: 0 1px 0 0 rgba(161, 102, 94, 0.2);
         }
 
         .instrument-input::placeholder {
@@ -216,7 +222,7 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: var(--color-ink);
+            background: #a1665e;
             pointer-events: none;
         }
 
@@ -226,7 +232,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: var(--color-ink);
+            background: #a1665e;
             pointer-events: none;
         }
 
@@ -285,6 +291,12 @@
             outline: none;
             cursor: crosshair;
             border-radius: var(--radius-sm);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .brief-textarea:focus {
+            border-color: #a1665e;
+            box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1);
         }
 
         .brief-textarea::placeholder { color: var(--color-ink-light); }
