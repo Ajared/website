@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
   <title>Data and AI Strategy — Ajared Research Inc.</title>
   <style>
     @font-face {
@@ -24,6 +29,7 @@
       font-weight: 400; font-style: italic; font-display: swap;
     }
     :root {
+      --color-bg: #ffffff;
       --color-ink: #058c8c; --color-ink-dark: #046363; --color-ink-darkest: #023b3b;
       --color-ink-light: #8ccaca; --color-ink-lighter: #b2dbdb;
       --color-terra: #a1665e; --grid-line: 1px solid #058c8c;
@@ -31,7 +37,44 @@
       --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
-    body { font-family: var(--font-primary); background: #fff; color: var(--color-ink-dark); overflow-x: hidden; }
+    body { font-family: var(--font-primary); background: var(--color-bg); color: var(--color-ink-dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Grid frame ─────────────────────────────────────────── */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      min-height: 100vh;
+      border-left: var(--grid-line);
+      border-right: var(--grid-line);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .ruler-y {
+      width: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 8px 20px 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-align: right;
+      color: var(--color-ink-light);
+      background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
+      background-size: 100% 20px;
+    }
+    .ruler-y span:nth-child(5n+1) { color: var(--color-terra); }
+    .ruler-x {
+      height: 40px;
+      border-bottom: var(--grid-line);
+      background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+      background-size: 20px 100%;
+      background-color: var(--color-bg);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .main-content { grid-column: 2 / -1; display: flex; flex-direction: column; }
+
+    /* ── Compact header ─────────────────────────────────────── */
     header { display: grid; grid-template-columns: auto 1fr auto; border-bottom: var(--grid-line); }
     .header-cell { padding: 0.9rem 1.2rem; border-right: var(--grid-line); display: flex; align-items: center; }
     .header-cell:last-child { border-right: none; }
@@ -42,32 +85,26 @@
     .nav-crumb { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; }
     .nav-crumb .sep { opacity: 0.4; }
     .nav-crumb .cur { color: var(--color-terra); }
-        .hero { background: var(--color-ink-darkest); padding: 3rem 2.5rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero { background: var(--color-ink-darkest); padding: 1.4rem 2rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
     .hero-moire { position: absolute; inset: 0; pointer-events: none; display: block; }
     .hero-content { position: relative; z-index: 1; }
-    .hero-meta-bar { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 2rem; display: flex; gap: 2rem; }
-    .hero-meta-bar .sep { opacity: 0.3; }
-    .hero-status { display: flex; align-items: center; gap: 0.5rem; }
-    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hero h1 { font-family: var(--font-primary); font-size: clamp(2.4rem, 7vw, 6rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.88; color: #fff; margin-bottom: 2rem; }
+    .hero-meta-bar { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.8rem; display: flex; gap: 2rem; }
+    .hero h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.9; color: #fff; margin-bottom: 0; }
     .hero h1 span { color: var(--color-ink-light); }
-    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(5,140,140,0.3); }
-    .stat-cell { padding: 1rem 1.2rem; border-right: 1px solid rgba(5,140,140,0.3); }
-    .stat-cell:last-child { border-right: none; }
-    .stat-key { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
-    .stat-val { font-family: var(--font-mono); font-size: 1rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
-    .stat-val.terra { color: var(--color-terra); }
+
+    /* ── Page sections ───────────────────────────────────────── */
     .page-body { border-bottom: var(--grid-line); }
-    .ruler { border-right: var(--grid-line); background: repeating-linear-gradient(to bottom, transparent, transparent 79px, var(--color-ink-lighter) 79px, var(--color-ink-lighter) 80px); }
-    .ruler-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--color-ink-light); text-align: center; padding-top: 0.5rem; }
     .section { border-bottom: var(--grid-line); }
     .section:last-child { border-bottom: none; }
-    .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); background: #f7fdfd; }
+    .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); background: #daeaea; }
     .section-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-terra); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(161,102,94,0.08); padding: 0.2rem 0.5rem; }
     .section-title { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.04em; color: var(--color-ink-darkest); }
-    .section-body { padding: 2rem 2.5rem 2.5rem 2rem; border-left: 3px solid var(--color-ink-lighter); margin-left: 1rem; }
-    .section-body p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 56ch; }
+    .section-body { padding: 2rem 2.5rem 2.5rem 2rem; }
+    .section-body p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 58ch; margin-bottom: 1.5rem; }
+    .section-body p:only-child { margin-bottom: 0; }
+
     .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); border: var(--grid-line); margin-top: 1.5rem; }
     .stage { padding: 1.4rem; border-right: var(--grid-line); position: relative; }
     .stage:last-child { border-right: none; }
@@ -79,158 +116,192 @@
     .stage:not(:first-child) .stage-status { color: var(--color-ink-light); }
     .stage:not(:first-child) .stage-status::before { background: var(--color-ink-light); }
     .stage-name { font-size: 0.9rem; font-weight: 600; color: var(--color-ink-darkest); letter-spacing: -0.02em; margin-bottom: 0.3rem; }
-    .stage-desc { font-size: 0.76rem; color: var(--color-ink-dark); line-height: 1.45; }
-    .deliverables { font-family: var(--font-mono); background: #f0f9f9; border: var(--grid-line); padding: 1.5rem; margin-top: 1.5rem; }
-    .deliverables-header { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-terra); margin-bottom: 1rem; border-bottom: 1px solid var(--color-ink-lighter); padding-bottom: 0.5rem; }
-    .deliverable-row { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.6rem; font-size: 0.78rem; color: var(--color-ink-dark); }
-    .deliverable-row:last-child { margin-bottom: 0; }
-    .check { color: var(--color-ink); flex-shrink: 0; }
+    .stage-desc { font-size: 0.82rem; color: var(--color-ink-dark); line-height: 1.6; }
+
+    .deliverables { margin-top: 1.5rem; }
+    .deliverable-row { display: grid; grid-template-columns: 28px 1fr; border: var(--grid-line); border-bottom: none; padding: 0.85rem 1rem; align-items: start; font-size: 0.82rem; color: var(--color-ink-dark); line-height: 1.5; }
+    .deliverable-row:last-child { border-bottom: var(--grid-line); }
+    .check { color: var(--color-ink-light); }
     .check.done { color: #4ade80; }
+
     .method-rows { margin-top: 1.5rem; }
     .method-row { display: grid; grid-template-columns: 80px 1fr 1fr; border: var(--grid-line); border-bottom: none; }
     .method-row:last-child { border-bottom: var(--grid-line); }
     .method-id { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-terra); letter-spacing: 0.1em; padding: 0.9rem 1rem; border-right: var(--grid-line); display: flex; align-items: center; }
     .method-name { font-size: 0.92rem; font-weight: 600; color: var(--color-ink-darkest); padding: 0.9rem 1rem; border-right: var(--grid-line); display: flex; align-items: center; letter-spacing: -0.02em; }
     .method-desc { font-size: 0.8rem; color: var(--color-ink-dark); padding: 0.9rem 1rem; display: flex; align-items: center; }
-    .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 2.5rem; gap: 2rem; }
+
+    /* ── Cap nav ─────────────────────────────────────────────── */
+    .cap-nav { display: grid; grid-template-columns: 1fr auto 1fr; border-bottom: var(--grid-line); }
+    .cap-nav-prev, .cap-nav-center, .cap-nav-next { padding: 1rem 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+    .cap-nav-prev:hover, .cap-nav-next:hover { color: var(--color-terra); background: #daeaea; }
+    .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
+    .cap-nav-center:hover { color: var(--color-terra); background: #daeaea; }
+    .cap-nav-next { justify-content: flex-end; }
+    .cap-nav-label { font-size: 0.75rem; color: var(--color-ink-light); display: none; }
+
+    /* ── CTA ─────────────────────────────────────────────────── */
+    .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
     .cta-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-light); margin-bottom: 0.5rem; display: block; }
-    .cta-block h3 { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; color: #fff; }
+    .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
     .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
     .cta-btn:hover { background: var(--color-terra); color: #fff; }
 
-    .cap-nav { display: grid; grid-template-columns: 1fr auto 1fr; border-top: var(--grid-line); border-bottom: var(--grid-line); }
-    .cap-nav-prev, .cap-nav-center, .cap-nav-next { padding: 0.9rem 1.5rem; font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-dark); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-    .cap-nav-prev:hover, .cap-nav-next:hover { color: var(--color-terra); background: #f7fdfd; }
-    .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
-    .cap-nav-center:hover { color: var(--color-terra); background: #f7fdfd; }
-    .cap-nav-next { justify-content: flex-end; }
-    .cap-nav-label { font-size: 0.58rem; color: var(--color-ink-light); display: block; margin-bottom: 0.2rem; }
+    /* ── Footer ──────────────────────────────────────────────── */
+    .footer { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--color-terra); }
+    .footer h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; color: var(--color-ink); margin-top: 0.5rem; }
+    .footer h2 a { position: relative; transition: color 0.25s; }
+    .footer h2 a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: var(--color-terra); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+    .footer h2 a:hover { color: var(--color-ink-dark); }
+    .footer h2 a:hover::after { transform: scaleX(1); }
+    .label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; display: block; color: var(--color-ink); font-family: var(--font-mono); }
 
-    /* ── Mobile Responsive ───────────────────────────────────────── */
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .grid-container { grid-template-columns: 40px 1fr; }
+      .ruler-y { width: 40px; font-size: 8px; }
+      .footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1rem; }
+    }
     @media (max-width: 720px) {
       header { grid-template-columns: 1fr; }
       .header-cell { border-right: none; border-bottom: var(--grid-line); }
       .header-cell:last-child { border-bottom: none; }
       header nav { gap: 1rem; flex-wrap: wrap; }
-      header nav a { font-size: 0.68rem; }
-      .nav-crumb { padding: 0 0.6rem; font-size: 0.65rem; }
-
       .hero { padding: 2rem 1.2rem; }
-      .hero h1 { font-size: clamp(2.4rem, 11vw, 4rem); }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-cell:nth-child(2) { border-right: none; }
-      .stat-cell:nth-child(1),
-      .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(5,140,140,0.3); }
-
+      .hero h1 { font-size: clamp(1.6rem, 8vw, 2.6rem); }
       .section-bar { padding: 0.8rem 1rem; }
-      .section-body { padding: 1.2rem; margin-left: 0; border-left: 3px solid var(--color-ink-lighter); }
+      .section-body { padding: 1.2rem; margin-left: 0; }
       .section-body p { max-width: 100%; }
-
-      .method-row { grid-template-columns: 56px 1fr; }
+      .method-row { grid-template-columns: 1fr; }
+      .method-id { display: none; }
+      .method-name { border-right: none; }
       .method-desc { display: none; }
-
       .pipeline { grid-template-columns: 1fr; }
       .stage { border-right: none; border-bottom: var(--grid-line); }
       .stage:last-child { border-bottom: none; }
       .stage::after { display: none; }
-
       .cta-block { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.8rem 1.2rem; }
       .cta-btn { text-align: center; display: block; }
-
       .cap-nav { grid-template-columns: 1fr 1fr; }
       .cap-nav-center { display: none; }
     }
-
     @media (prefers-reduced-motion: reduce) {
-      .status-dot { animation: none; }
       .hero-moire { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-logo">AJARED<br>RESEARCH INC.</div>
-    <div class="nav-crumb">
-      <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
-      <span class="sep">/</span>
-      <span class="cur">Data and AI Strategy</span>
+  <div class="grid-container">
+    <div class="ruler-y">
+      <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+      <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+      <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
     </div>
-    <div class="nav-links"><span>Work</span><span>Contact</span></div>
-  </nav>
 
-  <div class="hero">
-    <canvas class="hero-moire" id="heroMoire"></canvas>
-    <div class="hero-content">
-      <div class="hero-meta-bar">
-        <span>Strategy</span>
-        <span class="sep">|</span>
-        <div class="hero-status"><div class="status-dot"></div><span>Available</span></div>
+    <div class="main-content">
+      <div class="ruler-x"></div>
+
+      <header>
+        <div class="header-cell">
+          <a href="/" style="text-decoration:none;display:flex;align-items:center;">
+            <img src="/logo.png" alt="Ajared Logo" style="height:32px;width:auto;display:block;">
+            <div class="logo-text">Research Inc.</div>
+          </a>
+        </div>
+        <div class="header-cell">
+          <div class="nav-crumb">
+            <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
+            <span class="sep">/</span>
+            <span class="cur">Data and AI Strategy</span>
+          </div>
+        </div>
+        <div class="header-cell">
+          <nav>
+            <a href="/">Index</a>
+            <a href="/case-studies/">Case Studies</a>
+            <a href="/capabilities/">Capabilities</a>
+            <a href="/contact/">Contact</a>
+            <a href="https://www.ajared.ng">Read</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="hero">
+        <canvas class="hero-moire" id="heroMoire"></canvas>
+        <div class="hero-content">
+          <div class="hero-meta-bar">
+            <span>Strategy</span>
+          </div>
+          <h1>Data &amp; AI<br><span>Strategy</span></h1>
+        </div>
       </div>
-      <h1>Data and AI<br><span>Strategy</span></h1>
-      <div class="hero-stats"><div class="stat-cell"><div class="stat-key">Capability</div><div class="stat-val terra">004</div></div><div class="stat-cell"><div class="stat-key">Duration</div><div class="stat-val">4–8 WKS</div></div><div class="stat-cell"><div class="stat-key">Team Size</div><div class="stat-val">1–3</div></div><div class="stat-cell"><div class="stat-key">Engagement</div><div class="stat-val">Advisory</div></div></div>
-    </div>
-  </div>
-    </div>
-  </div>
 
-  <div class="page-body">
-
-      <div class="section">
-        <div class="section-bar"><span class="section-num">01</span><span class="section-title">What We Do</span></div>
-        <div class="section-body">
-          <p>We audit your data, figure out what's missing, and build a plan to get AI working inside your organization. That includes governance, adoption plans, and honest assessments of what you're ready for and what you're not.</p>
-          <div class="method-rows">
-            <div class="method-row"><div class="method-id">01</div><div class="method-name">Reliable AI</div><div class="method-desc">Knowledge graphs and ontologies that make your AI outputs trustworthy and consistent.</div></div>
-            <div class="method-row"><div class="method-id">02</div><div class="method-name">Location Intelligence</div><div class="method-desc">Spatial data strategy, geospatial analysis, and location-aware AI applications.</div></div>
-            <div class="method-row"><div class="method-id">03</div><div class="method-name">Generative Engine Optimization</div><div class="method-desc">Ensuring your organization appears accurately and prominently in AI-driven search.</div></div>
-            <div class="method-row"><div class="method-id">04</div><div class="method-name">Executive AI Coaching</div><div class="method-desc">One-to-one advisory for leaders navigating AI adoption, strategy, and governance.</div>          </div>
-</div>
+      <div class="page-body">
+        <div class="section">
+          <div class="section-bar"><span class="section-num">01</span><span class="section-title">What We Do</span></div>
+          <div class="section-body">
+            <p>We audit your data, figure out what's missing, and build a plan to get AI working inside your organization. That includes governance, adoption plans, and honest assessments of what you're ready for and what you're not.</p>
+            <div class="method-rows">
+              <div class="method-row"><div class="method-id">01</div><div class="method-name">Reliable AI</div><div class="method-desc">Knowledge graphs and ontologies that make your AI outputs trustworthy and consistent.</div></div>
+              <div class="method-row"><div class="method-id">02</div><div class="method-name">Location Intelligence</div><div class="method-desc">Spatial data strategy, geospatial analysis, and location-aware AI applications.</div></div>
+              <div class="method-row"><div class="method-id">03</div><div class="method-name">Generative Engine Optimization</div><div class="method-desc">Ensuring your organization appears accurately and prominently in AI-driven search.</div></div>
+              <div class="method-row"><div class="method-id">04</div><div class="method-name">Executive AI Coaching</div><div class="method-desc">One-to-one advisory for leaders navigating AI adoption, strategy, and governance.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-bar"><span class="section-num">02</span><span class="section-title">How We Work</span></div>
+          <div class="section-body">
+            <div class="pipeline">
+              <div class="stage"><div class="stage-n">01</div><div class="stage-status">Done</div><div class="stage-name">Audit</div><div class="stage-desc">Data inventory, quality assessment, gap analysis.</div></div>
+              <div class="stage"><div class="stage-n">02</div><div class="stage-status">Next</div><div class="stage-name">Assessment</div><div class="stage-desc">Capability mapping, risk scoring, readiness evaluation.</div></div>
+              <div class="stage"><div class="stage-n">03</div><div class="stage-status">Next</div><div class="stage-name">Strategy</div><div class="stage-desc">Roadmap, governance framework, adoption plan.</div></div>
+              <div class="stage"><div class="stage-n">04</div><div class="stage-status">Next</div><div class="stage-name">Handoff</div><div class="stage-desc">Playbooks, training, executive alignment session.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-bar"><span class="section-num">03</span><span class="section-title">Deliverables</span></div>
+          <div class="section-body">
+            <div class="deliverables">
+              <div class="deliverable-row"><span class="check done">✓</span> Data audit report + gap analysis</div>
+              <div class="deliverable-row"><span class="check done">✓</span> AI readiness assessment + scoring</div>
+              <div class="deliverable-row"><span class="check done">✓</span> Strategic roadmap + governance framework</div>
+              <div class="deliverable-row"><span class="check done">✓</span> Executive presentation + adoption playbook</div>
+              <div class="deliverable-row"><span class="check">○</span> Optional: Ongoing advisory retainer</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-bar"><span class="section-num">02</span><span class="section-title">How We Work</span></div>
-        <div class="section-body">
-          <div class="pipeline">
-            <div class="stage"><div class="stage-n">01</div><div class="stage-status">Done</div><div class="stage-name">Audit</div><div class="stage-desc">Data inventory, quality assessment, gap analysis.</div></div>
-            <div class="stage"><div class="stage-n">02</div><div class="stage-status">Next</div><div class="stage-name">Assessment</div><div class="stage-desc">Capability mapping, risk scoring, readiness evaluation.</div></div>
-            <div class="stage"><div class="stage-n">03</div><div class="stage-status">Next</div><div class="stage-name">Strategy</div><div class="stage-desc">Roadmap, governance framework, adoption plan.</div></div>
-            <div class="stage"><div class="stage-n">04</div><div class="stage-status">Next</div><div class="stage-name">Handoff</div><div class="stage-desc">Playbooks, training, executive alignment session.</div>          </div>
-</div>
-          </div>
+      <div class="cap-nav">
+        <a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev">← Enterprise AI Agents</a>
+        <a href="/capabilities/" class="cap-nav-center">All Capabilities</a>
+        <a href="/capabilities/001-applied-research.html" class="cap-nav-next">Applied Research →</a>
+      </div>
+
+      <div class="cta-block">
+        <div>
+          <span class="cta-label">Data and AI Strategy</span>
+          <h3>Ready to know where you actually stand?</h3>
+        </div>
+        <a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+      </div>
+
+      <div class="footer">
+        <div>
+          <span class="label" style="color:var(--color-terra);">Inquiries</span>
+          <h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color:#a1665e;">aja</span>red.ca</a></h2>
+        </div>
+        <div style="text-align:right;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:0.5rem;">
+          <p style="font-size:0.9rem;color:var(--color-ink-dark);">© 2026 Ajared Research Inc.</p>
+          <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch, <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-bar"><span class="section-num">03</span><span class="section-title">Deliverables</span></div>
-        <div class="section-body">
-          <div class="deliverables">
-            <div class="deliverable-row"><span class="check done">✓</span> Data audit report + gap analysis</div>
-            <div class="deliverable-row"><span class="check done">✓</span> AI readiness assessment + scoring</div>
-            <div class="deliverable-row"><span class="check done">✓</span> Strategic roadmap + governance framework</div>
-            <div class="deliverable-row"><span class="check done">✓</span> Executive presentation + adoption playbook</div>
-            <div class="deliverable-row"><span class="check">○</span> Optional: Ongoing advisory retainer</div>
-          </div>
-        </div>
-      </div>
-
-  </div>
-
-  <div class="cap-nav">
-    <a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev"><span><span class="cap-nav-label">← Prev</span>Enterprise AI Agents</span></a>
-    <a href="/capabilities/" class="cap-nav-center">All Capabilities</a>
-    <a href="/capabilities/001-applied-research.html" class="cap-nav-next"><span><span class="cap-nav-label">Next →</span>Applied Research</span></a>
-  </div>
-
-  <div class="cta-block">
-    <div>
-      <span class="cta-label">Data and AI Strategy</span>
-      <h3>Ready to know where you actually stand?</h3>
-    </div>
-    <a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
-  </div>
+    </div><!-- /.main-content -->
+  </div><!-- /.grid-container -->
 
   <script>
     const canvas = document.getElementById('heroMoire');
@@ -238,36 +309,24 @@
     let mx = 0.5, my = 0.5;
     const STRENGTH = 32;
     function resize() {
-      const r = window.devicePixelRatio || 1;
-      const hero = canvas.parentElement;
+      const r = window.devicePixelRatio || 1, hero = canvas.parentElement;
       const w = hero.offsetWidth, h = hero.offsetHeight;
-      canvas.width = w * r; canvas.height = h * r;
-      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-      ctx.setTransform(1,0,0,1,0,0); ctx.scale(r, r);
+      canvas.width = w*r; canvas.height = h*r;
+      canvas.style.width = w+'px'; canvas.style.height = h+'px';
+      ctx.setTransform(1,0,0,1,0,0); ctx.scale(r,r);
       canvas._w = w; canvas._h = h;
     }
     function draw() {
-      const W = canvas._w, H = canvas._h;
-      const ax = W * 0.5 + (mx - 0.5) * STRENGTH, ay = H * 0.5 + (my - 0.5) * STRENGTH;
-      const bx = W * 0.5 - (mx - 0.5) * STRENGTH, by = H * 0.5 - (my - 0.5) * STRENGTH;
-      ctx.clearRect(0, 0, W, H);
-      const step = 26, max = Math.max(W, H) * 0.9;
-      ctx.lineWidth = 0.6;
-      function diamond(cx, cy, s, color) {
-        ctx.strokeStyle = color; ctx.beginPath();
-        ctx.moveTo(cx, cy - s); ctx.lineTo(cx + s, cy);
-        ctx.lineTo(cx, cy + s); ctx.lineTo(cx - s, cy);
-        ctx.closePath(); ctx.stroke();
-      }
-      for (let s = step; s < max; s += step) {
-        diamond(ax, ay, s, 'rgba(140,202,202,0.38)');
-        diamond(bx, by, s, 'rgba(161,102,94,0.28)');
-      }
+      const W=canvas._w, H=canvas._h;
+      const ax=W*.5+(mx-.5)*STRENGTH, ay=H*.5+(my-.5)*STRENGTH;
+      const bx=W*.5-(mx-.5)*STRENGTH, by=H*.5-(my-.5)*STRENGTH;
+      ctx.clearRect(0,0,W,H); ctx.lineWidth=0.6;
+      const step=26, max=Math.max(W,H)*.9;
+      function dia(cx,cy,s,c){ctx.strokeStyle=c;ctx.beginPath();ctx.moveTo(cx,cy-s);ctx.lineTo(cx+s,cy);ctx.lineTo(cx,cy+s);ctx.lineTo(cx-s,cy);ctx.closePath();ctx.stroke();}
+      for(let s=step;s<max;s+=step){dia(ax,ay,s,'rgba(140,202,202,0.38)');dia(bx,by,s,'rgba(161,102,94,0.28)');}
     }
-    let rafId;
-    window.addEventListener('mousemove', e => { mx = e.clientX / window.innerWidth; my = e.clientY / window.innerHeight; cancelAnimationFrame(rafId); rafId = requestAnimationFrame(draw); });
-    window.addEventListener('resize', () => { resize(); draw(); });
-    resize(); draw();
+    let raf; window.addEventListener('mousemove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight;cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);});
+    window.addEventListener('resize',()=>{resize();draw();}); resize(); draw();
   </script>
 </body>
 </html>
