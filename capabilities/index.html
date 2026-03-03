@@ -437,21 +437,8 @@
             }
 
             header {
-                grid-template-columns: 1fr auto;
+                grid-template-columns: 1fr;
             }
-
-            /* Row 1: logo left, section label right */
-            .header-cell:nth-child(1) { grid-column: 1; grid-row: 1; border-right: none; border-bottom: var(--grid-line); padding: 1rem; min-height: auto; }
-            .header-cell:nth-child(2) { grid-column: 2; grid-row: 1; border-right: none; border-bottom: var(--grid-line); padding: 1rem; min-height: auto; justify-content: flex-start; }
-            .header-cell:nth-child(2) h2,
-            .header-cell:nth-child(2) > div { display: none; }
-
-            /* Row 2: nav full-width at 80% */
-            .header-cell:nth-child(3) { grid-column: 1 / -1; grid-row: 2; border-right: none; border-bottom: none; padding: 0.6rem 1rem; min-height: auto; }
-            .header-cell:nth-child(3) > .label,
-            .header-cell:nth-child(3) > div { display: none; }
-            header nav { display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; gap: 1.2rem; -webkit-overflow-scrolling: touch; }
-            nav p { font-size: 0.8rem; white-space: nowrap; margin-bottom: 0; }
 
             .hero-fullbleed {
                 height: 25vh;
