@@ -52,7 +52,6 @@
     }
     .ruler-y {
       width: 80px;
-      border-right: var(--grid-line);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -88,22 +87,16 @@
     .nav-crumb .cur { color: var(--color-terra); }
 
     /* ── Hero ────────────────────────────────────────────────── */
-    .hero { background: var(--color-ink-darkest); padding: 3rem 2.5rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
+    .hero { background: var(--color-ink-darkest); padding: 1.4rem 2rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
     .hero-moire { position: absolute; inset: 0; pointer-events: none; display: block; }
     .hero-content { position: relative; z-index: 1; }
-    .hero-meta-bar { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 2rem; display: flex; gap: 2rem; }
+    .hero-meta-bar { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.8rem; display: flex; gap: 2rem; }
     .hero-meta-bar .sep { opacity: 0.3; }
     .hero-status { display: flex; align-items: center; gap: 0.5rem; }
     .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hero h1 { font-family: var(--font-primary); font-size: clamp(3rem, 6vw, 7rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.88; color: #fff; margin-bottom: 2rem; }
+    .hero h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.9; color: #fff; margin-bottom: 0; }
     .hero h1 span { color: var(--color-ink-light); }
-    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(5,140,140,0.3); }
-    .stat-cell { padding: 1rem 1.2rem; border-right: 1px solid rgba(5,140,140,0.3); }
-    .stat-cell:last-child { border-right: none; }
-    .stat-key { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-ink-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
-    .stat-val { font-family: var(--font-mono); font-size: 1rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
-    .stat-val.terra { color: var(--color-terra); }
 
     /* ── Page sections ───────────────────────────────────────── */
     .page-body { border-bottom: var(--grid-line); }
@@ -179,9 +172,6 @@
       header nav { gap: 1rem; flex-wrap: wrap; }
       .hero { padding: 2rem 1.2rem; }
       .hero h1 { font-size: clamp(2.4rem, 11vw, 4rem); }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-cell:nth-child(2) { border-right: none; }
-      .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(5,140,140,0.3); }
       .section-bar { padding: 0.8rem 1rem; }
       .section-body { padding: 1.2rem; margin-left: 0; }
       .section-body p { max-width: 100%; }
@@ -248,7 +238,6 @@
             <div class="hero-status"><div class="status-dot"></div><span>Available</span></div>
           </div>
           <h1>Enterprise<br><span>AI Agents</span></h1>
-          <div class="hero-stats"><div class="stat-cell"><div class="stat-key">Capability</div><div class="stat-val terra">003</div></div><div class="stat-cell"><div class="stat-key">Duration</div><div class="stat-val">16–32 WKS</div></div><div class="stat-cell"><div class="stat-key">Team Size</div><div class="stat-val">4–8</div></div><div class="stat-cell"><div class="stat-key">Engagement</div><div class="stat-val">Embedded</div></div></div>
         </div>
       </div>
 
