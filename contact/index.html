@@ -83,6 +83,7 @@
         h1 {
             font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: 2rem;
+            white-space: nowrap;
         }
 
         h2 {
@@ -224,7 +225,7 @@
             border-bottom: 2px solid var(--color-ink);
             color: var(--color-ink-darkest);
             font-family: var(--font-primary);
-            font-size: 1.5rem;
+            font-size: 1rem;
             padding: 0.5rem 0;
             outline: none;
             cursor: crosshair;
@@ -339,7 +340,7 @@
             padding: 1rem;
             color: var(--color-ink-darkest);
             font-family: var(--font-primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             resize: vertical;
             outline: none;
             cursor: crosshair;
@@ -419,8 +420,8 @@
                     </div>
                 </div>
                 <div class="header-cell">
-                    <span class="label">Title</span>
-                    <p>Get in Touch<br>Version 1.0.2<br>ID: AJR-INQ-01</p>
+                    <span class="label">Description</span>
+                    <p>Start a project or ask a question.</p>
                 </div>
                 <div class="header-cell">
                     <span class="label">Navigation</span>
@@ -436,7 +437,7 @@
             <section class="form-section">
                 <div class="form-left">
                     <span class="label">Contact</span>
-                    <h1>New<br>Inquiry</h1>
+                    <h1>New Inquiry</h1>
 
                     <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
                         <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc">
@@ -463,7 +464,7 @@
                             </div>
                         </div>
 
-                        <div class="instrument-field">
+                        <div class="instrument-field" id="deliverable-field" style="display: none;">
                             <span class="label">03 / Specific Deliverable (Optional)</span>
                             <select name="deliverable" id="deliverable-select" class="instrument-input"
                                 style="cursor: crosshair;">
@@ -477,9 +478,9 @@
                         </div>
 
                         <div class="instrument-field">
-                            <span class="label">04 / Project Scope / Brief</span>
+                            <span class="label" id="scope-label">03 / Project Scope / Brief</span>
                             <textarea name="message" id="message-textarea" class="brief-textarea"
-                                placeholder="Tell us what you're working on and how we can help..."></textarea>
+                                placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
                         </div>
 
                         <div id="form-status"
@@ -538,13 +539,15 @@
         const deliverableSelect = document.getElementById('deliverable-select');
 
         if (service && deliverables[service]) {
-            // Populate dropdown with deliverables
+            // Populate dropdown with deliverables and show the field
             deliverables[service].forEach(deliverable => {
                 const option = document.createElement('option');
                 option.value = deliverable;
                 option.textContent = deliverable;
                 deliverableSelect.appendChild(option);
             });
+            document.getElementById('deliverable-field').style.display = 'block';
+            document.getElementById('scope-label').textContent = '04 / Project Scope / Brief';
         }
 
         const map = document.getElementById('coord-map');
