@@ -59,6 +59,62 @@
       overflow-x: hidden;
     }
 
+    /* Grid System */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 1fr;
+      min-height: 100vh;
+      border-left: var(--grid-line);
+      border-right: var(--grid-line);
+      max-width: 1600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .ruler-y {
+      width: 80px;
+      border-right: var(--grid-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-align: right;
+      padding-right: 8px;
+      position: relative;
+      background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
+      background-size: 100% 20px;
+      color: var(--color-ink-light);
+    }
+
+    .ruler-y span:nth-child(5n+1) {
+      color: var(--color-terra);
+    }
+
+    .ruler-x {
+      height: 40px;
+      width: 100%;
+      border-bottom: var(--grid-line);
+      display: flex;
+      align-items: flex-end;
+      background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+      background-size: 20px 100%;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding-bottom: 4px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #fff;
+    }
+
+    .main-content {
+      grid-column: 2 / -1;
+      display: flex;
+      flex-direction: column;
+    }
+
     header {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -565,7 +621,41 @@
       margin-bottom: 0.2rem;
     }
 
+    /* Footer */
+    .footer {
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #f7fdfd;
+    }
+
+    .footer h2 {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      margin-top: 0.5rem;
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     /* ── Mobile Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .grid-container {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .ruler-y {
+        width: 40px;
+      }
+
+      .footer {
+        padding: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
     @media (max-width: 720px) {
       header {
         grid-template-columns: 1fr;
@@ -684,142 +774,155 @@
 
 <body>
 
-  <header>
-    <div class="header-cell">
-      <a href="/" style="text-decoration: none; display: flex; align-items: center;">
-        <img src="/logo.png" alt="Ajared Logo" style="height: 32px; width: auto; display: block;">
-        <div class="logo-text">Research Inc.</div>
-      </a>
+  <div class="grid-container">
+    <div class="ruler-y">
+      <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+      <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+      <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
     </div>
-    <div class="header-cell">
-      <div class="nav-crumb">
-        <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
-        <span class="sep">/</span>
-        <span class="cur">Enterprise Agents</span>
-      </div>
-    </div>
-    <div class="header-cell">
-      <nav>
-        <a href="/">Index</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/capabilities/">Capabilities</a>
-        <a href="/contact/">Contact</a>
-        <a href="https://www.ajared.ng">Read</a>
-      </nav>
-    </div>
-  </header>
 
-  <div class="hero">
-    <canvas class="hero-moire" id="heroMoire"></canvas>
-    <div class="hero-content">
-      <div class="hero-meta-bar">
-        <span>Engineering</span>
-        <span class="sep">|</span>
-        <div class="hero-status">
-          <div class="status-dot"></div><span>Available</span>
-        </div>
-      </div>
-      <h1>Enterprise<br><span>AI Agents</span></h1>
-      <div class="hero-stats">
-        <div class="stat-cell">
-          <div class="stat-key">Capability</div>
-          <div class="stat-val terra">003</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-key">Duration</div>
-          <div class="stat-val">16–32 WKS</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-key">Team Size</div>
-          <div class="stat-val">4–8</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-key">Engagement</div>
-          <div class="stat-val">Embedded</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
+    <div class="main-content">
+      <div class="ruler-x"></div>
 
-  <div class="page-body">
-
-    <div class="section">
-      <div class="section-bar"><span class="section-num">01</span><span class="section-title">What We Do</span></div>
-      <div class="section-body">
-        <p>We build AI agents that handle real tasks for you, or inside your company — processing documents,
-          coordinating between systems, making routine decisions. They work reliably and at scale, so your team can
-          focus on the work that actually needs a human.</p>
-        <div class="method-rows">
-          <div class="method-row">
-            <div class="method-id">01</div>
-            <div class="method-name">AI Agents</div>
-            <div class="method-desc">Task-specific agents with tool use, memory, and decision logic built for
-              production.</div>
+      <header>
+        <div class="header-cell">
+          <a href="/" style="text-decoration: none; display: flex; align-items: center;">
+            <img src="/logo.png" alt="Ajared Logo" style="height: 32px; width: auto; display: block;">
+            <div class="logo-text">Research Inc.</div>
+          </a>
+        </div>
+        <div class="header-cell">
+          <div class="nav-crumb">
+            <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
+            <span class="sep">/</span>
+            <span class="cur">Enterprise Agents</span>
           </div>
-          <div class="method-row">
-            <div class="method-id">02</div>
-            <div class="method-name">Graph RAG</div>
-            <div class="method-desc">Knowledge graph-augmented retrieval for complex enterprise data structures.</div>
+        </div>
+        <div class="header-cell">
+          <nav>
+            <a href="/">Index</a>
+            <a href="/case-studies/">Case Studies</a>
+            <a href="/capabilities/">Capabilities</a>
+            <a href="/contact/">Contact</a>
+            <a href="https://www.ajared.ng">Read</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="hero">
+        <canvas class="hero-moire" id="heroMoire"></canvas>
+        <div class="hero-content">
+          <div class="hero-meta-bar">
+            <span>Engineering</span>
+            <span class="sep">|</span>
+            <div class="hero-status">
+              <div class="status-dot"></div><span>Available</span>
+            </div>
           </div>
-          <div class="method-row">
-            <div class="method-id">03</div>
-            <div class="method-name">Task Automation</div>
-            <div class="method-desc">End-to-end workflow automation — document processing, routing, multi-system
-              coordination.</div>
+          <h1>Enterprise<br><span>AI Agents</span></h1>
+          <div class="hero-stats">
+            <div class="stat-cell">
+              <div class="stat-key">Capability</div>
+              <div class="stat-val terra">003</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-key">Duration</div>
+              <div class="stat-val">16–32 WKS</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-key">Team Size</div>
+              <div class="stat-val">4–8</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-key">Engagement</div>
+              <div class="stat-val">Embedded</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="section-bar"><span class="section-num">02</span><span class="section-title">How We Work</span></div>
-    <div class="section-body">
-      <div class="pipeline">
-        <div class="stage">
-          <div class="stage-n">01</div>
-          <div class="stage-status">Done</div>
-          <div class="stage-name">Discovery</div>
-          <div class="stage-desc">Map workflows, identify automation candidates, define scope.</div>
+      <div class="page-body">
+
+        <div class="section">
+          <div class="section-bar"><span class="section-num">01</span><span class="section-title">What We Do</span>
+          </div>
+          <div class="section-body">
+            <p>We build AI agents that handle real tasks for you, or inside your company — processing documents,
+              coordinating between systems, making routine decisions. They work reliably and at scale, so your team can
+              focus on the work that actually needs a human.</p>
+            <div class="method-rows">
+              <div class="method-row">
+                <div class="method-id">01</div>
+                <div class="method-name">AI Agents</div>
+                <div class="method-desc">Task-specific agents with tool use, memory, and decision logic built for
+                  production.</div>
+              </div>
+              <div class="method-row">
+                <div class="method-id">02</div>
+                <div class="method-name">Graph RAG</div>
+                <div class="method-desc">Knowledge graph-augmented retrieval for complex enterprise data structures.
+                </div>
+              </div>
+              <div class="method-row">
+                <div class="method-id">03</div>
+                <div class="method-name">Task Automation</div>
+                <div class="method-desc">End-to-end workflow automation — document processing, routing, multi-system
+                  coordination.</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="stage">
-          <div class="stage-n">02</div>
-          <div class="stage-status">Next</div>
-          <div class="stage-name">Design</div>
-          <div class="stage-desc">Agent architecture, tool configuration, safety constraints.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-bar"><span class="section-num">02</span><span class="section-title">How We Work</span></div>
+        <div class="section-body">
+          <div class="pipeline">
+            <div class="stage">
+              <div class="stage-n">01</div>
+              <div class="stage-status">Done</div>
+              <div class="stage-name">Discovery</div>
+              <div class="stage-desc">Map workflows, identify automation candidates, define scope.</div>
+            </div>
+            <div class="stage">
+              <div class="stage-n">02</div>
+              <div class="stage-status">Next</div>
+              <div class="stage-name">Design</div>
+              <div class="stage-desc">Agent architecture, tool configuration, safety constraints.</div>
+            </div>
+            <div class="stage">
+              <div class="stage-n">03</div>
+              <div class="stage-status">Next</div>
+              <div class="stage-name">Build & Test</div>
+              <div class="stage-desc">Development, integration, red-teaming, evaluation suites.</div>
+            </div>
+            <div class="stage">
+              <div class="stage-n">04</div>
+              <div class="stage-status">Next</div>
+              <div class="stage-name">Deploy</div>
+              <div class="stage-desc">Production rollout, monitoring, human-in-the-loop controls.</div>
+            </div>
+          </div>
         </div>
-        <div class="stage">
-          <div class="stage-n">03</div>
-          <div class="stage-status">Next</div>
-          <div class="stage-name">Build & Test</div>
-          <div class="stage-desc">Development, integration, red-teaming, evaluation suites.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-bar"><span class="section-num">03</span><span class="section-title">Deliverables</span>
         </div>
-        <div class="stage">
-          <div class="stage-n">04</div>
-          <div class="stage-status">Next</div>
-          <div class="stage-name">Deploy</div>
-          <div class="stage-desc">Production rollout, monitoring, human-in-the-loop controls.</div>
+        <div class="section-body">
+          <div class="deliverables">
+            <div class="deliverable-row"><span class="check done">✓</span> Agent architecture document + system design
+            </div>
+            <div class="deliverable-row"><span class="check done">✓</span> Production-ready agent system with evaluation
+              suite</div>
+            <div class="deliverable-row"><span class="check done">✓</span> Integration layer + API documentation</div>
+            <div class="deliverable-row"><span class="check done">✓</span> Monitoring dashboard + alert configuration
+            </div>
+            <div class="deliverable-row"><span class="check">○</span> Optional: Ongoing operations retainer</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-
-  <div class="section">
-    <div class="section-bar"><span class="section-num">03</span><span class="section-title">Deliverables</span></div>
-    <div class="section-body">
-      <div class="deliverables">
-        <div class="deliverable-row"><span class="check done">✓</span> Agent architecture document + system design</div>
-        <div class="deliverable-row"><span class="check done">✓</span> Production-ready agent system with evaluation
-          suite</div>
-        <div class="deliverable-row"><span class="check done">✓</span> Integration layer + API documentation</div>
-        <div class="deliverable-row"><span class="check done">✓</span> Monitoring dashboard + alert configuration</div>
-        <div class="deliverable-row"><span class="check">○</span> Optional: Ongoing operations retainer</div>
-      </div>
-    </div>
-  </div>
 
   </div>
 
@@ -839,6 +942,32 @@
     <a href="/contact/" style="text-decoration:none;">
       <div class="cta-btn">Get in touch →</div>
     </a>
+  </div>
+
+  <div class="footer">
+    <div>
+      <span class="label"
+        style="color: var(--color-terra); font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; display: inline-block; padding: 0.2rem 0.5rem; background: rgba(161, 102, 94, 0.08);">Inquiries</span>
+      <h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+    </div>
+    <div
+      style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-end; gap:0.5rem;">
+      <p style="font-family: var(--font-mono); font-size: 0.8rem;">© 2026 Ajared Research Inc.</p>
+      <div
+        style="display:flex; gap:1rem; justify-content:flex-end; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase;">
+        <a href="https://x.com/chunnodu" target="_blank" style="color:inherit; text-decoration:underline;">X</a>
+        <a href="https://linkedin.com/in/chunnodu" target="_blank"
+          style="color:inherit; text-decoration:underline;">LinkedIn</a>
+      </div>
+      <span class="label" style="font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase;">R<span
+          style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+        <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span
+          style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span
+          style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+    </div>
+  </div>
+
+  </div>
   </div>
 
   <script>
