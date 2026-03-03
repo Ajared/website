@@ -36,9 +36,6 @@
     .nav-crumb { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; }
     .nav-crumb .sep { opacity: 0.4; }
     .nav-crumb .cur { color: var(--color-terra); }
-    .grid-container { display: grid; grid-template-columns: 80px 1fr; border-left: var(--grid-line); border-right: var(--grid-line); max-width: 1600px; margin: 0 auto; position: relative; }
-    .ruler-y { width: 80px; border-right: var(--grid-line); display: flex; flex-direction: column; padding: 20px 0; font-family: var(--font-mono); font-size: 10px; text-align: right; padding-right: 8px; background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px); background-size: 100% 20px; color: var(--color-ink-light); }
-    .ruler-y span:nth-child(5n+1) { color: var(--color-terra); }
         .hero { background: var(--color-ink-darkest); padding: 3rem 2.5rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
     .hero-moire { position: absolute; inset: 0; pointer-events: none; display: block; }
     .hero-content { position: relative; z-index: 1; }
@@ -60,9 +57,9 @@
     .ruler-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--color-ink-light); text-align: center; padding-top: 0.5rem; }
     .section { border-bottom: var(--grid-line); }
     .section:last-child { border-bottom: none; }
-    .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); }
+    .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); background: #f7fdfd; }
     .section-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-terra); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(161,102,94,0.08); padding: 0.2rem 0.5rem; }
-    .section-title { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.05em; color: var(--color-ink-darkest); line-height: 1; }
+    .section-title { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.04em; color: var(--color-ink-darkest); }
     .section-body { padding: 2rem 2rem 2.5rem; }
     .section-body p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 56ch; }
     .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); border: var(--grid-line); margin-top: 1.5rem; }
@@ -98,10 +95,6 @@
 </head>
 <body>
 
-  <div class="grid-container">
-    <div class="ruler-y"><span>0</span><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span><span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span><span>1500</span></div>
-    <div class="main-content">
-
   <header>
     <div class="header-cell">
       <a href="/" style="text-decoration: none; display: flex; align-items: center;">
@@ -136,7 +129,7 @@
         <div class="hero-status"><div class="status-dot"></div><span>Available</span></div>
       </div>
       <h1>Enterprise<br><span>AI Agents</span></h1>
-      <div class="hero-stats"><div class="stat-cell"><div class="stat-key">Capability</div><div class="stat-val terra">003</div></div><div class="stat-cell"><div class="stat-key">Duration</div><div class="stat-val">16–32 WKS</div></div><div class="stat-cell"><div class="stat-key">Output</div><div class="stat-val">Production Agent</div></div><div class="stat-cell"><div class="stat-key">Engagement</div><div class="stat-val">Project</div></div></div>
+      <div class="hero-stats"><div class="stat-cell"><div class="stat-key">Capability</div><div class="stat-val terra">003</div></div><div class="stat-cell"><div class="stat-key">Duration</div><div class="stat-val">16–32 WKS</div></div><div class="stat-cell"><div class="stat-key">Team Size</div><div class="stat-val">4–8</div></div><div class="stat-cell"><div class="stat-key">Discipline</div><div class="stat-val">Engineering</div></div></div>
     </div>
   </div>
     </div>
@@ -232,7 +225,5 @@
     window.addEventListener('resize', () => { resize(); draw(); });
     resize(); draw();
   </script>
-    </div><!-- main-content -->
-  </div><!-- grid-container -->
 </body>
 </html>
