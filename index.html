@@ -415,6 +415,41 @@
             transform: scaleX(1);
         }
 
+        /* Offer card tracks (card 03 — Get Started with AI) */
+        .track-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .track-num {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-terra);
+            min-width: 1.5rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .track-name {
+            color: var(--color-ink-dark);
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .service-card:hover .track-num,
+        .service-card:hover .track-name {
+            color: var(--color-bg);
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .grid-container {
@@ -477,6 +512,110 @@
             }
         }
     </style>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "logo": "https://ajared.ca/logo.png",
+      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+      "email": "innovation@ajared.ca",
+      "sameAs": [
+        "https://ajared.ng"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Toronto",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA",
+            "streetAddress": "68 Abell St",
+            "postalCode": "M6J 0B1"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Abuja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressCountry": "NG"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Applied Research",
+        "AI Product Development",
+        "Enterprise AI Agents",
+        "Data Strategy"
+      ],
+      "telephone": "+16136613550"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ajared.ca/#website",
+      "url": "https://ajared.ca",
+      "name": "Ajared Research Inc.",
+      "publisher": {
+        "@id": "https://ajared.ca/#organization"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ajared.ca/#service",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "description": "Applied AI research and product studio delivering enterprise AI solutions.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Applied Research",
+              "url": "https://ajared.ca/capabilities/001-applied-research.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Product Development & Management",
+              "url": "https://ajared.ca/capabilities/002-ai-product.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise AI Agents",
+              "url": "https://ajared.ca/capabilities/003-enterprise-agents.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data and AI Strategy",
+              "url": "https://ajared.ca/capabilities/004-data-strategy.html"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+    </script>
 </head>
 
 <body>
@@ -537,7 +676,9 @@
                     <span class="label" style="margin-bottom: 2rem; color: #a1665e;">AI Research & Product Studio</span>
                     <h1>Get AI<br>working<br>for you<br><span style="color:#a1665e;">today.</span></h1>
                     <p style="margin-top: 2rem; max-width: none;">
-                        We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.
+                        We go past proofs of concepts to AI products that actually work for you. When you start
+                        <em>really</em> using AI today, you can supercharge your productivity - first personally, and
+                        then for your organization.
                     </p>
                     <a href="/contact/" class="btn">Get in touch →</a>
                 </div>
@@ -550,52 +691,61 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div>
-                        <span class="label"><span style="color: #a1665e;">001</span> — Research</span>
-                        <h3>Applied Research</h3>
-                        <p>We talk to your users, study your market, and run experiments to find out what's true —
-                            before anyone starts building. UX research, competitive analysis, A/B testing.</p>
+                        <span class="label"><span style="color: #a1665e;">01</span> — Advisory</span>
+                        <h3>Talk to a Human about AI</h3>
+                        <p>Not a chatbot. A real conversation with early adopters about what AI can actually do for
+                            your organisation — and where to start.</p>
                     </div>
-                    <a href="/capabilities/001-applied-research.html"
+                    <a href="/contact/"
                         style="text-decoration: none; color: inherit; display: block; margin-top: 1rem;">
                         <div class="arrow-icon"></div>
                     </a>
                 </div>
                 <div class="service-card">
                     <div>
-                        <span class="label"><span style="color: #a1665e;">002</span> — Product</span>
-                        <h3>Product Development</h3>
-                        <p>We help you build and manage products in this AI age from concept to the first prototype
-                            through what ships and what
-                            happens after. That includes choosing the right models, designing how people interact with
-                            them, and making sure they keep working as things change.</p>
+                        <span class="label"><span style="color: #a1665e;">02</span> — Build</span>
+                        <h3>1 Month AI Development Sprint</h3>
+                        <p>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks.
+                            Right-sized for teams that want momentum, not a six-month SOW.</p>
                     </div>
-                    <a href="/capabilities/002-ai-product.html"
+                    <a href="/contact/"
                         style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;">
                         <div class="arrow-icon"></div>
                     </a>
                 </div>
                 <div class="service-card">
                     <div>
-                        <span class="label"><span style="color: #a1665e;">003</span> — Agentic</span>
-                        <h3>Enterprise Agents</h3>
-                        <p>Our enterprise agents can do real work inside your company — processing documents,
-                            coordinating between systems, handling the tasks your team shouldn't be doing manually,
-                            while running reliably, at scale.</p>
+                        <span class="label"><span style="color: #a1665e;">03</span> — Pathways</span>
+                        <h3>Get Started with AI</h3>
+                        <p>Three entry points depending on where you are today.</p>
+                        <div class="track-list">
+                            <div class="track-item">
+                                <span class="track-num">01</span>
+                                <span class="track-name">Using an assistant</span>
+                            </div>
+                            <div class="track-item">
+                                <span class="track-num">02</span>
+                                <span class="track-name">Adding Tool Use</span>
+                            </div>
+                            <div class="track-item">
+                                <span class="track-num">03</span>
+                                <span class="track-name">Agentic Workflows</span>
+                            </div>
+                        </div>
                     </div>
-                    <a href="/capabilities/003-enterprise-agents.html"
+                    <a href="/contact/"
                         style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;">
                         <div class="arrow-icon"></div>
                     </a>
                 </div>
                 <div class="service-card">
                     <div>
-                        <span class="label"><span style="color: #a1665e;">004</span> — Strategy</span>
-                        <h3>Data &amp; AI Strategy</h3>
-                        <p>Together we'll figure out where AI fits in your organization, what data you need to get
-                            there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and
-                            honest assessments of what's ready and what isn't.</p>
+                        <span class="label"><span style="color: #a1665e;">04</span> — Discoverability</span>
+                        <h3>Markup your website so AI agents can easily find you</h3>
+                        <p>AI agents are how people will discover you next. We add the structured data and schema
+                            markup that makes your site legible to them — today.</p>
                     </div>
-                    <a href="/capabilities/004-data-strategy.html"
+                    <a href="/contact/"
                         style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;">
                         <div class="arrow-icon"></div>
                     </a>

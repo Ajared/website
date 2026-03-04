@@ -515,8 +515,110 @@
             padding-bottom: 1px;
             margin-top: 0.8rem;
         }
-        .detail-link:hover { color: var(--color-ink-dark); border-color: var(--color-ink-dark); }
+
+        .detail-link:hover {
+            color: var(--color-ink-dark);
+            border-color: var(--color-ink-dark);
+        }
     </style>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "logo": "https://ajared.ca/logo.png",
+      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+      "email": "innovation@ajared.ca",
+      "sameAs": [
+        "https://ajared.ng"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Toronto",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA",
+            "streetAddress": "68 Abell St",
+            "postalCode": "M6J 0B1"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Abuja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressCountry": "NG"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Applied Research",
+        "AI Product Development",
+        "Enterprise AI Agents",
+        "Data Strategy"
+      ],
+      "telephone": "+16136613550"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajared.ca"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Capabilities",
+          "item": "https://ajared.ca/capabilities/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Ajared Research Capabilities",
+      "description": "The four core service disciplines offered by Ajared Research Inc.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://ajared.ca/capabilities/001-applied-research.html",
+          "name": "Applied Research"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://ajared.ca/capabilities/002-ai-product.html",
+          "name": "AI Product Development & Management"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://ajared.ca/capabilities/003-enterprise-agents.html",
+          "name": "Enterprise AI Agents"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://ajared.ca/capabilities/004-data-strategy.html",
+          "name": "Data and AI Strategy"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 
 <body>
@@ -536,7 +638,8 @@
                     <span class="label" style="color: var(--color-ink);">Information Architecture</span>
                     <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
                         <a href="/" style="display: block; text-decoration: none;">
-                            <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;">
+                            <img src="/logo.png" alt="Ajared Logo"
+                                style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;">
                             <div class="logo-text" style="line-height: 1.1;">
                                 Research Inc.
                             </div>
@@ -612,7 +715,11 @@
                         <div class="detail-inner">
                             <div class="spacer"></div>
                             <div class="detail-block">
-                                <span class="label">Overview</span>
+                                <span class="label">In Brief</span>
+                                <p>We talk to your users, study your market, and run experiments to find out what's
+                                    true — before anyone starts building. UX research, competitive analysis,
+                                    A/B testing.</p>
+                                <span class="label" style="margin-top:1.5rem;">Overview</span>
                                 <p>We figure out what's actually going on before anyone starts building. That means
                                     talking to users, studying the market, running experiments, and reviewing the
                                     existing evidence. We draw on behavioral science, statistics, and deep domain
@@ -634,7 +741,8 @@
                                 <p>2–4 researchers</p>
                             </div>
                             <div class="detail-block">
-                                <a href="/capabilities/001-applied-research.html" class="detail-link">View full brief →</a>
+                                <a href="/capabilities/001-applied-research.html" class="detail-link">View full brief
+                                    →</a>
                             </div>
                         </div>
                     </div>
@@ -652,7 +760,12 @@
                         <div class="detail-inner">
                             <div class="spacer"></div>
                             <div class="detail-block">
-                                <span class="label">Overview</span>
+                                <span class="label">In Brief</span>
+                                <p>We help you build and manage products in this AI age from concept to the first
+                                    prototype through what ships and what happens after. That includes choosing the
+                                    right models, designing how people interact with them, and making sure they keep
+                                    working as things change.</p>
+                                <span class="label" style="margin-top:1.5rem;">Overview</span>
                                 <p>We help you build AI products and keep them running. That covers everything from the
                                     first idea through launch, growth, and the ongoing work of making them better.</p>
                             </div>
@@ -691,7 +804,11 @@
                         <div class="detail-inner">
                             <div class="spacer"></div>
                             <div class="detail-block">
-                                <span class="label">Overview</span>
+                                <span class="label">In Brief</span>
+                                <p>Our enterprise agents can do real work inside your company — processing documents,
+                                    coordinating between systems, handling the tasks your team shouldn't be doing
+                                    manually, while running reliably, at scale.</p>
+                                <span class="label" style="margin-top:1.5rem;">Overview</span>
                                 <p>We build AI agents that handle real tasks inside your company — processing documents,
                                     coordinating between systems, making routine decisions. They work reliably and at
                                     scale, so your team can focus on the work that actually needs a human.</p>
@@ -713,7 +830,8 @@
                                 <p>4–8 engineers</p>
                             </div>
                             <div class="detail-block">
-                                <a href="/capabilities/003-enterprise-agents.html" class="detail-link">View full brief →</a>
+                                <a href="/capabilities/003-enterprise-agents.html" class="detail-link">View full brief
+                                    →</a>
                             </div>
                         </div>
                     </div>
@@ -731,7 +849,11 @@
                         <div class="detail-inner">
                             <div class="spacer"></div>
                             <div class="detail-block">
-                                <span class="label">Overview</span>
+                                <span class="label">In Brief</span>
+                                <p>Together we'll figure out where AI fits in your organization, what data you need
+                                    to get there, and how to adopt it without the usual mess. Governance plans,
+                                    adoption playbooks, and honest assessments of what's ready and what isn't.</p>
+                                <span class="label" style="margin-top:1.5rem;">Overview</span>
                                 <p>We audit your data, figure out what's missing, and build a plan to get AI working
                                     inside your organization. That includes governance, adoption plans, and honest
                                     assessments of what you're ready for and what you're not.</p>
