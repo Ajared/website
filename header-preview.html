@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Header Preview</title>
+    <style>
+        body {
+            background: #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem 1rem;
+            font-family: -apple-system, sans-serif;
+        }
+
+        .device-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .phone-frame {
+            width: 393px; /* iPhone 15 Pro Max logical width */
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            border: 1px solid #ccc;
+        }
+
+        /* ── Shared design tokens ── */
+        :root {
+            --color-bg: #ffffff;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-terra: #a1665e;
+            --grid-line: 1px solid #058c8c;
+            --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', monospace;
+        }
+
+        .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+        }
+
+        /* ── BEFORE: current 3-stacked-cell layout ── */
+        .header-before {
+            border-bottom: var(--grid-line);
+        }
+
+        .header-cell-before {
+            padding: 1.5rem 1rem;
+            border-bottom: var(--grid-line);
+        }
+
+        .header-cell-before:last-child {
+            border-bottom: none;
+        }
+
+        .logo-text-before {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+            margin-top: 0.3rem;
+        }
+
+        .header-cell-before nav p {
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            color: var(--color-ink-dark);
+        }
+
+        /* ── AFTER: proposed 2-row mobile header ── */
+        .header-after {
+            border-bottom: var(--grid-line);
+        }
+
+        /* Row 1: logo left, breadcrumb right */
+        .header-row1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 1rem;
+            border-bottom: var(--grid-line);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-img-placeholder {
+            width: 36px;
+            height: 36px;
+            background: var(--color-ink);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.55rem;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-family: var(--font-mono);
+            flex-shrink: 0;
+        }
+
+        .logo-wordmark {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+            line-height: 1.1;
+        }
+
+        .logo-wordmark span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--color-ink);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+        }
+
+        .breadcrumb {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-terra);
+            font-family: var(--font-mono);
+            text-decoration: underline;
+        }
+
+        /* Row 2: nav links inline */
+        .header-row2 {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 0.6rem 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .header-row2::-webkit-scrollbar { display: none; }
+
+        .header-row2 a {
+            font-size: 0.8rem; /* 80% of 1rem */
+            color: var(--color-ink-dark);
+            text-decoration: none;
+            white-space: nowrap;
+            font-family: var(--font-primary);
+        }
+
+        .header-row2 a.active {
+            color: var(--color-terra);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* ── Shared ruler-x ── */
+        .ruler-x {
+            height: 30px;
+            border-bottom: var(--grid-line);
+            background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 20px 100%;
+            background-color: var(--color-bg);
+        }
+
+        .section-label {
+            padding: 0.75rem 1rem;
+            border-bottom: var(--grid-line);
+            background: #f7fefe;
+        }
+
+        /* comparison labels */
+        .comparison-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            padding: 0.5rem 1rem;
+            background: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BEFORE -->
+    <div>
+        <div class="device-label">iPhone 15 Pro Max — Current</div>
+        <div class="phone-frame">
+            <div class="ruler-x"></div>
+            <div class="comparison-title">Before</div>
+            <header class="header-before">
+                <div class="header-cell-before">
+                    <span class="label">Information Architecture</span>
+                    <div style="display:flex; align-items:center; gap:0.6rem; margin-top:0.4rem;">
+                        <div style="width:44px;height:44px;background:var(--color-ink);border-radius:2px;flex-shrink:0;"></div>
+                        <div class="logo-text-before">Research Inc.</div>
+                    </div>
+                </div>
+                <div class="header-cell-before">
+                    <span class="label">Section / 03</span>
+                    <div style="font-size:1.4rem;font-weight:700;color:var(--color-ink-darkest);margin-top:0.3rem;">What We Do</div>
+                    <span class="label" style="margin-top:0.6rem;">4 Disciplines</span>
+                </div>
+                <div class="header-cell-before">
+                    <span class="label">Navigation</span>
+                    <nav style="margin-top:0.3rem;">
+                        <p>Index</p>
+                        <p>Case Studies</p>
+                        <p style="color:var(--color-terra);font-weight:600;text-decoration:underline;">Capabilities</p>
+                        <p>Contact</p>
+                        <p>Read</p>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <!-- AFTER -->
+    <div>
+        <div class="device-label">iPhone 15 Pro Max — Proposed</div>
+        <div class="phone-frame">
+            <div class="ruler-x"></div>
+            <div class="comparison-title">After</div>
+            <header class="header-after">
+                <!-- Row 1: Logo + Breadcrumb -->
+                <div class="header-row1">
+                    <div class="logo-group">
+                        <div class="logo-img-placeholder">AJR</div>
+                        <div class="logo-wordmark">
+                            Ajared
+                            <span>Research Inc.</span>
+                        </div>
+                    </div>
+                    <span class="breadcrumb">Capabilities</span>
+                </div>
+                <!-- Row 2: Nav -->
+                <div class="header-row2">
+                    <a href="#">Index</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#" class="active">Capabilities</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Read</a>
+                </div>
+            </header>
+        </div>
+    </div>
+
+</body>
+</html>
