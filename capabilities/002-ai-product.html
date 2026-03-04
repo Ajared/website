@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,32 +14,62 @@
     @font-face {
       font-family: 'iA Writer Quattro S';
       src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
-           url('/fonts/iAWriterQuattroS-Regular.woff') format('woff');
-      font-weight: 400; font-style: normal; font-display: swap;
+        url('/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
+
     @font-face {
       font-family: 'iA Writer Quattro S';
       src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
-           url('/fonts/iAWriterQuattroS-Bold.woff') format('woff');
-      font-weight: 700; font-style: normal; font-display: swap;
+        url('/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
+
     @font-face {
       font-family: 'iA Writer Quattro S';
       src: url('/fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
-           url('/fonts/iAWriterQuattroS-Italic.woff') format('woff');
-      font-weight: 400; font-style: italic; font-display: swap;
+        url('/fonts/iAWriterQuattroS-Italic.woff') format('woff');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
     }
+
     :root {
       --color-bg: #ffffff;
-      --color-ink: #058c8c; --color-ink-dark: #046363; --color-ink-darkest: #023b3b;
-      --color-ink-light: #8ccaca; --color-ink-lighter: #b2dbdb;
-      --color-terra: #a1665e; --grid-line: 1px solid #058c8c;
+      --color-ink: #058c8c;
+      --color-ink-dark: #046363;
+      --color-ink-darkest: #023b3b;
+      --color-ink-light: #8ccaca;
+      --color-ink-lighter: #b2dbdb;
+      --color-terra: #a1665e;
+      --grid-line: 1px solid #058c8c;
       --font-primary: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
-    body { font-family: var(--font-primary); background: var(--color-bg); color: var(--color-ink-dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: crosshair;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--color-bg);
+      color: var(--color-ink-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* ── Grid frame ─────────────────────────────────────────── */
     .grid-container {
@@ -50,6 +81,7 @@
       max-width: 1600px;
       margin: 0 auto;
     }
+
     .ruler-y {
       width: 80px;
       display: flex;
@@ -63,119 +95,605 @@
       background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
       background-size: 100% 20px;
     }
-    .ruler-y span:nth-child(5n+1) { color: var(--color-terra); }
+
+    .ruler-y span:nth-child(5n+1) {
+      color: var(--color-terra);
+    }
+
     .ruler-x {
       height: 40px;
       border-bottom: var(--grid-line);
       background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
       background-size: 20px 100%;
       background-color: var(--color-bg);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .main-content { grid-column: 2 / -1; display: flex; flex-direction: column; }
+
+    .main-content {
+      grid-column: 2 / -1;
+      display: flex;
+      flex-direction: column;
+    }
 
     /* ── Compact header ─────────────────────────────────────── */
-    header { display: grid; grid-template-columns: auto 1fr auto; border-bottom: var(--grid-line); }
-    .header-cell { padding: 0.9rem 1.2rem; border-right: var(--grid-line); display: flex; align-items: center; }
-    .header-cell:last-child { border-right: none; }
-    .logo-text { font-size: 0.72rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink-darkest); line-height: 1.2; margin-left: 0.6rem; }
-    header nav { display: flex; align-items: center; gap: 1.8rem; }
-    header nav a { color: var(--color-ink-dark); text-decoration: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    header nav a:hover { color: var(--color-terra); }
-    .nav-crumb { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; }
-    .nav-crumb .sep { opacity: 0.4; }
-    .nav-crumb .cur { color: var(--color-terra); }
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      border-bottom: var(--grid-line);
+    }
+
+    .header-cell {
+      padding: 0.9rem 1.2rem;
+      border-right: var(--grid-line);
+      display: flex;
+      align-items: center;
+    }
+
+    .header-cell:last-child {
+      border-right: none;
+    }
+
+    .logo-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-ink-darkest);
+      line-height: 1.2;
+      margin-left: 0.6rem;
+    }
+
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    header nav a {
+      color: var(--color-ink-dark);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    header nav a:hover {
+      color: var(--color-terra);
+    }
+
+    .nav-crumb {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-ink);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 1.5rem;
+    }
+
+    .nav-crumb .sep {
+      opacity: 0.4;
+    }
+
+    .nav-crumb .cur {
+      color: var(--color-terra);
+    }
 
     /* ── Hero ────────────────────────────────────────────────── */
-    .hero { background: var(--color-ink-darkest); padding: 1.4rem 2rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
-    .hero-moire { position: absolute; inset: 0; pointer-events: none; display: block; }
-    .hero-content { position: relative; z-index: 1; }
-    .hero h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; color: #fff; margin-bottom: 0; }
+    .hero {
+      background: var(--color-ink-darkest);
+      padding: 1.4rem 2rem;
+      border-bottom: 3px solid var(--color-terra);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-moire {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: var(--font-primary);
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 0.95;
+      color: #fff;
+      margin-bottom: 0;
+    }
 
     /* ── Page sections ───────────────────────────────────────── */
-    .page-body { border-bottom: var(--grid-line); }
-    .section { border-bottom: var(--grid-line); }
-    .section:last-child { border-bottom: none; }
-    .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); }
-    .section-title { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.04em; color: var(--color-ink-darkest); }
-    .section-body { padding: 2rem 2.5rem 2.5rem 2rem; }
-    .section-body > p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); margin-bottom: 1.5rem; }
-    .section-body > p:last-child { margin-bottom: 0; }
+    .page-body {
+      border-bottom: var(--grid-line);
+    }
+
+    .section {
+      border-bottom: var(--grid-line);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      border-bottom: var(--grid-line);
+    }
+
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--color-ink-darkest);
+    }
+
+    .section-body {
+      padding: 2rem 2.5rem 2.5rem 2rem;
+    }
+
+    .section-body>p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-ink-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body>p:last-child {
+      margin-bottom: 0;
+    }
 
     /* ── Offerings (What We Do) ──────────────────────────────── */
-    .offerings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: var(--grid-line); border-left: var(--grid-line); }
-    .offering { padding: 1.6rem 1.8rem; border-right: var(--grid-line); border-bottom: var(--grid-line); }
-    .offering h4 { font-size: 0.97rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-ink-darkest); margin-bottom: 0.55rem; }
-    .offering p { font-size: 0.85rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
+    .offerings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      border-top: var(--grid-line);
+      border-left: var(--grid-line);
+    }
+
+    .offering {
+      padding: 1.6rem 1.8rem;
+      border-right: var(--grid-line);
+      border-bottom: var(--grid-line);
+    }
+
+    .offering h4 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--color-ink-darkest);
+      margin-bottom: 0.55rem;
+    }
+
+    .offering p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--color-ink-dark);
+      margin: 0;
+    }
 
     /* ── Process (How We Work) ───────────────────────────────── */
-    .process-list { }
-    .process-step { display: grid; grid-template-columns: 36px 1fr; border: var(--grid-line); border-bottom: none; padding: 1.4rem 1.6rem; gap: 1.2rem; }
-    .process-step:last-child { border-bottom: var(--grid-line); }
-    .step-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-terra); letter-spacing: 0.1em; padding-top: 0.2rem; }
-    .step-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--color-ink-darkest); letter-spacing: -0.02em; margin-bottom: 0.45rem; }
-    .step-body p { font-size: 0.87rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
+    .process-list {}
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      border: var(--grid-line);
+      border-bottom: none;
+      padding: 1.4rem 1.6rem;
+      gap: 1.2rem;
+    }
+
+    .process-step:last-child {
+      border-bottom: var(--grid-line);
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--color-terra);
+      letter-spacing: 0.1em;
+      padding-top: 0.2rem;
+    }
+
+    .step-body h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-ink-darkest);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.45rem;
+    }
+
+    .step-body p {
+      font-size: 0.87rem;
+      line-height: 1.65;
+      color: var(--color-ink-dark);
+      margin: 0;
+    }
 
     /* ── Deliverables ────────────────────────────────────────── */
-    .deliverables { }
-    .deliverable-row { display: grid; grid-template-columns: 28px 1fr; border: var(--grid-line); border-bottom: none; padding: 0.85rem 1rem; align-items: start; font-size: 0.82rem; color: var(--color-ink-dark); line-height: 1.5; }
-    .deliverable-row:last-child { border-bottom: var(--grid-line); }
-    .check { color: var(--color-ink-light); }
-    .check.done { color: #4ade80; }
+    .deliverables {}
+
+    .deliverable-row {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      border: var(--grid-line);
+      border-bottom: none;
+      padding: 0.85rem 1rem;
+      align-items: start;
+      font-size: 0.82rem;
+      color: var(--color-ink-dark);
+      line-height: 1.5;
+    }
+
+    .deliverable-row:last-child {
+      border-bottom: var(--grid-line);
+    }
+
+    .check {
+      color: var(--color-ink-light);
+    }
+
+    .check.done {
+      color: #4ade80;
+    }
 
     /* ── Cap nav ─────────────────────────────────────────────── */
-    .cap-nav { display: grid; grid-template-columns: 1fr auto 1fr; border-bottom: var(--grid-line); }
-    .cap-nav-prev, .cap-nav-center, .cap-nav-next { padding: 1rem 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
-    .cap-nav-prev:hover, .cap-nav-next:hover { color: var(--color-terra); background: rgba(218,234,234,0.5); }
-    .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
-    .cap-nav-center:hover { color: var(--color-terra); background: rgba(218,234,234,0.5); }
-    .cap-nav-next { justify-content: flex-end; }
+    .cap-nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      border-bottom: var(--grid-line);
+    }
+
+    .cap-nav-prev,
+    .cap-nav-center,
+    .cap-nav-next {
+      padding: 1rem 1.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cap-nav-prev:hover,
+    .cap-nav-next:hover {
+      color: var(--color-terra);
+      background: rgba(218, 234, 234, 0.5);
+    }
+
+    .cap-nav-center {
+      border-left: var(--grid-line);
+      border-right: var(--grid-line);
+      justify-content: center;
+      color: var(--color-ink);
+    }
+
+    .cap-nav-center:hover {
+      color: var(--color-terra);
+      background: rgba(218, 234, 234, 0.5);
+    }
+
+    .cap-nav-next {
+      justify-content: flex-end;
+    }
 
     /* ── CTA ─────────────────────────────────────────────────── */
-    .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
-    .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
-    .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
-    .cta-btn:hover { background: var(--color-terra); color: #fff; }
+    .cta-block {
+      background: var(--color-ink-darkest);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 3.5rem 2.5rem;
+      gap: 2.5rem;
+      border-top: 3px solid var(--color-terra);
+    }
+
+    .cta-block h3 {
+      font-family: var(--font-primary);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: #fff;
+    }
+
+    .cta-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-terra);
+      border: 2px solid var(--color-terra);
+      padding: 0.9rem 1.8rem;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      background: transparent;
+    }
+
+    .cta-btn:hover {
+      background: var(--color-terra);
+      color: #fff;
+    }
 
     /* ── Footer ──────────────────────────────────────────────── */
-    .footer { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--color-terra); }
-    .footer h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; color: var(--color-ink); margin-top: 0.5rem; }
-    .footer h2 a { position: relative; transition: color 0.25s; }
-    .footer h2 a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: var(--color-terra); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
-    .footer h2 a:hover { color: var(--color-ink-dark); }
-    .footer h2 a:hover::after { transform: scaleX(1); }
-    .label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; display: block; color: var(--color-ink); font-family: var(--font-mono); }
+    .footer {
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 2px solid var(--color-terra);
+    }
+
+    .footer h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--color-ink);
+      margin-top: 0.5rem;
+    }
+
+    .footer h2 a {
+      position: relative;
+      transition: color 0.25s;
+    }
+
+    .footer h2 a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background: var(--color-terra);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s;
+    }
+
+    .footer h2 a:hover {
+      color: var(--color-ink-dark);
+    }
+
+    .footer h2 a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: var(--color-ink);
+      font-family: var(--font-mono);
+    }
 
     /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .grid-container { grid-template-columns: 40px 1fr; }
-      .ruler-y { width: 40px; font-size: 8px; }
-      .footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1rem; }
+      .grid-container {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .ruler-y {
+        width: 40px;
+        font-size: 8px;
+      }
+
+      .footer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 1rem;
+      }
     }
+
     @media (max-width: 720px) {
-      header { grid-template-columns: 1fr auto; }
-      .header-cell:nth-child(1) { grid-column: 1; grid-row: 1; border-right: none; border-bottom: var(--grid-line); }
-      .header-cell:nth-child(2) { grid-column: 2; grid-row: 1; border-right: none; border-bottom: var(--grid-line); }
-      .header-cell:nth-child(3) { grid-column: 1 / -1; grid-row: 2; border-right: none; border-bottom: none; }
-      .nav-crumb { padding: 0; font-size: 0.58rem; }
-      header nav { gap: 1.2rem; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      header nav a { font-size: 0.58rem; white-space: nowrap; }
-      .hero { padding: 2rem 1.2rem; }
-      .hero h1 { font-size: clamp(1.6rem, 8vw, 2.6rem); }
-      .section-bar { padding: 0.8rem 1rem; }
-      .section-body { padding: 1.2rem; }
-      .offerings { grid-template-columns: 1fr; }
-      .process-step { grid-template-columns: 28px 1fr; padding: 1.1rem 1rem; }
-      .cta-block { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.8rem 1.2rem; }
-      .cta-btn { text-align: center; display: block; }
-      .cap-nav { grid-template-columns: 1fr 1fr; }
-      .cap-nav-center { display: none; }
+      header {
+        grid-template-columns: 1fr auto;
+      }
+
+      .header-cell:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+        border-right: none;
+        border-bottom: var(--grid-line);
+      }
+
+      .header-cell:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+        border-right: none;
+        border-bottom: var(--grid-line);
+      }
+
+      .header-cell:nth-child(3) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .nav-crumb {
+        padding: 0;
+        font-size: 0.58rem;
+      }
+
+      header nav {
+        gap: 1.2rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      header nav a {
+        font-size: 0.58rem;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.6rem, 8vw, 2.6rem);
+      }
+
+      .section-bar {
+        padding: 0.8rem 1rem;
+      }
+
+      .section-body {
+        padding: 1.2rem;
+      }
+
+      .offerings {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step {
+        grid-template-columns: 28px 1fr;
+        padding: 1.1rem 1rem;
+      }
+
+      .cta-block {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 1.8rem 1.2rem;
+      }
+
+      .cta-btn {
+        text-align: center;
+        display: block;
+      }
+
+      .cap-nav {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cap-nav-center {
+        display: none;
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      .hero-moire { display: none; }
+      .hero-moire {
+        display: none;
+      }
     }
   </style>
+  <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "logo": "https://ajared.ca/logo.png",
+      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+      "email": "innovation@ajared.ca",
+      "sameAs": [
+        "https://ajared.ng"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Toronto",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA",
+            "streetAddress": "68 Abell St",
+            "postalCode": "M6J 0B1"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Abuja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressCountry": "NG"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Applied Research",
+        "AI Product Development",
+        "Enterprise AI Agents",
+        "Data Strategy"
+      ],
+      "telephone": "+16136613550"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajared.ca"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Capabilities",
+          "item": "https://ajared.ca/capabilities/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Product Development & Management",
+          "item": "https://ajared.ca/capabilities/002-ai-product.html"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ajared.ca/capabilities/002-ai-product.html#service",
+      "name": "AI Product Development & Management",
+      "alternateName": "Strategy & Delivery",
+      "description": "Full lifecycle AI product development from concept through launch and optimization. Covers product strategy, roadmap planning, model selection, launch coordination, and performance analytics.",
+      "provider": {
+        "@id": "https://ajared.ca/#organization"
+      },
+      "url": "https://ajared.ca/capabilities/002-ai-product.html",
+      "serviceType": "AI Product Development",
+      "category": "Technology Services",
+      "areaServed": [
+        "CA",
+        "NG",
+        "US"
+      ]
+    }
+  ]
+}
+    </script>
 </head>
+
 <body>
 
   <div class="grid-container">
@@ -224,12 +742,34 @@
         <div class="section">
           <div class="section-bar"><span class="section-title">What We Do</span></div>
           <div class="section-body">
-            <p>We help you build products and keep them running. That covers everything from the first idea through launch, growth, and the ongoing work of making them better — concept development, UX design, product management, and full-stack engineering under one roof.</p>
+            <p>We help you build products and keep them running. That covers everything from the first idea through
+              launch, growth, and the ongoing work of making them better — concept development, UX design, product
+              management, and full-stack engineering under one roof.</p>
             <div class="offerings">
-              <div class="offering"><h4>Concept Development</h4><p>From rough idea to defined product. We run structured workshops to frame the opportunity, pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning — so design and engineering start with a foundation that holds up.</p></div>
-              <div class="offering"><h4>Design Thinking</h4><p>Research-led UX built from first principles. We map information architecture, design interaction flows, prototype at the right fidelity, and test with real users iteratively — so the product feels right before production engineering begins.</p></div>
-              <div class="offering"><h4>Product Management</h4><p>The connective tissue between vision and execution. We set the roadmap, define OKRs, manage prioritisation trade-offs, align stakeholders, and coordinate go-to-market — so the team stays pointed at the right problem at the right time.</p></div>
-              <div class="offering"><h4>AI-Powered Engineering</h4><p>Full-stack development augmented by AI tooling. API integration, backend services, front-end interfaces, QA, and deployment — built for production and long-term operability, not for demos that work once under ideal conditions.</p></div>
+              <div class="offering">
+                <h4>Concept Development</h4>
+                <p>From rough idea to defined product. We run structured workshops to frame the opportunity,
+                  pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning — so
+                  design and engineering start with a foundation that holds up.</p>
+              </div>
+              <div class="offering">
+                <h4>Design Thinking</h4>
+                <p>Research-led UX built from first principles. We map information architecture, design interaction
+                  flows, prototype at the right fidelity, and test with real users iteratively — so the product feels
+                  right before production engineering begins.</p>
+              </div>
+              <div class="offering">
+                <h4>Product Management</h4>
+                <p>The connective tissue between vision and execution. We set the roadmap, define OKRs, manage
+                  prioritisation trade-offs, align stakeholders, and coordinate go-to-market — so the team stays pointed
+                  at the right problem at the right time.</p>
+              </div>
+              <div class="offering">
+                <h4>AI-Powered Engineering</h4>
+                <p>Full-stack development augmented by AI tooling. API integration, backend services, front-end
+                  interfaces, QA, and deployment — built for production and long-term operability, not for demos that
+                  work once under ideal conditions.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -237,10 +777,39 @@
           <div class="section-bar"><span class="section-title">How We Work</span></div>
           <div class="section-body">
             <div class="process-list">
-              <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Discovery</h4><p>Define the vision, identify the right success metrics, and establish the opportunity clearly enough that every subsequent decision has a reference point to return to.</p></div></div>
-              <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Design</h4><p>Concept development feeds directly into UX design, prototyping, and user validation. We test with real people before writing a line of production code — catching misaligned assumptions when they’re still cheap to fix.</p></div></div>
-              <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Build</h4><p>Iterative development cycles with continuous QA, integration testing, and performance tuning. We ship incrementally to reduce risk and maintain feedback loops throughout the build.</p></div></div>
-              <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Launch</h4><p>Staged rollout with monitoring instrumentation in place from the start — not added after something breaks. Analytics, alerting, and a structured feedback loop that feeds the next iteration.</p></div></div>
+              <div class="process-step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                  <h4>Discovery</h4>
+                  <p>Define the vision, identify the right success metrics, and establish the opportunity clearly enough
+                    that every subsequent decision has a reference point to return to.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                  <h4>Design</h4>
+                  <p>Concept development feeds directly into UX design, prototyping, and user validation. We test with
+                    real people before writing a line of production code — catching misaligned assumptions when they’re
+                    still cheap to fix.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                  <h4>Build</h4>
+                  <p>Iterative development cycles with continuous QA, integration testing, and performance tuning. We
+                    ship incrementally to reduce risk and maintain feedback loops throughout the build.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                  <h4>Launch</h4>
+                  <p>Staged rollout with monitoring instrumentation in place from the start — not added after something
+                    breaks. Analytics, alerting, and a structured feedback loop that feeds the next iteration.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -248,12 +817,15 @@
           <div class="section-bar"><span class="section-title">Deliverables</span></div>
           <div class="section-body">
             <div class="deliverables">
-              <div class="deliverable-row"><span class="check done">✓</span> Concept brief + product strategy + roadmap</div>
+              <div class="deliverable-row"><span class="check done">✓</span> Concept brief + product strategy + roadmap
+              </div>
               <div class="deliverable-row"><span class="check done">✓</span> UX design system + tested prototypes</div>
               <div class="deliverable-row"><span class="check done">✓</span> Working product — production-ready</div>
-              <div class="deliverable-row"><span class="check done">✓</span> Launch plan + analytics instrumentation</div>
+              <div class="deliverable-row"><span class="check done">✓</span> Launch plan + analytics instrumentation
+              </div>
               <div class="deliverable-row"><span class="check done">✓</span> 1 Month MVP Development Sprint</div>
-              <div class="deliverable-row"><span class="check">○</span> Optional: Fractional product management retainer</div>
+              <div class="deliverable-row"><span class="check">○</span> Optional: Fractional product management retainer
+              </div>
             </div>
           </div>
         </div>
@@ -269,7 +841,9 @@
         <div>
           <h3>Ready to build something that works?</h3>
         </div>
-        <a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+        <a href="/contact/" style="text-decoration:none;">
+          <div class="cta-btn">Get in touch →</div>
+        </a>
       </div>
 
       <div class="footer">
@@ -277,9 +851,13 @@
           <span class="label" style="color:var(--color-terra);">Inquiries</span>
           <h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color:#a1665e;">aja</span>red.ca</a></h2>
         </div>
-        <div style="text-align:right;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:0.5rem;">
+        <div
+          style="text-align:right;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:0.5rem;">
           <p style="font-size:0.9rem;color:var(--color-ink-dark);">© 2026 Ajared Research Inc.</p>
-          <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch, <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+          <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch, <span
+              style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span
+              style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span
+              style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
         </div>
       </div>
 
@@ -294,22 +872,23 @@
     function resize() {
       const r = window.devicePixelRatio || 1, hero = canvas.parentElement;
       const w = hero.offsetWidth, h = hero.offsetHeight;
-      canvas.width = w*r; canvas.height = h*r;
-      canvas.style.width = w+'px'; canvas.style.height = h+'px';
-      ctx.setTransform(1,0,0,1,0,0); ctx.scale(r,r);
+      canvas.width = w * r; canvas.height = h * r;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(r, r);
       canvas._w = w; canvas._h = h;
     }
     function draw() {
-      const W=canvas._w, H=canvas._h;
-      const ax=W*.5+(mx-.5)*STRENGTH, ay=H*.5+(my-.5)*STRENGTH;
-      const bx=W*.5-(mx-.5)*STRENGTH, by=H*.5-(my-.5)*STRENGTH;
-      ctx.clearRect(0,0,W,H); ctx.lineWidth=0.6;
-      const step=26, max=Math.max(W,H)*.9;
-      function rad(cx,cy,r,c){ctx.strokeStyle=c;for(let a=0;a<Math.PI*2;a+=Math.PI/8){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));ctx.stroke();}ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();}
-      for(let s=step;s<max;s+=step){rad(ax,ay,s,'rgba(140,202,202,0.22)');rad(bx,by,s,'rgba(161,102,94,0.16)');}
+      const W = canvas._w, H = canvas._h;
+      const ax = W * .5 + (mx - .5) * STRENGTH, ay = H * .5 + (my - .5) * STRENGTH;
+      const bx = W * .5 - (mx - .5) * STRENGTH, by = H * .5 - (my - .5) * STRENGTH;
+      ctx.clearRect(0, 0, W, H); ctx.lineWidth = 0.6;
+      const step = 26, max = Math.max(W, H) * .9;
+      function rad(cx, cy, r, c) { ctx.strokeStyle = c; for (let a = 0; a < Math.PI * 2; a += Math.PI / 8) { ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a)); ctx.stroke(); } ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke(); }
+      for (let s = step; s < max; s += step) { rad(ax, ay, s, 'rgba(140,202,202,0.22)'); rad(bx, by, s, 'rgba(161,102,94,0.16)'); }
     }
-    let raf; window.addEventListener('mousemove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight;cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);});
-    window.addEventListener('resize',()=>{resize();draw();}); resize(); draw();
+    let raf; window.addEventListener('mousemove', e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight; cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); });
+    window.addEventListener('resize', () => { resize(); draw(); }); resize(); draw();
   </script>
 </body>
+
 </html>

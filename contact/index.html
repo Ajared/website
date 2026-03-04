@@ -389,11 +389,88 @@
                 padding: 3rem 1rem;
             }
 
-            p {
-                max-width: 100%;
+            h1 {
+                font-size: 3.5rem;
             }
         }
     </style>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "logo": "https://ajared.ca/logo.png",
+      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+      "email": "innovation@ajared.ca",
+      "sameAs": [
+        "https://ajared.ng"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Toronto",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA",
+            "streetAddress": "68 Abell St",
+            "postalCode": "M6J 0B1"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Abuja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressCountry": "NG"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Applied Research",
+        "AI Product Development",
+        "Enterprise AI Agents",
+        "Data Strategy"
+      ],
+      "telephone": "+16136613550"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajared.ca"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://ajared.ca/contact/"
+        }
+      ]
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://ajared.ca/contact/#webpage",
+      "url": "https://ajared.ca/contact/",
+      "name": "Contact Ajared Research Inc.",
+      "description": "Get in touch with Ajared Research Inc. for collaboration on AI product development and applied research.",
+      "mainEntity": {
+        "@id": "https://ajared.ca/#organization"
+      }
+    }
+  ]
+}
+    </script>
 </head>
 
 <body>
@@ -412,7 +489,8 @@
                     <span class="label" style="color: var(--color-ink);">Information Architecture</span>
                     <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
                         <a href="/" style="display: block; text-decoration: none;">
-                            <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;">
+                            <img src="/logo.png" alt="Ajared Logo"
+                                style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;">
                             <div class="logo-text" style="line-height: 1.1;">
                                 Research Inc.
                             </div>
