@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
-<title>Ajared Research Inc - Applied AI for Enterprises</title>
-<style>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="html" doctype-system="about:legacy-compat" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
+
+  <!-- Root template -->
+  <xsl:template match="/Page">
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png"/>
+        <title><xsl:value-of select="@title" /></title>
+        <style>
         /* iA Writer Quattro S Font */
         @font-face {
             font-family: 'iA Writer Quattro S';
@@ -518,7 +522,7 @@
                 gap: 2rem;
             }
 
-            .footer>div:last-child {
+            .footer&gt;div:last-child {
                 text-align: left;
             }
 
@@ -531,229 +535,168 @@
             }
         }
     </style>
-<script type="application/ld+json">
-    {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://ajared.ca/#organization",
-      "name": "Ajared Research Inc.",
-      "url": "https://ajared.ca",
-      "logo": "https://ajared.ca/logo.png",
-      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
-      "email": "innovation@ajared.ca",
-      "sameAs": [
-        "https://ajared.ng"
-      ],
-      "location": [
-        {
-          "@type": "Place",
-          "name": "Toronto",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Toronto",
-            "addressRegion": "Ontario",
-            "addressCountry": "CA",
-            "streetAddress": "68 Abell St",
-            "postalCode": "M6J 0B1"
-          }
-        },
-        {
-          "@type": "Place",
-          "name": "Abuja",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Abuja",
-            "addressCountry": "NG"
-          }
-        }
-      ],
-      "knowsAbout": [
-        "Artificial Intelligence",
-        "Applied Research",
-        "AI Product Development",
-        "Enterprise AI Agents",
-        "Data Strategy"
-      ],
-      "telephone": "+16136613550"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://ajared.ca/#website",
-      "url": "https://ajared.ca",
-      "name": "Ajared Research Inc.",
-      "publisher": {
-        "@id": "https://ajared.ca/#organization"
-      }
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://ajared.ca/#service",
-      "name": "Ajared Research Inc.",
-      "url": "https://ajared.ca",
-      "description": "Applied AI research and product studio delivering enterprise AI solutions.",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "AI Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Applied Research",
-              "url": "https://ajared.ca/capabilities/001-applied-research.html"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Product Development & Management",
-              "url": "https://ajared.ca/capabilities/002-ai-product.html"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Enterprise AI Agents",
-              "url": "https://ajared.ca/capabilities/003-enterprise-agents.html"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Data and AI Strategy",
-              "url": "https://ajared.ca/capabilities/004-data-strategy.html"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Talk to a Human about AI",
-              "url": "https://ajared.ca/contact/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "1 Month AI Development Sprint",
-              "url": "https://ajared.ca/contact/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Get Started with AI",
-              "url": "https://ajared.ca/contact/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Help AI Agents easily find your brand",
-              "url": "https://ajared.ca/contact/"
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-  </script>
-</head>
-<body>
-<div class="grid-container">
-<div class="ruler-y">
-<span>0</span><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span><span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
-</div>
-<div class="main-content">
-<div class="ruler-x"></div>
-<header><div class="header-cell" style="justify-content: flex-start; gap: 0;">
-<span class="label" style="color: var(--color-ink);">Information Architecture</span><a href="/" style="text-decoration: none;"><img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"><div class="logo-text" style="line-height: 1.1;">Research Inc.</div></a>
-</div>
-<div class="header-cell">
-<span class="label">Coordinates</span><p style="font-size: 0.85em;">Toronto<br><span style="color: var(--color-terra);">43.6332° N, 79.4141° W</span><br>Abuja<br><span style="color: var(--color-terra);">8.9976° N, 7.4674° E</span></p>
-<div style="margin-top:auto">
-<span class="label">Status</span><p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
-</div>
-</div>
-<div class="header-cell">
-<span class="label">Navigation</span><nav><p><a href="/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">
-          Index</a></p>
-<p><a href="/case-studies/">
+        
+        <!-- Inject any page-specific JSON-LD schemas from XML -->
+        <xsl:if test="Schema">
+            <script type="application/ld+json">
+                <xsl:copy-of select="Schema/node()"/>
+            </script>
+        </xsl:if>
+      </head>
+      <body>
+        <div class="grid-container">
+          <div class="ruler-y">
+            <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+            <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+            <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+          </div>
+          <div class="main-content">
+            <div class="ruler-x"></div>
+
+            <xsl:apply-templates select="Header" />
+            <xsl:apply-templates select="Hero" />
+            <xsl:if test="Hero">
+                <div class="ruler-x" style="position: relative; z-index: 1;"></div>
+            </xsl:if>
+            <xsl:apply-templates select="OfferGrid" />
+            
+            <xsl:apply-templates select="Footer" />
+          </div>
+        </div>
+        
+        <!-- Page specific scripts -->
+        <xsl:if test="@id='index'">
+          <script src="/scripts/moire.js" defer="defer"></script>
+        </xsl:if>
+      </body>
+    </html>
+  </xsl:template>
+
+  <!-- Component Templates -->
+  <xsl:template match="Header">
+    <header>
+      <div class="header-cell" style="justify-content: flex-start; gap: 0;">
+          <span class="label" style="color: var(--color-ink);">Information Architecture</span>
+          <a href="/" style="text-decoration: none;">
+              <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;" />
+              <div class="logo-text" style="line-height: 1.1;">Research Inc.</div>
+          </a>
+      </div>
+      <div class="header-cell">
+          <span class="label">Coordinates</span>
+          <p style="font-size: 0.85em;">
+            <xsl:for-each select="CoordCell">
+              <xsl:value-of select="@city"/><br/>
+              <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+              <xsl:if test="position() != last()"><br/></xsl:if>
+            </xsl:for-each>
+          </p>
+          <div style="margin-top:auto">
+              <span class="label">Status</span>
+              <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+          </div>
+      </div>
+      <div class="header-cell">
+          <span class="label">Navigation</span>
+          <xsl:apply-templates select="Nav" />
+          <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+      </div>
+    </header>
+  </xsl:template>
+
+  <xsl:template match="Nav">
+    <nav>
+        <p><a href="/">
+          <xsl:if test="@active='index'">
+            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
+          </xsl:if>
+          Index</a>
+        </p>
+        <p><a href="/case-studies/">
+          <xsl:if test="@active='case-studies'">
+            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
+          </xsl:if>
         Case Studies</a></p>
-<p><a href="/capabilities/">
+        <p><a href="/capabilities/">
+          <xsl:if test="@active='capabilities'">
+            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
+          </xsl:if>
         Capabilities</a></p>
-<p><a href="/contact/">
+        <p><a href="/contact/">
+          <xsl:if test="@active='contact'">
+            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
+          </xsl:if>
         Contact</a></p>
-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
-</div></header><section class="hero-section"><div class="hero-text">
-<span class="label" style="margin-bottom: 2rem; color: #a1665e;">AI Research &amp; Product Studio</span><h1>Get AI<br>working<br>for you<br><span style="color:#a1665e;">today.</span>
-</h1>
-<p style="margin-top: 2rem; max-width: none;">We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.</p>
-<a href="/contact/" class="btn">Get in touch →</a>
-</div>
-<div class="moire-container" id="moire"></div></section><div class="ruler-x" style="position: relative; z-index: 1;"></div>
-<div class="services-grid">
-<div class="service-card">
-<div>
-<span class="label"><span style="color: #a1665e;">01</span> — Advisory</span><h3>Talk to a Human about AI</h3>
-<p>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation — and where to start.</p>
-</div>
-<a href="/contact/" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem;"><div class="arrow-icon"></div></a>
-</div>
-<div class="service-card">
-<div>
-<span class="label"><span style="color: #a1665e;">02</span> — Build</span><h3>1 Month AI Development Sprint</h3>
-<p>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks. Right-sized for teams that want momentum, not a six-month SOW.</p>
-</div>
-<a href="/contact/" style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;"><div class="arrow-icon"></div></a>
-</div>
-<div class="service-card">
-<div>
-<span class="label"><span style="color: #a1665e;">03</span> — Learn</span><h3>Get Started with AI</h3>
-<p>Three entry points depending on where you are today.</p>
-<div class="track-list">
-<div class="track-item">
-<span class="track-num">01</span><span class="track-name">Using an assistant</span>
-</div>
-<div class="track-item">
-<span class="track-num">02</span><span class="track-name">Adding Tool Use</span>
-</div>
-<div class="track-item">
-<span class="track-num">03</span><span class="track-name">Agentic Workflows</span>
-</div>
-</div>
-</div>
-<a href="/contact/" style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;"><div class="arrow-icon"></div></a>
-</div>
-<div class="service-card">
-<div>
-<span class="label"><span style="color: #a1665e;">04</span> — AI Search</span><h3>Help AI Agents easily find your brand</h3>
-<p>AI agents are how people will discover you next. We add the structured data and schema markup that makes your site legible to them — today.</p>
-</div>
-<a href="/contact/" style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;"><div class="arrow-icon"></div></a>
-</div>
-</div>
-<div class="footer">
-<div>
-<span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
-</div>
-<div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
-<p>© 2026 Ajared Research Inc.</p>
-<span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+        <p><a href="https://www.ajared.ng">Read</a></p>
+    </nav>
+  </xsl:template>
+
+  <xsl:template match="Hero">
+    <section class="hero-section">
+        <div class="hero-text">
+            <span class="label" style="margin-bottom: 2rem; color: #a1665e;"><xsl:value-of select="@label"/></span>
+            <h1><xsl:copy-of select="Headline/node()"/></h1>
+            <p style="margin-top: 2rem; max-width: none;">
+                <xsl:copy-of select="Sub/node()"/>
+            </p>
+            <a href="{CTA/@href}" class="btn"><xsl:value-of select="CTA"/></a>
+        </div>
+        <div class="moire-container" id="moire"></div>
+    </section>
+  </xsl:template>
+
+  <xsl:template match="OfferGrid">
+    <div class="services-grid">
+      <xsl:apply-templates select="Offer" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Offer">
+    <div class="service-card">
+        <div>
+            <span class="label"><span style="color: #a1665e;"><xsl:value-of select="@number"/></span> — <xsl:value-of select="@tag"/></span>
+            <h3><xsl:value-of select="@title"/></h3>
+            <p>
+                <!-- Because text() only gets direct text nodes, we need to extract HTML or text inside Offer before Tracks -->
+                <xsl:copy-of select="Description/node()"/>
+            </p>
+            <xsl:if test="Tracks">
+              <div class="track-list">
+                <xsl:for-each select="Tracks/Track">
+                  <div class="track-item">
+                      <span class="track-num"><xsl:value-of select="@n"/></span>
+                      <span class="track-name"><xsl:value-of select="text()"/></span>
+                  </div>
+                </xsl:for-each>
+              </div>
+            </xsl:if>
+        </div>
+        <a href="{@href}">
+            <xsl:choose>
+                <xsl:when test="position() = 1">
+                    <xsl:attribute name="style">text-decoration: none; color: inherit; display: block; margin-top: 1rem;</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="style">text-decoration: none; color: inherit; display: block; margin-top: 2rem;</xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <div class="arrow-icon"></div>
+        </a>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Footer">
+    <div class="footer">
+        <div>
+            <span class="label" style="color: var(--color-terra);">Inquiries</span>
+            <h2><a href="mailto:{@email}">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+        </div>
+        <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+            <p>© <xsl:value-of select="@year"/> Ajared Research Inc.</p>
+            <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
-</div>
-</div>
-</div>
-</div>
-<script src="/scripts/moire.js" defer></script>
-</body>
-</html>
+        </div>
+    </div>
+  </xsl:template>
+
+</xsl:stylesheet>

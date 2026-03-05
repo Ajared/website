@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="index" title="Ajared Research Inc - Applied AI for Enterprises">
+  
+  <Schema><![CDATA[
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "logo": "https://ajared.ca/logo.png",
+      "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+      "email": "innovation@ajared.ca",
+      "sameAs": [
+        "https://ajared.ng"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Toronto",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA",
+            "streetAddress": "68 Abell St",
+            "postalCode": "M6J 0B1"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Abuja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressCountry": "NG"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Applied Research",
+        "AI Product Development",
+        "Enterprise AI Agents",
+        "Data Strategy"
+      ],
+      "telephone": "+16136613550"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ajared.ca/#website",
+      "url": "https://ajared.ca",
+      "name": "Ajared Research Inc.",
+      "publisher": {
+        "@id": "https://ajared.ca/#organization"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ajared.ca/#service",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca",
+      "description": "Applied AI research and product studio delivering enterprise AI solutions.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Applied Research",
+              "url": "https://ajared.ca/capabilities/001-applied-research.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Product Development & Management",
+              "url": "https://ajared.ca/capabilities/002-ai-product.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise AI Agents",
+              "url": "https://ajared.ca/capabilities/003-enterprise-agents.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data and AI Strategy",
+              "url": "https://ajared.ca/capabilities/004-data-strategy.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Talk to a Human about AI",
+              "url": "https://ajared.ca/contact/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "1 Month AI Development Sprint",
+              "url": "https://ajared.ca/contact/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Get Started with AI",
+              "url": "https://ajared.ca/contact/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Help AI Agents easily find your brand",
+              "url": "https://ajared.ca/contact/"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+  ]]></Schema>
+
+  <Header>
+    <CoordCell city="Toronto" lat="43.6332° N" lng="79.4141° W" />
+    <CoordCell city="Abuja" lat="8.9976° N" lng="7.4674° E" />
+    <Nav active="index" />
+  </Header>
+
+  <Hero label="AI Research &amp; Product Studio">
+    <Headline>Get AI<br/>working<br/>for you<br/><span style="color:#a1665e;">today.</span></Headline>
+    <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.</Sub>
+    <CTA href="/contact/">Get in touch →</CTA>
+  </Hero>
+
+  <OfferGrid>
+    <Offer number="01" tag="Advisory" title="Talk to a Human about AI" href="/contact/">
+      <Description>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation — and where to start.</Description>
+    </Offer>
+    <Offer number="02" tag="Build" title="1 Month AI Development Sprint" href="/contact/">
+      <Description>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks. Right-sized for teams that want momentum, not a six-month SOW.</Description>
+    </Offer>
+    <Offer number="03" tag="Learn" title="Get Started with AI" href="/contact/">
+      <Description>Three entry points depending on where you are today.</Description>
+      <Tracks>
+        <Track n="01">Using an assistant</Track>
+        <Track n="02">Adding Tool Use</Track>
+        <Track n="03">Agentic Workflows</Track>
+      </Tracks>
+    </Offer>
+    <Offer number="04" tag="AI Search" title="Help AI Agents easily find your brand" href="/contact/">
+      <Description>AI agents are how people will discover you next. We add the structured data and schema markup that makes your site legible to them — today.</Description>
+    </Offer>
+  </OfferGrid>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+  
+</Page>
