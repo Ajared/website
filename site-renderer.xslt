@@ -197,6 +197,9 @@
             .form-section { grid-template-columns: 1fr; }
             .form-left { padding: 3rem 1rem; border-right: none; border-bottom: var(--grid-line); }
             .form-right { padding: 3rem 1rem; }
+            .project-row { padding: 1.5rem 1.5rem; grid-template-columns: 40px 1fr; gap: 1rem; }
+            .project-meta, .project-year { display: none; }
+
 
 
         .header-cell:last-child {
@@ -563,6 +566,17 @@
         .brief-textarea { width: 100%; min-height: 150px; background: transparent; border: 1px solid var(--color-ink); padding: 1rem; color: var(--color-ink-darkest); font-family: var(--font-primary); font-size: 1rem; resize: vertical; outline: none; cursor: crosshair; border-radius: var(--radius-sm); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
         .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
         .brief-textarea::placeholder { color: var(--color-ink-light); }
+
+        /* Project Rows */
+        .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
+        .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+        .project-row { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 2fr 1.5fr 1fr 0.5fr; border-bottom: var(--grid-line); padding: 1.5rem 2rem; align-items: center; transition: background 0.3s, color 0.3s; text-decoration: none; color: inherit; }
+        .project-row:hover { background: var(--color-ink); color: var(--color-bg); }
+        .project-row:hover .project-id, .project-row:hover .project-title, .project-row:hover .project-meta, .project-row:hover .project-year { color: var(--color-bg); }
+        .project-id { font-family: var(--font-mono); font-weight: 700; color: #a1665e; }
+        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
+        .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
+        .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
 </style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
@@ -589,6 +603,8 @@
             </xsl:if>
             <xsl:apply-templates select="OfferGrid" />
             <xsl:apply-templates select="ContactForm" />
+            <xsl:apply-templates select="StaticHero" />
+            <xsl:apply-templates select="ProjectList" />
             
             <xsl:apply-templates select="Footer" />
           </div>
@@ -618,6 +634,15 @@
       </div>
       <div class="header-cell">
           <xsl:choose>
+            
+            <xsl:when test="ArchiveBox">
+              <span class="label"><xsl:value-of select="ArchiveBox/@label"/></span>
+              <h2><xsl:value-of select="ArchiveBox/Title"/></h2>
+              <div style="margin-top:auto">
+                  <span class="label"><xsl:value-of select="ArchiveBox/StatLabel"/></span>
+                  <p><xsl:value-of select="ArchiveBox/StatValue"/></p>
+              </div>
+            </xsl:when>
             <xsl:when test="Description">
               <span class="label">Description</span>
               <p><xsl:value-of select="Description"/></p>
@@ -641,7 +666,15 @@
       <div class="header-cell">
           <span class="label">Navigation</span>
           <xsl:apply-templates select="Nav" />
-          <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+          
+          <xsl:choose>
+            <xsl:when test="Nav/@arrow">
+              <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
+            </xsl:when>
+            <xsl:otherwise>
+              <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+            </xsl:otherwise>
+          </xsl:choose>
       </div>
     </header>
   </xsl:template>
@@ -806,6 +839,34 @@
           </div>
       </div>
     </section>
+  </xsl:template>
+
+
+  <xsl:template match="StaticHero">
+    <section class="hero-section">
+        <div class="hero-text">
+            <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);"><xsl:value-of select="@label"/></span>
+            <h1><xsl:copy-of select="Headline/node()"/></h1>
+        </div>
+        <div class="moire-static" style="transform: scale(1.5);"></div>
+        <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
+    </section>
+  </xsl:template>
+
+  <xsl:template match="ProjectList">
+    <div class="calibration-grid">
+      <xsl:apply-templates select="Project" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Project">
+    <a href="{@href}" class="project-row">
+        <span class="project-id"><xsl:value-of select="@id"/></span>
+        <span class="project-title"><xsl:value-of select="Title"/></span>
+        <span class="project-meta"><xsl:value-of select="Meta"/></span>
+        <span class="project-year"><xsl:value-of select="Year"/></span>
+        <span style="text-align: right; color: var(--color-terra);">↗</span>
+    </a>
   </xsl:template>
 
 </xsl:stylesheet>

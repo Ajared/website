@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="case-studies" title="Case Studies">
+  
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://ajared.ca/case-studies/" }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": "Ajared Research Case Studies",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://ajared.ca/case-studies/#decksense",
+              "name": "DeckSense"
+            }
+          ]
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ajared.ca/case-studies/#decksense",
+          "headline": "DeckSense: AI Product Management",
+          "description": "A 2025 case study on AI Product Management for DeckSense.",
+          "author": { "@id": "https://ajared.ca/#organization" },
+          "publisher": { "@id": "https://ajared.ca/#organization" },
+          "url": "https://ajared.ca/case-studies/"
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header>
+    <ArchiveBox label="Archive / 02">
+      <Title>Work</Title>
+      <StatLabel>Projects</StatLabel>
+      <StatValue>1 Case Study</StatValue>
+    </ArchiveBox>
+    <Nav active="case-studies" arrow="↓" />
+  </Header>
+
+  <StaticHero label="Work">
+    <Headline>Case<br/>Studies</Headline>
+  </StaticHero>
+
+  <ProjectList>
+    <Project id="001" href="#">
+      <Title>DeckSense</Title>
+      <Meta>AI Product Management</Meta>
+      <Year>2025</Year>
+    </Project>
+  </ProjectList>
+
+</Page>
