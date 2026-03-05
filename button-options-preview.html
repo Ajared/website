@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Full Brief — Arrow Options II</title>
+    <style>
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2');
+            font-weight: 700; font-style: normal;
+        }
+
+        :root {
+            --color-bg: #ffffff;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-terra: #a1665e;
+            --grid-line: 1px solid var(--color-ink);
+            --font-primary: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+
+        body {
+            background: var(--color-bg);
+            font-family: var(--font-primary);
+            color: var(--color-ink);
+            padding: 3rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-ink-light);
+            margin-bottom: 3rem;
+        }
+
+        .option-group { margin-bottom: 4rem; }
+
+        .option-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-terra);
+            padding: 0.6rem 1.5rem;
+            border: var(--grid-line);
+            border-bottom: none;
+            display: inline-block;
+        }
+
+        /* Accordion shell */
+        .accordion-demo { border: var(--grid-line); }
+
+        .acc-header {
+            display: grid;
+            grid-template-columns: 80px 2fr 1fr 60px;
+            padding: 1.5rem;
+            align-items: center;
+            border-bottom: var(--grid-line);
+            background: var(--color-ink);
+        }
+        .cap-number { font-family: var(--font-mono); font-weight: 700; font-size: 1rem; color: var(--color-bg); opacity: 0.6; }
+        .cap-title { font-weight: 700; font-size: 1.4rem; text-transform: uppercase; letter-spacing: -0.02em; color: var(--color-bg); }
+        .cap-subtitle { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-bg); opacity: 0.7; }
+        .cap-toggle { font-size: 1.4rem; text-align: right; color: var(--color-bg); }
+
+        .acc-body {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 1fr;
+            padding: 1.5rem;
+            column-gap: 2rem;
+            row-gap: 1.5rem;
+        }
+
+        .spacer { grid-column: 1; }
+
+        .detail-brief {
+            grid-column: span 3;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-ink-dark);
+            max-width: none;
+        }
+
+        .detail-tags { grid-column: 2 / span 2; }
+
+        .detail-tag {
+            display: inline-block;
+            border: 1px solid var(--color-ink);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+        }
+
+        .detail-link-col {
+            grid-column: 4;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        /* ── OPTION A: Thick outlined ↗ ── */
+        .btn-a {
+            display: block;
+            font-size: 3.2rem;
+            line-height: 1;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--color-terra);
+            text-decoration: none;
+            transition: transform 0.2s ease, -webkit-text-stroke-color 0.2s ease, color 0.2s ease;
+        }
+        .btn-a:hover {
+            transform: translate(4px, -4px);
+            -webkit-text-stroke-color: var(--color-ink-darkest);
+        }
+
+        /* ── OPTION B: Nearly horizontal → ── */
+        .btn-b {
+            display: block;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--color-terra);
+            text-decoration: none;
+            transform: rotate(-8deg);
+            transform-origin: right top;
+            transition: transform 0.2s ease, color 0.2s ease;
+            letter-spacing: -0.1em;
+        }
+        .btn-b:hover {
+            transform: rotate(-8deg) translateX(5px);
+            color: var(--color-ink-darkest);
+        }
+
+        /* ── OPTION C: "Learn more" stacked above arrow ── */
+        .btn-c {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.15rem;
+            text-decoration: none;
+        }
+        .btn-c .btn-c-text {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-ink);
+            transition: color 0.2s;
+        }
+        .btn-c .btn-c-arrow {
+            font-size: 3.2rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--color-terra);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .btn-c:hover .btn-c-arrow {
+            transform: translate(4px, -4px);
+            color: var(--color-ink-darkest);
+        }
+        .btn-c:hover .btn-c-text { color: var(--color-terra); }
+
+        /* ── OPTION D: Solid filled ↗ with terra background ── */
+        .btn-d {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: var(--color-terra);
+            text-decoration: none;
+            font-size: 1.6rem;
+            color: var(--color-bg);
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-d:hover {
+            background: var(--color-ink-darkest);
+            transform: translate(2px, -2px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <p class="page-label">Arrow options II — thicker, variations</p>
+
+    <!-- OPTION A -->
+    <div class="option-group">
+        <div class="option-label">Option A — Outlined stroke ↗</div>
+        <div class="accordion-demo">
+            <div class="acc-header">
+                <span class="cap-number">001</span>
+                <span class="cap-title">Applied Research</span>
+                <span class="cap-subtitle">How We Learn What's True</span>
+                <span class="cap-toggle">×</span>
+            </div>
+            <div class="acc-body">
+                <div class="spacer"></div>
+                <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
+                <div class="detail-tags">
+                    <span class="detail-tag">UX Research</span>
+                    <span class="detail-tag">Market Research</span>
+                    <span class="detail-tag">Experimental Design</span>
+                    <span class="detail-tag">Meta-Analysis</span>
+                </div>
+                <div class="detail-link-col">
+                    <a href="#" class="btn-a">↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option-group">
+        <div class="option-label">Option B — Almost horizontal →</div>
+        <div class="accordion-demo">
+            <div class="acc-header">
+                <span class="cap-number">001</span>
+                <span class="cap-title">Applied Research</span>
+                <span class="cap-subtitle">How We Learn What's True</span>
+                <span class="cap-toggle">×</span>
+            </div>
+            <div class="acc-body">
+                <div class="spacer"></div>
+                <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
+                <div class="detail-tags">
+                    <span class="detail-tag">UX Research</span>
+                    <span class="detail-tag">Market Research</span>
+                    <span class="detail-tag">Experimental Design</span>
+                    <span class="detail-tag">Meta-Analysis</span>
+                </div>
+                <div class="detail-link-col">
+                    <a href="#" class="btn-b">↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option-group">
+        <div class="option-label">Option C — "Learn more" above arrow</div>
+        <div class="accordion-demo">
+            <div class="acc-header">
+                <span class="cap-number">001</span>
+                <span class="cap-title">Applied Research</span>
+                <span class="cap-subtitle">How We Learn What's True</span>
+                <span class="cap-toggle">×</span>
+            </div>
+            <div class="acc-body">
+                <div class="spacer"></div>
+                <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
+                <div class="detail-tags">
+                    <span class="detail-tag">UX Research</span>
+                    <span class="detail-tag">Market Research</span>
+                    <span class="detail-tag">Experimental Design</span>
+                    <span class="detail-tag">Meta-Analysis</span>
+                </div>
+                <div class="detail-link-col">
+                    <a href="#" class="btn-c">
+                        <span class="btn-c-text">Learn more</span>
+                        <span class="btn-c-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option-group">
+        <div class="option-label">Option D — Filled terra square</div>
+        <div class="accordion-demo">
+            <div class="acc-header">
+                <span class="cap-number">001</span>
+                <span class="cap-title">Applied Research</span>
+                <span class="cap-subtitle">How We Learn What's True</span>
+                <span class="cap-toggle">×</span>
+            </div>
+            <div class="acc-body">
+                <div class="spacer"></div>
+                <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
+                <div class="detail-tags">
+                    <span class="detail-tag">UX Research</span>
+                    <span class="detail-tag">Market Research</span>
+                    <span class="detail-tag">Experimental Design</span>
+                    <span class="detail-tag">Meta-Analysis</span>
+                </div>
+                <div class="detail-link-col">
+                    <a href="#" class="btn-d">↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

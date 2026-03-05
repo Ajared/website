@@ -235,6 +235,18 @@
             color: var(--color-ink-dark);
         }
 
+        /* Per-capability accent colours */
+        .capability-row[data-cap="001"] { --cap-accent: #a1665e; }  /* terra */
+        .capability-row[data-cap="002"] { --cap-accent: #3d7878; }  /* muted teal */
+        .capability-row[data-cap="003"] { --cap-accent: #046363; }  /* dark teal */
+        .capability-row[data-cap="004"] { --cap-accent: #7a6050; }  /* warm brown */
+
+        /* Reveal animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
         /* Accordion Capability Rows */
         .capability-row {
             display: grid;
@@ -268,11 +280,32 @@
             color: var(--color-bg);
         }
 
+        /* Hover peek — first words of brief, slides in below header */
+        .header-peek {
+            grid-column: 1 / -1;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease;
+            padding: 0 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            color: var(--color-ink-light);
+            border-left: 3px solid var(--cap-accent, var(--color-terra));
+            pointer-events: none;
+        }
+        .header-peek.show {
+            max-height: 40px;
+            opacity: 1;
+            padding: 0.5rem 2rem;
+        }
+
         .cap-number {
             font-family: var(--font-mono);
             font-weight: 700;
             font-size: 1rem;
-            color: #a1665e;
+            color: var(--cap-accent, #a1665e);
         }
 
         .cap-title {
@@ -315,13 +348,31 @@
 
         .detail-inner {
             display: grid;
-            grid-template-columns: 80px 1fr 1fr 1fr;
-            padding: 0 2rem 2rem 2rem;
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 1.5rem 2rem 2rem 2rem;
+            column-gap: 2rem;
+            row-gap: 1.5rem;
         }
 
-        .detail-inner .spacer {
-            grid-column: 1;
+        .detail-brief {
+            grid-column: 1 / -1;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-ink-dark);
+            max-width: none;
+        }
+
+        /* Staggered reveal animations */
+        .capability-detail.open .detail-brief {
+            animation: fadeUp 0.4s ease both;
+        }
+        .capability-detail.open .detail-row-link {
+            animation: fadeUp 0.4s 0.1s ease both;
+        }
+
+        .detail-row-link {
+            grid-column: 1 / -1;
+            display: block;
         }
 
         .detail-block p {
@@ -349,8 +400,8 @@
         }
 
         .detail-tag:hover {
-            background-color: #a1665e;
-            border-color: #a1665e;
+            background-color: var(--cap-accent, #a1665e);
+            border-color: var(--cap-accent, #a1665e);
             color: var(--color-bg);
         }
 
@@ -468,8 +519,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .detail-inner .spacer {
-                display: none;
+            .detail-brief {
+                grid-column: 1;
+            }
+
+            .detail-row-link {
+                grid-column: 1;
             }
 
             .stats-bar {
@@ -504,21 +559,35 @@
         }
 
         .detail-link {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--color-terra);
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.4rem;
+            padding: 0.5rem 0 1.5rem 0;
             text-decoration: none;
-            border-bottom: 1px solid var(--color-terra);
-            padding-bottom: 1px;
-            margin-top: 0.8rem;
         }
 
-        .detail-link:hover {
-            color: var(--color-ink-dark);
-            border-color: var(--color-ink-dark);
+        .detail-link .link-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--cap-accent, var(--color-terra));
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .detail-link .link-arrow {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cap-accent, var(--color-terra));
+            transition: transform 0.2s ease;
+        }
+
+        .detail-link:hover .link-label {
+            border-color: var(--cap-accent, var(--color-terra));
+        }
+
+        .detail-link:hover .link-arrow {
+            transform: translate(3px, -3px);
         }
     </style>
     <script type="application/ld+json">
@@ -704,178 +773,98 @@
             <div id="capabilities">
 
                 <!-- 001 — Applied Research -->
-                <div class="capability-row">
-                    <div class="capability-header" onclick="toggleCap(0)">
+                <div class="capability-row" data-cap="001">
+                    <div class="capability-header" onclick="toggleCap(0)" id="header-0">
                         <span class="cap-number">001</span>
                         <span class="cap-title">Applied Research</span>
                         <span class="cap-subtitle">How We Learn What's True</span>
                         <span class="cap-toggle" id="toggle-0">+</span>
                     </div>
+                    <div class="header-peek" id="peek-0">We figure out what's actually going on before anyone starts building.</div>
                     <div class="capability-detail" id="detail-0">
                         <div class="detail-inner">
-                            <div class="spacer"></div>
-                            <div class="detail-block">
-                                <span class="label">In Brief</span>
-                                <p>We talk to your users, study your market, and run experiments to find out what's
-                                    true — before anyone starts building. UX research, competitive analysis,
-                                    A/B testing.</p>
-                                <span class="label" style="margin-top:1.5rem;">Overview</span>
-                                <p>We figure out what's actually going on before anyone starts building. That means
-                                    talking to users, studying the market, running experiments, and reviewing the
-                                    existing evidence. We draw on behavioral science, statistics, and deep domain
-                                    knowledge.</p>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Methods</span>
-                                <div>
-                                    <span class="detail-tag">UX Research</span>
-                                    <span class="detail-tag">Market Research</span>
-                                    <span class="detail-tag">Experimental Design</span>
-                                    <span class="detail-tag">Meta-Analysis</span>
-                                </div>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Typical Duration</span>
-                                <p>8–16 weeks</p>
-                                <span class="label" style="margin-top:1rem;">Team Size</span>
-                                <p>2–4 researchers</p>
-                            </div>
-                            <div class="detail-block">
-                                <a href="/capabilities/001-applied-research.html" class="detail-link">View full brief
-                                    →</a>
+                            <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means
+                                talking to users, studying the market, running experiments, and reviewing the
+                                existing evidence. We draw on behavioral science, statistics, and deep domain
+                                knowledge.</p>
+                            <div class="detail-block detail-row-link">
+                                <a href="/capabilities/001-applied-research.html" class="detail-link">
+                                    <span class="link-label">Learn more</span>
+                                    <span class="link-arrow">↗</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 002 — AI Product Development & Management -->
-                <div class="capability-row">
-                    <div class="capability-header" onclick="toggleCap(1)">
+                <div class="capability-row" data-cap="002">
+                    <div class="capability-header" onclick="toggleCap(1)" id="header-1">
                         <span class="cap-number">002</span>
                         <span class="cap-title">AI Product Development & Management</span>
                         <span class="cap-subtitle">Strategy & Delivery</span>
                         <span class="cap-toggle" id="toggle-1">+</span>
                     </div>
+                    <div class="header-peek" id="peek-1">We help you build and manage AI products from concept to launch.</div>
                     <div class="capability-detail" id="detail-1">
                         <div class="detail-inner">
-                            <div class="spacer"></div>
-                            <div class="detail-block">
-                                <span class="label">In Brief</span>
-                                <p>We help you build and manage products in this AI age from concept to the first
-                                    prototype through what ships and what happens after. That includes choosing the
-                                    right models, designing how people interact with them, and making sure they keep
-                                    working as things change.</p>
-                                <span class="label" style="margin-top:1.5rem;">Overview</span>
-                                <p>We help you build AI products and keep them running. That covers everything from the
-                                    first idea through launch, growth, and the ongoing work of making them better.</p>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Capabilities</span>
-                                <div>
-                                    <span class="detail-tag">Product Strategy</span>
-                                    <span class="detail-tag">Roadmap</span>
-                                    <span class="detail-tag">Model Selection & Integration</span>
-                                    <span class="detail-tag">Launch</span>
-                                    <span class="detail-tag">Product Analytics</span>
-                                </div>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Typical Duration</span>
-                                <p>12–24 weeks</p>
-                                <span class="label" style="margin-top:1rem;">Team Size</span>
-                                <p>3–6 engineers</p>
-                            </div>
-                            <div class="detail-block">
-                                <a href="/capabilities/002-ai-product.html" class="detail-link">View full brief →</a>
+                            <p class="detail-brief">We help you build and manage products in this AI age from concept to the first
+                                prototype through what ships and what happens after. That includes choosing the
+                                right models, designing how people interact with them, and making sure they keep
+                                working as things change.</p>
+                            <div class="detail-block detail-row-link">
+                                <a href="/capabilities/002-ai-product.html" class="detail-link">
+                                    <span class="link-label">Learn more</span>
+                                    <span class="link-arrow">↗</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 003 — Enterprise Agentic Enablement -->
-                <div class="capability-row">
-                    <div class="capability-header" onclick="toggleCap(2)">
+                <div class="capability-row" data-cap="003">
+                    <div class="capability-header" onclick="toggleCap(2)" id="header-2">
                         <span class="cap-number">003</span>
                         <span class="cap-title">Enterprise AI Agents</span>
                         <span class="cap-subtitle">Autonomous AI Systems</span>
                         <span class="cap-toggle" id="toggle-2">+</span>
                     </div>
+                    <div class="header-peek" id="peek-2">Our enterprise agents can do real work inside your company.</div>
                     <div class="capability-detail" id="detail-2">
                         <div class="detail-inner">
-                            <div class="spacer"></div>
-                            <div class="detail-block">
-                                <span class="label">In Brief</span>
-                                <p>Our enterprise agents can do real work inside your company — processing documents,
-                                    coordinating between systems, handling the tasks your team shouldn't be doing
-                                    manually, while running reliably, at scale.</p>
-                                <span class="label" style="margin-top:1.5rem;">Overview</span>
-                                <p>We build AI agents that handle real tasks inside your company — processing documents,
-                                    coordinating between systems, making routine decisions. They work reliably and at
-                                    scale, so your team can focus on the work that actually needs a human.</p>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Stack</span>
-                                <div>
-                                    <span class="detail-tag">AI Agents</span>
-                                    <span class="detail-tag">Task Automation</span>
-                                    <span class="detail-tag">Multi-Agent Coordination</span>
-                                    <span class="detail-tag">RAG Pipelines</span>
-                                    <span class="detail-tag">Production LLM Ops</span>
-                                </div>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Typical Duration</span>
-                                <p>16–32 weeks</p>
-                                <span class="label" style="margin-top:1rem;">Team Size</span>
-                                <p>4–8 engineers</p>
-                            </div>
-                            <div class="detail-block">
-                                <a href="/capabilities/003-enterprise-agents.html" class="detail-link">View full brief
-                                    →</a>
+                            <p class="detail-brief">Our enterprise agents can do real work inside your company — processing documents,
+                                coordinating between systems, handling the tasks your team shouldn't be doing
+                                manually, while running reliably, at scale.</p>
+                            <div class="detail-block detail-row-link">
+                                <a href="/capabilities/003-enterprise-agents.html" class="detail-link">
+                                    <span class="link-label">Learn more</span>
+                                    <span class="link-arrow">↗</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 004 — Data and AI Strategy -->
-                <div class="capability-row">
-                    <div class="capability-header" onclick="toggleCap(3)">
+                <div class="capability-row" data-cap="004">
+                    <div class="capability-header" onclick="toggleCap(3)" id="header-3">
                         <span class="cap-number">004</span>
                         <span class="cap-title">Data and AI Strategy</span>
                         <span class="cap-subtitle">Governance, Advisory and Adoption</span>
                         <span class="cap-toggle" id="toggle-3">+</span>
                     </div>
+                    <div class="header-peek" id="peek-3">Together we'll figure out where AI fits in your organization.</div>
                     <div class="capability-detail" id="detail-3">
                         <div class="detail-inner">
-                            <div class="spacer"></div>
-                            <div class="detail-block">
-                                <span class="label">In Brief</span>
-                                <p>Together we'll figure out where AI fits in your organization, what data you need
-                                    to get there, and how to adopt it without the usual mess. Governance plans,
-                                    adoption playbooks, and honest assessments of what's ready and what isn't.</p>
-                                <span class="label" style="margin-top:1.5rem;">Overview</span>
-                                <p>We audit your data, figure out what's missing, and build a plan to get AI working
-                                    inside your organization. That includes governance, adoption plans, and honest
-                                    assessments of what you're ready for and what you're not.</p>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Deliverables</span>
-                                <div>
-                                    <span class="detail-tag">Data Audit</span>
-                                    <span class="detail-tag">Readiness Assessment</span>
-                                    <span class="detail-tag">Knowledge Graph</span>
-                                    <span class="detail-tag">Governance</span>
-                                    <span class="detail-tag">GEO (Generative Engine Optimization)</span>
-                                </div>
-                            </div>
-                            <div class="detail-block">
-                                <span class="label">Typical Duration</span>
-                                <p>4–8 weeks</p>
-                                <span class="label" style="margin-top:1rem;">Team Size</span>
-                                <p>1–3 strategists</p>
-                            </div>
-                            <div class="detail-block">
-                                <a href="/capabilities/004-data-strategy.html" class="detail-link">View full brief →</a>
+                            <p class="detail-brief">Together we'll figure out where AI fits in your organization, what data you need
+                                to get there, and how to adopt it without the usual mess. Governance plans,
+                                adoption playbooks, and honest assessments of what's ready and what isn't.</p>
+                            <div class="detail-block detail-row-link">
+                                <a href="/capabilities/004-data-strategy.html" class="detail-link">
+                                    <span class="link-label">Learn more</span>
+                                    <span class="link-arrow">↗</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -902,7 +891,7 @@
     </div>
 
     <script>
-        // === TRIANGLE MOIRÉ — Variation C style ===
+        // === HERO TRIANGLE MOIRÉ ===
         const canvas = document.getElementById('moireCanvas');
         const ctx = canvas.getContext('2d');
         let mouseX = 0.5, mouseY = 0.5;
@@ -916,26 +905,24 @@
             ctx.scale(2, 2);
         }
 
-        function drawTriangle(cx, cy, size, rotation) {
-            ctx.save();
-            ctx.translate(cx, cy);
-            ctx.rotate(rotation);
-            ctx.beginPath();
-            ctx.moveTo(size * 0.5, -size * 0.5);
-            ctx.lineTo(-size * 0.5, 0);
-            ctx.lineTo(size * 0.5, size * 0.5);
-            ctx.closePath();
-            ctx.restore();
+        function drawTriangleOn(c, cx, cy, size, rotation) {
+            c.save();
+            c.translate(cx, cy);
+            c.rotate(rotation);
+            c.beginPath();
+            c.moveTo(size * 0.5, -size * 0.5);
+            c.lineTo(-size * 0.5, 0);
+            c.lineTo(size * 0.5, size * 0.5);
+            c.closePath();
+            c.restore();
         }
 
-        function drawLayer(ox, oy, maxR, step, rot, alpha, color) {
-            ctx.strokeStyle = color
-                ? `rgba(${color}, ${alpha})`
-                : `rgba(5, 140, 140, ${alpha})`;
-            ctx.lineWidth = 1.5;
+        function drawLayerOn(c, ox, oy, maxR, step, rot, alpha, color) {
+            c.strokeStyle = color ? `rgba(${color}, ${alpha})` : `rgba(5, 140, 140, ${alpha})`;
+            c.lineWidth = 1.5;
             for (let r = step; r < maxR; r += step) {
-                drawTriangle(ox, oy, r, rot);
-                ctx.stroke();
+                drawTriangleOn(c, ox, oy, r, rot);
+                c.stroke();
             }
         }
 
@@ -943,16 +930,13 @@
             const w = canvas.width / 2;
             const h = canvas.height / 2;
             ctx.clearRect(0, 0, w, h);
-
             const ox = (mouseX - 0.5) * 50;
             const oy = (mouseY - 0.5) * 50;
             const maxDim = Math.max(w, h) * 2;
-
-            drawLayer(w * 0.48 + ox, h * 0.48 + oy, maxDim, 26, 0, 0.4);
-            drawLayer(w * 0.52 - ox, h * 0.52 - oy, maxDim, 26, Math.PI * 0.018, 0.25);
-            drawLayer(w * 0.5 + ox * 0.4, h * 0.45 + oy * 0.4, maxDim * 0.8, 34, -Math.PI * 0.01, 0.12);
-            drawLayer(w * 0.5 - ox * 0.3, h * 0.52 + oy * 0.3, maxDim * 0.75, 30, Math.PI * 0.03, 0.07, '161, 102, 94');
-
+            drawLayerOn(ctx, w * 0.48 + ox, h * 0.48 + oy, maxDim, 26, 0, 0.4);
+            drawLayerOn(ctx, w * 0.52 - ox, h * 0.52 - oy, maxDim, 26, Math.PI * 0.018, 0.25);
+            drawLayerOn(ctx, w * 0.5 + ox * 0.4, h * 0.45 + oy * 0.4, maxDim * 0.8, 34, -Math.PI * 0.01, 0.12);
+            drawLayerOn(ctx, w * 0.5 - ox * 0.3, h * 0.52 + oy * 0.3, maxDim * 0.75, 30, Math.PI * 0.03, 0.07, '161, 102, 94');
             requestAnimationFrame(render);
         }
 
@@ -960,7 +944,6 @@
             mouseX = e.clientX / window.innerWidth;
             mouseY = e.clientY / window.innerHeight;
         });
-
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
         render();
@@ -969,8 +952,9 @@
         function toggleCap(index) {
             const detail = document.getElementById('detail-' + index);
             const toggle = document.getElementById('toggle-' + index);
+            const isOpening = !detail.classList.contains('open');
 
-            // Close all others
+            // Close all others, show their teasers if something is opening
             document.querySelectorAll('.capability-detail').forEach((d, i) => {
                 if (i !== index) {
                     d.classList.remove('open');
@@ -981,8 +965,22 @@
 
             detail.classList.toggle('open');
             toggle.classList.toggle('open');
-            toggle.textContent = detail.classList.contains('open') ? '×' : '+';
+            toggle.textContent = isOpening ? '×' : '+';
+
         }
+
+        // === HOVER PEEK ===
+        document.querySelectorAll('.capability-header').forEach((header, i) => {
+            header.addEventListener('mouseenter', () => {
+                const detail = document.getElementById('detail-' + i);
+                if (!detail.classList.contains('open')) {
+                    document.getElementById('peek-' + i).classList.add('show');
+                }
+            });
+            header.addEventListener('mouseleave', () => {
+                document.getElementById('peek-' + i).classList.remove('show');
+            });
+        });
     </script>
 
 </body>

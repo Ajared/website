@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More Bar — Options Preview</title>
+    <style>
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        :root {
+            --color-bg: #ffffff;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-terra: #a1665e;
+            --font-primary: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
+            --cap-accent: #a1665e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+
+        body {
+            background: #f5f5f3;
+            font-family: var(--font-primary);
+            padding: 3rem 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h2 {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .option {
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Simulated accordion context */
+        .acc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-ink);
+            background: white;
+        }
+        .acc-header .left { display: flex; align-items: baseline; gap: 1.2rem; }
+        .acc-num {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--cap-accent);
+        }
+        .acc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+        }
+        .acc-x { color: var(--color-ink); font-size: 1.2rem; }
+
+        .acc-body {
+            padding: 1.5rem 2rem 0 2rem;
+        }
+
+        .brief {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-ink-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .option-label {
+            padding: 0.6rem 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #aaa;
+            border-top: 1px solid #eee;
+            margin-top: 0;
+        }
+
+        a { text-decoration: none; }
+
+        /* ─── Option A: Double-ruled + accent border-left ─── */
+        .opt-a .detail-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 0 1rem 1rem;
+            border-top: 1px solid var(--color-ink);
+            border-bottom: 1px solid var(--color-ink);
+            border-left: 3px solid var(--cap-accent);
+            transition: background 0.2s, color 0.2s;
+        }
+        .opt-a .link-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-ink-dark);
+            transition: color 0.2s;
+        }
+        .opt-a .link-arrow {
+            font-size: 1rem;
+            color: var(--cap-accent);
+            transition: transform 0.2s, color 0.2s;
+        }
+        .opt-a .detail-link:hover {
+            background: var(--color-ink);
+        }
+        .opt-a .detail-link:hover .link-label { color: white; }
+        .opt-a .detail-link:hover .link-arrow { color: white; transform: translate(2px, -2px); }
+
+        /* ─── Option B: Dark filled at rest ─── */
+        .opt-b .detail-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--color-ink-darkest);
+            transition: background 0.2s;
+        }
+        .opt-b .link-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: white;
+        }
+        .opt-b .link-arrow {
+            font-size: 1rem;
+            color: var(--cap-accent);
+            transition: transform 0.2s;
+        }
+        .opt-b .detail-link:hover {
+            background: var(--color-ink-dark);
+        }
+        .opt-b .detail-link:hover .link-arrow { transform: translate(2px, -2px); }
+
+        /* ─── Option C: Typographic, no box ─── */
+        .opt-c .detail-link {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding: 0.5rem 0 1.5rem 0;
+            transition: opacity 0.2s;
+        }
+        .opt-c .link-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--cap-accent);
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .opt-c .link-arrow {
+            font-size: 1.3rem;
+            color: var(--cap-accent);
+            transition: transform 0.2s;
+        }
+        .opt-c .detail-link:hover .link-label { border-color: var(--cap-accent); }
+        .opt-c .detail-link:hover .link-arrow { transform: translate(3px, -3px); }
+
+        /* ─── Option D: Cap-accent filled ─── */
+        .opt-d .detail-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--cap-accent);
+            transition: filter 0.2s;
+        }
+        .opt-d .link-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: white;
+        }
+        .opt-d .link-arrow {
+            font-size: 1rem;
+            color: white;
+            transition: transform 0.2s;
+        }
+        .opt-d .detail-link:hover { filter: brightness(0.85); }
+        .opt-d .detail-link:hover .link-arrow { transform: translate(2px, -2px); }
+    </style>
+</head>
+<body>
+
+<h2>Learn More Bar — Option Preview (hover each to see interaction)</h2>
+
+<div class="grid">
+
+    <!-- Option A -->
+    <div class="option opt-a">
+        <div class="acc-header">
+            <div class="left">
+                <span class="acc-num">001</span>
+                <span class="acc-title">Applied Research</span>
+            </div>
+            <span class="acc-x">×</span>
+        </div>
+        <div class="acc-body">
+            <p class="brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments.</p>
+            <a href="#" class="detail-link">
+                <span class="link-label">Learn more</span>
+                <span class="link-arrow">↗</span>
+            </a>
+        </div>
+        <div class="option-label">A — Double-ruled + accent border-left</div>
+    </div>
+
+    <!-- Option B -->
+    <div class="option opt-b">
+        <div class="acc-header">
+            <div class="left">
+                <span class="acc-num">001</span>
+                <span class="acc-title">Applied Research</span>
+            </div>
+            <span class="acc-x">×</span>
+        </div>
+        <div class="acc-body">
+            <p class="brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments.</p>
+        </div>
+        <div style="padding: 1.5rem 2rem 0;">
+            <a href="#" class="detail-link">
+                <span class="link-label">Learn more</span>
+                <span class="link-arrow">↗</span>
+            </a>
+        </div>
+        <div class="option-label">B — Dark filled at rest</div>
+    </div>
+
+    <!-- Option C -->
+    <div class="option opt-c">
+        <div class="acc-header">
+            <div class="left">
+                <span class="acc-num">001</span>
+                <span class="acc-title">Applied Research</span>
+            </div>
+            <span class="acc-x">×</span>
+        </div>
+        <div class="acc-body">
+            <p class="brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments.</p>
+            <a href="#" class="detail-link">
+                <span class="link-label">Learn more</span>
+                <span class="link-arrow">↗</span>
+            </a>
+        </div>
+        <div class="option-label">C — Typographic, no box</div>
+    </div>
+
+    <!-- Option D -->
+    <div class="option opt-d">
+        <div class="acc-header">
+            <div class="left">
+                <span class="acc-num">001</span>
+                <span class="acc-title">Applied Research</span>
+            </div>
+            <span class="acc-x">×</span>
+        </div>
+        <div class="acc-body">
+            <p class="brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments.</p>
+        </div>
+        <div style="padding: 1.5rem 2rem 0;">
+            <a href="#" class="detail-link">
+                <span class="link-label">Learn more</span>
+                <span class="link-arrow">↗</span>
+            </a>
+        </div>
+        <div class="option-label">D — Cap-accent filled</div>
+    </div>
+
+</div>
+
+</body>
+</html>
