@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="contact" title="Contact">
+  
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://ajared.ca/contact/" }
+          ]
+        },
+        {
+          "@type": "ContactPage",
+          "@id": "https://ajared.ca/contact/#webpage",
+          "url": "https://ajared.ca/contact/",
+          "name": "Contact Ajared Research Inc.",
+          "description": "Get in touch with Ajared Research Inc. for collaboration on AI product development and applied research.",
+          "mainEntity": { "@id": "https://ajared.ca/#organization" }
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header>
+    <Description>Start a project or ask a question.</Description>
+    <Nav active="contact" />
+  </Header>
+
+  <ContactForm />
+
+  <!-- No Footer on the original contact page -->
+  
+</Page>

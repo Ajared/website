@@ -13,7 +13,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png"/>
-        <title><xsl:value-of select="@title" /></title>
+        <title><xsl:value-of select="@title" /> — Ajared Research Inc</title>
         <style>
         /* iA Writer Quattro S Font */
         @font-face {
@@ -194,6 +194,10 @@
             justify-content: space-between;
             min-height: 160px;
         }
+            .form-section { grid-template-columns: 1fr; }
+            .form-left { padding: 3rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .form-right { padding: 3rem 1rem; }
+
 
         .header-cell:last-child {
             border-right: none;
@@ -492,6 +496,10 @@
                 border-right: none;
                 border-bottom: var(--grid-line);
             }
+            .form-section { grid-template-columns: 1fr; }
+            .form-left { padding: 3rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .form-right { padding: 3rem 1rem; }
+
 
             .hero-section {
                 grid-template-columns: 1fr;
@@ -534,7 +542,28 @@
                 font-size: 3.5rem;
             }
         }
-    </style>
+    
+        /* Form Layout */
+        .form-section { display: grid; grid-template-columns: 1fr 1fr; flex-grow: 1; }
+        .form-left { padding: 4rem 2rem; border-right: var(--grid-line); }
+        .form-right { padding: 4rem 2rem; background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
+        .instrument-field { margin-bottom: 3rem; position: relative; }
+        .instrument-input { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--color-ink); color: var(--color-ink-darkest); font-family: var(--font-primary); font-size: 1rem; padding: 0.5rem 0; outline: none; cursor: crosshair; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .instrument-input:focus { border-bottom-color: #a1665e; box-shadow: 0 1px 0 0 rgba(161, 102, 94, 0.2); }
+        .instrument-input::placeholder { color: var(--color-ink-light); }
+        .technical-markings { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; margin-top: 4px; color: var(--color-ink-light); }
+        .coordinate-selector { border: 1px solid var(--color-ink); height: 300px; position: relative; margin-top: 1rem; overflow: hidden; background: var(--color-bg); border-radius: var(--radius-sm); }
+        .crosshair-v { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #a1665e; pointer-events: none; }
+        .crosshair-h { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #a1665e; pointer-events: none; }
+        .status-indicator { display: flex; align-items: center; gap: 10px; margin-top: 2rem; }
+        .status-light { width: 12px; height: 12px; background: var(--color-terra); border-radius: 50%; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .btn-submit { display: block; width: 100%; padding: 2rem; background: var(--color-ink); color: var(--color-bg); border: none; font-weight: 700; text-transform: uppercase; font-size: 1.2rem; font-family: var(--font-primary); text-align: left; letter-spacing: 0.03em; transition: background 0.3s; margin-top: 2rem; cursor: crosshair; border-radius: var(--radius-sm); }
+        .btn-submit:hover { background: var(--color-ink-dark); }
+        .brief-textarea { width: 100%; min-height: 150px; background: transparent; border: 1px solid var(--color-ink); padding: 1rem; color: var(--color-ink-darkest); font-family: var(--font-primary); font-size: 1rem; resize: vertical; outline: none; cursor: crosshair; border-radius: var(--radius-sm); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
+        .brief-textarea::placeholder { color: var(--color-ink-light); }
+</style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
         <xsl:if test="Schema">
@@ -559,6 +588,7 @@
                 <div class="ruler-x" style="position: relative; z-index: 1;"></div>
             </xsl:if>
             <xsl:apply-templates select="OfferGrid" />
+            <xsl:apply-templates select="ContactForm" />
             
             <xsl:apply-templates select="Footer" />
           </div>
@@ -567,6 +597,10 @@
         <!-- Page specific scripts -->
         <xsl:if test="@id='index'">
           <script src="/scripts/moire.js" defer="defer"></script>
+        </xsl:if>
+        <!-- Contact scripts -->
+        <xsl:if test="@id='contact'">
+          <script src="/scripts/contact.js" defer="defer"></script>
         </xsl:if>
       </body>
     </html>
@@ -583,18 +617,26 @@
           </a>
       </div>
       <div class="header-cell">
-          <span class="label">Coordinates</span>
-          <p style="font-size: 0.85em;">
-            <xsl:for-each select="CoordCell">
-              <xsl:value-of select="@city"/><br/>
-              <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
-              <xsl:if test="position() != last()"><br/></xsl:if>
-            </xsl:for-each>
-          </p>
-          <div style="margin-top:auto">
-              <span class="label">Status</span>
-              <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
-          </div>
+          <xsl:choose>
+            <xsl:when test="Description">
+              <span class="label">Description</span>
+              <p><xsl:value-of select="Description"/></p>
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="label">Coordinates</span>
+              <p style="font-size: 0.85em;">
+                <xsl:for-each select="CoordCell">
+                  <xsl:value-of select="@city"/><br/>
+                  <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+                  <xsl:if test="position() != last()"><br/></xsl:if>
+                </xsl:for-each>
+              </p>
+              <div style="margin-top:auto">
+                  <span class="label">Status</span>
+                  <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+              </div>
+            </xsl:otherwise>
+          </xsl:choose>
       </div>
       <div class="header-cell">
           <span class="label">Navigation</span>
@@ -697,6 +739,73 @@
                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
         </div>
     </div>
+  </xsl:template>
+
+
+  <xsl:template match="ContactForm">
+    <section class="form-section">
+      <div class="form-left">
+          <span class="label">Contact</span>
+          <h1>New Inquiry</h1>
+          <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
+              <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc" />
+              <input type="hidden" name="_replyto" value="" />
+              <div class="instrument-field">
+                  <span class="label">01 / Principal Contact</span>
+                  <input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual" />
+                  <div class="technical-markings">
+                      <span>MIN_LEN: 2</span><span>TYPE: STRING</span><span>MAX_LEN: 128</span>
+                  </div>
+              </div>
+              <div class="instrument-field">
+                  <span class="label">02 / Email</span>
+                  <input type="email" name="email" required="required" class="instrument-input" placeholder="your-email@domain.com" />
+                  <div class="technical-markings">
+                      <span>VAL: SMTP</span><span>PRIORITY: HIGH</span>
+                  </div>
+              </div>
+              <div class="instrument-field" id="deliverable-field" style="display: none;">
+                  <span class="label">03 / Specific Deliverable (Optional)</span>
+                  <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
+                      <option value="">Select a deliverable...</option>
+                  </select>
+                  <div class="technical-markings">
+                      <span>DYNAMIC</span><span>TYPE: SELECT</span><span>OPTIONAL</span>
+                  </div>
+              </div>
+              <div class="instrument-field">
+                  <span class="label" id="scope-label">03 / Project Scope / Brief</span>
+                  <textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
+              </div>
+              <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+              <button type="submit" class="btn-submit" id="submit-btn">Send Message ↗</button>
+          </form>
+      </div>
+      <div class="form-right">
+          <div class="instrument-field">
+              <span class="label">04 / Origin Coordinates</span>
+              <p style="margin-bottom: 1rem;">Where are you based?</p>
+              <div class="coordinate-selector" id="coord-map">
+                  <div class="crosshair-v" id="ch-v"></div>
+                  <div class="crosshair-h" id="ch-h"></div>
+              </div>
+              <div class="technical-markings" style="margin-top: 10px;">
+                  <span id="coord-display">LAT: 0.0000 / LONG: 0.0000</span>
+              </div>
+          </div>
+          <div class="instrument-field" style="margin-top: 4rem;">
+              <span class="label">System Status</span>
+              <div class="status-indicator">
+                  <div class="status-light"></div>
+                  <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;">Awaiting Input Signal...</p>
+              </div>
+          </div>
+          <div style="margin-top: 4rem;">
+              <span class="label">Response Times</span>
+              <p>We typically respond within 48–72 hours.</p>
+          </div>
+      </div>
+    </section>
   </xsl:template>
 
 </xsl:stylesheet>
