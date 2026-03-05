@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="capability-detail" title="Applied Research">
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://ajared.ca/capabilities/" },
+            { "@type": "ListItem", "position": 3, "name": "Applied Research", "item": "https://ajared.ca/capabilities/001-applied-research.html" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/capabilities/001-applied-research.html#service",
+          "name": "Applied Research",
+          "alternateName": "How We Learn What's True",
+          "description": "User studies, market analysis, and experimentation to validate concepts before development begins. Methods include UX research, behavioral science, statistical analysis, and evidence synthesis.",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "url": "https://ajared.ca/capabilities/001-applied-research.html",
+          "serviceType": "Applied Research",
+          "category": "Research Services",
+          "areaServed": ["CA", "NG"],
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "areaServed": ["CA", "NG"]
+          }
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header compact="true">
+    <Nav>
+      <Breadcrumbs>
+        <Current>Applied Research</Current>
+      </Breadcrumbs>
+    </Nav>
+  </Header>
+
+  <CapabilityHero>
+    <Title>Applied Research</Title>
+  </CapabilityHero>
+
+  <PageBody>
+    <Section title="What We Do">
+      <Intro>
+        <p>We figure out what’s actually going on before anyone starts building. That means talking to users, studying the market, and testing ideas against reality. We draw on behavioural science, statistics, and deep domain knowledge to produce findings your team can act on with confidence.</p>
+      </Intro>
+      <Offerings>
+        <Offering>
+          <Title>UX Research</Title>
+          <Description>We go to where your users are — interviews, diary studies, usability tests, in-context observation. The goal is understanding what people actually do, not just what they say, so the product decisions that follow are grounded in reality.</Description>
+        </Offering>
+        <Offering>
+          <Title>Market Research</Title>
+          <Description>A clear picture of the landscape before you move. Competitive analysis, market sizing, audience segmentation, and trend mapping — so you know exactly where the opportunity is, what you’re up against, and what the data won’t yet tell you.</Description>
+        </Offering>
+        <Offering>
+          <Title>Testing Business Ideas</Title>
+          <Description>Most assumptions are wrong. We design lean experiments — demand tests, concierge MVPs, assumption mapping, causal inference — that expose which ones to kill early and which ones to build around. Early failure is cheap. Late failure is not.</Description>
+        </Offering>
+      </Offerings>
+    </Section>
+    
+    <Section title="How We Work">
+      <Process>
+        <Step num="01">
+          <Title>Scoping</Title>
+          <Description>We align on the research question, decide what counts as evidence, and define scope before any fieldwork begins. A tight brief prevents the expensive course corrections that come from starting too broad.</Description>
+        </Step>
+        <Step num="02">
+          <Title>Field Work</Title>
+          <Description>We go to where the truth is: interviews, surveys, ethnographic observation, usability tests. We collect primary data rather than relying on secondary sources, and we document everything in enough detail to revisit later.</Description>
+        </Step>
+        <Step num="03">
+          <Title>Analysis</Title>
+          <Description>Raw data becomes structured insight. We code qualitative findings, run statistical checks where the data supports it, look for converging patterns, and stress-test conclusions before committing to them.</Description>
+        </Step>
+        <Step num="04">
+          <Title>Delivery</Title>
+          <Description>Findings land in a plain-language report, an executive presentation deck, and a documented methodology archive — built for the people who need to act on them, not for the people who already know the answer.</Description>
+        </Step>
+      </Process>
+    </Section>
+
+    <Section title="Deliverables">
+      <Deliverables>
+        <Row checked="true">Research brief + scope alignment document</Row>
+        <Row checked="true">Structured findings report (plain language)</Row>
+        <Row checked="true">Executive presentation deck</Row>
+        <Row checked="true">Evidence archive + methodology notes</Row>
+        <Row checked="false">Optional: Ongoing research retainer</Row>
+      </Deliverables>
+    </Section>
+  </PageBody>
+
+  <CapNav>
+    <Prev href="/capabilities/004-data-strategy.html">Data &amp; AI Strategy</Prev>
+    <Next href="/capabilities/002-ai-product.html">Product Development</Next>
+  </CapNav>
+
+  <CTABlock>
+    <Title>Ready to find out what’s true?</Title>
+    <Button href="/contact/">Get in touch &#8594;</Button>
+  </CTABlock>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>
