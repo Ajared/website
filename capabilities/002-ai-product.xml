@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="capability-detail" title="Product Development">
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://ajared.ca/capabilities/" },
+            { "@type": "ListItem", "position": 3, "name": "AI Product Development & Management", "item": "https://ajared.ca/capabilities/002-ai-product.html" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/capabilities/002-ai-product.html#service",
+          "name": "AI Product Development & Management",
+          "alternateName": "Strategy & Delivery",
+          "description": "Full lifecycle AI product development from concept through launch and optimization. Covers product strategy, roadmap planning, model selection, launch coordination, and performance analytics.",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "url": "https://ajared.ca/capabilities/002-ai-product.html",
+          "serviceType": "AI Product Development",
+          "category": "Technology Services",
+          "areaServed": ["CA", "NG"]
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header compact="true">
+    <Nav>
+      <Breadcrumbs>
+        <Current>Product Development</Current>
+      </Breadcrumbs>
+    </Nav>
+  </Header>
+
+  <CapabilityHero>
+    <Title>Product Development</Title>
+  </CapabilityHero>
+
+  <PageBody>
+    <Section title="What We Do">
+      <Intro>
+        <p>We help you build products and keep them running. That covers everything from the first idea through
+              launch, growth, and the ongoing work of making them better — concept development, UX design, product
+              management, and full-stack engineering under one roof.</p>
+      </Intro>
+      <Offerings>
+        <Offering>
+          <Title>Concept Development</Title>
+          <Description>From rough idea to defined product. We run structured workshops to frame the opportunity,
+                  pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning — so
+                  design and engineering start with a foundation that holds up.</Description>
+        </Offering>
+        <Offering>
+          <Title>Design Thinking</Title>
+          <Description>Research-led UX built from first principles. We map information architecture, design interaction
+                  flows, prototype at the right fidelity, and test with real users iteratively — so the product feels
+                  right before production engineering begins.</Description>
+        </Offering>
+        <Offering>
+          <Title>Product Management</Title>
+          <Description>The connective tissue between vision and execution. We set the roadmap, define OKRs, manage
+                  prioritisation trade-offs, align stakeholders, and coordinate go-to-market — so the team stays pointed
+                  at the right problem at the right time.</Description>
+        </Offering>
+        <Offering>
+          <Title>AI-Powered Engineering</Title>
+          <Description>Full-stack development augmented by AI tooling. API integration, backend services, front-end
+                  interfaces, QA, and deployment — built for production and long-term operability, not for demos that
+                  work once under ideal conditions.</Description>
+        </Offering>
+      </Offerings>
+    </Section>
+    
+    <Section title="How We Work">
+      <Process>
+        <Step num="01">
+          <Title>Discovery</Title>
+          <Description>Define the vision, identify the right success metrics, and establish the opportunity clearly enough
+                    that every subsequent decision has a reference point to return to.</Description>
+        </Step>
+        <Step num="02">
+          <Title>Design</Title>
+          <Description>Concept development feeds directly into UX design, prototyping, and user validation. We test with
+                    real people before writing a line of production code — catching misaligned assumptions when they’re
+                    still cheap to fix.</Description>
+        </Step>
+        <Step num="03">
+          <Title>Build</Title>
+          <Description>Iterative development cycles with continuous QA, integration testing, and performance tuning. We
+                    ship incrementally to reduce risk and maintain feedback loops throughout the build.</Description>
+        </Step>
+        <Step num="04">
+          <Title>Launch</Title>
+          <Description>Staged rollout with monitoring instrumentation in place from the start — not added after something
+                    breaks. Analytics, alerting, and a structured feedback loop that feeds the next iteration.</Description>
+        </Step>
+      </Process>
+    </Section>
+
+    <Section title="Deliverables">
+      <Deliverables>
+        <Row checked="true">Concept brief + product strategy + roadmap</Row>
+        <Row checked="true">UX design system + tested prototypes</Row>
+        <Row checked="true">Working product — production-ready</Row>
+        <Row checked="true">Launch plan + analytics instrumentation</Row>
+        <Row checked="true">1 Month MVP Development Sprint</Row>
+        <Row checked="false">Optional: Fractional product management retainer</Row>
+      </Deliverables>
+    </Section>
+  </PageBody>
+
+  <CapNav>
+    <Prev href="/capabilities/001-applied-research.html">Applied Research</Prev>
+    <Next href="/capabilities/003-enterprise-agents.html">Enterprise AI Agents</Next>
+  </CapNav>
+
+  <CTABlock>
+    <Title>Ready to build something that works?</Title>
+    <Button href="/contact/">Get in touch &#8594;</Button>
+  </CTABlock>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>

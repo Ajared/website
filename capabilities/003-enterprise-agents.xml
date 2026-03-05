@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="capability-detail" title="Enterprise AI Agents">
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://ajared.ca/capabilities/" },
+            { "@type": "ListItem", "position": 3, "name": "Enterprise AI Agents", "item": "https://ajared.ca/capabilities/003-enterprise-agents.html" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/capabilities/003-enterprise-agents.html#service",
+          "name": "Enterprise AI Agents",
+          "alternateName": "Autonomous AI Systems",
+          "description": "Design and deployment of autonomous AI agents that automate document processing, inter-system coordination, and routine decision-making. Includes agent architecture, RAG systems, and multi-agent coordination.",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "url": "https://ajared.ca/capabilities/003-enterprise-agents.html",
+          "serviceType": "Enterprise AI Automation",
+          "category": "Technology Services",
+          "areaServed": ["CA", "NG"]
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header compact="true">
+    <Nav>
+      <Breadcrumbs>
+        <Current>Enterprise Agents</Current>
+      </Breadcrumbs>
+    </Nav>
+  </Header>
+
+  <CapabilityHero>
+    <Title>Enterprise AI Agents</Title>
+  </CapabilityHero>
+
+  <PageBody>
+    <Section title="What We Do">
+      <Intro>
+        <p>We build AI agents that handle real tasks — processing documents, coordinating between systems, making
+              routine decisions at scale. Built for production, not for demos. So your team can focus on the work that
+              actually needs a human.</p>
+      </Intro>
+      <Offerings>
+        <Offering>
+          <Title>AI Agents</Title>
+          <Description>Task-specific agents built for production. We design agents with the right tools, memory
+                  architecture, and decision logic to handle real workflows reliably at scale — with human oversight
+                  integrated where it matters, not added as an afterthought.</Description>
+        </Offering>
+        <Offering>
+          <Title>Graph RAG</Title>
+          <Description>When your data is too interconnected for flat retrieval. We build knowledge graph-augmented RAG
+                  systems that navigate entity relationships, surface precise answers from complex enterprise data
+                  structures, and dramatically reduce hallucination risk.</Description>
+        </Offering>
+        <Offering>
+          <Title>Task Automation</Title>
+          <Description>End-to-end workflow automation across your existing systems. Document ingestion, routing decisions,
+                  multi-system coordination — designed to handle volume and edge cases without requiring constant human
+                  intervention to stay on track.</Description>
+        </Offering>
+      </Offerings>
+    </Section>
+    
+    <Section title="How We Work">
+      <Process>
+        <Step num="01">
+          <Title>Discovery</Title>
+          <Description>We map your workflows in detail, identify which tasks are strong automation candidates, and define
+                    scope, success criteria, and safety boundaries before writing any code. Poorly scoped automation
+                    causes more problems than it solves.</Description>
+        </Step>
+        <Step num="02">
+          <Title>Design</Title>
+          <Description>Agent architecture, tool selection, memory design, and constraint definition. We specify the system
+                    completely before building — including how it fails gracefully and what happens when it encounters
+                    something outside its operating envelope.</Description>
+        </Step>
+        <Step num="03">
+          <Title>Build &amp; Test</Title>
+          <Description>Development, integration with your systems, red-team evaluation, and adversarial testing. We
+                    deliberately try to break agents before deployment. An agent we haven’t stress-tested doesn’t go to
+                    production.</Description>
+        </Step>
+        <Step num="04">
+          <Title>Deploy</Title>
+          <Description>Production rollout with monitoring dashboards, alert configuration, and human-in-the-loop controls
+                    designed from the start — not bolted on after. Ongoing visibility into what the agent is doing and
+                    why.</Description>
+        </Step>
+      </Process>
+    </Section>
+
+    <Section title="Deliverables">
+      <Deliverables>
+        <Row checked="true">Agent architecture document + system design</Row>
+        <Row checked="true">Production-ready agent system with
+                evaluation suite</Row>
+        <Row checked="true">Integration layer + API documentation</Row>
+        <Row checked="true">Monitoring dashboard + alert configuration</Row>
+        <Row checked="false">Optional: Ongoing operations retainer</Row>
+      </Deliverables>
+    </Section>
+  </PageBody>
+
+  <CapNav>
+    <Prev href="/capabilities/002-ai-product.html">Product Development</Prev>
+    <Next href="/capabilities/004-data-strategy.html">Data &amp;amp; AI Strategy</Next>
+  </CapNav>
+
+  <CTABlock>
+    <Title>Ready to automate the right things?</Title>
+    <Button href="/contact/">Get in touch &#8594;</Button>
+  </CTABlock>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>

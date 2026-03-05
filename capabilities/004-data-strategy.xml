@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="capability-detail" title="Data &amp;amp; AI Strategy">
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": ["https://ajared.ng"],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://ajared.ca/capabilities/" },
+            { "@type": "ListItem", "position": 3, "name": "Data and AI Strategy", "item": "https://ajared.ca/capabilities/004-data-strategy.html" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/capabilities/004-data-strategy.html#service",
+          "name": "Data and AI Strategy",
+          "alternateName": "Governance, Advisory and Adoption",
+          "description": "Strategic consulting covering data asset audits, AI readiness assessments, governance frameworks, and organizational adoption roadmaps.",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "url": "https://ajared.ca/capabilities/004-data-strategy.html",
+          "serviceType": "Data & AI Strategy",
+          "category": "Consulting Services",
+          "areaServed": ["CA", "NG"]
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header compact="true">
+    <Nav>
+      <Breadcrumbs>
+        <Current>Data and AI Strategy</Current>
+      </Breadcrumbs>
+    </Nav>
+  </Header>
+
+  <CapabilityHero>
+    <Title>Data &amp;amp; AI Strategy</Title>
+  </CapabilityHero>
+
+  <PageBody>
+    <Section title="What We Do">
+      <Intro>
+        <p>We audit your data, figure out what’s missing, and build a plan to get AI working inside your
+              organization. That includes governance structures, realistic adoption plans, and honest assessments of
+              what you’re ready for — and what you’re not.</p>
+      </Intro>
+      <Offerings>
+        <Offering>
+          <Title>Reliable AI</Title>
+          <Description>AI that produces consistent, trustworthy outputs starts with structured knowledge. We build knowledge
+                  graphs and ontologies that give your AI systems a foundation they can reason from — rather than one
+                  they’re guessing around.</Description>
+        </Offering>
+        <Offering>
+          <Title>Location Intelligence</Title>
+          <Description>Spatial context changes what data means. We develop geospatial data strategies, build location-aware
+                  AI applications, and integrate spatial analysis into decision-making workflows that were previously
+                  blind to geography.</Description>
+        </Offering>
+        <Offering>
+          <Title>Generative Engine Optimization</Title>
+          <Description>As AI reshapes search, your organization’s presence in AI-generated answers matters as much as its
+                  traditional search ranking. We make sure you appear accurately and prominently in the outputs that now
+                  shape how people find information.</Description>
+        </Offering>
+        <Offering>
+          <Title>Executive AI Coaching</Title>
+          <Description>One-to-one advisory for leaders who need to understand AI well enough to make decisions about it —
+                  without wading through hype. Strategy, governance, and an honest assessment of what your organization
+                  is actually ready for and when.</Description>
+        </Offering>
+      </Offerings>
+    </Section>
+    
+    <Section title="How We Work">
+      <Process>
+        <Step num="01">
+          <Title>Audit</Title>
+          <Description>We take full inventory of your data: what you have, where it lives, what quality it’s in, and where
+                    the gaps are. Nothing proceeds on assumptions about the state of your data infrastructure.</Description>
+        </Step>
+        <Step num="02">
+          <Title>Assessment</Title>
+          <Description>We map your AI capabilities against realistic benchmarks, identify specific risks, and score your
+                    readiness across the dimensions that matter for your context — not against a generic maturity
+                    framework.</Description>
+        </Step>
+        <Step num="03">
+          <Title>Strategy</Title>
+          <Description>A concrete roadmap with sequenced initiatives, a governance framework that can actually be followed
+                    by real teams, and an adoption plan grounded in your organizational reality rather than best-case
+                    projections.</Description>
+        </Step>
+        <Step num="04">
+          <Title>Handoff</Title>
+          <Description>We don’t disappear after delivery. You receive implementation playbooks, training materials, and an
+                    executive alignment session to ensure the strategy lands and the people responsible for it
+                    understand what they’re holding.</Description>
+        </Step>
+      </Process>
+    </Section>
+
+    <Section title="Deliverables">
+      <Deliverables>
+        <Row checked="true">Data audit report + gap analysis</Row>
+        <Row checked="true">AI readiness assessment + scoring</Row>
+        <Row checked="true">Strategic roadmap + governance framework</Row>
+        <Row checked="true">Executive presentation + adoption playbook</Row>
+        <Row checked="false">Optional: Ongoing advisory retainer</Row>
+      </Deliverables>
+    </Section>
+  </PageBody>
+
+  <CapNav>
+    <Prev href="/capabilities/003-enterprise-agents.html">Enterprise AI Agents</Prev>
+    <Next href="/capabilities/001-applied-research.html">Applied Research</Next>
+  </CapNav>
+
+  <CTABlock>
+    <Title>Ready to know where you actually stand?</Title>
+    <Button href="/contact/">Get in touch &#8594;</Button>
+  </CTABlock>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>
