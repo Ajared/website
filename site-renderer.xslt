@@ -199,6 +199,16 @@
             .form-right { padding: 3rem 1rem; }
             .project-row { padding: 1.5rem 1.5rem; grid-template-columns: 40px 1fr; gap: 1rem; }
             .project-meta, .project-year { display: none; }
+            .hero-fullbleed { height: 25vh; }
+            .capability-header { padding: 1.5rem 1.5rem; grid-template-columns: 50px 1fr 50px; }
+            .cap-subtitle { display: none; }
+            .detail-inner { padding: 1.5rem 1.5rem; grid-template-columns: 1fr; }
+            .detail-brief { grid-column: 1; }
+            .detail-row-link { grid-column: 1; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+            .stat-cell { padding: 1.5rem 1rem; }
+            .stat-cell:nth-child(2) { border-right: none; }
+
 
 
 
@@ -577,6 +587,46 @@
         .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
         .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
         .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
+
+        /* Capabilities Hero and Accordions */
+        .hero-fullbleed { position: relative; height: 30vh; border-bottom: var(--grid-line); overflow: hidden; }
+        .moire-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .hero-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; pointer-events: none; }
+        .hero-center-text h1 { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--color-ink-darkest); mix-blend-mode: multiply; }
+        .hero-center-text .label { font-size: 1rem; margin-bottom: 2rem; color: var(--color-ink-dark); }
+        .capability-row[data-cap="001"] { --cap-accent: #a1665e; }
+        .capability-row[data-cap="002"] { --cap-accent: #3d7878; }
+        .capability-row[data-cap="003"] { --cap-accent: #046363; }
+        .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
+        .capability-header:hover { background: var(--color-ink); }
+        .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+        .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+        .header-peek.show { max-height: 40px; opacity: 1; padding: 0.5rem 2rem; }
+        .cap-number { font-family: var(--font-mono); font-weight: 700; font-size: 1rem; color: var(--cap-accent, #a1665e); }
+        .cap-title { font-weight: 700; font-size: 1.8rem; text-transform: uppercase; letter-spacing: -0.02em; color: var(--color-ink-darkest); }
+        .cap-subtitle { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-dark); }
+        .cap-toggle { font-size: 1.5rem; text-align: right; color: var(--color-ink); transition: transform 0.3s; }
+        .cap-toggle.open { transform: rotate(45deg); }
+        .capability-detail { grid-column: 1 / -1; max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s ease; background: var(--color-bg); }
+        .capability-detail.open { max-height: 900px; }
+        .detail-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 1.5rem 2rem 2rem 2rem; column-gap: 2rem; row-gap: 1.5rem; }
+        .detail-brief { grid-column: 1 / -1; font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: none; }
+        .capability-detail.open .detail-brief { animation: fadeUp 0.4s ease both; }
+        .capability-detail.open .detail-row-link { animation: fadeUp 0.4s 0.1s ease both; }
+        .detail-row-link { grid-column: 1 / -1; display: block; }
+        .detail-link { display: inline-flex; align-items: baseline; gap: 0.4rem; padding: 0.5rem 0 1.5rem 0; text-decoration: none; }
+        .detail-link .link-label { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; color: var(--cap-accent, var(--color-terra)); border-bottom: 2px solid transparent; transition: border-color 0.2s; }
+        .detail-link .link-arrow { font-size: 1.3rem; font-weight: 700; color: var(--cap-accent, var(--color-terra)); transition: transform 0.2s ease; }
+        .detail-link:hover .link-label { border-color: var(--cap-accent, var(--color-terra)); }
+        .detail-link:hover .link-arrow { transform: translate(3px, -3px); }
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--grid-line); }
+        .stat-cell { padding: 2rem; border-right: var(--grid-line); text-align: center; }
+        .stat-cell:last-child { border-right: none; }
+        .stat-number { font-size: 3rem; font-weight: 700; color: var(--color-ink-darkest); letter-spacing: -0.04em; line-height: 1; }
+        .stat-label { margin-top: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); font-family: var(--font-mono); }
 </style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
@@ -605,6 +655,12 @@
             <xsl:apply-templates select="ContactForm" />
             <xsl:apply-templates select="StaticHero" />
             <xsl:apply-templates select="ProjectList" />
+            <xsl:apply-templates select="CapHero" />
+            <xsl:apply-templates select="StatsBar" />
+            <xsl:if test="CapHero">
+                <div class="ruler-x" style="position:relative; z-index:1;"></div>
+            </xsl:if>
+            <xsl:apply-templates select="CapabilityList" />
             
             <xsl:apply-templates select="Footer" />
           </div>
@@ -618,6 +674,12 @@
         <xsl:if test="@id='contact'">
           <script src="/scripts/contact.js" defer="defer"></script>
         </xsl:if>
+      
+        <xsl:if test="@id='capabilities'">
+          <script src="/scripts/cap-moire.js" defer="defer"></script>
+          <script src="/scripts/accordion.js" defer="defer"></script>
+        </xsl:if>
+
       </body>
     </html>
   </xsl:template>
@@ -867,6 +929,59 @@
         <span class="project-year"><xsl:value-of select="Year"/></span>
         <span style="text-align: right; color: var(--color-terra);">↗</span>
     </a>
+  </xsl:template>
+
+
+  <xsl:template match="CapHero">
+    <section class="hero-fullbleed">
+        <canvas class="moire-canvas" id="moireCanvas"></canvas>
+        <div class="hero-center-text">
+            <span class="label"><xsl:value-of select="@label"/></span>
+            <h1><xsl:copy-of select="Headline/node()"/></h1>
+        </div>
+    </section>
+  </xsl:template>
+
+  <xsl:template match="StatsBar">
+    <div class="stats-bar">
+      <xsl:for-each select="Stat">
+        <div class="stat-cell">
+            <div class="stat-number"><xsl:value-of select="@val"/></div>
+            <div class="stat-label"><xsl:value-of select="@label"/></div>
+        </div>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="CapabilityList">
+    <div id="capabilities">
+      <xsl:apply-templates select="Capability" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Capability">
+    <xsl:variable name="idx"><xsl:value-of select="position() - 1"/></xsl:variable>
+
+    <div class="capability-row" data-cap="{@number}">
+        <div class="capability-header" onclick="toggleCap({$idx})" id="header-{$idx}">
+            <span class="cap-number"><xsl:value-of select="@number"/></span>
+            <span class="cap-title"><xsl:value-of select="@title"/></span>
+            <span class="cap-subtitle"><xsl:value-of select="@subtitle"/></span>
+            <span class="cap-toggle" id="toggle-{$idx}">+</span>
+        </div>
+        <div class="header-peek" id="peek-{$idx}"><xsl:value-of select="Peek"/></div>
+        <div class="capability-detail" id="detail-{$idx}">
+            <div class="detail-inner">
+                <p class="detail-brief"><xsl:copy-of select="Description/node()"/></p>
+                <div class="detail-block detail-row-link">
+                    <a href="{@href}" class="detail-link">
+                        <span class="link-label">Learn more</span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>

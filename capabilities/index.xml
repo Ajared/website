@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="capabilities" title="Capabilities">
+  
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca",
+          "logo": "https://ajared.ca/logo.png",
+          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "email": "innovation@ajared.ca",
+          "sameAs": [
+            "https://ajared.ng"
+          ],
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Toronto",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA",
+                "streetAddress": "68 Abell St",
+                "postalCode": "M6J 0B1"
+              }
+            },
+            {
+              "@type": "Place",
+              "name": "Abuja",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+              }
+            }
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Applied Research",
+            "AI Product Development",
+            "Enterprise AI Agents",
+            "Data Strategy"
+          ],
+          "telephone": "+16136613550"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ajared.ca"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Capabilities",
+              "item": "https://ajared.ca/capabilities/"
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": "Ajared Research Capabilities",
+          "description": "The four core service disciplines offered by Ajared Research Inc.",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://ajared.ca/capabilities/001-applied-research.html",
+              "name": "Applied Research"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "url": "https://ajared.ca/capabilities/002-ai-product.html",
+              "name": "AI Product Development & Management"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "url": "https://ajared.ca/capabilities/003-enterprise-agents.html",
+              "name": "Enterprise AI Agents"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "url": "https://ajared.ca/capabilities/004-data-strategy.html",
+              "name": "Data and AI Strategy"
+            }
+          ]
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header>
+    <ArchiveBox label="Section / 03">
+      <Title>What We Do</Title>
+      <StatLabel>Disciplines</StatLabel>
+      <StatValue>4 Disciplines</StatValue>
+    </ArchiveBox>
+    <Nav active="capabilities" arrow="↓" />
+  </Header>
+
+  <CapHero label="What We Do">
+    <Headline>Capabilities</Headline>
+  </CapHero>
+
+  <StatsBar>
+    <Stat val="7" label="Projects Delivered" />
+    <Stat val="4" label="Core Disciplines" />
+    <Stat val="12" label="Researchers" />
+    <Stat val="98%" label="Retention Rate" />
+  </StatsBar>
+
+  <CapabilityList>
+    <Capability number="001" title="Applied Research" subtitle="How We Learn What's True" href="/capabilities/001-applied-research.html">
+        <Peek>We figure out what's actually going on before anyone starts building.</Peek>
+        <Description>We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</Description>
+    </Capability>
+    <Capability number="002" title="AI Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
+        <Peek>We help you build and manage AI products from concept to launch.</Peek>
+        <Description>We help you build and manage products in this AI age from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
+    </Capability>
+    <Capability number="003" title="Enterprise AI Agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
+        <Peek>Our enterprise agents can do real work inside your company.</Peek>
+        <Description>Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</Description>
+    </Capability>
+    <Capability number="004" title="Data and AI Strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
+        <Peek>Together we'll figure out where AI fits in your organization.</Peek>
+        <Description>Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</Description>
+    </Capability>
+  </CapabilityList>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>
