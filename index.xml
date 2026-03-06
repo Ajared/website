@@ -148,7 +148,7 @@
   <Hero label="AI Research &amp; Product Studio">
     <Headline>Get AI<br/>working<br/>for you<br/><span style="color:#a1665e;">today.</span></Headline>
     <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.</Sub>
-    <CTA href="/contact/">Get in touch →</CTA>
+    <CTA href="/ai-readiness/" hint="Free · 3 minutes · Personalized action plan">Assess your AI readiness →</CTA>
   </Hero>
 
   <OfferGrid>

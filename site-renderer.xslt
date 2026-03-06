@@ -909,6 +909,11 @@
                 <xsl:copy-of select="Sub/node()"/>
             </p>
             <a href="{CTA/@href}" class="btn"><xsl:value-of select="CTA"/></a>
+            <xsl:if test="CTA/@hint">
+              <p style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-ink-light); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; max-width: none;">
+                <xsl:value-of select="CTA/@hint"/>
+              </p>
+            </xsl:if>
         </div>
         <div class="moire-container" id="moire"></div>
     </section>
