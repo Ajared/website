@@ -208,6 +208,18 @@
             .stats-bar { grid-template-columns: 1fr 1fr; }
             .stat-cell { padding: 1.5rem 1rem; }
             .stat-cell:nth-child(2) { border-right: none; }
+            .nav-crumb { padding: 0; font-size: 0.58rem; }
+            .hero-detail { padding: 2rem 1.2rem; }
+            .hero-detail h1 { font-size: clamp(1.6rem, 8vw, 2.6rem); }
+            .section-bar { padding: 0.8rem 1rem; }
+            .section-body { padding: 1.2rem; }
+            .offerings { grid-template-columns: 1fr; }
+            .process-step { grid-template-columns: 28px 1fr; padding: 1.1rem 1rem; }
+            .cta-block { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.8rem 1.2rem; }
+            .cta-btn { text-align: center; display: block; }
+            .cap-nav { grid-template-columns: 1fr 1fr; }
+            .cap-nav-center { display: none; }
+
 
 
 
@@ -627,6 +639,53 @@
         .stat-cell:last-child { border-right: none; }
         .stat-number { font-size: 3rem; font-weight: 700; color: var(--color-ink-darkest); letter-spacing: -0.04em; line-height: 1; }
         .stat-label { margin-top: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); font-family: var(--font-mono); }
+
+        /* Capability Detail Pages */
+        .nav-crumb { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink); display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; }
+        .nav-crumb .sep { opacity: 0.4; }
+        .nav-crumb .cur { color: var(--color-terra); }
+        
+        .hero-detail { background: var(--color-ink-darkest); padding: 1.4rem 2rem; border-bottom: 3px solid var(--color-terra); position: relative; overflow: hidden; }
+        .hero-detail-moire { position: absolute; inset: 0; pointer-events: none; display: block; width: 100%; height: 100%; }
+        .hero-detail-content { position: relative; z-index: 1; }
+        .hero-detail h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; color: #fff; margin-bottom: 0; }
+        
+        .page-body { border-bottom: var(--grid-line); }
+        .section { border-bottom: var(--grid-line); }
+        .section:last-child { border-bottom: none; }
+        .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); }
+        .section-title { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.04em; color: var(--color-ink-darkest); }
+        .section-body { padding: 2rem 2.5rem 2.5rem 2rem; }
+        .section-body > p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); margin-bottom: 1.5rem; max-width: 60ch; }
+        .section-body > p:last-child { margin-bottom: 0; }
+        
+        .offerings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: var(--grid-line); border-left: var(--grid-line); }
+        .offering { padding: 1.6rem 1.8rem; border-right: var(--grid-line); border-bottom: var(--grid-line); }
+        .offering h4 { font-size: 0.97rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-ink-darkest); margin-bottom: 0.55rem; }
+        .offering p { font-size: 0.85rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
+        
+        .process-step { display: grid; grid-template-columns: 36px 1fr; border: var(--grid-line); border-bottom: none; padding: 1.4rem 1.6rem; gap: 1.2rem; }
+        .process-step:last-child { border-bottom: var(--grid-line); }
+        .step-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-terra); letter-spacing: 0.1em; padding-top: 0.2rem; }
+        .step-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--color-ink-darkest); letter-spacing: -0.02em; margin-bottom: 0.45rem; }
+        .step-body p { font-size: 0.87rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
+        
+        .deliverable-row { display: grid; grid-template-columns: 28px 1fr; border: var(--grid-line); border-bottom: none; padding: 0.85rem 1rem; align-items: start; font-size: 0.82rem; color: var(--color-ink-dark); line-height: 1.5; }
+        .deliverable-row:last-child { border-bottom: var(--grid-line); }
+        .check { color: var(--color-ink-light); }
+        .check.done { color: #4ade80; }
+        
+        .cap-nav { display: grid; grid-template-columns: 1fr auto 1fr; border-bottom: var(--grid-line); }
+        .cap-nav-prev, .cap-nav-center, .cap-nav-next { padding: 1rem 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+        .cap-nav-prev:hover, .cap-nav-next:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
+        .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
+        .cap-nav-center:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
+        .cap-nav-next { justify-content: flex-end; }
+        
+        .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
+        .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
+        .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
+        .cta-btn:hover { background: var(--color-terra); color: #fff; }
 </style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
@@ -661,6 +720,10 @@
                 <div class="ruler-x" style="position:relative; z-index:1;"></div>
             </xsl:if>
             <xsl:apply-templates select="CapabilityList" />
+            <xsl:apply-templates select="CapabilityHero" />
+            <xsl:apply-templates select="PageBody" />
+            <xsl:apply-templates select="CapNav" />
+            <xsl:apply-templates select="CTABlock" />
             
             <xsl:apply-templates select="Footer" />
           </div>
@@ -680,6 +743,11 @@
           <script src="/scripts/accordion.js" defer="defer"></script>
         </xsl:if>
 
+      
+        <xsl:if test="@id='capability-detail'">
+          <script src="/scripts/cap-detail-moire.js" defer="defer"></script>
+        </xsl:if>
+
       </body>
     </html>
   </xsl:template>
@@ -687,58 +755,122 @@
   <!-- Component Templates -->
   <xsl:template match="Header">
     <header>
-      <div class="header-cell" style="justify-content: flex-start; gap: 0;">
-          <span class="label" style="color: var(--color-ink);">Information Architecture</span>
-          <a href="/" style="text-decoration: none;">
-              <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;" />
-              <div class="logo-text" style="line-height: 1.1;">Research Inc.</div>
-          </a>
-      </div>
-      <div class="header-cell">
-          <xsl:choose>
+      
+        <xsl:choose>
+          <xsl:when test="Nav/Breadcrumbs">
+            <div class="header-cell" style="padding: 0.9rem 1.2rem;">
+              <a href="/" style="text-decoration:none;display:flex;align-items:center;">
+                  <img src="/logo.png" alt="Ajared Logo" style="height:32px;width:auto;display:block;"/>
+                  <div class="logo-text" style="font-size: 0.72rem; line-height: 1.2; margin-left: 0.6rem;">Research Inc.</div>
+              </a>
+            </div>
+            <div class="header-cell" style="padding: 0.9rem 1.2rem;">
+              <div class="nav-crumb">
+                <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
+                <span class="sep">/</span>
+                <span class="cur"><xsl:value-of select="Nav/Breadcrumbs/Current"/></span>
+              </div>
+            </div>
+            <div class="header-cell" style="padding: 0.9rem 1.2rem; align-items: center; justify-content: flex-end;">
+              <nav style="display: flex; gap: 1.8rem;">
+                <a href="/" style="font-size: 0.72rem;">Index</a>
+                <a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a>
+                <a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a>
+                <a href="/contact/" style="font-size: 0.72rem;">Contact</a>
+                <a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a>
+              </nav>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="header-cell" style="justify-content: flex-start; gap: 0;">
+                <span class="label" style="color: var(--color-ink);">Information Architecture</span>
+                <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
+                  <a href="/" style="text-decoration: none; display: block;">
+                      <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"/>
+                      <div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div>
+                  </a>
+                </div>
+            </div>
             
-            <xsl:when test="ArchiveBox">
-              <span class="label"><xsl:value-of select="ArchiveBox/@label"/></span>
-              <h2><xsl:value-of select="ArchiveBox/Title"/></h2>
-              <div style="margin-top:auto">
-                  <span class="label"><xsl:value-of select="ArchiveBox/StatLabel"/></span>
-                  <p><xsl:value-of select="ArchiveBox/StatValue"/></p>
-              </div>
-            </xsl:when>
-            <xsl:when test="Description">
-              <span class="label">Description</span>
-              <p><xsl:value-of select="Description"/></p>
-            </xsl:when>
-            <xsl:otherwise>
-              <span class="label">Coordinates</span>
-              <p style="font-size: 0.85em;">
-                <xsl:for-each select="CoordCell">
-                  <xsl:value-of select="@city"/><br/>
-                  <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
-                  <xsl:if test="position() != last()"><br/></xsl:if>
-                </xsl:for-each>
-              </p>
-              <div style="margin-top:auto">
-                  <span class="label">Status</span>
-                  <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
-              </div>
-            </xsl:otherwise>
-          </xsl:choose>
-      </div>
-      <div class="header-cell">
-          <span class="label">Navigation</span>
-          <xsl:apply-templates select="Nav" />
-          
-          <xsl:choose>
-            <xsl:when test="Nav/@arrow">
-              <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
-            </xsl:when>
-            <xsl:otherwise>
-              <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
-            </xsl:otherwise>
-          </xsl:choose>
-      </div>
-    </header>
+            <div class="header-cell">
+              <xsl:choose>
+                <xsl:when test="ArchiveBox">
+                  <span class="label"><xsl:value-of select="ArchiveBox/@label"/></span>
+                  <h2><xsl:value-of select="ArchiveBox/Title"/></h2>
+                  <div style="margin-top:auto">
+                      <span class="label"><xsl:value-of select="ArchiveBox/StatLabel"/></span>
+                      <p><xsl:value-of select="ArchiveBox/StatValue"/></p>
+                  </div>
+                </xsl:when>
+                <xsl:when test="Description">
+                  <span class="label">Description</span>
+                  <p><xsl:value-of select="Description"/></p>
+                </xsl:when>
+                <xsl:otherwise>
+                  <span class="label">Coordinates</span>
+                  <p style="font-size: 0.85em;">
+                    <xsl:for-each select="CoordCell">
+                      <xsl:value-of select="@city"/><br/>
+                      <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+                      <xsl:if test="position() != last()"><br/></xsl:if>
+                    </xsl:for-each>
+                  </p>
+                  <div style="margin-top:auto">
+                      <span class="label">Status</span>
+                      <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+                  </div>
+                </xsl:otherwise>
+              </xsl:choose>
+            </div>
+            
+            <div class="header-cell">
+                <span class="label">Navigation</span>
+                <nav>
+                    <p><a href="/">Index</a></p>
+                    <p>
+                        <xsl:choose>
+                          <xsl:when test="Nav/@active='case-studies'">
+                            <a href="/case-studies/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <a href="/case-studies/">Case Studies</a>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                    </p>
+                    <p>
+                        <xsl:choose>
+                          <xsl:when test="Nav/@active='capabilities'">
+                            <a href="/capabilities/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Capabilities</a>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <a href="/capabilities/">Capabilities</a>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                    </p>
+                    <p>
+                        <xsl:choose>
+                          <xsl:when test="Nav/@active='contact'">
+                            <a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <a href="/contact/">Contact</a>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                    </p>
+                    <p><a href="https://www.ajared.ng">Read</a></p>
+                </nav>
+                <xsl:choose>
+                  <xsl:when test="Nav/@arrow">
+                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+                  </xsl:otherwise>
+                </xsl:choose>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
+      </header>
   </xsl:template>
 
   <xsl:template match="Nav">
@@ -981,6 +1113,112 @@
                 </div>
             </div>
         </div>
+    </div>
+  </xsl:template>
+
+
+  <xsl:template match="CapabilityHero">
+    <div class="hero-detail">
+      <canvas class="hero-detail-moire" id="heroMoire"></canvas>
+      <div class="hero-detail-content">
+        <h1><xsl:value-of select="Title"/></h1>
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="PageBody">
+    <div class="page-body">
+      <xsl:apply-templates select="Section" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Section">
+    <div class="section">
+      <div class="section-bar"><span class="section-title"><xsl:value-of select="@title"/></span></div>
+      <div class="section-body">
+        <xsl:copy-of select="Intro/node()"/>
+        <xsl:apply-templates select="Offerings" />
+        <xsl:apply-templates select="Process" />
+        <xsl:apply-templates select="Deliverables" />
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Offerings">
+    <div class="offerings">
+      <xsl:for-each select="Offering">
+        <div class="offering">
+          <h4><xsl:value-of select="Title"/></h4>
+          <p><xsl:copy-of select="Description/node()"/></p>
+        </div>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Process">
+    <div class="process-list">
+      <xsl:for-each select="Step">
+        <div class="process-step">
+          <div class="step-num"><xsl:value-of select="@num"/></div>
+          <div class="step-body">
+            <h4><xsl:value-of select="Title"/></h4>
+            <p><xsl:copy-of select="Description/node()"/></p>
+          </div>
+        </div>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Deliverables">
+    <div class="deliverables">
+      <xsl:for-each select="Row">
+        <div class="deliverable-row">
+          <xsl:choose>
+            <xsl:when test="@checked='true'">
+              <span class="check done">&#10003;</span>
+            </xsl:when>
+            <xsl:otherwise>
+               <span class="check">&#9675;</span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:value-of select="."/>
+        </div>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="CapNav">
+    <div class="cap-nav">
+      <xsl:choose>
+        <xsl:when test="Prev">
+          <a href="{Prev/@href}" class="cap-nav-prev">&#8592; <xsl:value-of select="Prev"/></a>
+        </xsl:when>
+        <xsl:otherwise>
+          <div class="cap-nav-prev"></div>
+        </xsl:otherwise>
+      </xsl:choose>
+      
+      <a href="/capabilities/" class="cap-nav-center">All Capabilities</a>
+      
+      <xsl:choose>
+        <xsl:when test="Next">
+          <a href="{Next/@href}" class="cap-nav-next"><xsl:value-of select="Next"/> &#8594;</a>
+        </xsl:when>
+        <xsl:otherwise>
+           <div class="cap-nav-next"></div>
+        </xsl:otherwise>
+      </xsl:choose>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="CTABlock">
+    <div class="cta-block">
+      <div>
+        <h3><xsl:value-of select="Title"/></h3>
+      </div>
+      <a href="{Button/@href}" style="text-decoration:none;">
+        <div class="cta-btn"><xsl:value-of select="Button"/></div>
+      </a>
     </div>
   </xsl:template>
 
