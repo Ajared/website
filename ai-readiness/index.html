@@ -77,12 +77,13 @@
       align-items: center;
       gap: 10px;
     }
-    .site-header img { height: 28px; }
+    .site-header img { height: 40px; width: auto; }
     .site-header .wordmark {
-      font-family: var(--serif);
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--mid);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--teal-darker);
     }
     .header-nav {
       font-family: var(--mono);
@@ -102,7 +103,7 @@
     .hero {
       max-width: 680px;
       margin: 0 auto;
-      padding: 80px 32px 48px;
+      padding: 40px 32px 24px;
     }
     .hero-label {
       font-family: var(--mono);
@@ -110,20 +111,21 @@
       text-transform: uppercase;
       letter-spacing: 2.5px;
       color: var(--teal);
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .hero h1 {
       font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.2;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
       color: var(--dark);
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
     .hero p {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--mid);
-      line-height: 1.7;
+      line-height: 1.55;
       max-width: 520px;
     }
 
@@ -131,7 +133,7 @@
     .progress-bar {
       max-width: 680px;
       margin: 0 auto;
-      padding: 0 32px 40px;
+      padding: 0 32px 16px;
       display: flex;
       gap: 4px;
     }
@@ -150,17 +152,17 @@
     .questions-container {
       max-width: 680px;
       margin: 0 auto;
-      padding: 0 32px 60px;
+      padding: 0 32px 24px;
     }
 
     .question-block {
-      margin-bottom: 48px;
+      margin-bottom: 28px;
     }
     .question-header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       gap: 16px;
     }
     .question-number {
@@ -171,8 +173,9 @@
     }
     .question-label {
       font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--dark);
       flex: 1;
     }
@@ -186,16 +189,16 @@
     }
 
     .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
     }
 
     .option-btn {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
+      gap: 10px;
+      padding: 10px 14px;
       border: 1.5px solid var(--light);
       border-radius: 2px;
       background: var(--white);
@@ -246,7 +249,7 @@
     /* ── Submit ── */
     .submit-area {
       text-align: center;
-      padding: 20px 32px 80px;
+      padding: 16px 32px 40px;
       max-width: 680px;
       margin: 0 auto;
     }
@@ -592,18 +595,34 @@
     /* ── Footer ── */
     .site-footer {
       border-top: 1px solid var(--light);
-      padding: 24px 32px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--mid);
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
     }
-    .site-footer a { color: var(--teal); text-decoration: none; }
+    .site-footer p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--mid);
+      max-width: none;
+    }
+    .site-footer .footer-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dark);
+    }
+    .site-footer a { color: inherit; text-decoration: none; }
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      .hero { padding: 48px 20px 32px; }
-      .hero h1 { font-size: 28px; }
+      .hero { padding: 28px 20px 18px; }
+      .hero h1 { font-size: 22px; }
       .progress-bar, .questions-container, .submit-area { padding-left: 20px; padding-right: 20px; }
+      .options-list { grid-template-columns: 1fr; }
       .lead-section.active { padding: 32px 16px; }
       .lead-card { padding: 32px 24px; }
       .results-section { padding-left: 20px; padding-right: 20px; }
@@ -753,7 +772,9 @@
   </div>
 
   <footer class="site-footer">
-    © 2026 <a href="/">Ajared Research Inc.</a> — Research, educate, design.
+    <p>© 2026 <a href="/">Ajared Research Inc.</a></p>
+    <span class="footer-label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+      <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
   </footer>
 
 <script>
