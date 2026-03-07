@@ -570,7 +570,7 @@
     
         /* Form Layout */
         .form-section { display: grid; grid-template-columns: 1fr 1fr; flex-grow: 1; }
-        .form-left h1 { font-size: clamp(3rem, 7.5vw, 6.75rem); }
+        .form-left h1 { font-size: clamp(2.8rem, 7vw, 6.3rem); line-height: 1; margin-bottom: 2.5rem; }
         .form-left { padding: 4rem 2rem; border-right: var(--grid-line); }
         .form-right { padding: 4rem 2rem; background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
         .instrument-field { margin-bottom: 3rem; position: relative; }
