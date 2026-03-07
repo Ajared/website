@@ -318,6 +318,7 @@
         }
 
         .service-card {
+            position: relative;
             padding: 2rem;
             border-right: var(--grid-line);
             border-bottom: var(--grid-line);
@@ -387,6 +388,16 @@
         .service-card:hover .arrow-icon::after {
             border-top-color: var(--color-bg);
             border-right-color: var(--color-bg);
+        }
+
+        /* Stretched link — entire card is clickable */
+        .service-card > a {
+            position: static;
+        }
+        .service-card > a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
         }
 
         /* Button — Change 1: terra cotta border + text, fills on hover */
@@ -540,6 +551,7 @@
             }
 
             .service-card {
+            position: relative;
                 padding: 1.5rem 1rem;
                 border-right: none;
                 border-bottom: var(--grid-line);
