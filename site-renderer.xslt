@@ -261,7 +261,6 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            border-right: var(--grid-line);
             position: relative;
             z-index: 2;
         }
