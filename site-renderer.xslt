@@ -471,7 +471,7 @@
         }
 
         .track-item:not(:last-child)::after {
-            content: '›';
+            content: '\203A';
             color: var(--color-terra);
             margin: 0 0.6rem;
             font-size: 1.1rem;
