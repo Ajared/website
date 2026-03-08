@@ -1587,6 +1587,10 @@
             <input type="hidden" name="assessment_score" id="sprint-hidden-score"/>
             <input type="hidden" name="assessment_answers" id="sprint-hidden-answers"/>
             <div class="instrument-field">
+              <span class="label">Name</span>
+              <input type="text" name="name" id="sprint-lead-name" class="instrument-input" placeholder="Your name"/>
+            </div>
+            <div class="instrument-field" style="margin-top: 1rem;">
               <span class="label">Email</span>
               <input type="email" name="email" id="sprint-lead-email" class="instrument-input" placeholder="you@example.com" required="required"/>
             </div>
