@@ -1,20 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="html" doctype-system="about:legacy-compat" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
-
-  <!-- Root template -->
-  <xsl:template match="/Page">
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png"/>
-        <title><xsl:value-of select="@title" /> — Ajared Research Inc</title>
-        <style>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+<title>1 Month AI Development Sprint &#8212; Readiness Assessment &#8212; Ajared Research Inc</title>
+<style>
         /* iA Writer Quattro S Font */
         @font-face {
             font-family: 'iA Writer Quattro S';
@@ -240,7 +235,7 @@
             font-size: 1rem;
         }
 
-        /* Change 11: Nav hover — terra cotta */
+        /* Change 11: Nav hover &#8212; terra cotta */
         nav a:hover {
             text-decoration: underline;
             color: var(--color-terra);
@@ -296,7 +291,7 @@
             pointer-events: none;
         }
 
-        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
         .ripple-secondary {
             position: absolute;
             border-radius: 50%;
@@ -356,7 +351,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Arrow — Change 3: terra cotta by default */
+        /* Arrow &#8212; Change 3: terra cotta by default */
         .arrow-icon {
             width: 40px;
             height: 1px;
@@ -389,7 +384,7 @@
             border-right-color: var(--color-bg);
         }
 
-        /* Stretched link — entire card is clickable */
+        /* Stretched link &#8212; entire card is clickable */
         .service-card > a {
             position: static;
         }
@@ -399,7 +394,7 @@
             inset: 0;
         }
 
-        /* Button — Change 1: terra cotta border + text, fills on hover */
+        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -464,7 +459,7 @@
             max-width: none;
         }
 
-        /* Offer card tracks (card 03 — Get Started with AI) */
+        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
         .track-list {
             margin-top: 1rem;
             display: flex;
@@ -566,7 +561,7 @@
                 gap: 2rem;
             }
 
-            .footer&gt;div:last-child {
+            .footer>div:last-child {
                 text-align: left;
             }
 
@@ -699,557 +694,59 @@
         .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
         .cta-btn:hover { background: var(--color-terra); color: #fff; }
 </style>
-        
-        <!-- Inject any page-specific JSON-LD schemas from XML -->
-        <xsl:if test="Schema">
-            <script type="application/ld+json">
-                <xsl:copy-of select="Schema/node()"/>
-            </script>
-        </xsl:if>
-      </head>
-      <body>
-        <div class="grid-container">
-          <div class="ruler-y">
-            <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
-            <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
-            <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
-          </div>
-          <div class="main-content">
-            <div class="ruler-x"></div>
-
-            <xsl:apply-templates select="Header" />
-            <xsl:apply-templates select="Hero" />
-            <xsl:if test="Hero">
-                <div class="ruler-x" style="position: relative; z-index: 1;"></div>
-            </xsl:if>
-            <xsl:apply-templates select="OfferGrid" />
-            <xsl:apply-templates select="ContactForm" />
-            <xsl:apply-templates select="SprintForm" />
-            <xsl:apply-templates select="StaticHero" />
-            <xsl:apply-templates select="ProjectList" />
-            <xsl:apply-templates select="CapHero" />
-            <xsl:apply-templates select="StatsBar" />
-            <xsl:if test="CapHero">
-                <div class="ruler-x" style="position:relative; z-index:1;"></div>
-            </xsl:if>
-            <xsl:apply-templates select="CapabilityList" />
-            <xsl:apply-templates select="CapabilityHero" />
-            <xsl:apply-templates select="PageBody" />
-            <xsl:apply-templates select="CapNav" />
-            <xsl:apply-templates select="CTABlock" />
-            
-            <xsl:apply-templates select="Footer" />
-          </div>
-        </div>
-        
-        <!-- Page specific scripts -->
-        <xsl:if test="@id='index'">
-          <script src="/scripts/moire.js" defer="defer"></script>
-        </xsl:if>
-        <!-- Contact scripts -->
-        <xsl:if test="@id='contact'">
-          <script src="/scripts/contact.js" defer="defer"></script>
-        </xsl:if>
-      
-        <xsl:if test="@id='capabilities'">
-          <script src="/scripts/cap-moire.js" defer="defer"></script>
-          <script src="/scripts/accordion.js" defer="defer"></script>
-        </xsl:if>
-
-      
-        <xsl:if test="@id='capability-detail'">
-          <script src="/scripts/cap-detail-moire.js" defer="defer"></script>
-        </xsl:if>
-
-        <xsl:if test="@id='ai-sprint'">
-          <script src="/scripts/sprint.js" defer="defer"></script>
-        </xsl:if>
-
-      </body>
-    </html>
-  </xsl:template>
-
-  <!-- Component Templates -->
-  <xsl:template match="Header">
-    <header>
-      
-        <xsl:choose>
-          <xsl:when test="Nav/Breadcrumbs">
-            <div class="header-cell" style="padding: 0.9rem 1.2rem;">
-              <a href="/" style="text-decoration:none;display:flex;align-items:center;">
-                  <img src="/logo.png" alt="Ajared Logo" style="height:32px;width:auto;display:block;"/>
-                  <div class="logo-text" style="font-size: 0.72rem; line-height: 1.2; margin-left: 0.6rem;">Research Inc.</div>
-              </a>
-            </div>
-            <div class="header-cell" style="padding: 0.9rem 1.2rem;">
-              <div class="nav-crumb">
-                <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
-                <span class="sep">/</span>
-                <span class="cur"><xsl:value-of select="Nav/Breadcrumbs/Current"/></span>
-              </div>
-            </div>
-            <div class="header-cell" style="padding: 0.9rem 1.2rem; align-items: center; justify-content: flex-end;">
-              <nav style="display: flex; gap: 1.8rem;">
-                <a href="/" style="font-size: 0.72rem;">Index</a>
-                <a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a>
-                <a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a>
-                <a href="/contact/" style="font-size: 0.72rem;">Contact</a>
-                <a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a>
-              </nav>
-            </div>
-          </xsl:when>
-          <xsl:otherwise>
-            <div class="header-cell" style="justify-content: flex-start; gap: 0;">
-                <span class="label" style="color: var(--color-ink);">Information Architecture</span>
-                <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
-                  <a href="/" style="text-decoration: none; display: block;">
-                      <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"/>
-                      <div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div>
-                  </a>
-                </div>
-            </div>
-            
-            <div class="header-cell">
-              <xsl:choose>
-                <xsl:when test="ArchiveBox">
-                  <span class="label"><xsl:value-of select="ArchiveBox/@label"/></span>
-                  <h2><xsl:value-of select="ArchiveBox/Title"/></h2>
-                  <div style="margin-top:auto">
-                      <span class="label"><xsl:value-of select="ArchiveBox/StatLabel"/></span>
-                      <p><xsl:value-of select="ArchiveBox/StatValue"/></p>
-                  </div>
-                </xsl:when>
-                <xsl:when test="Description">
-                  <span class="label">Description</span>
-                  <p><xsl:value-of select="Description"/></p>
-                </xsl:when>
-                <xsl:otherwise>
-                  <span class="label">Coordinates</span>
-                  <p style="font-size: 0.85em;">
-                    <xsl:for-each select="CoordCell">
-                      <xsl:value-of select="@city"/><br/>
-                      <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
-                      <xsl:if test="position() != last()"><br/></xsl:if>
-                    </xsl:for-each>
-                  </p>
-                  <div style="margin-top:auto">
-                      <span class="label">Status</span>
-                      <p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
-                  </div>
-                </xsl:otherwise>
-              </xsl:choose>
-            </div>
-            
-            <div class="header-cell">
-                <span class="label">Navigation</span>
-                <nav>
-                    <p><a href="/">Index</a></p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='case-studies'">
-                            <a href="/case-studies/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/case-studies/">Case Studies</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='capabilities'">
-                            <a href="/capabilities/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Capabilities</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/capabilities/">Capabilities</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='contact'">
-                            <a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/contact/">Contact</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p><a href="https://www.ajared.ng">Read</a></p>
-                </nav>
-                <xsl:choose>
-                  <xsl:when test="Nav/@arrow">
-                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
-                  </xsl:otherwise>
-                </xsl:choose>
-            </div>
-          </xsl:otherwise>
-        </xsl:choose>
-      </header>
-  </xsl:template>
-
-  <xsl:template match="Nav">
-    <nav>
-        <p><a href="/">
-          <xsl:if test="@active='index'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-          Index</a>
-        </p>
-        <p><a href="/case-studies/">
-          <xsl:if test="@active='case-studies'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Case Studies</a></p>
-        <p><a href="/capabilities/">
-          <xsl:if test="@active='capabilities'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Capabilities</a></p>
-        <p><a href="/contact/">
-          <xsl:if test="@active='contact'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Contact</a></p>
-        <p><a href="https://www.ajared.ng">Read</a></p>
-    </nav>
-  </xsl:template>
-
-  <xsl:template match="Hero">
-    <section class="hero-section">
-        <div class="hero-text">
-            <span class="label" style="margin-bottom: 2rem; color: #a1665e;"><xsl:value-of select="@label"/></span>
-            <h1><xsl:copy-of select="Headline/node()"/></h1>
-            <p style="margin-top: 2rem; max-width: none;">
-                <xsl:copy-of select="Sub/node()"/>
-            </p>
-            <a href="{CTA/@href}" class="btn"><xsl:value-of select="CTA"/></a>
-            <xsl:if test="CTA/@hint">
-              <p style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-ink-light); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; max-width: none;">
-                <xsl:value-of select="CTA/@hint"/>
-              </p>
-            </xsl:if>
-        </div>
-        <div class="moire-container" id="moire"></div>
-    </section>
-  </xsl:template>
-
-  <xsl:template match="OfferGrid">
-    <div class="services-grid">
-      <xsl:apply-templates select="Offer" />
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Offer">
-    <div class="service-card">
-        <div>
-            <span class="label"><span style="color: #a1665e;"><xsl:value-of select="@number"/></span> — <xsl:value-of select="@tag"/></span>
-            <h3><xsl:value-of select="@title"/></h3>
-            <p>
-                <!-- Because text() only gets direct text nodes, we need to extract HTML or text inside Offer before Tracks -->
-                <xsl:copy-of select="Description/node()"/>
-            </p>
-            <xsl:if test="Tracks">
-              <div class="track-list">
-                <xsl:for-each select="Tracks/Track">
-                  <div class="track-item">
-                      <span class="track-num"><xsl:value-of select="@n"/></span>
-                      <span class="track-name"><xsl:value-of select="text()"/></span>
-                  </div>
-                </xsl:for-each>
-              </div>
-            </xsl:if>
-        </div>
-        <a href="{@href}">
-            <xsl:choose>
-                <xsl:when test="position() = 1">
-                    <xsl:attribute name="style">text-decoration: none; color: inherit; display: block; margin-top: 1rem;</xsl:attribute>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="style">text-decoration: none; color: inherit; display: block; margin-top: 2rem;</xsl:attribute>
-                </xsl:otherwise>
-            </xsl:choose>
-            <div class="arrow-icon"></div>
-        </a>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Footer">
-    <div class="footer">
-        <div>
-            <span class="label" style="color: var(--color-terra);">Inquiries</span>
-            <h2><a href="mailto:{@email}">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
-        </div>
-        <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
-            <p>© <xsl:value-of select="@year"/> Ajared Research Inc.</p>
-            <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
-                <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
-        </div>
-    </div>
-  </xsl:template>
-
-
-  <xsl:template match="ContactForm">
-    <section class="form-section">
-      <div class="form-left">
-          <span class="label">Contact</span>
-          <h1>New Inquiry</h1>
-          <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
-              <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc" />
-              <input type="hidden" name="_replyto" value="" />
-              <div class="instrument-field">
-                  <span class="label">01 / Principal Contact</span>
-                  <input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual" />
-                  <div class="technical-markings">
-                      <span>MIN_LEN: 2</span><span>TYPE: STRING</span><span>MAX_LEN: 128</span>
-                  </div>
-              </div>
-              <div class="instrument-field">
-                  <span class="label">02 / Email</span>
-                  <input type="email" name="email" required="required" class="instrument-input" placeholder="your-email@domain.com" />
-                  <div class="technical-markings">
-                      <span>VAL: SMTP</span><span>PRIORITY: HIGH</span>
-                  </div>
-              </div>
-              <div class="instrument-field" id="deliverable-field" style="display: none;">
-                  <span class="label">03 / Specific Deliverable (Optional)</span>
-                  <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
-                      <option value="">Select a deliverable...</option>
-                  </select>
-                  <div class="technical-markings">
-                      <span>DYNAMIC</span><span>TYPE: SELECT</span><span>OPTIONAL</span>
-                  </div>
-              </div>
-              <div class="instrument-field">
-                  <span class="label" id="scope-label">03 / Project Scope / Brief</span>
-                  <textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
-              </div>
-              <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
-              <button type="submit" class="btn-submit" id="submit-btn">Send Message ↗</button>
-          </form>
-      </div>
-      <div class="form-right">
-          <div class="instrument-field">
-              <span class="label">04 / Origin Coordinates</span>
-              <p style="margin-bottom: 1rem;">Where are you based?</p>
-              <div class="coordinate-selector" id="coord-map">
-                  <div class="crosshair-v" id="ch-v"></div>
-                  <div class="crosshair-h" id="ch-h"></div>
-              </div>
-              <div class="technical-markings" style="margin-top: 10px;">
-                  <span id="coord-display">LAT: 0.0000 / LONG: 0.0000</span>
-              </div>
-          </div>
-          <div class="instrument-field" style="margin-top: 4rem;">
-              <span class="label">System Status</span>
-              <div class="status-indicator">
-                  <div class="status-light"></div>
-                  <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;">Awaiting Input Signal...</p>
-              </div>
-          </div>
-          <div style="margin-top: 4rem;">
-              <span class="label">Response Times</span>
-              <p>We typically respond within 48–72 hours.</p>
-          </div>
-      </div>
-    </section>
-  </xsl:template>
-
-
-  <xsl:template match="StaticHero">
-    <section class="hero-section">
-        <div class="hero-text">
-            <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);"><xsl:value-of select="@label"/></span>
-            <h1><xsl:copy-of select="Headline/node()"/></h1>
-        </div>
-        <div class="moire-static" style="transform: scale(1.5);"></div>
-        <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
-    </section>
-  </xsl:template>
-
-  <xsl:template match="ProjectList">
-    <div class="calibration-grid">
-      <xsl:apply-templates select="Project" />
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Project">
-    <a href="{@href}" class="project-row">
-        <span class="project-id"><xsl:value-of select="@id"/></span>
-        <span class="project-title"><xsl:value-of select="Title"/></span>
-        <span class="project-meta"><xsl:value-of select="Meta"/></span>
-        <span class="project-year"><xsl:value-of select="Year"/></span>
-        <span style="text-align: right; color: var(--color-terra);">↗</span>
-    </a>
-  </xsl:template>
-
-
-  <xsl:template match="CapHero">
-    <section class="hero-fullbleed">
-        <canvas class="moire-canvas" id="moireCanvas"></canvas>
-        <div class="hero-center-text">
-            <span class="label"><xsl:value-of select="@label"/></span>
-            <h1><xsl:copy-of select="Headline/node()"/></h1>
-        </div>
-    </section>
-  </xsl:template>
-
-  <xsl:template match="StatsBar">
-    <div class="stats-bar">
-      <xsl:for-each select="Stat">
-        <div class="stat-cell">
-            <div class="stat-number"><xsl:value-of select="@val"/></div>
-            <div class="stat-label"><xsl:value-of select="@label"/></div>
-        </div>
-      </xsl:for-each>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="CapabilityList">
-    <div id="capabilities">
-      <xsl:apply-templates select="Capability" />
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Capability">
-    <xsl:variable name="idx"><xsl:value-of select="position() - 1"/></xsl:variable>
-
-    <div class="capability-row" data-cap="{@number}">
-        <div class="capability-header" onclick="toggleCap({$idx})" id="header-{$idx}">
-            <span class="cap-number"><xsl:value-of select="@number"/></span>
-            <span class="cap-title"><xsl:value-of select="@title"/></span>
-            <span class="cap-subtitle"><xsl:value-of select="@subtitle"/></span>
-            <span class="cap-toggle" id="toggle-{$idx}">+</span>
-        </div>
-        <div class="header-peek" id="peek-{$idx}"><xsl:value-of select="Peek"/></div>
-        <div class="capability-detail" id="detail-{$idx}">
-            <div class="detail-inner">
-                <p class="detail-brief"><xsl:copy-of select="Description/node()"/></p>
-                <div class="detail-block detail-row-link">
-                    <a href="{@href}" class="detail-link">
-                        <span class="link-label">Learn more</span>
-                        <span class="link-arrow">↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-  </xsl:template>
-
-
-  <xsl:template match="CapabilityHero">
-    <div class="hero-detail">
-      <canvas class="hero-detail-moire" id="heroMoire"></canvas>
-      <div class="hero-detail-content">
-        <h1><xsl:value-of select="Title"/></h1>
-      </div>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="PageBody">
-    <div class="page-body">
-      <xsl:apply-templates select="Section" />
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Section">
-    <div class="section">
-      <div class="section-bar"><span class="section-title"><xsl:value-of select="@title"/></span></div>
-      <div class="section-body">
-        <xsl:copy-of select="Intro/node()"/>
-        <xsl:apply-templates select="Offerings" />
-        <xsl:apply-templates select="Process" />
-        <xsl:apply-templates select="Deliverables" />
-      </div>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Offerings">
-    <div class="offerings">
-      <xsl:for-each select="Offering">
-        <div class="offering">
-          <h4><xsl:value-of select="Title"/></h4>
-          <p><xsl:copy-of select="Description/node()"/></p>
-        </div>
-      </xsl:for-each>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Process">
-    <div class="process-list">
-      <xsl:for-each select="Step">
-        <div class="process-step">
-          <div class="step-num"><xsl:value-of select="@num"/></div>
-          <div class="step-body">
-            <h4><xsl:value-of select="Title"/></h4>
-            <p><xsl:copy-of select="Description/node()"/></p>
-          </div>
-        </div>
-      </xsl:for-each>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="Deliverables">
-    <div class="deliverables">
-      <xsl:for-each select="Row">
-        <div class="deliverable-row">
-          <xsl:choose>
-            <xsl:when test="@checked='true'">
-              <span class="check done">&#10003;</span>
-            </xsl:when>
-            <xsl:otherwise>
-               <span class="check">&#9675;</span>
-            </xsl:otherwise>
-          </xsl:choose>
-          <xsl:value-of select="."/>
-        </div>
-      </xsl:for-each>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="CapNav">
-    <div class="cap-nav">
-      <xsl:choose>
-        <xsl:when test="Prev">
-          <a href="{Prev/@href}" class="cap-nav-prev">&#8592; <xsl:value-of select="Prev"/></a>
-        </xsl:when>
-        <xsl:otherwise>
-          <div class="cap-nav-prev"></div>
-        </xsl:otherwise>
-      </xsl:choose>
-      
-      <a href="/capabilities/" class="cap-nav-center">All Capabilities</a>
-      
-      <xsl:choose>
-        <xsl:when test="Next">
-          <a href="{Next/@href}" class="cap-nav-next"><xsl:value-of select="Next"/> &#8594;</a>
-        </xsl:when>
-        <xsl:otherwise>
-           <div class="cap-nav-next"></div>
-        </xsl:otherwise>
-      </xsl:choose>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="CTABlock">
-    <div class="cta-block">
-      <div>
-        <h3><xsl:value-of select="Title"/></h3>
-      </div>
-      <a href="{Button/@href}" style="text-decoration:none;">
-        <div class="cta-btn"><xsl:value-of select="Button"/></div>
-      </a>
-    </div>
-  </xsl:template>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- SprintForm — 1 Month AI Development Sprint Intake Assessment -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <xsl:template match="SprintForm">
-    <style>
-      /* ── Sprint Assessment ── */
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "1 Month AI Development Sprint", "item": "https://ajared.ca/ai-sprint/" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/ai-sprint/#service",
+          "name": "1 Month AI Development Sprint",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "description": "A focused, time-boxed AI product build. We scope it, ship it, and hand it over in four weeks.",
+          "url": "https://ajared.ca/ai-sprint/"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+<div class="grid-container">
+<div class="ruler-y">
+<span>0</span><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span><span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+</div>
+<div class="main-content">
+<div class="ruler-x"></div>
+<header><div class="header-cell" style="justify-content: flex-start; gap: 0;">
+<span class="label" style="color: var(--color-ink);">Information Architecture</span><div class="logo-container" style="display: flex; align-items: center; gap: 1rem;"><a href="/" style="text-decoration: none; display: block;"><img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"><div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div></a></div>
+</div>
+<div class="header-cell">
+<span class="label">Coordinates</span><p style="font-size: 0.85em;"></p>
+<div style="margin-top:auto">
+<span class="label">Status</span><p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+</div>
+</div>
+<div class="header-cell">
+<span class="label">Navigation</span><nav><p><a href="/">Index</a></p>
+<p><a href="/case-studies/">Case Studies</a></p>
+<p><a href="/capabilities/">Capabilities</a></p>
+<p><a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a></p>
+<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8599;</div>
+</div></header><style>
+      /* &#9472;&#9472; Sprint Assessment &#9472;&#9472; */
       .sprint-hero {
         padding: 3rem 2rem;
         border-bottom: var(--grid-line);
@@ -1548,91 +1045,66 @@
         .sprint-progress-row { top: 0; }
       }
     </style>
-
-    <!-- ── Quiz Stage ── -->
-    <div id="sprint-quiz">
-      <div class="sprint-hero">
-        <span class="label">Sprint Application / Intake Assessment</span>
-        <h1>1 Month<br/>AI Development<br/>Sprint</h1>
-        <p>Tell us where you're at. We'll show you how ready you are and what to prepare before the sprint begins. Takes 3 minutes.</p>
-      </div>
-
-      <div class="sprint-progress-row">
-        <span class="label" id="sprint-progress-label">00 / 08 answered</span>
-        <div class="sprint-progress-track">
-          <div class="sprint-progress-fill" id="sprint-progress-fill"></div>
-        </div>
-      </div>
-
-      <div id="sprint-questions"></div>
-
-      <div class="sprint-submit-row">
-        <button class="sprint-btn" id="sprint-submit" disabled="disabled">See Readiness Report ↗</button>
-        <span class="sprint-submit-hint" id="sprint-submit-hint">Answer all questions to continue</span>
-      </div>
-    </div>
-
-    <!-- ── Lead Capture Stage ── -->
-    <div id="sprint-lead" style="display:none">
-      <div class="sprint-lead-inner">
-        <div class="sprint-lead-left">
-          <span class="label">Almost there</span>
-          <h2>Get Your<br/>Report</h2>
-          <p>Enter your details to unlock your sprint readiness profile and personalized preparation plan.</p>
-        </div>
-        <div class="sprint-lead-right">
-          <form id="sprint-lead-form" action="https://formspree.io/f/mwvrkwll" method="POST">
-            <input type="hidden" name="_subject" value="1 Month AI Development Sprint — Assessment"/>
-            <input type="hidden" name="assessment_level" id="sprint-hidden-level"/>
-            <input type="hidden" name="assessment_score" id="sprint-hidden-score"/>
-            <input type="hidden" name="assessment_answers" id="sprint-hidden-answers"/>
-            <div class="instrument-field">
-              <span class="label">01 / Name</span>
-              <input type="text" name="name" id="sprint-lead-name" class="instrument-input" placeholder="Your name" required="required"/>
-            </div>
-            <div class="instrument-field" style="margin-top: 1rem;">
-              <span class="label">02 / Email</span>
-              <input type="email" name="email" id="sprint-lead-email" class="instrument-input" placeholder="you@example.com" required="required"/>
-            </div>
-            <div id="sprint-lead-error" style="display:none; color:var(--color-terra); font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; margin-top:1rem;"></div>
-            <button type="submit" class="sprint-btn" style="margin-top:1.5rem; width:100%;">Show My Report ↗</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Results Stage ── -->
-    <div id="sprint-results" style="display:none">
-      <div class="sprint-results-inner">
-        <div class="sprint-level-row">
-          <div>
-            <div class="sprint-level-badge" id="sprint-level-badge"></div>
-            <div class="sprint-level-score" id="sprint-level-score"></div>
-            <div class="label" style="margin-top:0.5rem; color:var(--color-ink-light);">Sprint Readiness Score</div>
-            <p class="sprint-level-desc" id="sprint-level-desc"></p>
-          </div>
-        </div>
-
-        <div class="sprint-profile-grid" id="sprint-dim-grid"></div>
-
-        <div class="sprint-steps">
-          <span class="label" style="margin-bottom:1.5rem; display:block;">Before The Sprint Starts</span>
-          <div id="sprint-steps-list"></div>
-        </div>
-
-        <div class="sprint-cta-row">
-          <div>
-            <span class="label">Ready to apply?</span>
-            <p style="margin-top:0.5rem;">Book a 20-minute discovery call to confirm your spot and align on sprint goals.</p>
-          </div>
-          <a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="sprint-btn" style="white-space:nowrap; display:inline-block;">Book a Discovery Call ↗</a>
-        </div>
-
-        <div style="text-align:center;">
-          <button class="sprint-retake" id="sprint-retake">↻ Retake Assessment</button>
-        </div>
-      </div>
-    </div>
-  </xsl:template>
-
-</xsl:stylesheet>
+<div id="sprint-quiz">
+<div class="sprint-hero">
+<span class="label">Sprint Application / Intake Assessment</span><h1>1 Month<br>AI Development<br>Sprint</h1>
+<p>Tell us where you're at. We'll show you how ready you are and what to prepare before the sprint begins. Takes 3 minutes.</p>
+</div>
+<div class="sprint-progress-row">
+<span class="label" id="sprint-progress-label">00 / 08 answered</span><div class="sprint-progress-track"><div class="sprint-progress-fill" id="sprint-progress-fill"></div></div>
+</div>
+<div id="sprint-questions"></div>
+<div class="sprint-submit-row">
+<button class="sprint-btn" id="sprint-submit" disabled>See Readiness Report &#8599;</button><span class="sprint-submit-hint" id="sprint-submit-hint">Answer all questions to continue</span>
+</div>
+</div>
+<div id="sprint-lead" style="display:none"><div class="sprint-lead-inner">
+<div class="sprint-lead-left">
+<span class="label">Almost there</span><h2>Get Your<br>Report</h2>
+<p>Enter your details to unlock your sprint readiness profile and personalized preparation plan.</p>
+</div>
+<div class="sprint-lead-right"><form id="sprint-lead-form" action="https://formspree.io/f/mwvrkwll" method="POST">
+<input type="hidden" name="_subject" value="1 Month AI Development Sprint &#8212; Assessment"><input type="hidden" name="assessment_level" id="sprint-hidden-level"><input type="hidden" name="assessment_score" id="sprint-hidden-score"><input type="hidden" name="assessment_answers" id="sprint-hidden-answers"><div class="instrument-field">
+<span class="label">01 / Name</span><input type="text" name="name" id="sprint-lead-name" class="instrument-input" placeholder="Your name" required="required">
+</div>
+<div class="instrument-field" style="margin-top: 1rem;">
+<span class="label">02 / Email</span><input type="email" name="email" id="sprint-lead-email" class="instrument-input" placeholder="you@example.com" required="required">
+</div>
+<div id="sprint-lead-error" style="display:none; color:var(--color-terra); font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; margin-top:1rem;"></div>
+<button type="submit" class="sprint-btn" style="margin-top:1.5rem; width:100%;">Show My Report &#8599;</button>
+</form></div>
+</div></div>
+<div id="sprint-results" style="display:none"><div class="sprint-results-inner">
+<div class="sprint-level-row"><div>
+<div class="sprint-level-badge" id="sprint-level-badge"></div>
+<div class="sprint-level-score" id="sprint-level-score"></div>
+<div class="label" style="margin-top:0.5rem; color:var(--color-ink-light);">Sprint Readiness Score</div>
+<p class="sprint-level-desc" id="sprint-level-desc"></p>
+</div></div>
+<div class="sprint-profile-grid" id="sprint-dim-grid"></div>
+<div class="sprint-steps">
+<span class="label" style="margin-bottom:1.5rem; display:block;">Before The Sprint Starts</span><div id="sprint-steps-list"></div>
+</div>
+<div class="sprint-cta-row">
+<div>
+<span class="label">Ready to apply?</span><p style="margin-top:0.5rem;">Book a 20-minute discovery call to confirm your spot and align on sprint goals.</p>
+</div>
+<a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="sprint-btn" style="white-space:nowrap; display:inline-block;">Book a Discovery Call &#8599;</a>
+</div>
+<div style="text-align:center;"><button class="sprint-retake" id="sprint-retake">&#8635; Retake Assessment</button></div>
+</div></div>
+<div class="footer">
+<div>
+<span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+</div>
+<div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+<p>&#169; 2026 Ajared Research Inc.</p>
+<span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+</div>
+</div>
+</div>
+</div>
+<script src="/scripts/sprint.js" defer></script>
+</body>
+</html>

@@ -155,7 +155,7 @@
     <Offer number="01" tag="Advisory" title="Talk to a Human about AI" href="https://cal.com/ajared/talk-to-a-human-about-ai">
       <Description>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation — and where to start.</Description>
     </Offer>
-    <Offer number="02" tag="Build" title="1 Month AI Development Sprint" href="/contact/">
+    <Offer number="02" tag="Build" title="1 Month AI Development Sprint" href="/ai-sprint/">
       <Description>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks. Right-sized for teams that want momentum, not a six-month SOW.</Description>
     </Offer>
     <Offer number="03" tag="Learn" title="Get Started with AI" href="https://cal.com/ajared/get-started-with-ai">

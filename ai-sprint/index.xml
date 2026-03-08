@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="ai-sprint" title="1 Month AI Development Sprint — Readiness Assessment">
+
+  <Schema><![CDATA[
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ajared.ca/#organization",
+          "name": "Ajared Research Inc.",
+          "url": "https://ajared.ca"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
+            { "@type": "ListItem", "position": 2, "name": "1 Month AI Development Sprint", "item": "https://ajared.ca/ai-sprint/" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://ajared.ca/ai-sprint/#service",
+          "name": "1 Month AI Development Sprint",
+          "provider": { "@id": "https://ajared.ca/#organization" },
+          "description": "A focused, time-boxed AI product build. We scope it, ship it, and hand it over in four weeks.",
+          "url": "https://ajared.ca/ai-sprint/"
+        }
+      ]
+    }
+  ]]></Schema>
+
+  <Header>
+    <Nav active="contact" />
+  </Header>
+
+  <SprintForm />
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>
