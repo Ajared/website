@@ -382,12 +382,11 @@ document.addEventListener('DOMContentLoaded', () => {
     leadForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const name  = document.getElementById('sprint-lead-name').value.trim();
       const email = document.getElementById('sprint-lead-email').value.trim();
       const errEl = document.getElementById('sprint-lead-error');
 
-      if (!name || !email) {
-        errEl.textContent = 'Please fill in both fields.';
+      if (!email) {
+        errEl.textContent = 'Please enter your email address.';
         errEl.style.display = 'block';
         return;
       }
