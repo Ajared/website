@@ -6,6 +6,22 @@
   <title>AI Readiness Navigator — Ajared Research Inc</title>
   <meta name="description" content="Discover where you are in your AI journey, set your goals, and get a personalized action plan. Assessment by Ajared Research Inc.">
 
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://ajared.ca/ai-readiness/">
+  <meta property="og:title"       content="AI Readiness Navigator — Ajared Research Inc">
+  <meta property="og:description" content="Find out your AI readiness level — Explorer, Activator, Builder, or Catalyst. 3-minute assessment with a personalized action plan.">
+  <meta property="og:image"       content="https://ajared.ca/ai-readiness/og-card.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="628">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@ajared">
+  <meta name="twitter:title"       content="AI Readiness Navigator — Ajared Research Inc">
+  <meta name="twitter:description" content="Find out your AI readiness level in 3 minutes. Explorer, Activator, Builder, or Catalyst — with a personalized action plan.">
+  <meta name="twitter:image"       content="https://ajared.ca/ai-readiness/og-card.png">
+
   <style>
     /* iA Writer Quattro S — matches ajared.ca */
     @font-face {
@@ -1507,20 +1523,70 @@ function _drawShareCard(ctx, W, H, profile, logo, accent) {
 
 // ── share button handlers ──
 
+// Get canvas as a File for Web Share API
+function _canvasToFile(filename) {
+  return new Promise((resolve, reject) => {
+    const canvas = document.getElementById('share-canvas');
+    if (!canvas) return reject('no canvas');
+    canvas.toBlob(blob => {
+      if (!blob) return reject('no blob');
+      resolve(new File([blob], filename, { type: 'image/png' }));
+    }, 'image/png');
+  });
+}
+
 function shareLinkedIn() {
-  const url = encodeURIComponent('https://ajared.ca/ai-readiness/');
-  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=500,noopener');
+  const assessUrl  = 'https://ajared.ca/ai-readiness/';
+  const shareText  = _shareProfile
+    ? 'I just took the Ajared AI Readiness Navigator — I\'m a ' + _shareProfile.level +
+      ' at ' + Math.round(_shareProfile.overall) + '% readiness. Find out where your organization stands.'
+    : 'Find out your AI readiness level with the Ajared AI Readiness Navigator.';
+
+  // Mobile: Web Share API with image file
+  if (navigator.share && navigator.canShare) {
+    const filename = 'ajared-ai-readiness-' + (_shareProfile ? _shareProfile.level.toLowerCase() : 'results') + '.png';
+    _canvasToFile(filename).then(file => {
+      const shareData = { title: 'My AI Readiness Results', text: shareText, url: assessUrl, files: [file] };
+      if (navigator.canShare(shareData)) {
+        return navigator.share(shareData);
+      }
+      // Files not supported — share text + url only
+      return navigator.share({ title: 'My AI Readiness Results', text: shareText, url: assessUrl });
+    }).catch(() => {
+      // Fallback to LinkedIn URL
+      window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(assessUrl), '_blank', 'width=600,height=500,noopener');
+    });
+  } else {
+    // Desktop: LinkedIn share URL
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(assessUrl), '_blank', 'width=600,height=500,noopener');
+  }
 }
 
 function shareX() {
   if (!_shareProfile) return;
-  const text = encodeURIComponent(
-    'I just took the Ajared AI Readiness Navigator — I\'m a ' +
+  const shareText = 'I just took the Ajared AI Readiness Navigator — I\'m a ' +
     _shareProfile.level + ' at ' + Math.round(_shareProfile.overall) +
-    '% readiness. Find out where your organization stands:'
-  );
-  const url = encodeURIComponent('https://ajared.ca/ai-readiness/');
-  window.open('https://x.com/intent/tweet?text=' + text + '&url=' + url, '_blank', 'width=600,height=400,noopener');
+    '% readiness. Find out where your organization stands:';
+  const assessUrl = 'https://ajared.ca/ai-readiness/';
+
+  // Mobile: Web Share API with image file
+  if (navigator.share && navigator.canShare) {
+    const filename = 'ajared-ai-readiness-' + _shareProfile.level.toLowerCase() + '.png';
+    _canvasToFile(filename).then(file => {
+      const shareData = { title: 'My AI Readiness Results', text: shareText, url: assessUrl, files: [file] };
+      if (navigator.canShare(shareData)) {
+        return navigator.share(shareData);
+      }
+      return navigator.share({ title: 'My AI Readiness Results', text: shareText, url: assessUrl });
+    }).catch(() => {
+      const text = encodeURIComponent(shareText);
+      window.open('https://x.com/intent/tweet?text=' + text + '&url=' + encodeURIComponent(assessUrl), '_blank', 'width=600,height=400,noopener');
+    });
+  } else {
+    // Desktop: X intent URL
+    const text = encodeURIComponent(shareText);
+    window.open('https://x.com/intent/tweet?text=' + text + '&url=' + encodeURIComponent(assessUrl), '_blank', 'width=600,height=400,noopener');
+  }
 }
 
 function downloadCard() {
