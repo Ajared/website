@@ -1635,4 +1635,192 @@
     </div>
   </xsl:template>
 
+
+  <!-- ═══════════════════════════════════════════════
+       Assessment page — standalone root template
+       Source: ai-readiness/index.xml
+       ═══════════════════════════════════════════════ -->
+  <xsl:template match="/AssessmentSite">
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>AI Readiness Navigator — Ajared Research Inc</title>
+        <meta name="description" content="Discover where you are in your AI journey, set your goals, and get a personalized action plan. Assessment by Ajared Research Inc."/>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png"/>
+        <!-- Open Graph / Social sharing -->
+        <meta property="og:type"         content="website"/>
+        <meta property="og:url"          content="https://ajared.ca/ai-readiness/"/>
+        <meta property="og:title"        content="AI Readiness Navigator — Ajared Research Inc"/>
+        <meta property="og:description"  content="Find out your AI readiness level — Explorer, Activator, Builder, or Catalyst. 3-minute assessment with a personalized action plan."/>
+        <meta property="og:image"        content="https://ajared.ca/ai-readiness/og-card.png"/>
+        <meta property="og:image:width"  content="1200"/>
+        <meta property="og:image:height" content="628"/>
+        <!-- Twitter / X card -->
+        <meta name="twitter:card"        content="summary_large_image"/>
+        <meta name="twitter:site"        content="@ajared"/>
+        <meta name="twitter:title"       content="AI Readiness Navigator — Ajared Research Inc"/>
+        <meta name="twitter:description" content="Find out your AI readiness level in 3 minutes. Explorer, Activator, Builder, or Catalyst — with a personalized action plan."/>
+        <meta name="twitter:image"       content="https://ajared.ca/ai-readiness/og-card.png"/>
+        <link rel="stylesheet" href="/ai-readiness/assessment.css"/>
+      </head>
+      <body>
+
+        <!-- Header -->
+        <header class="site-header">
+          <a href="/">
+            <img src="/logo.png" alt="Ajared Research Inc"/>
+            <span class="wordmark">Research Inc.</span>
+          </a>
+          <nav class="header-nav">
+            <a href="/">&#8592; Back to site</a>
+          </nav>
+        </header>
+
+        <!-- ═══════════ QUIZ SECTION ═══════════ -->
+        <div id="quiz-section">
+          <section class="hero">
+            <div class="hero-label">Assessment</div>
+            <h1>AI Readiness Navigator</h1>
+            <p>Discover where you are in your AI journey, understand your goals, and get a personalized action plan. Takes about 3 minutes.</p>
+          </section>
+          <div class="progress-bar" id="progress-bar"></div>
+          <div class="questions-container" id="questions-container"></div>
+          <div class="submit-area">
+            <button class="btn-primary" id="btn-submit" disabled="disabled" onclick="showLeadCapture()">See My Results</button>
+            <div class="submit-hint" id="submit-hint">Answer all questions to continue</div>
+          </div>
+        </div>
+
+        <!-- ═══════════ LEAD CAPTURE ═══════════ -->
+        <div class="lead-section" id="lead-section">
+          <svg class="lead-geo" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(620,300)" fill="none" stroke="#058c8c" stroke-width="1">
+              <circle r="60"/><circle r="120"/><circle r="180"/><circle r="240"/><circle r="300"/><circle r="380"/>
+            </g>
+            <g stroke="#058c8c" stroke-width="1" opacity="0.7">
+              <line x1="620" y1="0"   x2="620" y2="600"/>
+              <line x1="320" y1="300" x2="920" y2="300"/>
+              <line x1="407" y1="87"  x2="833" y2="513"/>
+              <line x1="407" y1="513" x2="833" y2="87"/>
+            </g>
+            <g stroke="#058c8c" stroke-width="1.2" opacity="0.6">
+              <line x1="119" y1="115" x2="121" y2="115"/><line x1="120" y1="114" x2="120" y2="116"/>
+              <line x1="239" y1="115" x2="241" y2="115"/><line x1="240" y1="114" x2="240" y2="116"/>
+              <line x1="359" y1="115" x2="361" y2="115"/><line x1="360" y1="114" x2="360" y2="116"/>
+              <line x1="479" y1="115" x2="481" y2="115"/><line x1="480" y1="114" x2="480" y2="116"/>
+              <line x1="119" y1="235" x2="121" y2="235"/><line x1="120" y1="234" x2="120" y2="236"/>
+              <line x1="239" y1="235" x2="241" y2="235"/><line x1="240" y1="234" x2="240" y2="236"/>
+              <line x1="359" y1="235" x2="361" y2="235"/><line x1="360" y1="234" x2="360" y2="236"/>
+              <line x1="119" y1="355" x2="121" y2="355"/><line x1="120" y1="354" x2="120" y2="356"/>
+              <line x1="239" y1="355" x2="241" y2="355"/><line x1="240" y1="354" x2="240" y2="356"/>
+              <line x1="359" y1="355" x2="361" y2="355"/><line x1="360" y1="354" x2="360" y2="356"/>
+              <line x1="479" y1="355" x2="481" y2="355"/><line x1="480" y1="354" x2="480" y2="356"/>
+              <line x1="119" y1="475" x2="121" y2="475"/><line x1="120" y1="474" x2="120" y2="476"/>
+              <line x1="239" y1="475" x2="241" y2="475"/><line x1="240" y1="474" x2="240" y2="476"/>
+              <line x1="359" y1="475" x2="361" y2="475"/><line x1="360" y1="474" x2="360" y2="476"/>
+            </g>
+            <g fill="#a1665e">
+              <circle cx="120" cy="120" r="2.5"/>
+              <circle cx="360" cy="480" r="2.5"/>
+              <circle cx="480" cy="240" r="2.5"/>
+              <circle cx="240" cy="360" r="2.5"/>
+            </g>
+          </svg>
+          <div class="lead-card">
+            <div class="lead-label">Almost there</div>
+            <h2>Get Your Results</h2>
+            <p>Enter your details to see your AI readiness profile and get a personalized action plan.</p>
+            <form class="lead-form" id="lead-form" action="https://formspree.io/f/mwvrkwll" method="POST">
+              <input type="hidden" name="assessment_level" id="hidden-level"/>
+              <input type="hidden" name="assessment_score" id="hidden-score"/>
+              <input type="hidden" name="assessment_answers" id="hidden-answers"/>
+              <div class="form-field">
+                <label for="lead-name">Name</label>
+                <input type="text" id="lead-name" name="name" placeholder="Your name"/>
+              </div>
+              <div class="form-field">
+                <label for="lead-email">Email</label>
+                <input type="email" id="lead-email" name="email" placeholder="you@example.com" required="required"/>
+              </div>
+              <div class="form-error" id="form-error"></div>
+              <button type="submit" class="btn-primary">Show My Results &#8594;</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ═══════════ RESULTS ═══════════ -->
+        <div class="results-section" id="results-section">
+          <div class="level-badge-container">
+            <div class="level-badge" id="level-badge"></div>
+            <div class="level-score" id="level-score"></div>
+            <div class="level-score-label">AI Readiness Score</div>
+            <p class="level-desc" id="level-desc"></p>
+          </div>
+          <div class="result-card">
+            <div class="result-card-title">Your Profile</div>
+            <div class="radar-container" id="radar-container"></div>
+            <div class="dim-bars" id="dim-bars"></div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-title">Your Next Steps</div>
+            <div id="next-steps"></div>
+          </div>
+          <div class="result-card" id="usecases-card" style="display:none;">
+            <div class="result-card-title">Suggested AI Use Cases For You</div>
+            <div id="usecases"></div>
+          </div>
+          <!-- Share Results -->
+          <div class="result-card" id="share-card-section">
+            <div class="result-card-title">Share Your Results</div>
+            <div class="share-card-wrap">
+              <canvas id="share-canvas" width="1200" height="628"></canvas>
+            </div>
+            <div class="share-actions">
+              <span class="share-actions-label">Share &#8594;</span>
+              <button class="btn-share btn-share-linkedin" onclick="shareLinkedIn()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </button>
+              <button class="btn-share btn-share-x" onclick="shareX()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Post on X
+              </button>
+              <button class="btn-share btn-share-download" onclick="downloadCard()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Card
+              </button>
+              <button class="btn-share btn-share-copy" onclick="copyAssessmentLink()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Link
+              </button>
+              <span class="copy-toast" id="copy-toast">Copied!</span>
+            </div>
+            <p class="share-hint">Link goes directly to the assessment so others can find out their level.</p>
+          </div>
+          <!-- CTA -->
+          <div class="cta-block">
+            <h3>Ready to accelerate your AI journey?</h3>
+            <p>Book a 30-minute consultation to build your personalized AI roadmap.</p>
+            <a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="btn-cta">Book a Consultation</a>
+          </div>
+          <div class="retake-area">
+            <button class="btn-retake" onclick="retake()">&#8635; Retake Assessment</button>
+          </div>
+        </div>
+
+        <footer class="site-footer">
+          <p>&#169; 2026 <a href="/">Ajared Research Inc.</a></p>
+          <span class="footer-label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+            <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+        </footer>
+
+        <script src="/ai-readiness/assessment.js" defer="defer"></script>
+      </body>
+    </html>
+  </xsl:template>
+
 </xsl:stylesheet>
