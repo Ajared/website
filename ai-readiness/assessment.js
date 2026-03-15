@@ -73,7 +73,8 @@ const questions = [
       { id: "too_complex", text: "Tools were too complex to set up" },
       { id: "no_integration", text: "Couldn't integrate AI into my actual workflow" },
       { id: "trust_issues", text: "Couldn't trust the accuracy of AI results" },
-      { id: "nothing_yet", text: "Haven't tried much yet" }
+      { id: "nothing_yet", text: "Haven't tried much yet" },
+      { id: "na", text: "Not applicable — everything has worked fine" }
     ],
     max: 2
   },
