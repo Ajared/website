@@ -193,7 +193,7 @@
       border: 1.5px solid var(--light);
       border-radius: 2px;
       background: var(--white);
-      cursor: pointer;
+      cursor: crosshair;
       font-family: var(--sans);
       font-size: 14px;
       color: var(--dark);
@@ -253,7 +253,7 @@
       font-family: var(--serif);
       font-size: 16px;
       border: none;
-      cursor: pointer;
+      cursor: crosshair;
       letter-spacing: 0.3px;
       transition: all 0.2s;
     }
@@ -530,33 +530,113 @@
       margin-top: 2px;
     }
 
-    /* Share Results */
-    .share-card-wrap {
+    /* ── ✨ NEW: Share section ── */
+    .share-section {
       margin-bottom: 20px;
-      border-radius: 2px;
-      overflow: hidden;
-      line-height: 0;
     }
-    .share-card-wrap canvas {
-      display: block;
+
+    /* Share card preview — what gets generated as PNG */
+    .share-card-preview {
       width: 100%;
-      height: auto;
+      background: var(--teal-darker);
       border-radius: 2px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
     }
-    .share-actions {
+
+    /* Moire-echo rings inside share card */
+    .share-card-preview::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.15);
+      right: -120px; top: -120px;
+    }
+    .share-card-preview::after {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.1);
+      right: -40px; top: -40px;
+    }
+    .share-card-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.08);
+    }
+
+    .share-card-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 32px; }
+
+    .share-card-left { flex: 1; }
+    .share-card-eyebrow {
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+    .share-card-level {
+      font-family: var(--sans);
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .share-card-score {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+    }
+    .share-card-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .share-card-right { flex-shrink: 0; text-align: right; }
+    .share-card-radar {
+      width: 120px; height: 120px;
+      opacity: 0.85;
+    }
+    .share-card-branding {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      text-align: right;
+    }
+    .share-card-branding span { color: var(--terra); }
+
+    /* Share action row */
+    .share-action-row {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
       align-items: center;
     }
-    .share-actions-label {
+
+    .share-label {
       font-family: var(--mono);
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--mid);
       margin-right: 4px;
+      white-space: nowrap;
     }
+
     .btn-share {
       display: inline-flex;
       align-items: center;
@@ -566,28 +646,53 @@
       font-family: var(--mono);
       font-size: 11px;
       letter-spacing: 0.5px;
-      cursor: pointer;
+      font-weight: 500;
+      cursor: crosshair;
       text-decoration: none;
       border: 1px solid transparent;
       transition: all 0.15s;
       background: none;
     }
-    .btn-share svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .btn-share-linkedin { background: #0A66C2; color: #fff; border-color: #0A66C2; }
+
+    .btn-share-linkedin {
+      background: #0A66C2;
+      color: #fff;
+      border-color: #0A66C2;
+    }
     .btn-share-linkedin:hover { background: #004182; border-color: #004182; }
-    .btn-share-x { background: #000; color: #fff; border-color: #000; }
-    .btn-share-x:hover { background: #333; }
-    .btn-share-download { color: var(--teal-dark); border-color: var(--teal-dark); }
+
+    .btn-share-x {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+    .btn-share-x:hover { background: #222; }
+
+    .btn-share-download {
+      background: transparent;
+      color: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
     .btn-share-download:hover { background: rgba(4,99,99,0.06); }
-    .btn-share-copy { color: var(--mid); border-color: var(--light); }
+
+    .btn-share-copy {
+      background: transparent;
+      color: var(--mid);
+      border-color: var(--light);
+    }
     .btn-share-copy:hover { color: var(--dark); border-color: #ccc; }
+
+    .btn-share svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* Divider + context note */
     .share-hint {
       font-family: var(--mono);
       font-size: 10px;
       color: var(--mid);
-      margin-top: 10px;
+      margin-top: 12px;
       letter-spacing: 0.3px;
     }
+
     .copy-toast {
       font-family: var(--mono);
       font-size: 10px;
@@ -646,7 +751,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--mid);
-      cursor: pointer;
+      cursor: crosshair;
       transition: all 0.2s;
     }
     .btn-retake:hover { border-color: var(--mid); color: var(--dark); }

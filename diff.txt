@@ -1,0 +1,2402 @@
+diff --git a/CLAUDE.md b/CLAUDE.md
+new file mode 100644
+index 0000000..751448d
+--- /dev/null
++++ b/CLAUDE.md
+@@ -0,0 +1,52 @@
++# Memory
++
++## Me
++Chu, Founder/Owner of Ajared Research Inc. Running an AI research and product studio based in Toronto (also Abuja).
++
++## Company
++| Field | Value |
++|-------|-------|
++| **Name** | Ajared Research Inc. |
++| **Website** | ajared.ca (also ajared.ng) |
++| **Email** | innovation@ajared.ca |
++| **Phone** | +1 613 661 3550 |
++| **Toronto** | 68 Abell St, M6J 0B1, Ontario, Canada |
++| **Abuja** | Nigeria |
++| **Tagline** | Applied AI for Enterprises |
++| **Mission** | Help enterprises move from AI proof-of-concept to production-ready solutions |
++
++## Capabilities (Services)
++| # | Name | What |
++|---|------|------|
++| 001 | **Applied Research** | UX research, market research, testing business ideas |
++| 002 | **AI Product Development** | Concept → design → build → launch, full-stack AI engineering |
++| 003 | **Enterprise AI Agents** | Production agents, Graph RAG, task automation |
++| 004 | **Data & AI Strategy** | Audits, readiness assessments, governance, GEO, exec coaching |
++→ Details: memory/context/company.md
++
++## Products / Offers
++| Tag | Name | Link |
++|-----|------|------|
++| Advisory | Talk to a Human about AI | cal.com/ajared/talk-to-a-human-about-ai |
++| Build | 1 Month AI Development Sprint | ajared.ca/ai-sprint/ |
++| Learn | Get Started with AI | cal.com/ajared/get-started-with-ai |
++| AI Search | Help AI Agents find your brand | ajared.ca/contact/ |
++
++## Terms
++| Term | Meaning |
++|------|---------|
++| sprint | 1 Month AI Development Sprint — 4-week scoped build |
++| GEO | Generative Engine Optimization — making brand visible to AI agents |
++| Graph RAG | Knowledge graph-augmented retrieval (reduces hallucination) |
++| the site | ajared.ca — the company website |
++| ai-readiness | Free 3-minute AI readiness assessment at ajared.ca/ai-readiness/ |
++→ Full glossary: memory/glossary.md
++
++## Site Architecture (CRITICAL)
++- **NEVER edit .html files** — they are auto-generated
++- **Edit .xml files** instead (e.g. index.xml, capabilities/001-applied-research.xml)
++- **Preview**: Open .xml in browser (XSLT renders live)
++- **Deploy**: `git commit` → pre-commit hook auto-runs build.sh → compiles .xml → .html
++- **Push**: `git push origin main` (must be done from own machine — sandbox has no internet)
++- Stack: XML + XSLT 1.0, Vanilla CSS/JS, GitHub Pages, Formspree (forms), iA Writer Quattro S (font)
++→ Full details: memory/context/site-architecture.md
+diff --git a/ai-readiness/assessment.css b/ai-readiness/assessment.css
+index 57bd2c4..cb1f07d 100644
+--- a/ai-readiness/assessment.css
++++ b/ai-readiness/assessment.css
+@@ -43,7 +43,7 @@
+       --serif: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     }
+ 
+-    * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
++    * { margin: 0; padding: 0; box-sizing: border-box; cursor: pointer; }
+ 
+     body {
+       font-family: var(--sans);
+@@ -193,7 +193,7 @@
+       border: 1.5px solid var(--light);
+       border-radius: 2px;
+       background: var(--white);
+-      cursor: pointer;
++      cursor: crosshair;
+       font-family: var(--sans);
+       font-size: 14px;
+       color: var(--dark);
+@@ -253,7 +253,7 @@
+       font-family: var(--serif);
+       font-size: 16px;
+       border: none;
+-      cursor: pointer;
++      cursor: crosshair;
+       letter-spacing: 0.3px;
+       transition: all 0.2s;
+     }
+@@ -566,7 +566,7 @@
+       font-family: var(--mono);
+       font-size: 11px;
+       letter-spacing: 0.5px;
+-      cursor: pointer;
++      cursor: crosshair;
+       text-decoration: none;
+       border: 1px solid transparent;
+       transition: all 0.15s;
+@@ -646,7 +646,7 @@
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       color: var(--mid);
+-      cursor: pointer;
++      cursor: crosshair;
+       transition: all 0.2s;
+     }
+     .btn-retake:hover { border-color: var(--mid); color: var(--dark); }
+diff --git a/ai-readiness/index.html b/ai-readiness/index.html
+index 04871bb..a2fefec 100644
+--- a/ai-readiness/index.html
++++ b/ai-readiness/index.html
+@@ -1,9 +1,10 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>AI Readiness Navigator &#8212; Ajared Research Inc</title>
++<title>AI Readiness Navigator — Ajared Research Inc</title>
+ <meta name="description" content="Discover where you are in your AI journey, set your goals, and get a personalized action plan. Assessment by Ajared Research Inc.">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+@@ -11,20 +12,20 @@
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+ <meta property="og:type" content="website">
+ <meta property="og:url" content="https://ajared.ca/ai-readiness/">
+-<meta property="og:title" content="AI Readiness Navigator &#8212; Ajared Research Inc">
+-<meta property="og:description" content="Find out your AI readiness level &#8212; Explorer, Activator, Builder, or Catalyst. 3-minute assessment with a personalized action plan.">
++<meta property="og:title" content="AI Readiness Navigator — Ajared Research Inc">
++<meta property="og:description" content="Find out your AI readiness level — Explorer, Activator, Builder, or Catalyst. 3-minute assessment with a personalized action plan.">
+ <meta property="og:image" content="https://ajared.ca/ai-readiness/og-card.png">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="628">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:site" content="@ajared">
+-<meta name="twitter:title" content="AI Readiness Navigator &#8212; Ajared Research Inc">
+-<meta name="twitter:description" content="Find out your AI readiness level in 3 minutes. Explorer, Activator, Builder, or Catalyst &#8212; with a personalized action plan.">
++<meta name="twitter:title" content="AI Readiness Navigator — Ajared Research Inc">
++<meta name="twitter:description" content="Find out your AI readiness level in 3 minutes. Explorer, Activator, Builder, or Catalyst — with a personalized action plan.">
+ <meta name="twitter:image" content="https://ajared.ca/ai-readiness/og-card.png">
+ <link rel="stylesheet" href="/ai-readiness/assessment.css">
+ </head>
+ <body>
+-<header class="site-header"><a href="/"><img src="/logo.png" alt="Ajared Research Inc"><span class="wordmark">Research Inc.</span></a><nav class="header-nav"><a href="/">&#8592; Back to site</a></nav></header><div id="quiz-section">
++<header class="site-header"><a href="/"><img src="/logo.png" alt="Ajared Research Inc"><span class="wordmark">Research Inc.</span></a><nav class="header-nav"><a href="/">← Back to site</a></nav></header><div id="quiz-section">
+ <section class="hero"><div class="hero-label">Assessment</div>
+ <h1>AI Readiness Navigator</h1>
+ <p>Discover where you are in your AI journey, understand your goals, and get a personalized action plan. Takes about 3 minutes.</p></section><div class="progress-bar" id="progress-bar"></div>
+@@ -46,7 +47,7 @@
+ <label for="lead-email">Email</label><input type="email" id="lead-email" name="email" placeholder="you@example.com" required="required">
+ </div>
+ <div class="form-error" id="form-error"></div>
+-<button type="submit" class="btn-primary">Show My Results &#8594;</button>
++<button type="submit" class="btn-primary">Show My Results →</button>
+ </form>
+ </div>
+ </div>
+@@ -74,7 +75,7 @@
+ <div class="result-card-title">Share Your Results</div>
+ <div class="share-card-wrap"><canvas id="share-canvas" width="1200" height="628"></canvas></div>
+ <div class="share-actions">
+-<span class="share-actions-label">Share &#8594;</span><button class="btn-share btn-share-linkedin" onclick="shareLinkedIn()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
++<span class="share-actions-label">Share →</span><button class="btn-share btn-share-linkedin" onclick="shareLinkedIn()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+                 LinkedIn
+               </button><button class="btn-share btn-share-x" onclick="shareX()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                 Post on X
+@@ -91,9 +92,9 @@
+ <p>Book a 30-minute consultation to build your personalized AI roadmap.</p>
+ <a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="btn-cta">Book a Consultation</a>
+ </div>
+-<div class="retake-area"><button class="btn-retake" onclick="retake()">&#8635; Retake Assessment</button></div>
++<div class="retake-area"><button class="btn-retake" onclick="retake()">↻ Retake Assessment</button></div>
+ </div>
+-<footer class="site-footer"><p>&#169; 2026 <a href="/">Ajared Research Inc.</a></p>
++<footer class="site-footer"><p>© 2026 <a href="/">Ajared Research Inc.</a></p>
+ <span class="footer-label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+             <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span></footer><script src="/ai-readiness/assessment.js" defer></script>
+ </body>
+diff --git a/ai-sprint/index.html b/ai-sprint/index.html
+index 10952df..0d0d87a 100644
+--- a/ai-sprint/index.html
++++ b/ai-sprint/index.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>1 Month AI Development Sprint &#8212; Readiness Assessment &#8212; Ajared Research Inc</title>
++<title>1 Month AI Development Sprint — Readiness Assessment — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -744,9 +745,9 @@
+ <p><a href="/case-studies/">Case Studies</a></p>
+ <p><a href="/capabilities/">Capabilities</a></p>
+ <p><a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a></p>
+-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8599;</div>
++<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+ </div></header><style>
+-      /* &#9472;&#9472; Sprint Assessment &#9472;&#9472; */
++      /* ── Sprint Assessment ── */
+       .sprint-hero {
+         padding: 3rem 2rem;
+         border-bottom: var(--grid-line);
+@@ -835,7 +836,7 @@
+         font-size: 0.95rem;
+         color: var(--color-ink-dark);
+         text-align: left;
+-        cursor: pointer;
++        cursor: crosshair;
+         transition: background 0.15s, color 0.15s, border-color 0.15s;
+         display: flex;
+         align-items: flex-start;
+@@ -895,7 +896,7 @@
+         background: var(--color-ink-darkest);
+         color: var(--color-bg);
+         border: none;
+-        cursor: pointer;
++        cursor: crosshair;
+         transition: background 0.2s;
+         border-radius: 0;
+       }
+@@ -1031,7 +1032,7 @@
+         color: var(--color-ink-light);
+         background: none;
+         border: none;
+-        cursor: pointer;
++        cursor: crosshair;
+       }
+       .sprint-retake:hover { color: var(--color-ink); }
+ 
+@@ -1055,7 +1056,7 @@
+ </div>
+ <div id="sprint-questions"></div>
+ <div class="sprint-submit-row">
+-<button class="sprint-btn" id="sprint-submit" disabled>See Readiness Report &#8599;</button><span class="sprint-submit-hint" id="sprint-submit-hint">Answer all questions to continue</span>
++<button class="sprint-btn" id="sprint-submit" disabled>See Readiness Report ↗</button><span class="sprint-submit-hint" id="sprint-submit-hint">Answer all questions to continue</span>
+ </div>
+ </div>
+ <div id="sprint-lead" style="display:none"><div class="sprint-lead-inner">
+@@ -1064,14 +1065,14 @@
+ <p>Enter your details to unlock your sprint readiness profile and personalized preparation plan.</p>
+ </div>
+ <div class="sprint-lead-right"><form id="sprint-lead-form" action="https://formspree.io/f/mwvrkwll" method="POST">
+-<input type="hidden" name="_subject" value="1 Month AI Development Sprint &#8212; Assessment"><input type="hidden" name="assessment_level" id="sprint-hidden-level"><input type="hidden" name="assessment_score" id="sprint-hidden-score"><input type="hidden" name="assessment_answers" id="sprint-hidden-answers"><div class="instrument-field">
++<input type="hidden" name="_subject" value="1 Month AI Development Sprint — Assessment"><input type="hidden" name="assessment_level" id="sprint-hidden-level"><input type="hidden" name="assessment_score" id="sprint-hidden-score"><input type="hidden" name="assessment_answers" id="sprint-hidden-answers"><div class="instrument-field">
+ <span class="label">Name</span><input type="text" name="name" id="sprint-lead-name" class="instrument-input" placeholder="Your name">
+ </div>
+ <div class="instrument-field" style="margin-top: 1rem;">
+ <span class="label">Email</span><input type="email" name="email" id="sprint-lead-email" class="instrument-input" placeholder="you@example.com" required="required">
+ </div>
+ <div id="sprint-lead-error" style="display:none; color:var(--color-terra); font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; margin-top:1rem;"></div>
+-<button type="submit" class="sprint-btn" style="margin-top:1.5rem; width:100%;">Show My Report &#8599;</button>
++<button type="submit" class="sprint-btn" style="margin-top:1.5rem; width:100%;">Show My Report ↗</button>
+ </form></div>
+ </div></div>
+ <div id="sprint-results" style="display:none"><div class="sprint-results-inner">
+@@ -1089,16 +1090,16 @@
+ <div>
+ <span class="label">Ready to apply?</span><p style="margin-top:0.5rem;">Book a 20-minute discovery call to confirm your spot and align on sprint goals.</p>
+ </div>
+-<a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="sprint-btn" style="white-space:nowrap; display:inline-block;">Book a Discovery Call &#8599;</a>
++<a href="https://cal.com/ajared" target="_blank" rel="noopener noreferrer" class="sprint-btn" style="white-space:nowrap; display:inline-block;">Book a Discovery Call ↗</a>
+ </div>
+-<div style="text-align:center;"><button class="sprint-retake" id="sprint-retake">&#8635; Retake Assessment</button></div>
++<div style="text-align:center;"><button class="sprint-retake" id="sprint-retake">↻ Retake Assessment</button></div>
+ </div></div>
+ <div class="footer">
+ <div>
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/capabilities/001-applied-research.html b/capabilities/001-applied-research.html
+index 589f1e8..2f3978f 100644
+--- a/capabilities/001-applied-research.html
++++ b/capabilities/001-applied-research.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Applied Research &#8212; Ajared Research Inc</title>
++<title>Applied Research — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -783,19 +784,19 @@
+ <div class="section">
+ <div class="section-bar"><span class="section-title">What We Do</span></div>
+ <div class="section-body">
+-        <p>We figure out what&#8217;s actually going on before anyone starts building. That means talking to users, studying the market, and testing ideas against reality. We draw on behavioural science, statistics, and deep domain knowledge to produce findings your team can act on with confidence.</p>
++        <p>We figure out what’s actually going on before anyone starts building. That means talking to users, studying the market, and testing ideas against reality. We draw on behavioural science, statistics, and deep domain knowledge to produce findings your team can act on with confidence.</p>
+       <div class="offerings">
+ <div class="offering">
+ <h4>UX Research</h4>
+-<p>We go to where your users are &#8212; interviews, diary studies, usability tests, in-context observation. The goal is understanding what people actually do, not just what they say, so the product decisions that follow are grounded in reality.</p>
++<p>We go to where your users are — interviews, diary studies, usability tests, in-context observation. The goal is understanding what people actually do, not just what they say, so the product decisions that follow are grounded in reality.</p>
+ </div>
+ <div class="offering">
+ <h4>Market Research</h4>
+-<p>A clear picture of the landscape before you move. Competitive analysis, market sizing, audience segmentation, and trend mapping &#8212; so you know exactly where the opportunity is, what you&#8217;re up against, and what the data won&#8217;t yet tell you.</p>
++<p>A clear picture of the landscape before you move. Competitive analysis, market sizing, audience segmentation, and trend mapping — so you know exactly where the opportunity is, what you’re up against, and what the data won’t yet tell you.</p>
+ </div>
+ <div class="offering">
+ <h4>Testing Business Ideas</h4>
+-<p>Most assumptions are wrong. We design lean experiments &#8212; demand tests, concierge MVPs, assumption mapping, causal inference &#8212; that expose which ones to kill early and which ones to build around. Early failure is cheap. Late failure is not.</p>
++<p>Most assumptions are wrong. We design lean experiments — demand tests, concierge MVPs, assumption mapping, causal inference — that expose which ones to kill early and which ones to build around. Early failure is cheap. Late failure is not.</p>
+ </div>
+ </div>
+ </div>
+@@ -828,7 +829,7 @@
+ <div class="step-num">04</div>
+ <div class="step-body">
+ <h4>Delivery</h4>
+-<p>Findings land in a plain-language report, an executive presentation deck, and a documented methodology archive &#8212; built for the people who need to act on them, not for the people who already know the answer.</p>
++<p>Findings land in a plain-language report, an executive presentation deck, and a documented methodology archive — built for the people who need to act on them, not for the people who already know the answer.</p>
+ </div>
+ </div>
+ </div></div>
+@@ -837,31 +838,31 @@
+ <div class="section-bar"><span class="section-title">Deliverables</span></div>
+ <div class="section-body"><div class="deliverables">
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Research brief + scope alignment document</div>
++<span class="check done">✓</span>Research brief + scope alignment document</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Structured findings report (plain language)</div>
++<span class="check done">✓</span>Structured findings report (plain language)</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Executive presentation deck</div>
++<span class="check done">✓</span>Executive presentation deck</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Evidence archive + methodology notes</div>
++<span class="check done">✓</span>Evidence archive + methodology notes</div>
+ <div class="deliverable-row">
+-<span class="check">&#9675;</span>Optional: Ongoing research retainer</div>
++<span class="check">○</span>Optional: Ongoing research retainer</div>
+ </div></div>
+ </div>
+ </div>
+ <div class="cap-nav">
+-<a href="/capabilities/004-data-strategy.html" class="cap-nav-prev">&#8592; Data &amp; AI Strategy</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/002-ai-product.html" class="cap-nav-next">Product Development &#8594;</a>
++<a href="/capabilities/004-data-strategy.html" class="cap-nav-prev">← Data &amp; AI Strategy</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/002-ai-product.html" class="cap-nav-next">Product Development →</a>
+ </div>
+ <div class="cta-block">
+-<div><h3>Ready to find out what&#8217;s true?</h3></div>
+-<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch &#8594;</div></a>
++<div><h3>Ready to find out what’s true?</h3></div>
++<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+ </div>
+ <div class="footer">
+ <div>
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/capabilities/002-ai-product.html b/capabilities/002-ai-product.html
+index a1dacc6..04f69d5 100644
+--- a/capabilities/002-ai-product.html
++++ b/capabilities/002-ai-product.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Product Development &#8212; Ajared Research Inc</title>
++<title>Product Development — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -779,31 +780,31 @@
+ <div class="section-bar"><span class="section-title">What We Do</span></div>
+ <div class="section-body">
+         <p>We help you build products and keep them running. That covers everything from the first idea through
+-              launch, growth, and the ongoing work of making them better &#8212; concept development, UX design, product
++              launch, growth, and the ongoing work of making them better — concept development, UX design, product
+               management, and full-stack engineering under one roof.</p>
+       <div class="offerings">
+ <div class="offering">
+ <h4>Concept Development</h4>
+ <p>From rough idea to defined product. We run structured workshops to frame the opportunity,
+-                  pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning &#8212; so
++                  pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning — so
+                   design and engineering start with a foundation that holds up.</p>
+ </div>
+ <div class="offering">
+ <h4>Design Thinking</h4>
+ <p>Research-led UX built from first principles. We map information architecture, design interaction
+-                  flows, prototype at the right fidelity, and test with real users iteratively &#8212; so the product feels
++                  flows, prototype at the right fidelity, and test with real users iteratively — so the product feels
+                   right before production engineering begins.</p>
+ </div>
+ <div class="offering">
+ <h4>Product Management</h4>
+ <p>The connective tissue between vision and execution. We set the roadmap, define OKRs, manage
+-                  prioritisation trade-offs, align stakeholders, and coordinate go-to-market &#8212; so the team stays pointed
++                  prioritisation trade-offs, align stakeholders, and coordinate go-to-market — so the team stays pointed
+                   at the right problem at the right time.</p>
+ </div>
+ <div class="offering">
+ <h4>AI-Powered Engineering</h4>
+ <p>Full-stack development augmented by AI tooling. API integration, backend services, front-end
+-                  interfaces, QA, and deployment &#8212; built for production and long-term operability, not for demos that
++                  interfaces, QA, and deployment — built for production and long-term operability, not for demos that
+                   work once under ideal conditions.</p>
+ </div>
+ </div>
+@@ -825,7 +826,7 @@
+ <div class="step-body">
+ <h4>Design</h4>
+ <p>Concept development feeds directly into UX design, prototyping, and user validation. We test with
+-                    real people before writing a line of production code &#8212; catching misaligned assumptions when they&#8217;re
++                    real people before writing a line of production code — catching misaligned assumptions when they’re
+                     still cheap to fix.</p>
+ </div>
+ </div>
+@@ -841,7 +842,7 @@
+ <div class="step-num">04</div>
+ <div class="step-body">
+ <h4>Launch</h4>
+-<p>Staged rollout with monitoring instrumentation in place from the start &#8212; not added after something
++<p>Staged rollout with monitoring instrumentation in place from the start — not added after something
+                     breaks. Analytics, alerting, and a structured feedback loop that feeds the next iteration.</p>
+ </div>
+ </div>
+@@ -851,33 +852,33 @@
+ <div class="section-bar"><span class="section-title">Deliverables</span></div>
+ <div class="section-body"><div class="deliverables">
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Concept brief + product strategy + roadmap</div>
++<span class="check done">✓</span>Concept brief + product strategy + roadmap</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>UX design system + tested prototypes</div>
++<span class="check done">✓</span>UX design system + tested prototypes</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Working product &#8212; production-ready</div>
++<span class="check done">✓</span>Working product — production-ready</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Launch plan + analytics instrumentation</div>
++<span class="check done">✓</span>Launch plan + analytics instrumentation</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>1 Month MVP Development Sprint</div>
++<span class="check done">✓</span>1 Month MVP Development Sprint</div>
+ <div class="deliverable-row">
+-<span class="check">&#9675;</span>Optional: Fractional product management retainer</div>
++<span class="check">○</span>Optional: Fractional product management retainer</div>
+ </div></div>
+ </div>
+ </div>
+ <div class="cap-nav">
+-<a href="/capabilities/001-applied-research.html" class="cap-nav-prev">&#8592; Applied Research</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/003-enterprise-agents.html" class="cap-nav-next">Enterprise AI Agents &#8594;</a>
++<a href="/capabilities/001-applied-research.html" class="cap-nav-prev">← Applied Research</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/003-enterprise-agents.html" class="cap-nav-next">Enterprise AI Agents →</a>
+ </div>
+ <div class="cta-block">
+ <div><h3>Ready to build something that works?</h3></div>
+-<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch &#8594;</div></a>
++<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+ </div>
+ <div class="footer">
+ <div>
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/capabilities/003-enterprise-agents.html b/capabilities/003-enterprise-agents.html
+index b323c9d..9eb4121 100644
+--- a/capabilities/003-enterprise-agents.html
++++ b/capabilities/003-enterprise-agents.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Enterprise AI Agents &#8212; Ajared Research Inc</title>
++<title>Enterprise AI Agents — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -778,14 +779,14 @@
+ <div class="section">
+ <div class="section-bar"><span class="section-title">What We Do</span></div>
+ <div class="section-body">
+-        <p>We build AI agents that handle real tasks &#8212; processing documents, coordinating between systems, making
++        <p>We build AI agents that handle real tasks — processing documents, coordinating between systems, making
+               routine decisions at scale. Built for production, not for demos. So your team can focus on the work that
+               actually needs a human.</p>
+       <div class="offerings">
+ <div class="offering">
+ <h4>AI Agents</h4>
+ <p>Task-specific agents built for production. We design agents with the right tools, memory
+-                  architecture, and decision logic to handle real workflows reliably at scale &#8212; with human oversight
++                  architecture, and decision logic to handle real workflows reliably at scale — with human oversight
+                   integrated where it matters, not added as an afterthought.</p>
+ </div>
+ <div class="offering">
+@@ -797,7 +798,7 @@
+ <div class="offering">
+ <h4>Task Automation</h4>
+ <p>End-to-end workflow automation across your existing systems. Document ingestion, routing decisions,
+-                  multi-system coordination &#8212; designed to handle volume and edge cases without requiring constant human
++                  multi-system coordination — designed to handle volume and edge cases without requiring constant human
+                   intervention to stay on track.</p>
+ </div>
+ </div>
+@@ -820,7 +821,7 @@
+ <div class="step-body">
+ <h4>Design</h4>
+ <p>Agent architecture, tool selection, memory design, and constraint definition. We specify the system
+-                    completely before building &#8212; including how it fails gracefully and what happens when it encounters
++                    completely before building — including how it fails gracefully and what happens when it encounters
+                     something outside its operating envelope.</p>
+ </div>
+ </div>
+@@ -829,7 +830,7 @@
+ <div class="step-body">
+ <h4>Build &amp; Test</h4>
+ <p>Development, integration with your systems, red-team evaluation, and adversarial testing. We
+-                    deliberately try to break agents before deployment. An agent we haven&#8217;t stress-tested doesn&#8217;t go to
++                    deliberately try to break agents before deployment. An agent we haven’t stress-tested doesn’t go to
+                     production.</p>
+ </div>
+ </div>
+@@ -838,7 +839,7 @@
+ <div class="step-body">
+ <h4>Deploy</h4>
+ <p>Production rollout with monitoring dashboards, alert configuration, and human-in-the-loop controls
+-                    designed from the start &#8212; not bolted on after. Ongoing visibility into what the agent is doing and
++                    designed from the start — not bolted on after. Ongoing visibility into what the agent is doing and
+                     why.</p>
+ </div>
+ </div>
+@@ -848,32 +849,32 @@
+ <div class="section-bar"><span class="section-title">Deliverables</span></div>
+ <div class="section-body"><div class="deliverables">
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Agent architecture document + system design</div>
++<span class="check done">✓</span>Agent architecture document + system design</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Production-ready agent system with
++<span class="check done">✓</span>Production-ready agent system with
+                 evaluation suite</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Integration layer + API documentation</div>
++<span class="check done">✓</span>Integration layer + API documentation</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Monitoring dashboard + alert configuration</div>
++<span class="check done">✓</span>Monitoring dashboard + alert configuration</div>
+ <div class="deliverable-row">
+-<span class="check">&#9675;</span>Optional: Ongoing operations retainer</div>
++<span class="check">○</span>Optional: Ongoing operations retainer</div>
+ </div></div>
+ </div>
+ </div>
+ <div class="cap-nav">
+-<a href="/capabilities/002-ai-product.html" class="cap-nav-prev">&#8592; Product Development</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/004-data-strategy.html" class="cap-nav-next">Data &amp;amp; AI Strategy &#8594;</a>
++<a href="/capabilities/002-ai-product.html" class="cap-nav-prev">← Product Development</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/004-data-strategy.html" class="cap-nav-next">Data &amp;amp; AI Strategy →</a>
+ </div>
+ <div class="cta-block">
+ <div><h3>Ready to automate the right things?</h3></div>
+-<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch &#8594;</div></a>
++<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+ </div>
+ <div class="footer">
+ <div>
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/capabilities/004-data-strategy.html b/capabilities/004-data-strategy.html
+index c55e5d4..ca22d4f 100644
+--- a/capabilities/004-data-strategy.html
++++ b/capabilities/004-data-strategy.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Data &amp;amp; AI Strategy &#8212; Ajared Research Inc</title>
++<title>Data &amp;amp; AI Strategy — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -778,15 +779,15 @@
+ <div class="section">
+ <div class="section-bar"><span class="section-title">What We Do</span></div>
+ <div class="section-body">
+-        <p>We audit your data, figure out what&#8217;s missing, and build a plan to get AI working inside your
++        <p>We audit your data, figure out what’s missing, and build a plan to get AI working inside your
+               organization. That includes governance structures, realistic adoption plans, and honest assessments of
+-              what you&#8217;re ready for &#8212; and what you&#8217;re not.</p>
++              what you’re ready for — and what you’re not.</p>
+       <div class="offerings">
+ <div class="offering">
+ <h4>Reliable AI</h4>
+ <p>AI that produces consistent, trustworthy outputs starts with structured knowledge. We build knowledge
+-                  graphs and ontologies that give your AI systems a foundation they can reason from &#8212; rather than one
+-                  they&#8217;re guessing around.</p>
++                  graphs and ontologies that give your AI systems a foundation they can reason from — rather than one
++                  they’re guessing around.</p>
+ </div>
+ <div class="offering">
+ <h4>Location Intelligence</h4>
+@@ -796,13 +797,13 @@
+ </div>
+ <div class="offering">
+ <h4>Generative Engine Optimization</h4>
+-<p>As AI reshapes search, your organization&#8217;s presence in AI-generated answers matters as much as its
++<p>As AI reshapes search, your organization’s presence in AI-generated answers matters as much as its
+                   traditional search ranking. We make sure you appear accurately and prominently in the outputs that now
+                   shape how people find information.</p>
+ </div>
+ <div class="offering">
+ <h4>Executive AI Coaching</h4>
+-<p>One-to-one advisory for leaders who need to understand AI well enough to make decisions about it &#8212;
++<p>One-to-one advisory for leaders who need to understand AI well enough to make decisions about it —
+                   without wading through hype. Strategy, governance, and an honest assessment of what your organization
+                   is actually ready for and when.</p>
+ </div>
+@@ -816,7 +817,7 @@
+ <div class="step-num">01</div>
+ <div class="step-body">
+ <h4>Audit</h4>
+-<p>We take full inventory of your data: what you have, where it lives, what quality it&#8217;s in, and where
++<p>We take full inventory of your data: what you have, where it lives, what quality it’s in, and where
+                     the gaps are. Nothing proceeds on assumptions about the state of your data infrastructure.</p>
+ </div>
+ </div>
+@@ -825,7 +826,7 @@
+ <div class="step-body">
+ <h4>Assessment</h4>
+ <p>We map your AI capabilities against realistic benchmarks, identify specific risks, and score your
+-                    readiness across the dimensions that matter for your context &#8212; not against a generic maturity
++                    readiness across the dimensions that matter for your context — not against a generic maturity
+                     framework.</p>
+ </div>
+ </div>
+@@ -842,9 +843,9 @@
+ <div class="step-num">04</div>
+ <div class="step-body">
+ <h4>Handoff</h4>
+-<p>We don&#8217;t disappear after delivery. You receive implementation playbooks, training materials, and an
++<p>We don’t disappear after delivery. You receive implementation playbooks, training materials, and an
+                     executive alignment session to ensure the strategy lands and the people responsible for it
+-                    understand what they&#8217;re holding.</p>
++                    understand what they’re holding.</p>
+ </div>
+ </div>
+ </div></div>
+@@ -853,31 +854,31 @@
+ <div class="section-bar"><span class="section-title">Deliverables</span></div>
+ <div class="section-body"><div class="deliverables">
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Data audit report + gap analysis</div>
++<span class="check done">✓</span>Data audit report + gap analysis</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>AI readiness assessment + scoring</div>
++<span class="check done">✓</span>AI readiness assessment + scoring</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Strategic roadmap + governance framework</div>
++<span class="check done">✓</span>Strategic roadmap + governance framework</div>
+ <div class="deliverable-row">
+-<span class="check done">&#10003;</span>Executive presentation + adoption playbook</div>
++<span class="check done">✓</span>Executive presentation + adoption playbook</div>
+ <div class="deliverable-row">
+-<span class="check">&#9675;</span>Optional: Ongoing advisory retainer</div>
++<span class="check">○</span>Optional: Ongoing advisory retainer</div>
+ </div></div>
+ </div>
+ </div>
+ <div class="cap-nav">
+-<a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev">&#8592; Enterprise AI Agents</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/001-applied-research.html" class="cap-nav-next">Applied Research &#8594;</a>
++<a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev">← Enterprise AI Agents</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/001-applied-research.html" class="cap-nav-next">Applied Research →</a>
+ </div>
+ <div class="cta-block">
+ <div><h3>Ready to know where you actually stand?</h3></div>
+-<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch &#8594;</div></a>
++<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
+ </div>
+ <div class="footer">
+ <div>
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/capabilities/index.html b/capabilities/index.html
+index 5210576..0ffb851 100644
+--- a/capabilities/index.html
++++ b/capabilities/index.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Capabilities &#8212; Ajared Research Inc</title>
++<title>Capabilities — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -814,7 +815,7 @@
+ <p><a href="/case-studies/">Case Studies</a></p>
+ <p><a href="/capabilities/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Capabilities</a></p>
+ <p><a href="/contact/">Contact</a></p>
+-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8595;</div>
++<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
+ </div></header><section class="hero-fullbleed"><canvas class="moire-canvas" id="moireCanvas"></canvas><div class="hero-center-text">
+ <span class="label">What We Do</span><h1>Capabilities</h1>
+ </div></section><div class="stats-bar">
+@@ -844,7 +845,7 @@
+ <div class="header-peek" id="peek-0">We figure out what's actually going on before anyone starts building.</div>
+ <div class="capability-detail" id="detail-0"><div class="detail-inner">
+ <p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
+-<div class="detail-block detail-row-link"><a href="/capabilities/001-applied-research.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">&#8599;</span></a></div>
++<div class="detail-block detail-row-link"><a href="/capabilities/001-applied-research.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
+ </div></div>
+ </div>
+ <div class="capability-row" data-cap="002">
+@@ -854,7 +855,7 @@
+ <div class="header-peek" id="peek-1">We help you build and manage AI products from concept to launch.</div>
+ <div class="capability-detail" id="detail-1"><div class="detail-inner">
+ <p class="detail-brief">We help you build and manage products in this AI age from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</p>
+-<div class="detail-block detail-row-link"><a href="/capabilities/002-ai-product.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">&#8599;</span></a></div>
++<div class="detail-block detail-row-link"><a href="/capabilities/002-ai-product.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
+ </div></div>
+ </div>
+ <div class="capability-row" data-cap="003">
+@@ -863,8 +864,8 @@
+ </div>
+ <div class="header-peek" id="peek-2">Our enterprise agents can do real work inside your company.</div>
+ <div class="capability-detail" id="detail-2"><div class="detail-inner">
+-<p class="detail-brief">Our enterprise agents can do real work inside your company &#8212; processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</p>
+-<div class="detail-block detail-row-link"><a href="/capabilities/003-enterprise-agents.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">&#8599;</span></a></div>
++<p class="detail-brief">Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</p>
++<div class="detail-block detail-row-link"><a href="/capabilities/003-enterprise-agents.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
+ </div></div>
+ </div>
+ <div class="capability-row" data-cap="004">
+@@ -874,7 +875,7 @@
+ <div class="header-peek" id="peek-3">Together we'll figure out where AI fits in your organization.</div>
+ <div class="capability-detail" id="detail-3"><div class="detail-inner">
+ <p class="detail-brief">Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</p>
+-<div class="detail-block detail-row-link"><a href="/capabilities/004-data-strategy.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">&#8599;</span></a></div>
++<div class="detail-block detail-row-link"><a href="/capabilities/004-data-strategy.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
+ </div></div>
+ </div>
+ </div>
+@@ -883,7 +884,7 @@
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/case-studies/index.html b/case-studies/index.html
+index 5a4d721..dce25ff 100644
+--- a/case-studies/index.html
++++ b/case-studies/index.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Case Studies &#8212; Ajared Research Inc</title>
++<title>Case Studies — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -788,12 +789,12 @@
+ <p><a href="/case-studies/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a></p>
+ <p><a href="/capabilities/">Capabilities</a></p>
+ <p><a href="/contact/">Contact</a></p>
+-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8595;</div>
++<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
+ </div></header><section class="hero-section"><div class="hero-text">
+ <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Work</span><h1>Case<br>Studies</h1>
+ </div>
+ <div class="moire-static" style="transform: scale(1.5);"></div>
+-<div class="moire-static" style="transform: scale(1.2); right: 5%;"></div></section><div class="calibration-grid"><a href="#" class="project-row"><span class="project-id">001</span><span class="project-title">DeckSense</span><span class="project-meta">AI Product Management</span><span class="project-year">2025</span><span style="text-align: right; color: var(--color-terra);">&#8599;</span></a></div>
++<div class="moire-static" style="transform: scale(1.2); right: 5%;"></div></section><div class="calibration-grid"><a href="#" class="project-row"><span class="project-id">001</span><span class="project-title">DeckSense</span><span class="project-meta">AI Product Management</span><span class="project-year">2025</span><span style="text-align: right; color: var(--color-terra);">↗</span></a></div>
+ </div>
+ </div></body>
+ </html>
+diff --git a/contact/index.html b/contact/index.html
+index cfd0ed0..9e33adc 100644
+--- a/contact/index.html
++++ b/contact/index.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Contact &#8212; Ajared Research Inc</title>
++<title>Contact — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -773,11 +774,11 @@
+ <p><a href="/case-studies/">Case Studies</a></p>
+ <p><a href="/capabilities/">Capabilities</a></p>
+ <p><a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a></p>
+-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8599;</div>
++<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+ </div></header><section class="form-section"><div class="form-left">
+ <span class="label">Contact</span><h1>New Inquiry</h1>
+ <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
+-<input type="hidden" name="_subject" value="New Inquiry &#8212; Ajared Research Inc"><input type="hidden" name="_replyto" value=""><div class="instrument-field">
++<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><div class="instrument-field">
+ <span class="label">01 / Principal Contact</span><input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual"><div class="technical-markings">
+ <span>MIN_LEN: 2</span><span>TYPE: STRING</span><span>MAX_LEN: 128</span>
+ </div>
+@@ -796,7 +797,7 @@
+ <span class="label" id="scope-label">03 / Project Scope / Brief</span><textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
+ </div>
+ <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+-<button type="submit" class="btn-submit" id="submit-btn">Send Message &#8599;</button>
++<button type="submit" class="btn-submit" id="submit-btn">Send Message ↗</button>
+ </form>
+ </div>
+ <div class="form-right">
+@@ -815,7 +816,7 @@
+ </div>
+ </div>
+ <div style="margin-top: 4rem;">
+-<span class="label">Response Times</span><p>We typically respond within 48&#8211;72 hours.</p>
++<span class="label">Response Times</span><p>We typically respond within 48–72 hours.</p>
+ </div>
+ </div></section>
+ </div>
+diff --git a/index.html b/index.html
+index 3984830..3097163 100644
+--- a/index.html
++++ b/index.html
+@@ -1,6 +1,7 @@
+-<!DOCTYPE html SYSTEM "about:legacy-compat">
++<!DOCTYPE html>
+ <html lang="en">
+ <head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+@@ -8,7 +9,7 @@
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+-<title>Ajared Research Inc - Applied AI for Enterprises &#8212; Ajared Research Inc</title>
++<title>Ajared Research Inc - Applied AI for Enterprises — Ajared Research Inc</title>
+ <style>
+         /* iA Writer Quattro S Font */
+         @font-face {
+@@ -58,7 +59,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -235,7 +236,7 @@
+             font-size: 1rem;
+         }
+ 
+-        /* Change 11: Nav hover &#8212; terra cotta */
++        /* Change 11: Nav hover — terra cotta */
+         nav a:hover {
+             text-decoration: underline;
+             color: var(--color-terra);
+@@ -291,7 +292,7 @@
+             pointer-events: none;
+         }
+ 
+-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
++        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
+         .ripple-secondary {
+             position: absolute;
+             border-radius: 50%;
+@@ -351,7 +352,7 @@
+             margin-bottom: 0.5rem;
+         }
+ 
+-        /* Arrow &#8212; Change 3: terra cotta by default */
++        /* Arrow — Change 3: terra cotta by default */
+         .arrow-icon {
+             width: 40px;
+             height: 1px;
+@@ -384,7 +385,7 @@
+             border-right-color: var(--color-bg);
+         }
+ 
+-        /* Stretched link &#8212; entire card is clickable */
++        /* Stretched link — entire card is clickable */
+         .service-card > a {
+             position: static;
+         }
+@@ -394,7 +395,7 @@
+             inset: 0;
+         }
+ 
+-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
++        /* Button — Change 1: terra cotta border + text, fills on hover */
+         .btn {
+             display: inline-block;
+             margin-top: 2rem;
+@@ -459,7 +460,7 @@
+             max-width: none;
+         }
+ 
+-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
++        /* Offer card tracks (card 03 — Get Started with AI) */
+         .track-list {
+             margin-top: 1rem;
+             display: flex;
+@@ -619,7 +620,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -842,7 +843,7 @@
+ <span class="label" style="color: var(--color-ink);">Information Architecture</span><div class="logo-container" style="display: flex; align-items: center; gap: 1rem;"><a href="/" style="text-decoration: none; display: block;"><img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"><div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div></a></div>
+ </div>
+ <div class="header-cell">
+-<span class="label">Coordinates</span><p style="font-size: 0.85em;">Toronto<br><span style="color: var(--color-terra);">43.6332&#176; N, 79.4141&#176; W</span><br>Abuja<br><span style="color: var(--color-terra);">8.9976&#176; N, 7.4674&#176; E</span></p>
++<span class="label">Coordinates</span><p style="font-size: 0.85em;">Toronto<br><span style="color: var(--color-terra);">43.6332° N, 79.4141° W</span><br>Abuja<br><span style="color: var(--color-terra);">8.9976° N, 7.4674° E</span></p>
+ <div style="margin-top:auto">
+ <span class="label">Status</span><p><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+ </div>
+@@ -852,32 +853,32 @@
+ <p><a href="/case-studies/">Case Studies</a></p>
+ <p><a href="/capabilities/">Capabilities</a></p>
+ <p><a href="/contact/">Contact</a></p>
+-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">&#8599;</div>
++<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+ </div></header><section class="hero-section"><div class="hero-text">
+ <span class="label" style="margin-bottom: 2rem; color: #a1665e;">AI Research &amp; Product Studio</span><h1>Get AI<br>working<br>for you<br><span style="color:#a1665e;">today.</span>
+ </h1>
+ <p style="margin-top: 2rem; max-width: none;">We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.</p>
+-<a href="/ai-readiness/" class="btn">Assess your AI readiness &#8594;</a><p style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-ink-light); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; max-width: none;">Free &#183; 3 minutes &#183; Personalized action plan</p>
++<a href="/ai-readiness/" class="btn">Assess your AI readiness →</a><p style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-ink-light); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; max-width: none;">Free · 3 minutes · Personalized action plan</p>
+ </div>
+ <div class="moire-container" id="moire"></div></section><div class="ruler-x" style="position: relative; z-index: 1;"></div>
+ <div class="services-grid">
+ <div class="service-card">
+ <div>
+-<span class="label"><span style="color: #a1665e;">01</span> &#8212; Advisory</span><h3>Talk to a Human about AI</h3>
+-<p>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation &#8212; and where to start.</p>
++<span class="label"><span style="color: #a1665e;">01</span> — Advisory</span><h3>Talk to a Human about AI</h3>
++<p>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation — and where to start.</p>
+ </div>
+ <a href="https://cal.com/ajared/talk-to-a-human-about-ai" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem;"><div class="arrow-icon"></div></a>
+ </div>
+ <div class="service-card">
+ <div>
+-<span class="label"><span style="color: #a1665e;">02</span> &#8212; Build</span><h3>1 Month AI Development Sprint</h3>
++<span class="label"><span style="color: #a1665e;">02</span> — Build</span><h3>1 Month AI Development Sprint</h3>
+ <p>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks. Right-sized for teams that want momentum, not a six-month SOW.</p>
+ </div>
+ <a href="/ai-sprint/" style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;"><div class="arrow-icon"></div></a>
+ </div>
+ <div class="service-card">
+ <div>
+-<span class="label"><span style="color: #a1665e;">03</span> &#8212; Learn</span><h3>Get Started with AI</h3>
++<span class="label"><span style="color: #a1665e;">03</span> — Learn</span><h3>Get Started with AI</h3>
+ <p>Three entry points depending on where you are today.</p>
+ <div class="track-list">
+ <div class="track-item">
+@@ -895,8 +896,8 @@
+ </div>
+ <div class="service-card">
+ <div>
+-<span class="label"><span style="color: #a1665e;">04</span> &#8212; AI Search</span><h3>Help AI Agents easily find your brand</h3>
+-<p>AI agents are how people will discover you next. We add the structured data and schema markup that makes your site legible to them &#8212; today.</p>
++<span class="label"><span style="color: #a1665e;">04</span> — AI Search</span><h3>Help AI Agents easily find your brand</h3>
++<p>AI agents are how people will discover you next. We add the structured data and schema markup that makes your site legible to them — today.</p>
+ </div>
+ <a href="/contact/" style="text-decoration: none; color: inherit; display: block; margin-top: 2rem;"><div class="arrow-icon"></div></a>
+ </div>
+@@ -906,7 +907,7 @@
+ <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+ </div>
+ <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+-<p>&#169; 2026 Ajared Research Inc.</p>
++<p>© 2026 Ajared Research Inc.</p>
+ <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+ </div>
+diff --git a/memory/context/company.md b/memory/context/company.md
+new file mode 100644
+index 0000000..b4e72a5
+--- /dev/null
++++ b/memory/context/company.md
+@@ -0,0 +1,112 @@
++# Ajared Research Inc — Company Context
++
++## Overview
++
++**Ajared Research Inc.** is an AI research and product studio that helps enterprises move from AI proof-of-concept to production-ready solutions. The positioning is deliberately anti-hype: real, working AI products — not demos.
++
++- **Website:** ajared.ca (Canada) | ajared.ng (Nigeria)
++- **Email:** innovation@ajared.ca
++- **Phone:** +1 613 661 3550
++- **Toronto:** 68 Abell St, M6J 0B1, Ontario, Canada
++- **Abuja:** Nigeria
++- **Founded/Active:** 2026
++
++---
++
++## Capabilities (Core Services)
++
++### 001 — Applied Research
++*"How We Learn What's True"*
++
++Figures out what's actually going on before anyone starts building. Draws on behavioural science, statistics, and deep domain knowledge.
++
++**Offerings:**
++- UX Research — interviews, diary studies, usability tests, in-context observation
++- Market Research — competitive analysis, market sizing, audience segmentation, trend mapping
++- Testing Business Ideas — demand tests, concierge MVPs, assumption mapping, causal inference
++
++**Process:** Scoping → Field Work → Analysis → Delivery
++
++**Deliverables:** Research brief, structured findings report, exec presentation deck, evidence archive
++**Optional:** Ongoing research retainer
++
++---
++
++### 002 — AI Product Development & Management
++*"Strategy & Delivery"*
++
++Full lifecycle AI product development from concept through launch and optimization. Everything under one roof.
++
++**Offerings:**
++- Concept Development — workshops, assumption pressure-testing, feasibility, strategic positioning
++- Design Thinking — research-led UX, IA mapping, prototyping, user testing
++- Product Management — roadmap, OKRs, prioritization, stakeholder alignment, GTM
++- AI-Powered Engineering — full-stack dev, API integration, backend/frontend, QA, deployment
++
++**Process:** Discovery → Design → Build → Launch
++
++**Deliverables:** Concept brief, product strategy, roadmap, UX design system, working production product, launch plan, analytics instrumentation, 1 Month MVP Sprint
++**Optional:** Fractional product management retainer
++
++---
++
++### 003 — Enterprise AI Agents
++*"Autonomous AI Systems"*
++
++Production AI agents that handle real tasks — not demos. Document processing, inter-system coordination, routine decision-making at scale.
++
++**Offerings:**
++- AI Agents — task-specific agents with tools, memory architecture, decision logic, human oversight
++- Graph RAG — knowledge graph-augmented RAG for complex enterprise data, reduces hallucination
++- Task Automation — end-to-end workflow automation across existing systems, handles volume + edge cases
++
++**Process:** Discovery → Design → Build & Test → Deploy
++
++**Deliverables:** Agent architecture doc, production-ready agent system with eval suite, integration layer + API docs, monitoring dashboard + alert config
++**Optional:** Ongoing operations retainer
++
++---
++
++### 004 — Data & AI Strategy
++*"Governance, Advisory and Adoption"*
++
++Audits data, finds what's missing, builds a plan to get AI working inside an organization. Includes governance, adoption plans, and honest AI readiness assessments.
++
++**Offerings:**
++- Reliable AI — knowledge graphs and ontologies for consistent, trustworthy AI outputs
++- Location Intelligence — geospatial data strategies, location-aware AI applications
++- Generative Engine Optimization (GEO) — making the organization visible in AI-generated answers
++- Executive AI Coaching — one-to-one advisory for leaders making AI decisions
++
++**Process:** Audit → Assessment → Strategy → Handoff
++
++**Deliverables:** Data audit report + gap analysis, AI readiness assessment + scoring, strategic roadmap + governance framework, exec presentation + adoption playbook
++**Optional:** Ongoing advisory retainer
++
++---
++
++## Products / Packaged Offers
++
++| Tag | Name | Description | Link |
++|-----|------|-------------|------|
++| Advisory | Talk to a Human about AI | Real conversation with early adopters about what AI can do for your org | cal.com/ajared/talk-to-a-human-about-ai |
++| Build | 1 Month AI Development Sprint | Scoped, shipped, handed over in 4 weeks. For teams that want momentum, not a 6-month SOW | ajared.ca/ai-sprint/ |
++| Learn | Get Started with AI | Three tracks: Using an assistant → Adding Tool Use → Agentic Workflows | cal.com/ajared/get-started-with-ai |
++| AI Search | Help AI Agents find your brand | Schema markup + structured data so AI agents can discover and accurately represent the brand | ajared.ca/contact/ |
++| Free | AI Readiness Assessment | Free, 3-minute, personalized action plan | ajared.ca/ai-readiness/ |
++
++---
++
++## Markets Served
++- Canada (primary)
++- Nigeria (secondary — ajared.ng)
++- Enterprise clients moving from POC to production AI
++
++---
++
++## Brand Voice & Tone
++- Anti-hype, direct, precise
++- "Built for production, not for demos"
++- Favours short declarative sentences
++- Calls out what's real vs. what's theatre
++- Honest about what clients aren't ready for yet
+diff --git a/memory/context/site-architecture.md b/memory/context/site-architecture.md
+new file mode 100644
+index 0000000..5afbc22
+--- /dev/null
++++ b/memory/context/site-architecture.md
+@@ -0,0 +1,99 @@
++# Site Architecture — ajared.ca
++
++## Stack
++- **Content:** Semantic XML (.xml files)
++- **Presentation/Logic:** XSLT 1.0 (site-renderer.xslt), Vanilla CSS, Vanilla JS
++- **Compiler:** xsltproc (Unix standard)
++- **Typography:** iA Writer Quattro S
++- **Forms:** Formspree
++- **Hosting:** GitHub Pages
++- **Booking:** cal.com/ajared
++- **Repo:** Git, branch = main
++
++---
++
++## CRITICAL EDITING RULES
++
++1. **NEVER edit .html files** — they are entirely auto-generated by the build script
++2. **Always edit .xml files** — these are the source of truth for content
++3. To preview locally: open the .xml file in a browser (native XSLT renders it instantly)
++4. To deploy: `git commit` → pre-commit hook auto-runs `./scripts/build.sh` → compiles all .xml → .html → bundles into commit
++5. To push live: `git push origin main` (must be done from Chu's machine — Claude's sandbox has no internet access to GitHub)
++
++---
++
++## Sitemap
++
++```
++ajared.ca/
++├── site-renderer.xslt          ← Single source of truth for ALL CSS, layout, rendering
++├── index.xml                   ← Homepage
++├── contact/index.xml           ← Contact form + advisory booking
++├── case-studies/index.xml      ← Case studies archive
++├── ai-readiness/               ← Free AI readiness assessment
++├── ai-sprint/index.xml         ← 1 Month AI Development Sprint page
++├── capabilities/
++│   ├── index.xml               ← Capabilities overview
++│   ├── 001-applied-research.xml
++│   ├── 002-ai-product.xml
++│   ├── 003-enterprise-agents.xml
++│   └── 004-data-strategy.xml
++└── scripts/
++    ├── build.sh                ← XSLT compiler (runs on git commit)
++    ├── accordion.js
++    ├── contact.js
++    └── moire.js, cap-moire.js  ← Hero canvas effects
++```
++
++---
++
++## XML Component Reference
++
++Common XML tags used in page files:
++
++| Tag | Purpose |
++|-----|---------|
++| `<Page id="..." title="...">` | Root element, sets page identity |
++| `<Schema>` | JSON-LD structured data (schema.org) |
++| `<Header>` | Top nav bar |
++| `<Nav active="...">` | Navigation, highlights active item |
++| `<Hero>` | Homepage hero section |
++| `<CapabilityHero>` | Capability page hero |
++| `<OfferGrid>` / `<Offer>` | Homepage offer cards |
++| `<PageBody>` / `<Section>` | Body content sections |
++| `<Offerings>` / `<Offering>` | Service offering cards |
++| `<Process>` / `<Step>` | How-we-work steps |
++| `<Deliverables>` / `<Row>` | Deliverable checklist items |
++| `<CTABlock>` | Call-to-action banner |
++| `<CapNav>` | Prev/Next capability navigation |
++| `<ContactForm>` | Renders contact form (Formspree) |
++| `<SprintForm>` | Renders sprint intake form |
++| `<Footer>` | Footer with email + year |
++
++---
++
++## Design System
++
++| Variable | Value | Use |
++|----------|-------|-----|
++| `--color-ink` | #058c8c | Primary teal |
++| `--color-ink-dark` | #046363 | Dark teal |
++| `--color-ink-darkest` | #023b3b | Headings |
++| `--color-ink-light` | #8ccaca | Light teal |
++| `--color-terra` | #a1665e | Accent (terracotta) |
++| `--color-bg` | #ffffff | White background |
++| `--font-primary` | iA Writer Quattro S | Body + headings |
++
++---
++
++## Deployment Workflow
++
++```
++1. Edit .xml file
++2. Preview: open .xml in browser
++3. git add capabilities/002-ai-product.xml
++4. git commit -m "update description"
++   → pre-commit hook fires → build.sh compiles .xml → .html
++5. git push origin main   ← from Chu's machine only
++   → GitHub Pages serves live at ajared.ca
++```
+diff --git a/mockup-share.html b/mockup-share.html
+new file mode 100644
+index 0000000..1a588ea
+--- /dev/null
++++ b/mockup-share.html
+@@ -0,0 +1,470 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Share Feature — Mockup</title>
++  <style>
++    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
++
++    :root {
++      --teal: #058c8c;
++      --teal-dark: #046363;
++      --teal-darker: #023b3b;
++      --terra: #a1665e;
++      --ink-light: #8ccaca;
++      --dark: #323232;
++      --mid: #A0A0A0;
++      --light: #F0F0F0;
++      --white: #FFFFFF;
++      --mono: 'IBM Plex Mono', 'Courier New', monospace;
++      --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
++    }
++
++    * { margin: 0; padding: 0; box-sizing: border-box; }
++    body { font-family: var(--sans); color: var(--dark); background: #f7f7f7; -webkit-font-smoothing: antialiased; }
++
++    /* ── annotation layer ── */
++    .annotation {
++      font-family: var(--mono);
++      font-size: 10px;
++      text-transform: uppercase;
++      letter-spacing: 1.5px;
++      color: var(--terra);
++      background: rgba(161,102,94,0.08);
++      border: 1px dashed var(--terra);
++      border-radius: 2px;
++      padding: 3px 8px;
++      display: inline-block;
++      margin-bottom: 8px;
++    }
++
++    /* ── layout ── */
++    .page { max-width: 720px; margin: 40px auto; background: var(--white); }
++    .results-section { max-width: 680px; margin: 0 auto; padding: 60px 32px 80px; }
++
++    /* ── existing results UI (faithful reproduction) ── */
++    .level-badge-container { text-align: center; margin-bottom: 48px; }
++    .level-badge {
++      display: inline-block; padding: 10px 32px; border-radius: 2px;
++      font-family: var(--sans); font-size: 22px; font-weight: 400; letter-spacing: 0.5px;
++      background: rgba(4,99,99,0.08); border: 2px solid #046363; color: #046363;
++    }
++    .level-score { font-family: var(--mono); font-size: 48px; color: var(--dark); margin: 20px 0 4px; font-weight: 400; }
++    .level-score-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); }
++    .level-desc { font-size: 15px; color: var(--dark); opacity: 0.7; max-width: 460px; margin: 20px auto 0; line-height: 1.7; }
++
++    .result-card { background: var(--white); border: 1px solid var(--light); border-radius: 2px; padding: 28px; margin-bottom: 20px; }
++    .result-card-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 20px; }
++
++    /* stub radar */
++    .radar-stub {
++      width: 220px; height: 220px; margin: 0 auto 24px;
++      border-radius: 50%; border: 1px solid var(--light);
++      position: relative; overflow: hidden;
++      display: flex; align-items: center; justify-content: center;
++    }
++    .radar-stub svg { opacity: 0.5; }
++    .dim-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
++    .dim-bar-item { display: flex; align-items: center; gap: 10px; }
++    .dim-bar-label { font-family: var(--mono); font-size: 10px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; width: 80px; flex-shrink: 0; }
++    .dim-bar-track { flex: 1; height: 3px; background: var(--light); border-radius: 2px; overflow: hidden; }
++    .dim-bar-fill { height: 100%; border-radius: 2px; }
++
++    /* ── ✨ NEW: Share section ── */
++    .share-section {
++      margin-bottom: 20px;
++    }
++
++    /* Share card preview — what gets generated as PNG */
++    .share-card-preview {
++      width: 100%;
++      background: var(--teal-darker);
++      border-radius: 2px;
++      padding: 32px;
++      position: relative;
++      overflow: hidden;
++      margin-bottom: 20px;
++    }
++
++    /* Moire-echo rings inside share card */
++    .share-card-preview::before {
++      content: '';
++      position: absolute;
++      width: 400px; height: 400px;
++      border-radius: 50%;
++      border: 1px solid rgba(140,202,202,0.15);
++      right: -120px; top: -120px;
++    }
++    .share-card-preview::after {
++      content: '';
++      position: absolute;
++      width: 250px; height: 250px;
++      border-radius: 50%;
++      border: 1px solid rgba(140,202,202,0.1);
++      right: -40px; top: -40px;
++    }
++    .share-card-ring {
++      position: absolute;
++      border-radius: 50%;
++      border: 1px solid rgba(140,202,202,0.08);
++    }
++
++    .share-card-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 32px; }
++
++    .share-card-left { flex: 1; }
++    .share-card-eyebrow {
++      font-family: var(--mono);
++      font-size: 9px;
++      text-transform: uppercase;
++      letter-spacing: 2px;
++      color: var(--ink-light);
++      margin-bottom: 16px;
++      opacity: 0.8;
++    }
++    .share-card-level {
++      font-family: var(--sans);
++      font-size: 44px;
++      font-weight: 700;
++      letter-spacing: -0.03em;
++      color: #fff;
++      line-height: 1;
++      margin-bottom: 10px;
++    }
++    .share-card-score {
++      font-family: var(--mono);
++      font-size: 14px;
++      color: var(--ink-light);
++      margin-bottom: 16px;
++    }
++    .share-card-desc {
++      font-size: 12px;
++      color: rgba(255,255,255,0.6);
++      line-height: 1.6;
++      max-width: 280px;
++    }
++
++    .share-card-right { flex-shrink: 0; text-align: right; }
++    .share-card-radar {
++      width: 120px; height: 120px;
++      opacity: 0.85;
++    }
++    .share-card-branding {
++      margin-top: 12px;
++      font-family: var(--mono);
++      font-size: 9px;
++      letter-spacing: 1.5px;
++      text-transform: uppercase;
++      color: rgba(255,255,255,0.35);
++      text-align: right;
++    }
++    .share-card-branding span { color: var(--terra); }
++
++    /* Share action row */
++    .share-action-row {
++      display: flex;
++      gap: 10px;
++      flex-wrap: wrap;
++      align-items: center;
++    }
++
++    .share-label {
++      font-family: var(--mono);
++      font-size: 10px;
++      text-transform: uppercase;
++      letter-spacing: 1.5px;
++      color: var(--mid);
++      margin-right: 4px;
++      white-space: nowrap;
++    }
++
++    .btn-share {
++      display: inline-flex;
++      align-items: center;
++      gap: 7px;
++      padding: 9px 16px;
++      border-radius: 2px;
++      font-family: var(--mono);
++      font-size: 11px;
++      letter-spacing: 0.5px;
++      font-weight: 500;
++      cursor: pointer;
++      text-decoration: none;
++      border: 1px solid transparent;
++      transition: all 0.15s;
++    }
++
++    .btn-share-linkedin {
++      background: #0A66C2;
++      color: #fff;
++      border-color: #0A66C2;
++    }
++    .btn-share-linkedin:hover { background: #004182; border-color: #004182; }
++
++    .btn-share-x {
++      background: #000;
++      color: #fff;
++      border-color: #000;
++    }
++    .btn-share-x:hover { background: #222; }
++
++    .btn-share-download {
++      background: transparent;
++      color: var(--teal-dark);
++      border-color: var(--teal-dark);
++    }
++    .btn-share-download:hover { background: rgba(4,99,99,0.06); }
++
++    .btn-share-copy {
++      background: transparent;
++      color: var(--mid);
++      border-color: var(--light);
++    }
++    .btn-share-copy:hover { color: var(--dark); border-color: #ccc; }
++
++    .btn-share svg { width: 14px; height: 14px; flex-shrink: 0; }
++
++    /* Divider + context note */
++    .share-hint {
++      font-family: var(--mono);
++      font-size: 10px;
++      color: var(--mid);
++      margin-top: 12px;
++      letter-spacing: 0.3px;
++    }
++
++    /* existing CTA block */
++    .cta-block {
++      background: linear-gradient(135deg, var(--teal-darker) 0%, var(--teal-dark) 100%);
++      color: #fff; border-radius: 2px; padding: 40px; text-align: center; margin-bottom: 20px;
++    }
++    .cta-block h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 10px; }
++    .cta-block p { font-size: 14px; opacity: 0.75; margin-bottom: 28px; }
++    .btn-cta {
++      display: inline-block; background: var(--terra); color: #fff; padding: 14px 32px;
++      border-radius: 2px; text-decoration: none; font-family: var(--mono); font-size: 12px;
++      letter-spacing: 0.5px; font-weight: 500;
++    }
++
++    .retake-area { text-align: center; padding-top: 16px; }
++    .btn-retake { background: none; border: none; font-family: var(--mono); font-size: 11px; color: var(--mid); cursor: pointer; letter-spacing: 0.5px; }
++
++    /* ── Annotation callouts ── */
++    .callout-wrap { position: relative; }
++    .callout {
++      position: absolute;
++      right: -200px;
++      top: 50%;
++      transform: translateY(-50%);
++      width: 180px;
++      font-family: var(--mono);
++      font-size: 10px;
++      color: var(--terra);
++      line-height: 1.5;
++    }
++    .callout::before {
++      content: '';
++      display: block;
++      width: 24px;
++      height: 1px;
++      background: var(--terra);
++      margin-bottom: 4px;
++      opacity: 0.4;
++    }
++
++    /* two-column annotated layout */
++    .annotated { display: grid; grid-template-columns: 1fr 200px; gap: 0; max-width: 920px; margin: 0 auto; }
++    .annotated-main { background: var(--white); }
++    .annotated-notes { padding: 20px 0 20px 24px; }
++    .note {
++      font-family: var(--mono);
++      font-size: 10px;
++      color: #888;
++      line-height: 1.6;
++      border-left: 2px solid var(--light);
++      padding-left: 12px;
++      margin-bottom: 20px;
++    }
++    .note strong { color: var(--terra); display: block; margin-bottom: 4px; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
++
++    /* page chrome */
++    .page-header {
++      background: var(--teal-darker);
++      color: rgba(255,255,255,0.6);
++      padding: 12px 32px;
++      font-family: var(--mono);
++      font-size: 10px;
++      letter-spacing: 1px;
++      text-transform: uppercase;
++      display: flex;
++      gap: 20px;
++      align-items: center;
++    }
++    .page-header strong { color: var(--ink-light); }
++  </style>
++</head>
++<body>
++
++<div class="page-header">
++  <strong>Mockup</strong>
++  <span>AI Readiness Navigator — Share Feature</span>
++  <span style="margin-left:auto; color: var(--terra);">ajared.ca/ai-readiness/</span>
++</div>
++
++<div class="annotated">
++  <div class="annotated-main">
++    <div class="results-section">
++
++      <!-- existing: level badge -->
++      <div class="level-badge-container">
++        <div class="level-badge">Builder</div>
++        <div class="level-score">72%</div>
++        <div class="level-score-label">AI Readiness Score</div>
++        <p class="level-desc">You're actively using AI and integrating it into workflows. The next step is moving from ad-hoc usage to systematic implementation.</p>
++      </div>
++
++      <!-- existing: radar card -->
++      <div class="result-card">
++        <div class="result-card-title">Your Profile</div>
++        <div class="radar-stub">
++          <svg width="200" height="200" viewBox="0 0 200 200">
++            <circle cx="100" cy="100" r="80" fill="none" stroke="#e8e8e8" stroke-width="1"/>
++            <circle cx="100" cy="100" r="60" fill="none" stroke="#e8e8e8" stroke-width="1"/>
++            <circle cx="100" cy="100" r="40" fill="none" stroke="#e8e8e8" stroke-width="1"/>
++            <circle cx="100" cy="100" r="20" fill="none" stroke="#e8e8e8" stroke-width="1"/>
++            <line x1="100" y1="20" x2="100" y2="180" stroke="#e8e8e8" stroke-width="1"/>
++            <line x1="20" y1="100" x2="180" y2="100" stroke="#e8e8e8" stroke-width="1"/>
++            <line x1="43" y1="43" x2="157" y2="157" stroke="#e8e8e8" stroke-width="1"/>
++            <line x1="157" y1="43" x2="43" y2="157" stroke="#e8e8e8" stroke-width="1"/>
++            <polygon points="100,35 158,72 158,128 100,165 42,128 42,72" fill="rgba(5,140,140,0.15)" stroke="#058c8c" stroke-width="1.5"/>
++          </svg>
++        </div>
++        <div class="dim-bars">
++          <div class="dim-bar-item"><span class="dim-bar-label">Awareness</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:80%;background:#058c8c"></div></div></div>
++          <div class="dim-bar-item"><span class="dim-bar-label">Usage</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:65%;background:#046363"></div></div></div>
++          <div class="dim-bar-item"><span class="dim-bar-label">Goals</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:72%;background:#058c8c"></div></div></div>
++          <div class="dim-bar-item"><span class="dim-bar-label">Barriers</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:55%;background:#a1665e"></div></div></div>
++        </div>
++      </div>
++
++      <!-- existing: next steps card -->
++      <div class="result-card">
++        <div class="result-card-title">Your Next Steps</div>
++        <p style="font-size:14px;color:var(--dark);opacity:0.8;line-height:1.7;">Move from using AI reactively to proactively. Set up recurring AI-assisted workflows for your top 3 recurring tasks and track time saved over 30 days.</p>
++      </div>
++
++      <!-- ✨ NEW: Share section -->
++      <div class="result-card share-section">
++        <div class="result-card-title">
++          <span class="annotation">New</span><br>
++          Share Your Results
++        </div>
++
++        <!-- Generated share card (what becomes a downloadable PNG) -->
++        <div class="share-card-preview">
++          <!-- decorative rings -->
++          <div class="share-card-ring" style="width:600px;height:600px;right:-200px;top:-200px;"></div>
++          <div class="share-card-ring" style="width:380px;height:380px;right:-100px;top:-100px;"></div>
++          <div class="share-card-ring" style="width:200px;height:200px;right:-20px;top:-20px;"></div>
++
++          <div class="share-card-inner" style="flex-direction:column; gap:20px;">
++
++            <!-- top row: logo + radar -->
++            <div style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
++              <img src="/logo.png" alt="Ajared Research Inc"
++                   style="height:28px; width:auto; filter: brightness(0) invert(1); opacity:0.9;">
++              <svg class="share-card-radar" viewBox="0 0 120 120">
++                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(140,202,202,0.2)" stroke-width="1"/>
++                <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
++                <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
++                <line x1="60" y1="10" x2="60" y2="110" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
++                <line x1="10" y1="60" x2="110" y2="60" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
++                <line x1="25" y1="25" x2="95" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
++                <line x1="95" y1="25" x2="25" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
++                <polygon points="60,18 96,40 96,80 60,102 24,80 24,40" fill="rgba(5,140,140,0.25)" stroke="#8ccaca" stroke-width="1.5"/>
++              </svg>
++            </div>
++
++            <!-- bottom row: level + score + desc -->
++            <div class="share-card-left" style="width:100%;">
++              <div class="share-card-eyebrow">AI Readiness Navigator</div>
++              <div class="share-card-level">Builder</div>
++              <div class="share-card-score">72% · AI Readiness Score</div>
++              <div class="share-card-desc">Actively integrating AI into workflows — next step is systematic implementation.</div>
++              <div class="share-card-branding" style="margin-top:20px;text-align:left;">
++                ajared.ca/<span style="color:var(--ink-light)">ai-readiness</span>
++              </div>
++            </div>
++
++          </div>
++        </div>
++
++        <!-- Share action buttons -->
++        <div class="share-action-row">
++          <span class="share-label">Share →</span>
++
++          <a class="btn-share btn-share-linkedin" href="#">
++            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
++            LinkedIn
++          </a>
++
++          <a class="btn-share btn-share-x" href="#">
++            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
++            Post on X
++          </a>
++
++          <a class="btn-share btn-share-download" href="#">
++            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
++            Download Card
++          </a>
++
++          <a class="btn-share btn-share-copy" href="#">
++            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
++            Copy Link
++          </a>
++        </div>
++
++        <p class="share-hint">Link goes to ajared.ca/ai-readiness/ so others can take their own assessment.</p>
++      </div>
++
++      <!-- existing: CTA -->
++      <div class="cta-block">
++        <h3>Ready to accelerate your AI journey?</h3>
++        <p>Book a free 30-minute consultation to build your personalized AI roadmap.</p>
++        <a href="#" class="btn-cta">Book a Free Consultation</a>
++      </div>
++
++      <div class="retake-area">
++        <button class="btn-retake">↻ Retake Assessment</button>
++      </div>
++
++    </div>
++  </div>
++
++  <!-- annotation sidebar -->
++  <div class="annotated-notes" style="padding-top: 460px;">
++    <div class="note">
++      <strong>Share Card</strong>
++      Dark background, moire echo rings, radar mini-chart. Generated from canvas — downloadable as PNG.
++    </div>
++    <div class="note">
++      <strong>LinkedIn</strong>
++      Opens linkedin.com/sharing URL with pre-filled text: their level + score + link.
++    </div>
++    <div class="note">
++      <strong>Post on X</strong>
++      Opens x.com/intent/post with pre-filled tweet text.
++    </div>
++    <div class="note">
++      <strong>Download Card</strong>
++      Renders share card to PNG via html2canvas or Canvas API — user attaches to post manually.
++    </div>
++    <div class="note">
++      <strong>Copy Link</strong>
++      Copies ajared.ca/ai-readiness/ to clipboard with feedback toast.
++    </div>
++  </div>
++</div>
++
++</body>
++</html>
+diff --git a/site-renderer.xslt b/site-renderer.xslt
+index 1e90f82..9d1a595 100644
+--- a/site-renderer.xslt
++++ b/site-renderer.xslt
+@@ -63,7 +63,7 @@
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+-            cursor: crosshair;
++            cursor: pointer;
+         }
+ 
+         body {
+@@ -624,7 +624,7 @@
+         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
+-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
++        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
+         .capability-header:hover { background: var(--color-ink); }
+         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
+         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
+@@ -1338,7 +1338,7 @@
+         font-size: 0.95rem;
+         color: var(--color-ink-dark);
+         text-align: left;
+-        cursor: pointer;
++        cursor: crosshair;
+         transition: background 0.15s, color 0.15s, border-color 0.15s;
+         display: flex;
+         align-items: flex-start;
+@@ -1398,7 +1398,7 @@
+         background: var(--color-ink-darkest);
+         color: var(--color-bg);
+         border: none;
+-        cursor: pointer;
++        cursor: crosshair;
+         transition: background 0.2s;
+         border-radius: 0;
+       }
+@@ -1534,7 +1534,7 @@
+         color: var(--color-ink-light);
+         background: none;
+         border: none;
+-        cursor: pointer;
++        cursor: crosshair;
+       }
+       .sprint-retake:hover { color: var(--color-ink); }
+ 

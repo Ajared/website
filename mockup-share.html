@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Feature — Mockup</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+    :root {
+      --teal: #058c8c;
+      --teal-dark: #046363;
+      --teal-darker: #023b3b;
+      --terra: #a1665e;
+      --ink-light: #8ccaca;
+      --dark: #323232;
+      --mid: #A0A0A0;
+      --light: #F0F0F0;
+      --white: #FFFFFF;
+      --mono: 'IBM Plex Mono', 'Courier New', monospace;
+      --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--sans); color: var(--dark); background: #f7f7f7; -webkit-font-smoothing: antialiased; }
+
+    /* ── annotation layer ── */
+    .annotation {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--terra);
+      background: rgba(161,102,94,0.08);
+      border: 1px dashed var(--terra);
+      border-radius: 2px;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    /* ── layout ── */
+    .page { max-width: 720px; margin: 40px auto; background: var(--white); }
+    .results-section { max-width: 680px; margin: 0 auto; padding: 60px 32px 80px; }
+
+    /* ── existing results UI (faithful reproduction) ── */
+    .level-badge-container { text-align: center; margin-bottom: 48px; }
+    .level-badge {
+      display: inline-block; padding: 10px 32px; border-radius: 2px;
+      font-family: var(--sans); font-size: 22px; font-weight: 400; letter-spacing: 0.5px;
+      background: rgba(4,99,99,0.08); border: 2px solid #046363; color: #046363;
+    }
+    .level-score { font-family: var(--mono); font-size: 48px; color: var(--dark); margin: 20px 0 4px; font-weight: 400; }
+    .level-score-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); }
+    .level-desc { font-size: 15px; color: var(--dark); opacity: 0.7; max-width: 460px; margin: 20px auto 0; line-height: 1.7; }
+
+    .result-card { background: var(--white); border: 1px solid var(--light); border-radius: 2px; padding: 28px; margin-bottom: 20px; }
+    .result-card-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 20px; }
+
+    /* stub radar */
+    .radar-stub {
+      width: 220px; height: 220px; margin: 0 auto 24px;
+      border-radius: 50%; border: 1px solid var(--light);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .radar-stub svg { opacity: 0.5; }
+    .dim-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .dim-bar-item { display: flex; align-items: center; gap: 10px; }
+    .dim-bar-label { font-family: var(--mono); font-size: 10px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; width: 80px; flex-shrink: 0; }
+    .dim-bar-track { flex: 1; height: 3px; background: var(--light); border-radius: 2px; overflow: hidden; }
+    .dim-bar-fill { height: 100%; border-radius: 2px; }
+
+    /* ── ✨ NEW: Share section ── */
+    .share-section {
+      margin-bottom: 20px;
+    }
+
+    /* Share card preview — what gets generated as PNG */
+    .share-card-preview {
+      width: 100%;
+      background: var(--teal-darker);
+      border-radius: 2px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    /* Moire-echo rings inside share card */
+    .share-card-preview::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.15);
+      right: -120px; top: -120px;
+    }
+    .share-card-preview::after {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.1);
+      right: -40px; top: -40px;
+    }
+    .share-card-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(140,202,202,0.08);
+    }
+
+    .share-card-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 32px; }
+
+    .share-card-left { flex: 1; }
+    .share-card-eyebrow {
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+    .share-card-level {
+      font-family: var(--sans);
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .share-card-score {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+    }
+    .share-card-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .share-card-right { flex-shrink: 0; text-align: right; }
+    .share-card-radar {
+      width: 120px; height: 120px;
+      opacity: 0.85;
+    }
+    .share-card-branding {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      text-align: right;
+    }
+    .share-card-branding span { color: var(--terra); }
+
+    /* Share action row */
+    .share-action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .share-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--mid);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+
+    .btn-share {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .btn-share-linkedin {
+      background: #0A66C2;
+      color: #fff;
+      border-color: #0A66C2;
+    }
+    .btn-share-linkedin:hover { background: #004182; border-color: #004182; }
+
+    .btn-share-x {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+    .btn-share-x:hover { background: #222; }
+
+    .btn-share-download {
+      background: transparent;
+      color: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+    .btn-share-download:hover { background: rgba(4,99,99,0.06); }
+
+    .btn-share-copy {
+      background: transparent;
+      color: var(--mid);
+      border-color: var(--light);
+    }
+    .btn-share-copy:hover { color: var(--dark); border-color: #ccc; }
+
+    .btn-share svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* Divider + context note */
+    .share-hint {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--mid);
+      margin-top: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    /* existing CTA block */
+    .cta-block {
+      background: linear-gradient(135deg, var(--teal-darker) 0%, var(--teal-dark) 100%);
+      color: #fff; border-radius: 2px; padding: 40px; text-align: center; margin-bottom: 20px;
+    }
+    .cta-block h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .cta-block p { font-size: 14px; opacity: 0.75; margin-bottom: 28px; }
+    .btn-cta {
+      display: inline-block; background: var(--terra); color: #fff; padding: 14px 32px;
+      border-radius: 2px; text-decoration: none; font-family: var(--mono); font-size: 12px;
+      letter-spacing: 0.5px; font-weight: 500;
+    }
+
+    .retake-area { text-align: center; padding-top: 16px; }
+    .btn-retake { background: none; border: none; font-family: var(--mono); font-size: 11px; color: var(--mid); cursor: pointer; letter-spacing: 0.5px; }
+
+    /* ── Annotation callouts ── */
+    .callout-wrap { position: relative; }
+    .callout {
+      position: absolute;
+      right: -200px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 180px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--terra);
+      line-height: 1.5;
+    }
+    .callout::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--terra);
+      margin-bottom: 4px;
+      opacity: 0.4;
+    }
+
+    /* two-column annotated layout */
+    .annotated { display: grid; grid-template-columns: 1fr 200px; gap: 0; max-width: 920px; margin: 0 auto; }
+    .annotated-main { background: var(--white); }
+    .annotated-notes { padding: 20px 0 20px 24px; }
+    .note {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #888;
+      line-height: 1.6;
+      border-left: 2px solid var(--light);
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+    .note strong { color: var(--terra); display: block; margin-bottom: 4px; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* page chrome */
+    .page-header {
+      background: var(--teal-darker);
+      color: rgba(255,255,255,0.6);
+      padding: 12px 32px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .page-header strong { color: var(--ink-light); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <strong>Mockup</strong>
+  <span>AI Readiness Navigator — Share Feature</span>
+  <span style="margin-left:auto; color: var(--terra);">ajared.ca/ai-readiness/</span>
+</div>
+
+<div class="annotated">
+  <div class="annotated-main">
+    <div class="results-section">
+
+      <!-- existing: level badge -->
+      <div class="level-badge-container">
+        <div class="level-badge">Builder</div>
+        <div class="level-score">72%</div>
+        <div class="level-score-label">AI Readiness Score</div>
+        <p class="level-desc">You're actively using AI and integrating it into workflows. The next step is moving from ad-hoc usage to systematic implementation.</p>
+      </div>
+
+      <!-- existing: radar card -->
+      <div class="result-card">
+        <div class="result-card-title">Your Profile</div>
+        <div class="radar-stub">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+            <circle cx="100" cy="100" r="60" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+            <circle cx="100" cy="100" r="40" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+            <circle cx="100" cy="100" r="20" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="100" y1="20" x2="100" y2="180" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="20" y1="100" x2="180" y2="100" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="43" y1="43" x2="157" y2="157" stroke="#e8e8e8" stroke-width="1"/>
+            <line x1="157" y1="43" x2="43" y2="157" stroke="#e8e8e8" stroke-width="1"/>
+            <polygon points="100,35 158,72 158,128 100,165 42,128 42,72" fill="rgba(5,140,140,0.15)" stroke="#058c8c" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="dim-bars">
+          <div class="dim-bar-item"><span class="dim-bar-label">Awareness</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:80%;background:#058c8c"></div></div></div>
+          <div class="dim-bar-item"><span class="dim-bar-label">Usage</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:65%;background:#046363"></div></div></div>
+          <div class="dim-bar-item"><span class="dim-bar-label">Goals</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:72%;background:#058c8c"></div></div></div>
+          <div class="dim-bar-item"><span class="dim-bar-label">Barriers</span><div class="dim-bar-track"><div class="dim-bar-fill" style="width:55%;background:#a1665e"></div></div></div>
+        </div>
+      </div>
+
+      <!-- existing: next steps card -->
+      <div class="result-card">
+        <div class="result-card-title">Your Next Steps</div>
+        <p style="font-size:14px;color:var(--dark);opacity:0.8;line-height:1.7;">Move from using AI reactively to proactively. Set up recurring AI-assisted workflows for your top 3 recurring tasks and track time saved over 30 days.</p>
+      </div>
+
+      <!-- ✨ NEW: Share section -->
+      <div class="result-card share-section">
+        <div class="result-card-title">
+          <span class="annotation">New</span><br>
+          Share Your Results
+        </div>
+
+        <!-- Generated share card (what becomes a downloadable PNG) -->
+        <div class="share-card-preview">
+          <!-- decorative rings -->
+          <div class="share-card-ring" style="width:600px;height:600px;right:-200px;top:-200px;"></div>
+          <div class="share-card-ring" style="width:380px;height:380px;right:-100px;top:-100px;"></div>
+          <div class="share-card-ring" style="width:200px;height:200px;right:-20px;top:-20px;"></div>
+
+          <div class="share-card-inner" style="flex-direction:column; gap:20px;">
+
+            <!-- top row: logo + radar -->
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+              <img src="/logo.png" alt="Ajared Research Inc"
+                   style="height:28px; width:auto; filter: brightness(0) invert(1); opacity:0.9;">
+              <svg class="share-card-radar" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(140,202,202,0.2)" stroke-width="1"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                <line x1="60" y1="10" x2="60" y2="110" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                <line x1="10" y1="60" x2="110" y2="60" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                <line x1="25" y1="25" x2="95" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                <line x1="95" y1="25" x2="25" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                <polygon points="60,18 96,40 96,80 60,102 24,80 24,40" fill="rgba(5,140,140,0.25)" stroke="#8ccaca" stroke-width="1.5"/>
+              </svg>
+            </div>
+
+            <!-- bottom row: level + score + desc -->
+            <div class="share-card-left" style="width:100%;">
+              <div class="share-card-eyebrow">AI Readiness Navigator</div>
+              <div class="share-card-level">Builder</div>
+              <div class="share-card-score">72% · AI Readiness Score</div>
+              <div class="share-card-desc">Actively integrating AI into workflows — next step is systematic implementation.</div>
+              <div class="share-card-branding" style="margin-top:20px;text-align:left;">
+                ajared.ca/<span style="color:var(--ink-light)">ai-readiness</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Share action buttons -->
+        <div class="share-action-row">
+          <span class="share-label">Share →</span>
+
+          <a class="btn-share btn-share-linkedin" href="#">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+
+          <a class="btn-share btn-share-x" href="#">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Post on X
+          </a>
+
+          <a class="btn-share btn-share-download" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Card
+          </a>
+
+          <a class="btn-share btn-share-copy" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Link
+          </a>
+        </div>
+
+        <p class="share-hint">Link goes to ajared.ca/ai-readiness/ so others can take their own assessment.</p>
+      </div>
+
+      <!-- existing: CTA -->
+      <div class="cta-block">
+        <h3>Ready to accelerate your AI journey?</h3>
+        <p>Book a free 30-minute consultation to build your personalized AI roadmap.</p>
+        <a href="#" class="btn-cta">Book a Free Consultation</a>
+      </div>
+
+      <div class="retake-area">
+        <button class="btn-retake">↻ Retake Assessment</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- annotation sidebar -->
+  <div class="annotated-notes" style="padding-top: 460px;">
+    <div class="note">
+      <strong>Share Card</strong>
+      Dark background, moire echo rings, radar mini-chart. Generated from canvas — downloadable as PNG.
+    </div>
+    <div class="note">
+      <strong>LinkedIn</strong>
+      Opens linkedin.com/sharing URL with pre-filled text: their level + score + link.
+    </div>
+    <div class="note">
+      <strong>Post on X</strong>
+      Opens x.com/intent/post with pre-filled tweet text.
+    </div>
+    <div class="note">
+      <strong>Download Card</strong>
+      Renders share card to PNG via html2canvas or Canvas API — user attaches to post manually.
+    </div>
+    <div class="note">
+      <strong>Copy Link</strong>
+      Copies ajared.ca/ai-readiness/ to clipboard with feedback toast.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

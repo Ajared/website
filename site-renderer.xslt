@@ -624,7 +624,7 @@
         .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
-        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: pointer; color: inherit; }
+        .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
         .capability-header:hover { background: var(--color-ink); }
         .capability-header:hover .cap-number, .capability-header:hover .cap-title, .capability-header:hover .cap-subtitle, .capability-header:hover .cap-toggle { color: var(--color-bg); }
         .header-peek { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease; padding: 0 2rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--color-ink-light); border-left: 3px solid var(--cap-accent, var(--color-terra)); pointer-events: none; }
@@ -1338,7 +1338,7 @@
         font-size: 0.95rem;
         color: var(--color-ink-dark);
         text-align: left;
-        cursor: pointer;
+        cursor: crosshair;
         transition: background 0.15s, color 0.15s, border-color 0.15s;
         display: flex;
         align-items: flex-start;
@@ -1398,7 +1398,7 @@
         background: var(--color-ink-darkest);
         color: var(--color-bg);
         border: none;
-        cursor: pointer;
+        cursor: crosshair;
         transition: background 0.2s;
         border-radius: 0;
       }
@@ -1534,7 +1534,7 @@
         color: var(--color-ink-light);
         background: none;
         border: none;
-        cursor: pointer;
+        cursor: crosshair;
       }
       .sprint-retake:hover { color: var(--color-ink); }
 
@@ -1774,13 +1774,46 @@
             <div id="usecases"></div>
           </div>
           <!-- Share Results -->
-          <div class="result-card" id="share-card-section">
+          <div class="result-card share-section" id="share-card-section">
             <div class="result-card-title">Share Your Results</div>
-            <div class="share-card-wrap">
-              <canvas id="share-canvas" width="1200" height="628"></canvas>
+            
+            <div class="share-card-preview" id="share-card-preview">
+              <!-- decorative rings -->
+              <div class="share-card-ring" style="width:600px;height:600px;right:-200px;top:-200px;"></div>
+              <div class="share-card-ring" style="width:380px;height:380px;right:-100px;top:-100px;"></div>
+              <div class="share-card-ring" style="width:200px;height:200px;right:-20px;top:-20px;"></div>
+
+              <div class="share-card-inner" style="flex-direction:column; gap:20px;">
+                <!-- top row: logo + radar -->
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                  <img src="/logo.png" alt="Ajared Research Inc" style="height:28px; width:auto; filter: brightness(0) invert(1); opacity:0.9;"/>
+                  <svg class="share-card-radar" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(140,202,202,0.2)" stroke-width="1"/>
+                    <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                    <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                    <line x1="60" y1="10" x2="60" y2="110" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                    <line x1="10" y1="60" x2="110" y2="60" stroke="rgba(140,202,202,0.15)" stroke-width="1"/>
+                    <line x1="25" y1="25" x2="95" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                    <line x1="95" y1="25" x2="25" y2="95" stroke="rgba(140,202,202,0.1)" stroke-width="1"/>
+                    <polygon points="60,18 96,40 96,80 60,102 24,80 24,40" fill="rgba(5,140,140,0.25)" stroke="#8ccaca" stroke-width="1.5"/>
+                  </svg>
+                </div>
+
+                <!-- bottom row: level + score + desc -->
+                <div class="share-card-left" style="width:100%;">
+                  <div class="share-card-eyebrow">AI Readiness Navigator</div>
+                  <div class="share-card-level" id="share-card-level-text">Builder</div>
+                  <div class="share-card-score"><span id="share-card-score-text">72%</span> · AI Readiness Score</div>
+                  <div class="share-card-desc" id="share-card-desc-text">Actively integrating AI into workflows — next step is systematic implementation.</div>
+                  <div class="share-card-branding" style="margin-top:20px;text-align:left;">
+                    ajared.ca/<span style="color:var(--ink-light)">ai-readiness</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="share-actions">
-              <span class="share-actions-label">Share &#8594;</span>
+
+            <div class="share-action-row">
+              <span class="share-label">Share →</span>
               <button class="btn-share btn-share-linkedin" onclick="shareLinkedIn()">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
