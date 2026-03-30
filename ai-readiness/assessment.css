@@ -43,7 +43,11 @@
       --serif: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: pointer; }
+    
+    a, button, input, select, textarea, label, .clickable {
+      cursor: crosshair;
+    }
 
     body {
       font-family: var(--sans);
