@@ -147,13 +147,14 @@
 
   <Hero label="AI Research &amp; Product Studio">
     <Headline>Get AI<br/>working<br/>for you<br/><span style="color:#a1665e;">today.</span></Headline>
-    <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity - first personally, and then for your organization.</Sub>
+    <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity — first personally, and then for your organization.</Sub>
     <CTA href="/ai-readiness/" hint="Free · 3 minutes · Personalized action plan">Assess your AI readiness →</CTA>
   </Hero>
 
   <OfferGrid>
     <Offer number="01" tag="Advisory" title="Talk to a Human about AI" href="https://cal.com/ajared/talk-to-a-human-about-ai">
-      <Description>Not a chatbot. A real conversation with early adopters about what AI can actually do for your organisation — and where to start.</Description>
+      <Description>Not a chatbot or a vendor pitch. A 30-minute conversation with an AI practitioner — walk away knowing exactly where AI fits you or your organisation: what to skip, and what's actually working right now.</Description>
+      <Byline name="Chu Nnodu" role="Enterprise PM &amp; AI product builder" photo="https://chunnodu.com/images/headshot2026.jpg"/>
     </Offer>
     <Offer number="02" tag="Build" title="1 Month AI Development Sprint" href="/ai-sprint/">
       <Description>A focused, time-boxed build. We scope it, ship it, and hand it over in four weeks. Right-sized for teams that want momentum, not a six-month SOW.</Description>

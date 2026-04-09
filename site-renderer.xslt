@@ -468,6 +468,67 @@
             max-width: none;
         }
 
+        /* Byline block */
+        .byline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-ink-light);
+        }
+
+        .service-card:hover .byline {
+            border-top-color: rgba(255,255,255,0.3);
+        }
+
+        .byline-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--color-ink);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .service-card:hover .byline-avatar {
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .byline-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .byline-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .byline-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-ink-darkest);
+            letter-spacing: -0.02em;
+        }
+
+        .byline-role {
+            font-size: 0.72rem;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.3;
+        }
+
+        .service-card:hover .byline-name,
+        .service-card:hover .byline-role {
+            color: var(--color-bg);
+        }
+
         /* Offer card tracks (card 03 — Get Started with AI) */
         .track-list {
             margin-top: 1rem;
@@ -965,6 +1026,17 @@
                 </xsl:for-each>
               </div>
             </xsl:if>
+            <xsl:if test="Byline">
+              <div class="byline">
+                <div class="byline-avatar">
+                  <img src="{Byline/@photo}" alt="{Byline/@name}"/>
+                </div>
+                <div class="byline-text">
+                  <span class="byline-name"><xsl:value-of select="Byline/@name"/></span>
+                  <span class="byline-role"><xsl:value-of select="Byline/@role"/></span>
+                </div>
+              </div>
+            </xsl:if>
         </div>
         <a href="{@href}">
             <xsl:choose>
@@ -1240,7 +1312,10 @@
   <xsl:template match="CTABlock">
     <div class="cta-block">
       <div>
-        <h3><xsl:value-of select="Title"/></h3>
+        <h3><xsl:copy-of select="Title/node()"/></h3>
+        <xsl:if test="Hint">
+          <p style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-light); margin-top: 0.75rem; line-height: 1.5; max-width: none;"><xsl:value-of select="Hint"/></p>
+        </xsl:if>
       </div>
       <a href="{Button/@href}" style="text-decoration:none;">
         <div class="cta-btn"><xsl:value-of select="Button"/></div>

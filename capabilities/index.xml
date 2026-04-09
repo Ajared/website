@@ -140,6 +140,12 @@
     </Capability>
   </CapabilityList>
 
+  <CTABlock>
+    <Title>Seen enough?<br/>Let's talk.</Title>
+    <Hint>30 min · No pitch · Just a straight conversation about where AI fits you</Hint>
+    <Button href="https://cal.com/ajared/talk-to-a-human-about-ai">Book a call →</Button>
+  </CTABlock>
+
   <Footer email="innovation@ajared.ca" year="2026" />
 
 </Page>
