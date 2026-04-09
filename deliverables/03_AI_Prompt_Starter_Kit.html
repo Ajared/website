@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Prompt Starter Kit — Ajared Research</title>
+<style>
+  :root {
+    --teal: #058c8c; --teal-dark: #023b3b; --teal-light: #b2dbdb;
+    --terra: #a1665e; --ink: #141414; --mid: #6b7280; --light: #f5f5f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--teal-dark); color: var(--ink); min-height: 100vh; }
+
+  /* Header */
+  header { padding: 1.5rem 2rem 1rem; border-bottom: 3px solid var(--terra); }
+  .header-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); font-weight: 700; margin-bottom: 0.4rem; }
+  header h1 { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; margin-bottom: 0.3rem; }
+  header p { font-size: 0.78rem; color: var(--teal-light); }
+
+  /* Controls */
+  .controls { padding: 1rem 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .search-wrap { position: relative; flex: 1; min-width: 200px; }
+  .search-wrap input {
+    width: 100%; padding: 0.55rem 0.75rem 0.55rem 2rem; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.85rem;
+    font-family: inherit; outline: none; transition: border-color 0.2s;
+  }
+  .search-wrap input::placeholder { color: rgba(255,255,255,0.35); }
+  .search-wrap input:focus { border-color: var(--teal); }
+  .search-icon { position: absolute; left: 0.6rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.35); font-size: 0.85rem; pointer-events: none; }
+  .filters { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 0.35rem 0.75rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);
+    background: transparent; cursor: pointer; font-family: inherit; transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--teal-light); color: var(--teal-light); }
+  .filter-btn.active { border-color: var(--terra); color: var(--terra); background: rgba(161,102,94,0.1); }
+
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background: rgba(255,255,255,0.06); padding: 1px; margin: 1px; }
+  .card { background: var(--teal-dark); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.15s; }
+  .card:hover { background: rgba(5,140,140,0.12); }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .card-role { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terra); }
+  .card-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin-top: 0.25rem; line-height: 1.2; }
+  .card-prompt {
+    font-size: 0.8rem; line-height: 1.55; color: var(--teal-light);
+    background: rgba(255,255,255,0.04); padding: 0.75rem; border-left: 2px solid var(--teal);
+    font-family: monospace; white-space: pre-wrap; word-break: break-word;
+  }
+  .card-tip { font-size: 0.72rem; color: var(--mid); font-style: italic; line-height: 1.4; }
+  .copy-btn {
+    padding: 0.3rem 0.7rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; border: 1px solid var(--teal); color: var(--teal);
+    background: transparent; cursor: pointer; font-family: inherit; transition: all 0.15s; flex-shrink: 0;
+    align-self: flex-start;
+  }
+  .copy-btn:hover { background: var(--teal); color: #fff; }
+  .copy-btn.copied { border-color: #4ade80; color: #4ade80; }
+
+  .empty { padding: 3rem 2rem; text-align: center; color: var(--mid); font-size: 0.85rem; grid-column: 1/-1; }
+
+  .count { padding: 0.6rem 2rem; font-size: 0.7rem; color: var(--mid); border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  footer { padding: 1rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  footer a { color: var(--terra); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">Prompt Kit · 03 of 05 · Ajared Research 2026</div>
+  <h1>AI Prompt Starter Kit</h1>
+  <p>25 practitioner-grade prompts. Search by keyword or filter by role. Click to copy.</p>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search" placeholder="Search prompts..." oninput="filterCards()"/>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('executive', this)">Executive</button>
+    <button class="filter-btn" onclick="setFilter('product', this)">Product</button>
+    <button class="filter-btn" onclick="setFilter('ops', this)">Operations</button>
+    <button class="filter-btn" onclick="setFilter('writing', this)">Writing</button>
+    <button class="filter-btn" onclick="setFilter('advanced', this)">AI-Native</button>
+  </div>
+</div>
+
+<div class="count" id="count">25 prompts</div>
+<div class="grid" id="grid"></div>
+
+<footer>
+  <span>Ajared Research Inc. © 2026 · innovation@ajared.ca</span>
+  <span>Book a call: <a href="https://cal.com/ajared/talk-to-a-human-about-ai">cal.com/ajared/talk-to-a-human-about-ai</a></span>
+</footer>
+
+<script>
+const prompts = [
+  { role: "executive", roleLabel: "Executive", title: "Strategic briefing",
+    prompt: "Summarize key developments in [industry] over the last 6 months. Focus on shifts that affect [company type] businesses. Flag the top 3 things I should be paying attention to right now.",
+    tip: "Works best with Perplexity or GPT-4o for real-time data." },
+  { role: "executive", roleLabel: "Executive", title: "Decision framing",
+    prompt: "I'm deciding between [Option A] and [Option B]. Build a structured pros/cons analysis. I care most about [speed / cost / risk reduction]. Ask me clarifying questions before you begin.",
+    tip: "The ask-first instruction dramatically improves output quality." },
+  { role: "executive", roleLabel: "Executive", title: "Exec team update",
+    prompt: "Draft a 150-word update for my executive team on [project]. Tone: confident, direct, no jargon. Include: what we've done, what's next, and one risk we're managing.",
+    tip: "Adjust word count and audience as needed." },
+  { role: "executive", roleLabel: "Executive", title: "Competitive landscape",
+    prompt: "You are a senior market analyst. Summarize what [Competitor] is doing in [category] that we should be aware of. What signals suggest a shift in their strategy?",
+    tip: "Pair with Perplexity for real-time intel." },
+  { role: "executive", roleLabel: "Executive", title: "Meeting prep",
+    prompt: "I have a meeting with [stakeholder] in 2 hours about [topic]. Give me: 3 key talking points, 2 questions I should ask them, and 1 thing to avoid saying.",
+    tip: "Paste any background doc you have for sharper results." },
+  { role: "product", roleLabel: "Product & Strategy", title: "User stories",
+    prompt: "Write 5 user stories for [feature]. Format: As a [user type], I want to [action] so that [outcome]. Prioritize the core job-to-be-done, not edge cases.",
+    tip: "Follow up with: 'Now add acceptance criteria for each.'" },
+  { role: "product", roleLabel: "Product & Strategy", title: "PRD problem statement",
+    prompt: "Draft the Problem Statement section of a PRD for [feature]. Include: the problem, who it affects, what happens if we don't solve it, and how we'll know we've succeeded.",
+    tip: "Run each PRD section as a separate prompt for better quality." },
+  { role: "product", roleLabel: "Product & Strategy", title: "Backlog prioritisation",
+    prompt: "Score these features on user impact (1–5), effort (1–5), and strategic alignment (1–5). Rank them and explain your top 3 recommendations. Features: [list them]",
+    tip: "Paste your actual backlog for real prioritisation." },
+  { role: "product", roleLabel: "Product & Strategy", title: "Competitive teardown",
+    prompt: "Analyze [competitor product] from a product perspective. What are its core UX patterns? Where does it create friction? What would you change if you were the PM?",
+    tip: "Provide a URL or feature list if the model can't browse." },
+  { role: "product", roleLabel: "Product & Strategy", title: "Metrics definition",
+    prompt: "I'm building [product/feature]. Suggest the 5 most important metrics to track. For each: why it matters, how to measure it, and a 'good' benchmark in [industry].",
+    tip: "Specify B2B or B2C for more targeted benchmarks." },
+  { role: "ops", roleLabel: "Operations", title: "SOP from description",
+    prompt: "Turn this process description into a step-by-step SOP. Include: who does each step, inputs needed, outputs expected, and common mistakes to avoid. Process: [describe it]",
+    tip: "This is foundational before any automation project." },
+  { role: "ops", roleLabel: "Operations", title: "Data interpretation",
+    prompt: "Here is a dataset summary: [paste summary]. What patterns do you see? What's surprising? What questions would you ask next to understand what's driving these numbers?",
+    tip: "Claude reasons well about data even without running code." },
+  { role: "ops", roleLabel: "Operations", title: "Process audit",
+    prompt: "Here is how our [process] works: [describe it]. Identify bottlenecks, manual steps that could be automated, and the single highest-leverage improvement we could make in 30 days.",
+    tip: "Be specific — vague descriptions get vague answers." },
+  { role: "ops", roleLabel: "Operations", title: "Email triage system",
+    prompt: "I receive about [N] emails per day. Help me create a triage system with these categories: [list them]. For each, write a one-sentence filter rule and a suggested response time.",
+    tip: "Turn these into Gmail filters or Zapier rules after." },
+  { role: "ops", roleLabel: "Operations", title: "Meeting summary",
+    prompt: "Here are rough notes from a meeting: [paste notes]. Produce: a 3-sentence summary, action items with owners and due dates, and decisions made. Flag anything needing follow-up.",
+    tip: "Works especially well after a transcript or audio summary." },
+  { role: "writing", roleLabel: "Writing & Comms", title: "Sharp rewrite",
+    prompt: "Rewrite the following in a more direct, confident tone. Cut anything that hedges unnecessarily. Target reading level: executive. Max length: [X] words. Draft: [paste]",
+    tip: "The 'cut hedges' instruction alone transforms most business writing." },
+  { role: "writing", roleLabel: "Writing & Comms", title: "Email from bullets",
+    prompt: "Turn these bullet points into a professional email. Tone: [friendly / formal / urgent]. Recipient: [describe them]. Goal: [state it clearly]. Bullets: [paste]",
+    tip: "Great for turning meeting notes into follow-ups fast." },
+  { role: "writing", roleLabel: "Writing & Comms", title: "Presentation narrative",
+    prompt: "I'm presenting [topic] to [audience]. Build the narrative arc: opening hook, 3 core insights, and one call to action. Max 10 slides. Keep it punchy.",
+    tip: "Follow up: 'Now draft speaker notes for each slide.'" },
+  { role: "writing", roleLabel: "Writing & Comms", title: "Newsletter section",
+    prompt: "Write a 200-word section for my newsletter on [topic]. Audience: [describe]. Tone: curious, direct, no corporate speak. End with one insight they can act on today.",
+    tip: "Works for LinkedIn posts too — shorten to 150 words." },
+  { role: "writing", roleLabel: "Writing & Comms", title: "Feedback that lands",
+    prompt: "Help me give feedback to [colleague] about [situation]. Frame it: what to lead with, the core message, what outcome I'm asking for, and how to leave them motivated, not defensive.",
+    tip: "Follow up: 'Now draft this as a message I could send.'" },
+  { role: "advanced", roleLabel: "AI-Native", title: "Chain of thought",
+    prompt: "Think step by step before answering. Show your reasoning. Question: [your question]. After reasoning through it, give your final answer in a single paragraph.",
+    tip: "Forces the model to slow down — dramatically improves accuracy on complex questions." },
+  { role: "advanced", roleLabel: "AI-Native", title: "Persona prompt",
+    prompt: "You are a senior [role] with 15 years of experience in [industry]. You are direct, data-driven, and skeptical of buzzwords. With that perspective, help me [task].",
+    tip: "Persona framing significantly shifts the register and quality of responses." },
+  { role: "advanced", roleLabel: "AI-Native", title: "Iterative refinement",
+    prompt: "Here is my draft of [document]: [paste]. Give me 3 specific suggestions to improve it. Then implement suggestion #[N] and show me the revised version.",
+    tip: "More effective than 'make this better' — forces specificity." },
+  { role: "advanced", roleLabel: "AI-Native", title: "Red team my plan",
+    prompt: "Here is my plan for [project/decision]: [describe]. Now argue against it. What are the 3 most likely ways this fails? What am I not seeing? Be blunt.",
+    tip: "Use before any major decision. AI is good at adversarial thinking." },
+  { role: "advanced", roleLabel: "AI-Native", title: "Build a prompt",
+    prompt: "I want AI to help me [task] repeatedly. Build a reusable prompt template. Include: a role, context placeholders, the task instruction, and a clear output format.",
+    tip: "Meta-prompting: use AI to build your own prompt library." },
+];
+
+let activeFilter = 'all';
+
+function setFilter(role, btn) {
+  activeFilter = role;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCards();
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const visible = prompts.filter(p => {
+    const matchRole = activeFilter === 'all' || p.role === activeFilter;
+    const matchQ = !q || p.title.toLowerCase().includes(q) || p.prompt.toLowerCase().includes(q) || p.tip.toLowerCase().includes(q);
+    return matchRole && matchQ;
+  });
+  document.getElementById('count').textContent = `${visible.length} prompt${visible.length !== 1 ? 's' : ''}`;
+  if (visible.length === 0) {
+    grid.innerHTML = '<div class="empty">No prompts match your search.</div>';
+    return;
+  }
+  visible.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <div class="card-role">${p.roleLabel}</div>
+          <div class="card-title">${p.title}</div>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this, ${prompts.indexOf(p)})">Copy</button>
+      </div>
+      <div class="card-prompt">${p.prompt}</div>
+      <div class="card-tip">💡 ${p.tip}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function copyPrompt(btn, idx) {
+  navigator.clipboard.writeText(prompts[idx].prompt).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+filterCards();
+</script>
+</body>
+</html>

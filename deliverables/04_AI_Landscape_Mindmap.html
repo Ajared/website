@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Landscape Mindmap — Ajared Research 2026</title>
+<style>
+  :root {
+    --teal: #058c8c;
+    --teal-dark: #023b3b;
+    --teal-light: #b2dbdb;
+    --terra: #a1665e;
+    --ink: #141414;
+    --mid: #A0A0A0;
+    --light: #F5F5F5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--teal-dark);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 1.5rem 2rem 1rem;
+    border-bottom: 3px solid var(--terra);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .header-left { display: flex; flex-direction: column; gap: 0.25rem; }
+  .header-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); font-weight: 700; }
+  .header-title { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+  .header-sub { font-size: 0.75rem; color: var(--teal-light); font-style: italic; }
+  .header-right { font-size: 0.7rem; color: var(--teal-light); text-align: right; line-height: 1.6; }
+
+  .legend {
+    display: flex; gap: 1.5rem; padding: 0.75rem 2rem;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; color: var(--teal-light); text-transform: uppercase; letter-spacing: 0.08em; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  .canvas-wrap { flex: 1; overflow: auto; position: relative; }
+  svg { display: block; }
+
+  /* Node styles */
+  .node-center rect { fill: var(--terra); rx: 6; }
+  .node-center text { fill: #fff; font-weight: 800; font-size: 13px; }
+
+  .node-branch > rect { fill: var(--teal-dark); stroke: var(--teal); stroke-width: 1.5; }
+  .node-branch > text { fill: #fff; font-weight: 700; font-size: 10px; }
+
+  .node-leaf rect { fill: rgba(255,255,255,0.06); stroke: rgba(255,255,255,0.12); stroke-width: 1; }
+  .node-leaf text { fill: var(--teal-light); font-size: 8.5px; }
+
+  .node-tag rect { fill: var(--terra); opacity: 0.15; }
+  .node-tag text { fill: var(--terra); font-size: 7.5px; font-weight: 700; }
+
+  .link { fill: none; stroke-opacity: 0.35; stroke-width: 1.5; }
+  .link-branch { stroke: var(--teal-light); }
+  .link-leaf { stroke: rgba(255,255,255,0.2); stroke-width: 1; }
+
+  .node-group { cursor: pointer; transition: opacity 0.2s; }
+  .node-group:hover { opacity: 0.85; }
+
+  footer {
+    padding: 0.75rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.65rem; color: var(--mid); flex-wrap: wrap; gap: 0.5rem;
+  }
+  footer a { color: var(--terra); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <span class="header-tag">Deliverable 04 of 05 · Ajared Research 2026</span>
+    <div class="header-title">The AI Landscape — A Practitioner's Map</div>
+    <div class="header-sub">Where the tools, models, and use cases fit — and how to navigate them</div>
+  </div>
+  <div class="header-right">
+    Prepared by Chu Nnodu<br/>
+    Enterprise PM & AI product builder<br/>
+    <strong style="color:var(--terra);">ajared.ca</strong>
+  </div>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--terra)"></div> Core category</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div> Subcategory</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.3)"></div> Tool / concept</div>
+  <div class="legend-item" style="margin-left:auto; color:var(--mid);">Hover nodes to highlight · Scroll to explore</div>
+</div>
+
+<div class="canvas-wrap">
+  <svg id="mindmap" width="1400" height="900"></svg>
+</div>
+
+<footer>
+  <span>Ajared Research Inc. © 2026 · innovation@ajared.ca</span>
+  <span>Book a call: <a href="https://cal.com/ajared/talk-to-a-human-about-ai">cal.com/ajared/talk-to-a-human-about-ai</a></span>
+</footer>
+
+<script>
+const W = 1400, H = 900, CX = 700, CY = 450;
+
+const data = {
+  label: "AI Landscape\n2026",
+  branches: [
+    {
+      label: "Foundation\nModels",
+      color: "#058c8c",
+      angle: -150,
+      children: [
+        { label: "Claude (Anthropic)", tag: "Reasoning · Safety" },
+        { label: "GPT-4o (OpenAI)", tag: "Broad · Multimodal" },
+        { label: "Gemini 1.5 Pro", tag: "Long context · Google" },
+        { label: "Llama 3 / Open", tag: "On-premise · Private" },
+        { label: "Mistral", tag: "Efficient · EU-based" },
+      ]
+    },
+    {
+      label: "Enterprise\nUse Cases",
+      color: "#a1665e",
+      angle: -90,
+      children: [
+        { label: "Document Q&A / RAG", tag: "High ROI" },
+        { label: "Code assistance", tag: "20–40% faster" },
+        { label: "Knowledge management", tag: "Internal wikis" },
+        { label: "Customer support", tag: "With guardrails" },
+        { label: "Data analysis", tag: "Augments analysts" },
+      ]
+    },
+    {
+      label: "Agentic\nSystems",
+      color: "#058c8c",
+      angle: -30,
+      children: [
+        { label: "Single-agent tasks", tag: "Research · Drafting" },
+        { label: "Multi-agent flows", tag: "Complex pipelines" },
+        { label: "Tool use / MCP", tag: "External integrations" },
+        { label: "Human-in-the-loop", tag: "Approval workflows" },
+        { label: "Fully autonomous", tag: "High bar to clear" },
+      ]
+    },
+    {
+      label: "AI-Native\nTools",
+      color: "#a1665e",
+      angle: 30,
+      children: [
+        { label: "Cursor / Copilot", tag: "Coding" },
+        { label: "Perplexity Teams", tag: "Research" },
+        { label: "Notion AI", tag: "Knowledge" },
+        { label: "Make / Zapier AI", tag: "Automation" },
+        { label: "ElevenLabs / HeyGen", tag: "Content" },
+      ]
+    },
+    {
+      label: "Data &\nInfrastructure",
+      color: "#058c8c",
+      angle: 90,
+      children: [
+        { label: "Vector databases", tag: "Pinecone · Weaviate" },
+        { label: "Knowledge graphs", tag: "Structured context" },
+        { label: "RAG pipelines", tag: "Retrieval + generation" },
+        { label: "Fine-tuning", tag: "Specialised models" },
+        { label: "Embeddings", tag: "Semantic search" },
+      ]
+    },
+    {
+      label: "Adoption\nStrategy",
+      color: "#a1665e",
+      angle: 150,
+      children: [
+        { label: "Start with internal use", tag: "Lower risk" },
+        { label: "Document first", tag: "SOPs before AI" },
+        { label: "Champion + team", tag: "Bottom-up adoption" },
+        { label: "Governance early", tag: "Policy + guardrails" },
+        { label: "Measure ROI", tag: "Time saved is real" },
+      ]
+    },
+  ]
+};
+
+const svg = document.getElementById("mindmap");
+
+function toRad(deg) { return deg * Math.PI / 180; }
+
+function wrapText(svgEl, text, x, y, maxWidth, lineHeight, attrs = {}) {
+  const words = text.split(" ");
+  let line = "", lineNum = 0;
+  const tspan0 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+  tspan0.setAttribute("x", x); tspan0.setAttribute("dy", 0);
+  svgEl.appendChild(tspan0);
+  let currentTspan = tspan0;
+
+  for (let i = 0; i < words.length; i++) {
+    const testLine = line ? line + " " + words[i] : words[i];
+    currentTspan.textContent = testLine;
+    if (currentTspan.getComputedTextLength && currentTspan.getComputedTextLength() > maxWidth && line) {
+      currentTspan.textContent = line;
+      const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      ts.setAttribute("x", x); ts.setAttribute("dy", lineHeight);
+      ts.textContent = words[i];
+      svgEl.appendChild(ts);
+      currentTspan = ts; line = words[i]; lineNum++;
+    } else { line = testLine; }
+  }
+}
+
+function makeRect(x, y, w, h, rx, fill, stroke, strokeW) {
+  const r = document.createElementNS("http://www.w3.org/2000/svg","rect");
+  r.setAttribute("x", x - w/2); r.setAttribute("y", y - h/2);
+  r.setAttribute("width", w); r.setAttribute("height", h);
+  r.setAttribute("rx", rx);
+  r.setAttribute("fill", fill);
+  if (stroke) { r.setAttribute("stroke", stroke); r.setAttribute("stroke-width", strokeW||1); }
+  return r;
+}
+
+function makeText(x, y, text, fontSize, fill, fontWeight, anchor="middle") {
+  const t = document.createElementNS("http://www.w3.org/2000/svg","text");
+  t.setAttribute("x", x); t.setAttribute("y", y);
+  t.setAttribute("font-size", fontSize);
+  t.setAttribute("fill", fill);
+  t.setAttribute("font-weight", fontWeight||"normal");
+  t.setAttribute("text-anchor", anchor);
+  t.setAttribute("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+  t.setAttribute("dominant-baseline", "central");
+  return t;
+}
+
+function makePath(x1,y1,x2,y2, color, opacity=0.35, dasharray="") {
+  const dx = (x2-x1)*0.5;
+  const path = document.createElementNS("http://www.w3.org/2000/svg","path");
+  const d = `M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;
+  path.setAttribute("d", d);
+  path.setAttribute("fill","none");
+  path.setAttribute("stroke", color);
+  path.setAttribute("stroke-opacity", opacity);
+  path.setAttribute("stroke-width", 1.5);
+  if (dasharray) path.setAttribute("stroke-dasharray", dasharray);
+  return path;
+}
+
+// ── Center node ──────────────────────────────────────────────────────────────
+const cg = document.createElementNS("http://www.w3.org/2000/svg","g");
+cg.appendChild(makeRect(CX, CY, 130, 60, 8, "#a1665e", null));
+const cLines = data.label.split("\n");
+cLines.forEach((l, i) => {
+  const t = makeText(CX, CY - 8 + i*18, l, 13, "#fff", "800");
+  cg.appendChild(t);
+});
+svg.appendChild(cg);
+
+// ── Branches ─────────────────────────────────────────────────────────────────
+const BRANCH_R = 210;
+const LEAF_R   = 360;
+
+data.branches.forEach((branch) => {
+  const ang = toRad(branch.angle);
+  const bx = CX + BRANCH_R * Math.cos(ang);
+  const by = CY + BRANCH_R * Math.sin(ang);
+
+  // Branch connector
+  svg.appendChild(makePath(CX, CY, bx, by, branch.color, 0.5));
+
+  // Branch node
+  const bg = document.createElementNS("http://www.w3.org/2000/svg","g");
+  bg.setAttribute("class","node-group");
+  bg.appendChild(makeRect(bx, by, 110, 48, 6, "#023b3b", branch.color, 2));
+  const bLines = branch.label.split("\n");
+  bLines.forEach((l, i) => {
+    const t = makeText(bx, by - 6 + i*14, l, 10.5, "#fff", "700");
+    bg.appendChild(t);
+  });
+  svg.appendChild(bg);
+
+  // Leaves
+  const nLeaves = branch.children.length;
+  const leafSpread = 44;
+  const startOffset = -(nLeaves - 1) * leafSpread / 2;
+
+  branch.children.forEach((leaf, li) => {
+    const perpAng = ang + Math.PI/2;
+    const offset = startOffset + li * leafSpread;
+    const lx = CX + LEAF_R * Math.cos(ang) + offset * Math.cos(perpAng);
+    const ly = CY + LEAF_R * Math.sin(ang) + offset * Math.sin(perpAng);
+
+    // Leaf connector
+    const lc = document.createElementNS("http://www.w3.org/2000/svg","path");
+    const ldx = (lx-bx)*0.6;
+    lc.setAttribute("d", `M${bx},${by} C${bx+ldx},${by} ${lx-ldx},${ly} ${lx},${ly}`);
+    lc.setAttribute("fill","none");
+    lc.setAttribute("stroke","rgba(255,255,255,0.15)");
+    lc.setAttribute("stroke-width","1");
+    svg.appendChild(lc);
+
+    // Leaf node
+    const lg = document.createElementNS("http://www.w3.org/2000/svg","g");
+    lg.setAttribute("class","node-group");
+
+    // Main box
+    lg.appendChild(makeRect(lx, ly - 4, 120, 28, 4, "rgba(255,255,255,0.06)", "rgba(255,255,255,0.14)", 1));
+    const lt = makeText(lx, ly - 4, leaf.label, 9, "#e0f0f0", "600");
+    lg.appendChild(lt);
+
+    // Tag pill
+    if (leaf.tag) {
+      lg.appendChild(makeRect(lx, ly + 14, 100, 13, 3, branch.color + "33", null));
+      const tagT = makeText(lx, ly + 14, leaf.tag, 7, branch.color, "700");
+      lg.appendChild(tagT);
+    }
+    svg.appendChild(lg);
+  });
+});
+
+// ── Maturity axis label ───────────────────────────────────────────────────────
+// Small annotation at bottom
+const ann = makeText(CX, H - 20, "Use this map to locate where you are today — and identify your highest-leverage next move.", 9, "rgba(255,255,255,0.3)", "400");
+svg.appendChild(ann);
+</script>
+</body>
+</html>

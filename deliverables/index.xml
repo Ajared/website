@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<Page id="deliverables" title="Your AI Starter Kit">
+
+  <Header>
+    <Nav active="index" />
+  </Header>
+
+  <CapHero label="Talk to a Human about AI — Resources">
+    <Headline>Your AI<br/>Starter Kit</Headline>
+  </CapHero>
+
+  <StatsBar>
+    <Stat val="5" label="Resources" />
+    <Stat val="2" label="Fillable Forms" />
+    <Stat val="25" label="Practitioner Prompts" />
+    <Stat val="Free" label="With Your Booking" />
+  </StatsBar>
+
+  <DeliverableList>
+    <Deliverable
+      number="01"
+      tag="Pre-Call · Fillable Form"
+      title="AI Opportunity Audit Worksheet"
+      href="/deliverables/01_AI_Opportunity_Audit_Worksheet.html">
+      <Description>Fill in before your call. Covers your role, AI tools you use, top time drains, and what you want to walk away with. Takes 5 minutes — makes the call twice as useful.</Description>
+    </Deliverable>
+    <Deliverable
+      number="02"
+      tag="Reference · Read"
+      title="What's Actually Working in AI"
+      href="/deliverables/02_Whats_Actually_Working_AI_Briefing.html">
+      <Description>An opinionated briefing on the current AI landscape. The models worth knowing, the tools earning their keep, and what to skip — updated for 2026.</Description>
+    </Deliverable>
+    <Deliverable
+      number="03"
+      tag="Tool · Interactive"
+      title="AI Prompt Starter Kit"
+      href="/deliverables/03_AI_Prompt_Starter_Kit.html">
+      <Description>25 practitioner-grade prompts across 5 roles: Executive, Product, Operations, Writing, and AI-Native workflows. Searchable, filterable, one-click copy.</Description>
+    </Deliverable>
+    <Deliverable
+      number="04"
+      tag="Tool · Interactive"
+      title="AI Landscape Mindmap"
+      href="/deliverables/04_AI_Landscape_Mindmap.html">
+      <Description>A visual map of the full AI landscape — models, use cases, tools, agentic systems, infrastructure, and adoption strategy. Use it to locate where you are today.</Description>
+    </Deliverable>
+    <Deliverable
+      number="05"
+      tag="Post-Call · Fillable Form"
+      title="Post-Call Action Plan"
+      href="/deliverables/05_Post_Call_Action_Plan.html">
+      <Description>Sent to you within 24 hours of your call. Your top 3 AI opportunities, a prioritised first step, what to avoid, and follow-up from Chu. Download as PDF.</Description>
+    </Deliverable>
+  </DeliverableList>
+
+  <CTABlock>
+    <Title>Ready to book<br/>your call?</Title>
+    <Hint>30 min · No pitch · Just a straight conversation about where AI fits you</Hint>
+    <Button href="https://cal.com/ajared/talk-to-a-human-about-ai">Book a call →</Button>
+  </CTABlock>
+
+  <Footer email="innovation@ajared.ca" year="2026" />
+
+</Page>

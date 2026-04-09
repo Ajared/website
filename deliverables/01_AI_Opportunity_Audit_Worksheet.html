@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Opportunity Audit — Ajared Research</title>
+<style>
+  :root {
+    --teal: #058c8c; --teal-dark: #023b3b; --teal-light: #b2dbdb;
+    --terra: #a1665e; --ink: #141414; --mid: #6b7280; --light: #f5f5f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--light); color: var(--ink); }
+
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* Header */
+  .doc-header { background: var(--teal-dark); padding: 2rem; margin-bottom: 2rem; border-top: 4px solid var(--terra); }
+  .doc-header .tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); font-weight: 700; margin-bottom: 0.5rem; }
+  .doc-header h1 { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.5rem; }
+  .doc-header p { font-size: 0.8rem; color: var(--teal-light); }
+
+  /* Sections */
+  .section { background: #fff; border: 1px solid #e5e7eb; margin-bottom: 1.25rem; }
+  .section-head { background: var(--teal-dark); padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-num { font-size: 0.65rem; font-weight: 700; color: var(--terra); font-family: monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+  .section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  /* Fields */
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
+  .field input, .field textarea, .field select {
+    border: none; border-bottom: 1.5px solid var(--teal-light); padding: 0.4rem 0;
+    font-size: 0.9rem; font-family: inherit; color: var(--ink); background: transparent;
+    outline: none; transition: border-color 0.2s; resize: none;
+  }
+  .field input:focus, .field textarea:focus { border-bottom-color: var(--teal); }
+  .field textarea { min-height: 56px; line-height: 1.5; }
+  .field-full { grid-column: 1 / -1; }
+
+  /* Checklist */
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem; }
+  .check-item { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+  .check-item input[type="checkbox"] { accent-color: var(--teal); width: 14px; height: 14px; flex-shrink: 0; cursor: pointer; }
+  .check-item span { font-size: 0.85rem; color: var(--ink); }
+
+  /* Radio maturity */
+  .maturity-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .maturity-item { display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; padding: 0.6rem 0.75rem; border: 1px solid #e5e7eb; transition: border-color 0.2s, background 0.2s; }
+  .maturity-item:has(input:checked) { border-color: var(--teal); background: #f0fafa; }
+  .maturity-item input[type="radio"] { accent-color: var(--teal); margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+  .maturity-label { font-size: 0.88rem; font-weight: 700; color: var(--ink); }
+  .maturity-desc { font-size: 0.75rem; color: var(--mid); }
+
+  /* Priority table */
+  .priority-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .priority-table th { background: var(--teal-dark); color: #fff; padding: 0.5rem 0.6rem; text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+  .priority-table td { padding: 0.4rem 0.4rem; border-bottom: 1px solid #e5e7eb; vertical-align: middle; }
+  .priority-table tr:nth-child(even) td { background: var(--light); }
+  .priority-table input, .priority-table select {
+    width: 100%; border: none; background: transparent; font-family: inherit;
+    font-size: 0.82rem; color: var(--ink); outline: none; padding: 0;
+  }
+  .priority-table select { cursor: pointer; }
+
+  /* CTA box */
+  .cta-box { background: var(--teal-dark); padding: 1.25rem 1.5rem; border-top: 3px solid var(--terra); margin-bottom: 1.5rem; }
+  .cta-box p { color: var(--teal-light); font-size: 0.82rem; line-height: 1.5; }
+  .cta-box strong { color: #fff; display: block; margin-bottom: 0.35rem; font-size: 0.95rem; }
+
+  /* Print button */
+  .print-btn {
+    display: block; width: 100%; padding: 1rem; background: var(--teal);
+    color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; border: none; cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .print-btn:hover { background: var(--teal-dark); }
+
+  /* ── Print styles ─────────────────────────────────────────── */
+  @media print {
+    body { background: #fff; font-size: 9pt; }
+    .page-wrap { max-width: 100%; padding: 0; }
+    .no-print { display: none !important; }
+    .section { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 0.75rem; }
+    .section-head { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc-header { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; margin-bottom: 1rem; }
+    .maturity-item:has(input:checked) { border-color: #058c8c !important; background: #f0fafa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .priority-table th { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cta-box { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    input, textarea, select { border-bottom: 1px solid #ccc !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-header">
+    <div class="tag">Pre-Call Worksheet · Ajared Research 2026</div>
+    <h1>AI Opportunity Audit</h1>
+    <p>Complete before your call with Chu — takes about 5 minutes. The more you fill in, the more useful the conversation.</p>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <span class="section-title">About You</span>
+    </div>
+    <div class="section-body">
+      <div class="field-row">
+        <div class="field"><label>Your name</label><input type="text" placeholder=""/></div>
+        <div class="field"><label>Role / title</label><input type="text" placeholder=""/></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Industry</label><input type="text" placeholder="e.g. Retail, Logistics, Finance"/></div>
+        <div class="field"><label>Team / org size</label><input type="text" placeholder="e.g. 5-person team, 500-person company"/></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <span class="section-title">Where Are You with AI Today?</span>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>AI tools you currently use</label>
+        <div class="check-grid" style="margin-top:0.4rem;">
+          <label class="check-item"><input type="checkbox"/><span>ChatGPT / GPT-4</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Claude (Anthropic)</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Copilot (Microsoft)</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Gemini (Google)</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Notion AI</span></label>
+          <label class="check-item"><input type="checkbox"/><span>GitHub Copilot</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Custom / internal tools</span></label>
+          <label class="check-item"><input type="checkbox"/><span>None yet</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Your AI maturity</label>
+        <div class="maturity-grid" style="margin-top:0.4rem;">
+          <label class="maturity-item">
+            <input type="radio" name="maturity" value="exploring"/>
+            <div><div class="maturity-label">Just exploring</div><div class="maturity-desc">Heard the buzz, figuring out what applies to me</div></div>
+          </label>
+          <label class="maturity-item">
+            <input type="radio" name="maturity" value="dabbling"/>
+            <div><div class="maturity-label">Dabbling</div><div class="maturity-desc">Use AI tools occasionally but not systematically</div></div>
+          </label>
+          <label class="maturity-item">
+            <input type="radio" name="maturity" value="adopting"/>
+            <div><div class="maturity-label">Adopting</div><div class="maturity-desc">AI is part of my daily workflow in at least one area</div></div>
+          </label>
+          <label class="maturity-item">
+            <input type="radio" name="maturity" value="scaling"/>
+            <div><div class="maturity-label">Scaling</div><div class="maturity-desc">Thinking about org-wide adoption and strategy</div></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <span class="section-title">Your Top 3 Time Drains</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:0.78rem; color:var(--mid);">What tasks eat the most of your time or energy? These are often the best AI candidates.</p>
+      <table class="priority-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>Task or activity</th>
+            <th style="width:90px">Hours/week</th>
+            <th style="width:100px">AI fit?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--terra);font-weight:700;font-size:0.75rem;">01</td><td><input type="text"/></td><td><select><option value="">–</option><option>&lt;2h</option><option>2–5h</option><option>5–10h</option><option>10h+</option></select></td><td><select><option value="">–</option><option>High</option><option>Medium</option><option>Low</option><option>Not sure</option></select></td></tr>
+          <tr><td style="color:var(--terra);font-weight:700;font-size:0.75rem;">02</td><td><input type="text"/></td><td><select><option value="">–</option><option>&lt;2h</option><option>2–5h</option><option>5–10h</option><option>10h+</option></select></td><td><select><option value="">–</option><option>High</option><option>Medium</option><option>Low</option><option>Not sure</option></select></td></tr>
+          <tr><td style="color:var(--terra);font-weight:700;font-size:0.75rem;">03</td><td><input type="text"/></td><td><select><option value="">–</option><option>&lt;2h</option><option>2–5h</option><option>5–10h</option><option>10h+</option></select></td><td><select><option value="">–</option><option>High</option><option>Medium</option><option>Low</option><option>Not sure</option></select></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <span class="section-title">What You Want from This Call</span>
+    </div>
+    <div class="section-body">
+      <div class="field field-full">
+        <label>Most important question you want answered</label>
+        <textarea rows="2" placeholder="e.g. Where should I start? Is AI actually relevant to my industry?"></textarea>
+      </div>
+      <div class="field field-full">
+        <label>What would a great outcome look like?</label>
+        <textarea rows="2" placeholder="e.g. A clear first step I can act on this week"></textarea>
+      </div>
+      <div class="field field-full">
+        <label>Any constraints or concerns</label>
+        <textarea rows="2" placeholder="e.g. Budget limits, data privacy concerns, team resistance"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box no-print">
+    <strong>Bring this to your call.</strong>
+    <p>Download as PDF (File → Print → Save as PDF) and have it open during the conversation.</p>
+  </div>
+
+  <button class="print-btn no-print" onclick="window.print()">Download as PDF →</button>
+
+</div>
+</body>
+</html>

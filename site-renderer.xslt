@@ -763,6 +763,85 @@
         .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
         .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
         .cta-btn:hover { background: var(--color-terra); color: #fff; }
+
+        /* ── Deliverable List ─────────────────────────────────── */
+        .deliverable-list { border-top: var(--grid-line); }
+        .deliverable-row {
+            display: grid;
+            grid-template-columns: 72px 1fr auto;
+            align-items: start;
+            border-bottom: var(--grid-line);
+            padding: 2rem 2rem 2rem 0;
+            gap: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.25s;
+        }
+        .deliverable-row:hover { background: var(--color-ink); }
+        .deliverable-row:hover .deliverable-title,
+        .deliverable-row:hover .deliverable-desc,
+        .deliverable-row:hover .deliverable-tag,
+        .deliverable-row:hover .deliverable-num { color: var(--color-bg); }
+        .deliverable-row:hover .deliverable-arrow { background-color: var(--color-bg); transform: translateX(6px); }
+        .deliverable-row:hover .deliverable-arrow::after { border-left-color: var(--color-bg); }
+        .deliverable-num {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--color-terra);
+            letter-spacing: 0.08em;
+            padding-top: 0.2rem;
+            text-align: right;
+            padding-right: 1.5rem;
+            border-right: var(--grid-line);
+        }
+        .deliverable-body { display: flex; flex-direction: column; gap: 0.4rem; }
+        .deliverable-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-ink);
+        }
+        .deliverable-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: var(--color-ink-darkest);
+        }
+        .deliverable-desc {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--color-ink-dark);
+            max-width: 52ch;
+            margin-top: 0.2rem;
+        }
+        .deliverable-arrow {
+            width: 36px;
+            height: 1px;
+            background: var(--color-terra);
+            position: relative;
+            display: inline-block;
+            margin-top: 0.6rem;
+            flex-shrink: 0;
+            transition: transform 0.25s ease, background-color 0.25s ease;
+        }
+        .deliverable-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0; top: -4px;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 6px solid var(--color-terra);
+            transition: border-color 0.25s ease;
+        }
+        @media (max-width: 768px) {
+            .deliverable-row { grid-template-columns: 48px 1fr auto; padding: 1.5rem 1rem 1.5rem 0; gap: 1rem; }
+            .deliverable-num { padding-right: 1rem; font-size: 0.65rem; }
+            .deliverable-title { font-size: 1rem; }
+        }
 </style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
@@ -801,6 +880,7 @@
             <xsl:apply-templates select="CapabilityHero" />
             <xsl:apply-templates select="PageBody" />
             <xsl:apply-templates select="CapNav" />
+            <xsl:apply-templates select="DeliverableList" />
             <xsl:apply-templates select="CTABlock" />
             
             <xsl:apply-templates select="Footer" />
@@ -1214,6 +1294,24 @@
     </div>
   </xsl:template>
 
+
+  <xsl:template match="DeliverableList">
+    <div class="deliverable-list">
+      <xsl:apply-templates select="Deliverable" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="Deliverable">
+    <a href="{@href}" class="deliverable-row" target="_blank">
+      <span class="deliverable-num"><xsl:value-of select="@number"/></span>
+      <div class="deliverable-body">
+        <span class="deliverable-tag"><xsl:value-of select="@tag"/></span>
+        <span class="deliverable-title"><xsl:value-of select="@title"/></span>
+        <p class="deliverable-desc"><xsl:value-of select="Description"/></p>
+      </div>
+      <div class="deliverable-arrow"></div>
+    </a>
+  </xsl:template>
 
   <xsl:template match="CapabilityHero">
     <div class="hero-detail">

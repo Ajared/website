@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Post-Call Action Plan — Ajared Research</title>
+<style>
+  :root {
+    --teal: #058c8c; --teal-dark: #023b3b; --teal-light: #b2dbdb;
+    --terra: #a1665e; --ink: #141414; --mid: #6b7280; --light: #f5f5f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--light); color: var(--ink); }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .doc-header { background: var(--teal-dark); padding: 2rem; margin-bottom: 2rem; border-top: 4px solid var(--terra); display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+  .doc-header .tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); font-weight: 700; margin-bottom: 0.5rem; }
+  .doc-header h1 { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
+  .doc-header p { font-size: 0.78rem; color: var(--teal-light); margin-top: 0.4rem; }
+  .from-block { text-align: right; flex-shrink: 0; }
+  .from-block .from-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
+  .from-block .from-role { font-size: 0.7rem; color: var(--teal-light); margin-top: 0.15rem; }
+
+  .meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .meta-field { background: #fff; border: 1px solid #e5e7eb; padding: 0.75rem 1rem; }
+  .meta-field label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); display: block; margin-bottom: 0.35rem; }
+  .meta-field input { border: none; border-bottom: 1.5px solid var(--teal-light); width: 100%; padding: 0.3rem 0; font-size: 0.92rem; font-family: inherit; color: var(--ink); background: transparent; outline: none; }
+  .meta-field input:focus { border-bottom-color: var(--teal); }
+
+  .section { background: #fff; border: 1px solid #e5e7eb; margin-bottom: 1rem; }
+  .section-head { background: var(--teal-dark); padding: 0.55rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-num { font-size: 0.65rem; font-weight: 700; color: var(--terra); font-family: monospace; text-transform: uppercase; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: #fff; }
+  .section-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  /* Opportunity cards */
+  .opp-card { border: 1px solid #e5e7eb; }
+  .opp-card-head { background: var(--teal-dark); padding: 0.4rem 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .opp-num { font-size: 0.7rem; font-weight: 700; color: var(--terra); font-family: monospace; }
+  .opp-card-body { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .opp-field label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); display: block; margin-bottom: 0.25rem; }
+  .opp-field input, .opp-field textarea {
+    width: 100%; border: none; border-bottom: 1px solid var(--teal-light);
+    padding: 0.25rem 0; font-size: 0.85rem; font-family: inherit; color: var(--ink);
+    background: transparent; outline: none; resize: none;
+  }
+  .opp-field input:focus, .opp-field textarea:focus { border-bottom-color: var(--teal); }
+
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
+  .field textarea {
+    border: none; border-bottom: 1.5px solid var(--teal-light); padding: 0.4rem 0;
+    font-size: 0.88rem; font-family: inherit; color: var(--ink); background: transparent;
+    outline: none; resize: none; min-height: 48px;
+  }
+  .field textarea:focus { border-bottom-color: var(--teal); }
+
+  /* First step highlight */
+  .first-step-box { background: #f0fafa; border: 1.5px solid var(--teal); padding: 0.85rem 1rem; }
+  .first-step-box label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); display: block; margin-bottom: 0.4rem; }
+  .first-step-box textarea { width: 100%; border: none; background: transparent; font-size: 0.9rem; font-family: inherit; color: var(--ink); outline: none; resize: none; min-height: 44px; }
+
+  /* Signature */
+  .signature { background: var(--teal-dark); padding: 1.25rem 1.5rem; margin-top: 1.5rem; border-top: 3px solid var(--terra); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .sig-left .sig-name { font-size: 0.95rem; font-weight: 800; color: #fff; }
+  .sig-left .sig-role { font-size: 0.72rem; color: var(--teal-light); margin-top: 0.2rem; }
+  .sig-right { font-size: 0.7rem; color: var(--teal-light); text-align: right; line-height: 1.6; }
+  .sig-right a { color: var(--terra); text-decoration: none; }
+
+  .print-btn {
+    display: block; width: 100%; padding: 1rem; background: var(--teal);
+    color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; border: none; cursor: pointer; font-family: inherit;
+    transition: background 0.2s; margin-top: 1.5rem;
+  }
+  .print-btn:hover { background: var(--teal-dark); }
+
+  @media print {
+    body { background: #fff; font-size: 9pt; }
+    .page-wrap { max-width: 100%; padding: 0; }
+    .no-print { display: none !important; }
+    .doc-header, .section-head, .opp-card-head, .signature {
+      background: #023b3b !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .first-step-box { background: #f0fafa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section, .opp-card { break-inside: avoid; }
+    input, textarea { border-bottom: 1px solid #ccc !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-header">
+    <div>
+      <div class="tag">Post-Call Action Plan · 05 of 05 · Ajared Research 2026</div>
+      <h1>Your AI Action Plan</h1>
+      <p>Prepared within 24 hours of your call.</p>
+    </div>
+    <div class="from-block">
+      <div class="from-name">Chu Nnodu</div>
+      <div class="from-role">Enterprise PM & AI product builder<br/>Ajared Research Inc.</div>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-field">
+      <label>Prepared for</label>
+      <input type="text" placeholder="Client name"/>
+    </div>
+    <div class="meta-field">
+      <label>Call date</label>
+      <input type="date"/>
+    </div>
+  </div>
+
+  <!-- Top 3 Opportunities -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <span class="section-title">Your Top 3 AI Opportunities</span>
+    </div>
+    <div class="section-body">
+      <div class="opp-card">
+        <div class="opp-card-head"><span class="opp-num">Opportunity 01</span></div>
+        <div class="opp-card-body">
+          <div class="opp-field"><label>What the opportunity is</label><input type="text" placeholder=""/></div>
+          <div class="opp-field"><label>Why it matters</label><textarea rows="2" placeholder=""></textarea></div>
+          <div class="opp-field"><label>Suggested tool or approach</label><input type="text" placeholder=""/></div>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-head"><span class="opp-num">Opportunity 02</span></div>
+        <div class="opp-card-body">
+          <div class="opp-field"><label>What the opportunity is</label><input type="text" placeholder=""/></div>
+          <div class="opp-field"><label>Why it matters</label><textarea rows="2" placeholder=""></textarea></div>
+          <div class="opp-field"><label>Suggested tool or approach</label><input type="text" placeholder=""/></div>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-head"><span class="opp-num">Opportunity 03</span></div>
+        <div class="opp-card-body">
+          <div class="opp-field"><label>What the opportunity is</label><input type="text" placeholder=""/></div>
+          <div class="opp-field"><label>Why it matters</label><textarea rows="2" placeholder=""></textarea></div>
+          <div class="opp-field"><label>Suggested tool or approach</label><input type="text" placeholder=""/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- First step -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <span class="section-title">Do This First (Next 2 Weeks)</span>
+    </div>
+    <div class="section-body">
+      <div class="first-step-box">
+        <label>Priority first step</label>
+        <textarea rows="2" placeholder="The single most important thing to do first — specific enough to act on immediately"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- What to avoid + resources -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <span class="section-title">Skip This & Further Reading</span>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>One thing to avoid</label>
+        <textarea rows="2" placeholder="What would be a waste of time or money given your specific situation"></textarea>
+      </div>
+      <div class="field">
+        <label>Resources / further reading</label>
+        <textarea rows="2" placeholder="Tools to try, articles to read, people to talk to"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Follow-up -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <span class="section-title">Follow-up from Chu</span>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Notes & follow-up</label>
+        <textarea rows="3" placeholder="Anything I'm sending over, connecting you with, or following up on"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature">
+    <div class="sig-left">
+      <div class="sig-name">Chu Nnodu</div>
+      <div class="sig-role">Enterprise PM & AI product builder · Founder, Ajared Research Inc.</div>
+    </div>
+    <div class="sig-right">
+      innovation@ajared.ca<br/>
+      <a href="https://ajared.ca">ajared.ca</a>
+    </div>
+  </div>
+
+  <button class="print-btn no-print" onclick="window.print()">Download as PDF →</button>
+</div>
+</body>
+</html>
