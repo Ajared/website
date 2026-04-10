@@ -764,7 +764,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             font-size: 0.95rem;
             line-height: 1.7;
             color: var(--color-ink-dark);
-            max-width: 56ch;
             margin-bottom: 1.3em;
         }
         .essay-main > p:last-child { margin-bottom: 0; }
@@ -776,7 +775,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             line-height: 1.7;
             color: var(--color-ink-dark);
             margin-bottom: 1em;
-            max-width: 56ch;
         }
         .essay-offering-para:last-child { margin-bottom: 0; }
         .essay-offering-para strong {
@@ -797,7 +795,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             font-size: 0.92rem;
             line-height: 1.7;
             color: var(--color-ink-dark);
-            max-width: 56ch;
         }
         .essay-steps li:last-child { padding-bottom: 0; }
         .essay-steps li::before {
@@ -1487,15 +1484,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </xsl:for-each>
           </xsl:when>
           <!-- Deliverables section: when Intro is present, the list lives here -->
+          <!-- Uses @label attribute for short sidenote display; falls back to full text -->
           <xsl:when test="Deliverables and Intro">
             <span class="sidenote-heading">Included</span>
             <xsl:for-each select="Deliverables/Row">
               <xsl:choose>
                 <xsl:when test="@checked='false'">
-                  <div class="sidenote-item sidenote-item--opt"><xsl:value-of select="."/></div>
+                  <div class="sidenote-item sidenote-item--opt">
+                    <xsl:choose>
+                      <xsl:when test="@label"><xsl:value-of select="@label"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+                    </xsl:choose>
+                  </div>
                 </xsl:when>
                 <xsl:otherwise>
-                  <div class="sidenote-item"><xsl:value-of select="."/></div>
+                  <div class="sidenote-item">
+                    <xsl:choose>
+                      <xsl:when test="@label"><xsl:value-of select="@label"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+                    </xsl:choose>
+                  </div>
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:for-each>

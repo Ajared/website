@@ -131,11 +131,11 @@
         <p>Every engagement closes with documents designed to survive handoff — a research brief, a plain-language findings report, an executive presentation deck, and a full evidence archive with methodology notes. Teams that want continuity can extend into an ongoing research retainer.</p>
       </Intro>
       <Deliverables>
-        <Row checked="true">Research brief + scope alignment document</Row>
-        <Row checked="true">Structured findings report (plain language)</Row>
-        <Row checked="true">Executive presentation deck</Row>
-        <Row checked="true">Evidence archive + methodology notes</Row>
-        <Row checked="false">Optional: Ongoing research retainer</Row>
+        <Row checked="true" label="Research brief">Research brief + scope alignment document</Row>
+        <Row checked="true" label="Findings report">Structured findings report (plain language)</Row>
+        <Row checked="true" label="Executive deck">Executive presentation deck</Row>
+        <Row checked="true" label="Evidence archive">Evidence archive + methodology notes</Row>
+        <Row checked="false" label="Optional retainer">Optional: Ongoing research retainer</Row>
       </Deliverables>
     </Section>
   </PageBody>
