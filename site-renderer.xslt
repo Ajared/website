@@ -6,6 +6,13 @@
   <xsl:template match="/Page">
     <html lang="en">
       <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5TQXWR2M');</script>
+        <!-- End Google Tag Manager -->
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
@@ -852,6 +859,10 @@
         </xsl:if>
       </head>
       <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="grid-container">
           <div class="ruler-y">
             <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
@@ -1820,6 +1831,13 @@
   <xsl:template match="/AssessmentSite">
     <html lang="en">
       <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5TQXWR2M');</script>
+        <!-- End Google Tag Manager -->
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>AI Readiness Navigator — Ajared Research Inc</title>
@@ -1845,6 +1863,10 @@
         <link rel="stylesheet" href="/ai-readiness/assessment.css"/>
       </head>
       <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
 
         <!-- Header -->
         <header class="site-header">
