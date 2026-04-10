@@ -197,6 +197,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             justify-content: space-between;
             min-height: 160px;
         }
+
+        @media (max-width: 768px) {
             .form-section { grid-template-columns: 1fr; }
             .form-left { padding: 3rem 1rem; border-right: none; border-bottom: var(--grid-line); }
             .form-right { padding: 3rem 1rem; }
@@ -222,8 +224,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .cta-btn { text-align: center; display: block; }
             .cap-nav { grid-template-columns: 1fr 1fr; }
             .cap-nav-center { display: none; }
-
-
+        }
 
 
 
@@ -740,35 +741,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .essay-section-label {
             grid-column: 1 / -1;
             font-family: var(--font-mono);
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--color-ink);
-            padding: 0.9rem 2rem;
+            padding: 0.85rem 1.8rem;
             border-bottom: var(--grid-line);
         }
 
         .essay-main {
             padding: 2rem 1.5rem 2.5rem 1.8rem;
+            min-width: 0;
+        }
+
+        .essay-main p {
+            max-width: none;
         }
 
         .essay-main > p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
             color: var(--color-ink-dark);
-            max-width: 58ch;
-            margin-bottom: 1.4em;
+            margin-bottom: 1.3em;
         }
         .essay-main > p:last-child { margin-bottom: 0; }
 
         /* Offerings as prose paragraphs */
-        .essay-offerings { margin-top: 0.5rem; }
+        .essay-offerings { margin-top: 0.2rem; }
         .essay-offering-para {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.7;
             color: var(--color-ink-dark);
-            margin-bottom: 1.1em;
-            max-width: 58ch;
+            margin-bottom: 1em;
         }
         .essay-offering-para:last-child { margin-bottom: 0; }
         .essay-offering-para strong {
@@ -780,16 +784,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .essay-steps {
             list-style: none;
             counter-reset: estep;
-            margin-top: 0.5rem;
+            margin-top: 0.2rem;
         }
         .essay-steps li {
             counter-increment: estep;
-            padding: 0 0 1.2em 2.2em;
+            padding: 0 0 1.1em 2em;
             position: relative;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.7;
             color: var(--color-ink-dark);
-            max-width: 58ch;
         }
         .essay-steps li:last-child { padding-bottom: 0; }
         .essay-steps li::before {
@@ -798,17 +801,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             left: 0;
             top: 0.15em;
             font-family: var(--font-mono);
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             color: var(--color-ink-light);
-            letter-spacing: 0.06em;
+            letter-spacing: 0.05em;
         }
         .essay-steps li strong {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--color-ink-darkest);
             letter-spacing: -0.01em;
-            margin-bottom: 0.25em;
+            margin-bottom: 0.2em;
         }
 
         /* Deliverables as a clean lined list (no borders, no icons) */
@@ -840,30 +843,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .sidenote-heading {
             display: block;
             font-family: var(--font-mono);
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--color-ink);
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.8rem;
         }
         .sidenote-item {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             line-height: 1.5;
             color: var(--color-ink-dark);
-            padding: 0.45rem 0;
+            padding: 0.4rem 0;
             border-bottom: 1px solid var(--color-ink-lighter);
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             align-items: baseline;
         }
         .sidenote-item:last-child { border-bottom: none; }
         .sidenote-item--opt { color: var(--color-ink-light); font-style: italic; }
         .sidenote-item-num {
             font-family: var(--font-mono);
-            font-size: 0.58rem;
+            font-size: 0.56rem;
             color: var(--color-ink-light);
-            letter-spacing: 0.06em;
-            min-width: 20px;
+            letter-spacing: 0.05em;
+            min-width: 18px;
             flex-shrink: 0;
         }
         

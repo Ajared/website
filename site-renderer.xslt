@@ -1288,25 +1288,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="instrument-field">
                   <span class="label">01 / Principal Contact</span>
                   <input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual" />
-                  <div class="technical-markings">
-                      <span>MIN_LEN: 2</span><span>TYPE: STRING</span><span>MAX_LEN: 128</span>
-                  </div>
               </div>
               <div class="instrument-field">
                   <span class="label">02 / Email</span>
                   <input type="email" name="email" required="required" class="instrument-input" placeholder="your-email@domain.com" />
-                  <div class="technical-markings">
-                      <span>VAL: SMTP</span><span>PRIORITY: HIGH</span>
-                  </div>
               </div>
               <div class="instrument-field" id="deliverable-field" style="display: none;">
                   <span class="label">03 / Specific Deliverable (Optional)</span>
                   <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
                       <option value="">Select a deliverable...</option>
                   </select>
-                  <div class="technical-markings">
-                      <span>DYNAMIC</span><span>TYPE: SELECT</span><span>OPTIONAL</span>
-                  </div>
               </div>
               <div class="instrument-field">
                   <span class="label" id="scope-label">03 / Project Scope / Brief</span>
@@ -1317,24 +1308,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </form>
       </div>
       <div class="form-right">
-          <div class="instrument-field">
-              <span class="label">04 / Origin Coordinates</span>
-              <p style="margin-bottom: 1rem;">Where are you based?</p>
-              <div class="coordinate-selector" id="coord-map">
-                  <div class="crosshair-v" id="ch-v"></div>
-                  <div class="crosshair-h" id="ch-h"></div>
-              </div>
-              <div class="technical-markings" style="margin-top: 10px;">
-                  <span id="coord-display">LAT: 0.0000 / LONG: 0.0000</span>
-              </div>
-          </div>
-          <div class="instrument-field" style="margin-top: 4rem;">
-              <span class="label">System Status</span>
-              <div class="status-indicator">
-                  <div class="status-light"></div>
-                  <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;">Awaiting Input Signal...</p>
-              </div>
-          </div>
           <div style="margin-top: 4rem;">
               <span class="label">Response Times</span>
               <p>We typically respond within 48–72 hours.</p>
