@@ -222,10 +222,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .nav-crumb { padding: 0; font-size: 0.58rem; }
             .hero-detail { padding: 2rem 1.2rem; }
             .hero-detail h1 { font-size: clamp(1.6rem, 8vw, 2.6rem); }
-            .section-bar { padding: 0.8rem 1rem; }
-            .section-body { padding: 1.2rem; }
-            .offerings { grid-template-columns: 1fr; }
-            .process-step { grid-template-columns: 28px 1fr; padding: 1.1rem 1rem; }
+            .essay-section { grid-template-columns: 1fr; }
+            .essay-main { border-right: none; border-bottom: var(--grid-line); padding: 1.2rem; }
+            .sidenote { display: none; }
+            .essay-section-label { padding: 0.65rem 1.2rem; }
             .cta-block { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.8rem 1.2rem; }
             .cta-btn { text-align: center; display: block; }
             .cap-nav { grid-template-columns: 1fr 1fr; }
@@ -734,30 +734,146 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .hero-detail-content { position: relative; z-index: 1; }
         .hero-detail h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; color: #fff; margin-bottom: 0; }
         
+        /* ── Essay + Marginalia layout (capability detail pages) ─── */
         .page-body { border-bottom: var(--grid-line); }
-        .section { border-bottom: var(--grid-line); }
-        .section:last-child { border-bottom: none; }
-        .section-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: var(--grid-line); }
-        .section-title { font-family: var(--font-primary); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.04em; color: var(--color-ink-darkest); }
-        .section-body { padding: 2rem 2.5rem 2.5rem 2rem; }
-        .section-body > p { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); margin-bottom: 1.5rem; max-width: 60ch; }
-        .section-body > p:last-child { margin-bottom: 0; }
-        
-        .offerings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: var(--grid-line); border-left: var(--grid-line); }
-        .offering { padding: 1.6rem 1.8rem; border-right: var(--grid-line); border-bottom: var(--grid-line); }
-        .offering h4 { font-size: 0.97rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-ink-darkest); margin-bottom: 0.55rem; }
-        .offering p { font-size: 0.85rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
-        
-        .process-step { display: grid; grid-template-columns: 36px 1fr; border: var(--grid-line); border-bottom: none; padding: 1.4rem 1.6rem; gap: 1.2rem; }
-        .process-step:last-child { border-bottom: var(--grid-line); }
-        .step-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-terra); letter-spacing: 0.1em; padding-top: 0.2rem; }
-        .step-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--color-ink-darkest); letter-spacing: -0.02em; margin-bottom: 0.45rem; }
-        .step-body p { font-size: 0.87rem; line-height: 1.65; color: var(--color-ink-dark); margin: 0; }
-        
-        .deliverable-row { display: grid; grid-template-columns: 28px 1fr; border: var(--grid-line); border-bottom: none; padding: 0.85rem 1rem; align-items: start; font-size: 0.82rem; color: var(--color-ink-dark); line-height: 1.5; }
-        .deliverable-row:last-child { border-bottom: var(--grid-line); }
-        .check { color: var(--color-ink-light); }
-        .check.done { color: #4ade80; }
+
+        .essay-section {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            grid-template-rows: auto 1fr;
+            border-bottom: var(--grid-line);
+        }
+        .essay-section:last-child { border-bottom: none; }
+
+        .essay-section-label {
+            grid-column: 1 / -1;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-ink);
+            padding: 0.9rem 2rem;
+            border-bottom: var(--grid-line);
+        }
+
+        .essay-main {
+            padding: 2rem 2rem 2.5rem;
+            border-right: var(--grid-line);
+        }
+
+        .essay-main > p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-ink-dark);
+            max-width: 58ch;
+            margin-bottom: 1.4em;
+        }
+        .essay-main > p:last-child { margin-bottom: 0; }
+
+        /* Offerings as prose paragraphs */
+        .essay-offerings { margin-top: 0.5rem; }
+        .essay-offering-para {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-ink-dark);
+            margin-bottom: 1.1em;
+            max-width: 58ch;
+        }
+        .essay-offering-para:last-child { margin-bottom: 0; }
+        .essay-offering-para strong {
+            color: var(--color-ink-darkest);
+            font-weight: 700;
+        }
+
+        /* Process as a numbered prose list */
+        .essay-steps {
+            list-style: none;
+            counter-reset: estep;
+            margin-top: 0.5rem;
+        }
+        .essay-steps li {
+            counter-increment: estep;
+            padding: 0 0 1.2em 2.2em;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-ink-dark);
+            max-width: 58ch;
+        }
+        .essay-steps li:last-child { padding-bottom: 0; }
+        .essay-steps li::before {
+            content: counter(estep, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 0.15em;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--color-ink-light);
+            letter-spacing: 0.06em;
+        }
+        .essay-steps li strong {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-ink-darkest);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.25em;
+        }
+
+        /* Deliverables as a clean lined list (no borders, no icons) */
+        .essay-deliverables { margin-top: 0.5rem; }
+        .essay-deliverable {
+            display: flex;
+            gap: 0.9rem;
+            align-items: baseline;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--color-ink-lighter);
+            font-size: 0.88rem;
+            color: var(--color-ink-dark);
+            line-height: 1.5;
+        }
+        .essay-deliverable:last-child { border-bottom: none; }
+        .essay-deliverable.optional { color: var(--color-ink-light); font-style: italic; }
+        .d-mark {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-ink-light);
+            min-width: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Sidenote (right margin column) */
+        .sidenote {
+            padding: 2rem 1.5rem 2rem;
+        }
+        .sidenote-heading {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-ink);
+            margin-bottom: 0.9rem;
+        }
+        .sidenote-item {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: var(--color-ink-dark);
+            padding: 0.45rem 0;
+            border-bottom: 1px solid var(--color-ink-lighter);
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+        .sidenote-item:last-child { border-bottom: none; }
+        .sidenote-item-num {
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            color: var(--color-ink-light);
+            letter-spacing: 0.06em;
+            min-width: 20px;
+            flex-shrink: 0;
+        }
         
         .cap-nav { display: grid; grid-template-columns: 1fr auto 1fr; border-bottom: var(--grid-line); }
         .cap-nav-prev, .cap-nav-center, .cap-nav-next { padding: 1rem 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
@@ -1340,54 +1456,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </xsl:template>
 
   <xsl:template match="Section">
-    <div class="section">
-      <div class="section-bar"><span class="section-title"><xsl:value-of select="@title"/></span></div>
-      <div class="section-body">
+    <div class="essay-section">
+      <div class="essay-section-label"><xsl:value-of select="@title"/></div>
+      <!-- Main content column -->
+      <div class="essay-main">
         <xsl:copy-of select="Intro/node()"/>
         <xsl:apply-templates select="Offerings" />
         <xsl:apply-templates select="Process" />
         <xsl:apply-templates select="Deliverables" />
       </div>
+      <!-- Margin / sidenote column -->
+      <div class="sidenote">
+        <xsl:choose>
+          <xsl:when test="Offerings">
+            <span class="sidenote-heading">Disciplines</span>
+            <xsl:for-each select="Offerings/Offering">
+              <div class="sidenote-item"><xsl:value-of select="Title"/></div>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:when test="Process">
+            <span class="sidenote-heading">Steps</span>
+            <xsl:for-each select="Process/Step">
+              <div class="sidenote-item">
+                <span class="sidenote-item-num"><xsl:value-of select="@num"/></span>
+                <xsl:value-of select="Title"/>
+              </div>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:when test="Deliverables">
+            <span class="sidenote-heading">Included</span>
+            <xsl:for-each select="Deliverables/Row[@checked='true']">
+              <div class="sidenote-item"><xsl:value-of select="."/></div>
+            </xsl:for-each>
+          </xsl:when>
+        </xsl:choose>
+      </div>
     </div>
   </xsl:template>
 
   <xsl:template match="Offerings">
-    <div class="offerings">
+    <div class="essay-offerings">
       <xsl:for-each select="Offering">
-        <div class="offering">
-          <h4><xsl:value-of select="Title"/></h4>
-          <p><xsl:copy-of select="Description/node()"/></p>
-        </div>
+        <p class="essay-offering-para">
+          <strong><xsl:value-of select="Title"/></strong>&#160;&#8212;&#160;<xsl:copy-of select="Description/node()"/>
+        </p>
       </xsl:for-each>
     </div>
   </xsl:template>
 
   <xsl:template match="Process">
-    <div class="process-list">
+    <ol class="essay-steps">
       <xsl:for-each select="Step">
-        <div class="process-step">
-          <div class="step-num"><xsl:value-of select="@num"/></div>
-          <div class="step-body">
-            <h4><xsl:value-of select="Title"/></h4>
-            <p><xsl:copy-of select="Description/node()"/></p>
-          </div>
-        </div>
+        <li>
+          <strong><xsl:value-of select="Title"/></strong>
+          <xsl:copy-of select="Description/node()"/>
+        </li>
       </xsl:for-each>
-    </div>
+    </ol>
   </xsl:template>
 
   <xsl:template match="Deliverables">
-    <div class="deliverables">
+    <div class="essay-deliverables">
       <xsl:for-each select="Row">
-        <div class="deliverable-row">
-          <xsl:choose>
-            <xsl:when test="@checked='true'">
-              <span class="check done">&#10003;</span>
-            </xsl:when>
-            <xsl:otherwise>
-               <span class="check">&#9675;</span>
-            </xsl:otherwise>
-          </xsl:choose>
+        <div>
+          <xsl:attribute name="class">
+            <xsl:choose>
+              <xsl:when test="@checked='false'">essay-deliverable optional</xsl:when>
+              <xsl:otherwise>essay-deliverable</xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+          <span class="d-mark">
+            <xsl:choose>
+              <xsl:when test="@checked='false'">+</xsl:when>
+              <xsl:otherwise>&#8212;</xsl:otherwise>
+            </xsl:choose>
+          </span>
           <xsl:value-of select="."/>
         </div>
       </xsl:for-each>
