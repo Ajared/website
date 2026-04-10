@@ -142,11 +142,12 @@
         <p>Every agent system ships with the architecture documentation and production code, a full integration layer with API documentation, and a monitoring dashboard with alert configuration — built to run reliably without requiring constant human oversight. Teams that want us to continue running and evolving the system can extend into an ongoing operations retainer.</p>
       </Intro>
       <Deliverables>
-        <Row checked="true" label="Architecture + system design">Agent architecture document + system design</Row>
-        <Row checked="true" label="Production agent system">Production-ready agent system with evaluation suite</Row>
-        <Row checked="true" label="Integration + API docs">Integration layer + API documentation</Row>
-        <Row checked="true" label="Monitoring dashboard">Monitoring dashboard + alert configuration</Row>
-        <Row checked="false" label="Optional: ops retainer">Optional: Ongoing operations retainer</Row>
+        <Row checked="true">Agent architecture document + system design</Row>
+        <Row checked="true">Production-ready agent system with
+                evaluation suite</Row>
+        <Row checked="true">Integration layer + API documentation</Row>
+        <Row checked="true">Monitoring dashboard + alert configuration</Row>
+        <Row checked="false">Optional: Ongoing operations retainer</Row>
       </Deliverables>
     </Section>
   </PageBody>

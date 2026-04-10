@@ -759,6 +759,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         .essay-main {
             padding: 2rem 1.5rem 2.5rem 1.8rem;
+            min-width: 0;
+        }
+
+        .essay-main p {
+            max-width: none;
         }
 
         .essay-main > p {
