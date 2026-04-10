@@ -661,7 +661,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .instrument-input { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--color-ink); color: var(--color-ink-darkest); font-family: var(--font-primary); font-size: 1rem; padding: 0.5rem 0; outline: none; cursor: crosshair; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
         .instrument-input:focus { border-bottom-color: #a1665e; box-shadow: 0 1px 0 0 rgba(161, 102, 94, 0.2); }
         .instrument-input::placeholder { color: var(--color-ink-light); }
-        .technical-markings { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; margin-top: 4px; color: var(--color-ink-light); }
         .coordinate-selector { border: 1px solid var(--color-ink); height: 300px; position: relative; margin-top: 1rem; overflow: hidden; background: var(--color-bg); border-radius: var(--radius-sm); }
         .crosshair-v { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #a1665e; pointer-events: none; }
         .crosshair-h { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #a1665e; pointer-events: none; }
