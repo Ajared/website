@@ -205,6 +205,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             justify-content: space-between;
             min-height: 160px;
         }
+
+        @media (max-width: 768px) {
             .form-section { grid-template-columns: 1fr; }
             .form-left { padding: 3rem 1rem; border-right: none; border-bottom: var(--grid-line); }
             .form-right { padding: 3rem 1rem; }
@@ -230,8 +232,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .cta-btn { text-align: center; display: block; }
             .cap-nav { grid-template-columns: 1fr 1fr; }
             .cap-nav-center { display: none; }
-
-
+        }
 
 
 
