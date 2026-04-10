@@ -141,6 +141,9 @@
     </Section>
 
     <Section title="Deliverables">
+      <Intro>
+        <p>The engagement closes with a complete product package — concept brief, strategy, and roadmap through to a UX design system with tested prototypes and a production-ready working product. Launch plan and analytics instrumentation are included as standard, along with a one-month MVP sprint. Teams that want ongoing ownership support can extend into a fractional product management retainer.</p>
+      </Intro>
       <Deliverables>
         <Row checked="true">Concept brief + product strategy + roadmap</Row>
         <Row checked="true">UX design system + tested prototypes</Row>

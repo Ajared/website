@@ -757,8 +757,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         }
 
         .essay-main {
-            padding: 2rem 2rem 2.5rem;
-            border-right: var(--grid-line);
+            padding: 2rem 1.5rem 2.5rem 1.8rem;
         }
 
         .essay-main > p {
@@ -844,7 +843,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         /* Sidenote (right margin column) */
         .sidenote {
-            padding: 2rem 1.5rem 2rem;
+            padding: 2rem 1.8rem 2rem 1.5rem;
         }
         .sidenote-heading {
             display: block;
@@ -866,6 +865,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             align-items: baseline;
         }
         .sidenote-item:last-child { border-bottom: none; }
+        .sidenote-item--opt { color: var(--color-ink-light); font-style: italic; }
         .sidenote-item-num {
             font-family: var(--font-mono);
             font-size: 0.58rem;
@@ -1463,7 +1463,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <xsl:copy-of select="Intro/node()"/>
         <xsl:apply-templates select="Offerings" />
         <xsl:apply-templates select="Process" />
-        <xsl:apply-templates select="Deliverables" />
+        <!-- Deliverables render in main only when no Intro exists; otherwise they migrate to sidenote -->
+        <xsl:if test="not(Intro)">
+          <xsl:apply-templates select="Deliverables" />
+        </xsl:if>
       </div>
       <!-- Margin / sidenote column -->
       <div class="sidenote">
@@ -1483,6 +1486,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </xsl:for-each>
           </xsl:when>
+          <!-- Deliverables section: when Intro is present, the list lives here -->
+          <xsl:when test="Deliverables and Intro">
+            <span class="sidenote-heading">Included</span>
+            <xsl:for-each select="Deliverables/Row">
+              <xsl:choose>
+                <xsl:when test="@checked='false'">
+                  <div class="sidenote-item sidenote-item--opt"><xsl:value-of select="."/></div>
+                </xsl:when>
+                <xsl:otherwise>
+                  <div class="sidenote-item"><xsl:value-of select="."/></div>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
+          </xsl:when>
+          <!-- Deliverables section: fallback when no Intro, sidenote shows count label -->
           <xsl:when test="Deliverables">
             <span class="sidenote-heading">Included</span>
             <xsl:for-each select="Deliverables/Row[@checked='true']">

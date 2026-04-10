@@ -127,6 +127,9 @@
     </Section>
 
     <Section title="Deliverables">
+      <Intro>
+        <p>Every engagement closes with documents designed to survive handoff — a research brief, a plain-language findings report, an executive presentation deck, and a full evidence archive with methodology notes. Teams that want continuity can extend into an ongoing research retainer.</p>
+      </Intro>
       <Deliverables>
         <Row checked="true">Research brief + scope alignment document</Row>
         <Row checked="true">Structured findings report (plain language)</Row>

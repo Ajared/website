@@ -749,8 +749,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
 
         .essay-main {
-            padding: 2rem 2rem 2.5rem;
-            border-right: var(--grid-line);
+            padding: 2rem 1.5rem 2.5rem 1.8rem;
         }
 
         .essay-main > p {
@@ -836,7 +835,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         /* Sidenote (right margin column) */
         .sidenote {
-            padding: 2rem 1.5rem 2rem;
+            padding: 2rem 1.8rem 2rem 1.5rem;
         }
         .sidenote-heading {
             display: block;
@@ -858,6 +857,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             align-items: baseline;
         }
         .sidenote-item:last-child { border-bottom: none; }
+        .sidenote-item--opt { color: var(--color-ink-light); font-style: italic; }
         .sidenote-item-num {
             font-family: var(--font-mono);
             font-size: 0.58rem;
@@ -1097,25 +1097,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="essay-section">
 <div class="essay-section-label">Deliverables</div>
-<div class="essay-main"><div class="essay-deliverables">
-<div class="essay-deliverable">
-<span class="d-mark">&#8212;</span>Agent architecture document + system design</div>
-<div class="essay-deliverable">
-<span class="d-mark">&#8212;</span>Production-ready agent system with
-                evaluation suite</div>
-<div class="essay-deliverable">
-<span class="d-mark">&#8212;</span>Integration layer + API documentation</div>
-<div class="essay-deliverable">
-<span class="d-mark">&#8212;</span>Monitoring dashboard + alert configuration</div>
-<div class="essay-deliverable optional">
-<span class="d-mark">+</span>Optional: Ongoing operations retainer</div>
-</div></div>
+<div class="essay-main">
+        <p>Every agent system ships with the architecture documentation and production code, a full integration layer with API documentation, and a monitoring dashboard with alert configuration &#8212; built to run reliably without requiring constant human oversight. Teams that want us to continue running and evolving the system can extend into an ongoing operations retainer.</p>
+      </div>
 <div class="sidenote">
 <span class="sidenote-heading">Included</span><div class="sidenote-item">Agent architecture document + system design</div>
 <div class="sidenote-item">Production-ready agent system with
                 evaluation suite</div>
 <div class="sidenote-item">Integration layer + API documentation</div>
 <div class="sidenote-item">Monitoring dashboard + alert configuration</div>
+<div class="sidenote-item sidenote-item--opt">Optional: Ongoing operations retainer</div>
 </div>
 </div>
 </div>

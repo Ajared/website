@@ -143,6 +143,9 @@
     </Section>
 
     <Section title="Deliverables">
+      <Intro>
+        <p>The engagement delivers a complete picture of where you stand and a clear path forward — a data audit report, an AI readiness assessment with scoring, a strategic roadmap with governance framework, and an executive presentation paired with an adoption playbook your team can actually use. For organizations that want ongoing strategic support as the landscape shifts, an advisory retainer is available.</p>
+      </Intro>
       <Deliverables>
         <Row checked="true">Data audit report + gap analysis</Row>
         <Row checked="true">AI readiness assessment + scoring</Row>
