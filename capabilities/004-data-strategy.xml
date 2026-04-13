@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="capability-detail" title="Data &amp;amp; AI Strategy">
+<Page id="capability-detail" title="Data &amp; AI Strategy">
   <Schema><![CDATA[
     {
       "@context": "https://schema.org",
@@ -76,7 +76,7 @@
   </Header>
 
   <CapabilityHero>
-    <Title>Data &amp;amp; AI Strategy</Title>
+    <Title>Data &amp; AI Strategy</Title>
   </CapabilityHero>
 
   <PageBody>
