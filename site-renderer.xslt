@@ -432,6 +432,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             color: var(--color-bg);
         }
 
+        .btn-stacked {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .btn-label {
+            display: block;
+        }
+
+        .btn-hint {
+            display: block;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+        }
+
         /* Footer */
         .footer {
             padding: 4rem 2rem;
@@ -1199,12 +1219,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p style="margin-top: 2rem; max-width: none;">
                 <xsl:copy-of select="Sub/node()"/>
             </p>
-            <a href="{CTA/@href}" class="btn"><xsl:value-of select="CTA"/></a>
-            <xsl:if test="CTA/@hint">
-              <p style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-ink-light); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; max-width: none;">
-                <xsl:value-of select="CTA/@hint"/>
-              </p>
-            </xsl:if>
+            <a href="{CTA/@href}" class="btn btn-stacked">
+              <span class="btn-label"><xsl:value-of select="CTA"/></span>
+              <xsl:if test="CTA/@hint">
+                <span class="btn-hint"><xsl:value-of select="CTA/@hint"/></span>
+              </xsl:if>
+            </a>
         </div>
         <div class="moire-container" id="moire"></div>
     </section>
