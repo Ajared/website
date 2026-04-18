@@ -32,11 +32,12 @@
         a{cursor:crosshair;}
         .wrap{max-width:680px;margin:0 auto;padding:0 2rem;}
         /* Nav */
-        .nav{border-bottom:1px solid var(--rule);padding:0.65rem 0;}
-        .nav .wrap{display:flex;justify-content:space-between;align-items:center;}
-        .nav-logo{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-decoration:none;color:var(--ink);}
-        .nav-back{font-size:0.72rem;font-family:var(--mono);color:var(--ink-light);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;}
-        .nav-back:hover{color:var(--terra);}
+        .site-header{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 2rem;border-bottom:1px solid var(--rule);max-width:100%;}
+        .site-header a{text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:0.5rem;}
+        .site-header img{height:32px;width:auto;}
+        .site-header .wordmark{font-size:0.82rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);}
+        .header-nav a{font-size:0.72rem;font-family:var(--mono);color:var(--ink-light);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;}
+        .header-nav a:hover{color:var(--terra);}
         /* Hero */
         .hero{padding:2rem 0 1.25rem;}
         .hero-label{font-size:0.7rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--terra);margin-bottom:0.55rem;}
@@ -86,9 +87,7 @@
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<nav class="nav"><div class="wrap">
-<a class="nav-logo" href="/">Ajared Research</a><a class="nav-back" href="/">&#8592; ajared.ca</a>
-</div></nav><div class="wrap">
+<header class="site-header"><a href="/"><img src="/logo.png" alt="Ajared Research Inc"><span class="wordmark">Research Inc.</span></a><nav class="header-nav"><a href="/">&#8592; ajared.ca</a></nav></header><div class="wrap">
 <section class="hero"><div class="hero-label">Advisory &#183; One-on-One</div>
 <h1>Talk to a human
 about AI.</h1>
