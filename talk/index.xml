@@ -10,7 +10,7 @@
     <Timeline>
       <Phase time="10 min" label="Context"    pct="0"    hourglass="full"/>
       <Phase time="20 min" label="Diagnosis"  pct="33.3" hourglass="half"/>
-      <Phase time=""       label="Next steps" pct="100"  hourglass="empty"/>
+      <Phase time="5 min"  label="Next steps" pct="100"  hourglass="empty"/>
     </Timeline>
   </Hero>
 
