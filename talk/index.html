@@ -1,258 +1,170 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Talk to a Human about AI — Ajared Research Inc.</title>
-<meta name="description" content="A 30-minute conversation with an AI practitioner who has shipped products. $100 USD. Walk away knowing exactly where AI fits your work."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://ajared.ca/talk/"/>
-<meta property="og:title" content="Talk to a Human about AI — Ajared Research Inc."/>
-<meta property="og:description" content="30 minutes. $100 USD. A direct conversation with an AI practitioner — not a pitch. Walk away with a direction."/>
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TQXWR2M');</script>
-
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TQXWR2M');</script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talk to a Human about AI &#8212; Ajared Research Inc.</title>
+<meta name="description" content="A 30-minute conversation with an AI practitioner who has shipped products. $100 USD. Walk away knowing exactly where AI fits your work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ajared.ca/talk/">
+<meta property="og:title" content="Talk to a Human about AI &#8212; Ajared Research Inc.">
+<meta property="og:description" content="30 minutes. $100 USD. A direct conversation with an AI practitioner &#8212; not a pitch.">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <style>
-  @font-face {
-    font-family: 'iA Writer Quattro S';
-    src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
-         url('/fonts/iAWriterQuattroS-Regular.woff') format('woff');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'iA Writer Quattro S';
-    src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
-         url('/fonts/iAWriterQuattroS-Bold.woff') format('woff');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'iA Writer Quattro S';
-    src: url('/fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
-         url('/fonts/iAWriterQuattroS-Italic.woff') format('woff');
-    font-weight: 400; font-style: italic;
-  }
-
-  :root {
-    --ink:       #141414;
-    --ink-mid:   #4b5563;
-    --ink-light: #9ca3af;
-    --terra:     #a1665e;
-    --bg:        #f9f8f6;
-    --white:     #ffffff;
-    --rule:      #e5e7eb;
-    --font:      'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --mono:      'iA Writer Quattro S', 'Courier New', monospace;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; cursor: crosshair; }
-  a { cursor: crosshair; }
-
-  .wrap { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
-
-  /* ── Nav ── */
-  .nav { border-bottom: 1px solid var(--rule); padding: 1rem 0; }
-  .nav .wrap { display: flex; justify-content: space-between; align-items: center; }
-  .nav-logo { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; color: var(--ink); }
-  .nav-back { font-size: 0.72rem; font-family: var(--mono); color: var(--ink-light); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
-  .nav-back:hover { color: var(--terra); }
-
-  /* ── Hero ── */
-  .hero { padding: 5rem 0 3.5rem; }
-  .hero-label { font-size: 0.7rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); margin-bottom: 1.25rem; }
-  .hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.75rem; }
-  .hero-meta { display: flex; gap: 2.5rem; margin-bottom: 1.75rem; }
-  .meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
-  .meta-label { font-size: 0.62rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); }
-  .meta-value { font-size: 0.95rem; font-weight: 700; color: var(--ink); }
-  .hero-lede { font-size: 1rem; color: var(--ink-mid); line-height: 1.65; max-width: 520px; }
-  .hero-for { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.85rem; }
-
-  /* ── Timeline ── */
-  .hero-timeline { margin-top: 1.75rem; width: 50%; position: relative; }
-  .tl-icons { position: relative; height: 24px; }
-  .tl-icon { position: absolute; transform: translateX(-50%); }
-  .tl-icon:first-child { transform: translateX(0); }
-  .tl-icon:last-child { transform: translateX(-100%); }
-  .tl-track { height: 1px; background: var(--terra); margin: 0.3rem 0; }
-  .tl-labels { position: relative; height: 2.4rem; }
-  .tl-node { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
-  .tl-node:first-child { transform: translateX(0); align-items: flex-start; }
-  .tl-node:last-child { transform: translateX(-100%); align-items: flex-end; }
-  .tl-time { font-size: 0.58rem; font-family: var(--mono); color: var(--terra); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
-  .tl-label { font-size: 0.75rem; font-weight: 700; color: var(--ink); white-space: nowrap; margin-top: 0.1rem; }
-
-  /* ── Sections ── */
-  .section { padding: 2rem 0; border-bottom: 1px solid var(--rule); }
-  .section-label { font-size: 0.62rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-light); margin-bottom: 1rem; }
-
-  /* ── Deliverables ── */
-  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .deliverable { display: grid; grid-template-columns: 1.75rem 1fr; gap: 0 0.6rem; padding: 0.75rem 0; }
-  .deliverable.full { grid-column: 1 / -1; }
-  .deliverable:nth-child(odd):not(.full) { padding-right: 1rem; }
-  .d-num { font-size: 0.6rem; font-family: var(--mono); color: var(--terra); font-weight: 700; padding-top: 0.1rem; }
-  .d-tag { font-size: 0.7rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); margin-bottom: 0.15rem; }
-  .d-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; line-height: 1.3; }
-
-  /* ── Bottom row ── */
-  .bottom-row { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; padding: 2rem 0 5rem; }
-  .byline { display: flex; gap: 0.85rem; align-items: flex-start; }
-  .byline-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-  .byline-name { font-size: 0.85rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
-  .byline-role { font-size: 0.62rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-light); margin-top: 0.1rem; margin-bottom: 0.35rem; }
-  .byline-bio { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.55; }
-  .cta-btn {
-    display: inline-flex; flex-direction: column; gap: 0.2rem;
-    border: 2px solid var(--terra); color: var(--terra);
-    padding: 0.85rem 1.5rem; text-decoration: none;
-    transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
-  }
-  .cta-btn:hover { background: var(--terra); color: var(--white); }
-  .cta-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-  .cta-hint { font-size: 0.6rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.7; }
-</style>
+        @font-face { font-family:'iA Writer Quattro S'; src:url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),url('/fonts/iAWriterQuattroS-Regular.woff') format('woff'); font-weight:400; font-style:normal; }
+        @font-face { font-family:'iA Writer Quattro S'; src:url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),url('/fonts/iAWriterQuattroS-Bold.woff') format('woff'); font-weight:700; font-style:normal; }
+        @font-face { font-family:'iA Writer Quattro S'; src:url('/fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),url('/fonts/iAWriterQuattroS-Italic.woff') format('woff'); font-weight:400; font-style:italic; }
+        :root {
+          --ink:       #141414;
+          --ink-mid:   #4b5563;
+          --ink-light: #9ca3af;
+          --terra:     #a1665e;
+          --bg:        #f9f8f6;
+          --white:     #ffffff;
+          --rule:      #e5e7eb;
+          --font:      'iA Writer Quattro S','Helvetica Neue',Helvetica,Arial,sans-serif;
+          --mono:      'iA Writer Quattro S','Courier New',monospace;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;cursor:crosshair;}
+        a{cursor:crosshair;}
+        .wrap{max-width:680px;margin:0 auto;padding:0 2rem;}
+        /* Nav */
+        .nav{border-bottom:1px solid var(--rule);padding:0.65rem 0;}
+        .nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-decoration:none;color:var(--ink);}
+        .nav-back{font-size:0.72rem;font-family:var(--mono);color:var(--ink-light);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;}
+        .nav-back:hover{color:var(--terra);}
+        /* Hero */
+        .hero{padding:2rem 0 1.25rem;}
+        .hero-label{font-size:0.7rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--terra);margin-bottom:0.55rem;}
+        .hero h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;margin-bottom:0.9rem;}
+        .hero-meta{display:flex;gap:2rem;margin-bottom:0.9rem;}
+        .meta-item{display:flex;flex-direction:column;gap:0.1rem;}
+        .meta-label{font-size:0.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-light);}
+        .meta-value{font-size:0.88rem;font-weight:700;color:var(--ink);}
+        .hero-lede{font-size:0.88rem;color:var(--ink-mid);line-height:1.6;max-width:520px;}
+        .hero-for{font-size:0.74rem;color:var(--ink-light);margin-top:0.45rem;}
+        /* Timeline */
+        .hero-timeline{margin-top:1rem;width:50%;position:relative;}
+        .tl-icons{position:relative;height:20px;}
+        .tl-icon{position:absolute;transform:translateX(-50%);}
+        .tl-icon.first{transform:translateX(0);}
+        .tl-icon.last{transform:translateX(-100%);}
+        .tl-track{height:1px;background:var(--terra);margin:0.22rem 0;}
+        .tl-labels{position:relative;height:2rem;}
+        .tl-node{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;}
+        .tl-node.first{transform:translateX(0);align-items:flex-start;}
+        .tl-node.last{transform:translateX(-100%);align-items:flex-end;}
+        .tl-time{font-size:0.55rem;font-family:var(--mono);color:var(--terra);text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;}
+        .tl-label{font-size:0.7rem;font-weight:700;color:var(--ink);white-space:nowrap;margin-top:0.08rem;}
+        /* Section */
+        .section{padding:1rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+        .section-label{font-size:0.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:0.55rem;}
+        /* Deliverables */
+        .deliverables{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+        .deliverable{display:grid;grid-template-columns:1.75rem 1fr;gap:0 0.6rem;padding:0.4rem 0;}
+        .deliverable.full{grid-column:1/-1;}
+        .deliverable:nth-child(odd):not(.full){padding-right:1rem;}
+        .d-num{font-size:0.6rem;font-family:var(--mono);color:var(--terra);font-weight:700;padding-top:0.1rem;}
+        .d-tag{font-size:0.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--terra);margin-bottom:0.08rem;}
+        .d-title{font-size:0.76rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.25;}
+        /* Bottom row */
+        .bottom-row{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;padding:1.1rem 0 1.5rem;}
+        .byline{display:flex;gap:0.75rem;align-items:flex-start;}
+        .byline-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+        .byline-name{font-size:0.82rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
+        .byline-role{font-size:0.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);margin-top:0.08rem;margin-bottom:0.28rem;}
+        .byline-bio{font-size:0.74rem;color:var(--ink-mid);line-height:1.5;}
+        .cta-btn{display:inline-flex;flex-direction:column;gap:0.2rem;border:2px solid var(--terra);color:var(--terra);padding:0.85rem 1.5rem;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+        .cta-btn:hover{background:var(--terra);color:var(--white);}
+        .cta-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+        .cta-hint{font-size:0.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;opacity:0.7;}
+        </style>
 </head>
 <body>
-
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<nav class="nav">
-  <div class="wrap">
-    <a class="nav-logo" href="/">Ajared Research</a>
-    <a class="nav-back" href="/">← ajared.ca</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="hero">
-    <div class="hero-label">Advisory · One-on-One</div>
-    <h1>Talk to a human<br/>about AI.</h1>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <span class="meta-label">Duration</span>
-        <span class="meta-value">30 minutes</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Price</span>
-        <span class="meta-value">$100 USD</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Format</span>
-        <span class="meta-value">Video call</span>
-      </div>
-    </div>
-    <p class="hero-lede">Not a sales call. Not a vendor pitch. A direct conversation with an AI practitioner who has shipped products — to help you figure out where AI fits in your work, right now.</p>
-    <p class="hero-for">For executives, founders, and operators who want a straight answer — not a six-week engagement.</p>
-
-    <div class="hero-timeline">
-      <div class="tl-icons">
-        <!-- Full hourglass: sand at top (just started) -->
-        <div class="tl-icon" style="left:0%">
-          <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
-            <path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M2.5 2.5h9L8.5 9H5.5z" fill="#a1665e" opacity="0.35"/>
-          </svg>
-        </div>
-        <!-- Half hourglass: sand split -->
-        <div class="tl-icon" style="left:33.3%">
-          <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
-            <path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M4.5 6h5L8.5 9H5.5z" fill="#a1665e" opacity="0.35"/>
-            <path d="M5.5 11h3L11 17H3z" fill="#a1665e" opacity="0.35"/>
-          </svg>
-        </div>
-        <!-- Empty hourglass: sand at bottom (done) -->
-        <div class="tl-icon" style="left:100%">
-          <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
-            <path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"/>
-            <path d="M5.5 11h3l3.5 6.5H2z" fill="#a1665e" opacity="0.35"/>
-          </svg>
-        </div>
-      </div>
-      <div class="tl-track"></div>
-      <div class="tl-labels">
-        <div class="tl-node" style="left:0%">
-          <span class="tl-time">0 min</span>
-          <span class="tl-label">Context</span>
-        </div>
-        <div class="tl-node" style="left:33.3%">
-          <span class="tl-time">10 min</span>
-          <span class="tl-label">Diagnosis</span>
-        </div>
-        <div class="tl-node" style="left:100%">
-          <span class="tl-time">30 min</span>
-          <span class="tl-label">Next steps</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-label">What you get</div>
-    <div class="deliverables">
-      <div class="deliverable">
-        <span class="d-num">01</span>
-        <div>
-          <div class="d-tag">Pre-call · Fillable form</div>
-          <div class="d-title">AI Opportunity Audit Worksheet</div>
-        </div>
-      </div>
-      <div class="deliverable">
-        <span class="d-num">02</span>
-        <div>
-          <div class="d-tag">Reference</div>
-          <div class="d-title">What's Actually Working in AI — 2026 Briefing</div>
-        </div>
-      </div>
-      <div class="deliverable">
-        <span class="d-num">03</span>
-        <div>
-          <div class="d-tag">Tool · Interactive</div>
-          <div class="d-title">AI Prompt Starter Kit</div>
-        </div>
-      </div>
-      <div class="deliverable">
-        <span class="d-num">04</span>
-        <div>
-          <div class="d-tag">Tool · Interactive</div>
-          <div class="d-title">AI Landscape Mindmap</div>
-        </div>
-      </div>
-      <div class="deliverable full">
-        <span class="d-num">05</span>
-        <div>
-          <div class="d-tag">Post-call · Personalised · Within 24h</div>
-          <div class="d-title">Action Plan — written specifically for you after the call</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="bottom-row">
-    <div class="byline">
-      <img class="byline-photo" src="https://chunnodu.com/images/headshot2026.jpg" alt="Chu Nnodu"/>
-      <div>
-        <div class="byline-name">Chu Nnodu</div>
-        <div class="byline-role">Enterprise PM · AI Product Builder</div>
-        <div class="byline-bio">I've built and shipped AI products for enterprises across North America — Graph RAG systems, agentic workflows, production AI agents. This is 30 minutes where you get my honest read on your situation.</div>
-      </div>
-    </div>
-    <a class="cta-btn" href="https://cal.com/ajared/talk-to-a-human-about-ai">
-      <span class="cta-label">Book Now — $100 USD</span>
-      <span class="cta-hint">30 min · Video call · 24h action plan</span>
-    </a>
-  </div>
-
+<nav class="nav"><div class="wrap">
+<a class="nav-logo" href="/">Ajared Research</a><a class="nav-back" href="/">&#8592; ajared.ca</a>
+</div></nav><div class="wrap">
+<section class="hero"><div class="hero-label">Advisory &#183; One-on-One</div>
+<h1>Talk to a human
+about AI.</h1>
+<div class="hero-meta">
+<div class="meta-item">
+<span class="meta-label">Duration</span><span class="meta-value">30 minutes</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">Price</span><span class="meta-value">$100 USD</span>
+</div>
+<div class="meta-item">
+<span class="meta-label">Format</span><span class="meta-value">Video call</span>
+</div>
+</div>
+<p class="hero-lede">Not a sales call. Not a vendor pitch. A direct conversation with an AI practitioner who has shipped products &#8212; to help you figure out where AI fits in your work, right now.</p>
+<p class="hero-for">For executives, founders, and operators who want a straight answer &#8212; not a six-week engagement.</p>
+<div class="hero-timeline">
+<div class="tl-icons">
+<div class="tl-icon first" style="left:0%"><svg width="14" height="20" viewBox="0 0 14 20" fill="none"><path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M2.5 2.5h9L8.5 9H5.5z" fill="#a1665e" opacity="0.35"></path></svg></div>
+<div class="tl-icon" style="left:33.3%"><svg width="14" height="20" viewBox="0 0 14 20" fill="none"><path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M4.5 6h5L8.5 9H5.5z" fill="#a1665e" opacity="0.35"></path><path d="M5.5 11h3L11 17H3z" fill="#a1665e" opacity="0.35"></path></svg></div>
+<div class="tl-icon last" style="left:100%"><svg width="14" height="20" viewBox="0 0 14 20" fill="none"><path d="M1 1h12L8.5 9H5.5L1 1z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M1 19h12L8.5 11H5.5L1 19z" stroke="#a1665e" stroke-width="1.1" stroke-linejoin="round"></path><path d="M5.5 11h3l3.5 6.5H2z" fill="#a1665e" opacity="0.35"></path></svg></div>
+</div>
+<div class="tl-track"></div>
+<div class="tl-labels">
+<div class="tl-node first" style="left:0%">
+<span class="tl-time">0 min</span><span class="tl-label">Context</span>
+</div>
+<div class="tl-node" style="left:33.3%">
+<span class="tl-time">10 min</span><span class="tl-label">Diagnosis</span>
+</div>
+<div class="tl-node last" style="left:100%">
+<span class="tl-time">30 min</span><span class="tl-label">Next steps</span>
+</div>
+</div>
+</div></section><section class="section"><div class="section-label">What you get</div>
+<div class="deliverables">
+<div class="deliverable">
+<span class="d-num">01</span><div>
+<div class="d-tag">Pre-call &#183; Fillable form</div>
+<div class="d-title">AI Opportunity Audit Worksheet</div>
+</div>
+</div>
+<div class="deliverable">
+<span class="d-num">02</span><div>
+<div class="d-tag">Reference</div>
+<div class="d-title">What's Actually Working in AI &#8212; 2026 Briefing</div>
+</div>
+</div>
+<div class="deliverable">
+<span class="d-num">03</span><div>
+<div class="d-tag">Tool &#183; Interactive</div>
+<div class="d-title">AI Prompt Starter Kit</div>
+</div>
+</div>
+<div class="deliverable">
+<span class="d-num">04</span><div>
+<div class="d-tag">Tool &#183; Interactive</div>
+<div class="d-title">AI Landscape Mindmap</div>
+</div>
+</div>
+<div class="deliverable full">
+<span class="d-num">05</span><div>
+<div class="d-tag">Post-call &#183; Personalised &#183; Within 24h</div>
+<div class="d-title">Action Plan &#8212; written specifically for you after the call</div>
+</div>
+</div>
+</div></section><div class="bottom-row">
+<div class="byline">
+<img class="byline-photo" src="https://chunnodu.com/images/headshot2026.jpg" alt="Chu Nnodu"><div>
+<div class="byline-name">Chu Nnodu</div>
+<div class="byline-role">Enterprise PM &#183; AI Product Builder</div>
+<div class="byline-bio">I've built and shipped AI products for enterprises across North America &#8212; Graph RAG systems, agentic workflows, production AI agents. This is 30 minutes where you get my honest read on your situation.</div>
+</div>
+</div>
+<a class="cta-btn" href="https://cal.com/ajared/talk-to-a-human-about-ai"><span class="cta-label">Book Now &#8212; $100 USD</span><span class="cta-hint">30 min &#183; Video call &#183; 24h action plan</span></a>
+</div>
 </div>
 </body>
 </html>
