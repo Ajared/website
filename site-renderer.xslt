@@ -2038,7 +2038,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         /* Hero */
         .hero{padding:2rem 0 1.25rem;}
         .hero-label{font-size:0.7rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--terra);margin-bottom:0.55rem;}
-        .hero h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;margin-bottom:0.9rem;}
+        .hero h1{font-size:clamp(1.35rem,5.5vw,2.8rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;margin-bottom:0.9rem;}
         .hero-meta{display:flex;gap:2rem;margin-bottom:0.9rem;}
         .meta-item{display:flex;flex-direction:column;gap:0.1rem;}
         .meta-label{font-size:0.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-light);}

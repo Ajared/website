@@ -9,8 +9,8 @@
     <ForWho>For executives, founders, and operators who want a straight answer — not a six-week engagement.</ForWho>
     <Timeline>
       <Phase time="10 min" label="Context"    pct="0"    hourglass="full"/>
-      <Phase time="20 min" label="Diagnosis"  pct="28.6" hourglass="half"/>
-      <Phase time="5 min"  label="Next steps" pct="85.7" hourglass="empty"/>
+      <Phase time="15 min" label="Diagnosis"  pct="33.3" hourglass="half"/>
+      <Phase time="5 min"  label="Next steps" pct="83.3" hourglass="empty"/>
     </Timeline>
   </Hero>
 
