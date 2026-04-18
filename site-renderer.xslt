@@ -2114,7 +2114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <xsl:variable name="pos" select="@pct"/>
                   <xsl:variable name="cls">
                     <xsl:choose>
-                      <xsl:when test="position()=1">tl-icon first</xsl:when>
+                      <xsl:when test="@pct='0'">tl-icon first</xsl:when>
                       <xsl:when test="position()=last()">tl-icon last</xsl:when>
                       <xsl:otherwise>tl-icon</xsl:otherwise>
                     </xsl:choose>
@@ -2140,7 +2140,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <xsl:variable name="pos" select="@pct"/>
                   <xsl:variable name="cls">
                     <xsl:choose>
-                      <xsl:when test="position()=1">tl-node first</xsl:when>
+                      <xsl:when test="@pct='0'">tl-node first</xsl:when>
                       <xsl:when test="position()=last()">tl-node last</xsl:when>
                       <xsl:otherwise>tl-node</xsl:otherwise>
                     </xsl:choose>

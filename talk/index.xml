@@ -8,9 +8,9 @@
     <Lede>Not a sales call. Not a vendor pitch. A direct conversation with an AI practitioner who has shipped products — to help you figure out where AI fits in your work, right now.</Lede>
     <ForWho>For executives, founders, and operators who want a straight answer — not a six-week engagement.</ForWho>
     <Timeline>
-      <Phase time="10 min" label="Context"    pct="0"    hourglass="full"/>
-      <Phase time="15 min" label="Diagnosis"  pct="33.3" hourglass="half"/>
-      <Phase time="5 min"  label="Next steps" pct="83.3" hourglass="empty"/>
+      <Phase time="10 min" label="Context"    pct="33.3" hourglass="full"/>
+      <Phase time="15 min" label="Diagnosis"  pct="83.3" hourglass="half"/>
+      <Phase time="5 min"  label="Next steps" pct="100"  hourglass="empty"/>
     </Timeline>
   </Hero>
 
