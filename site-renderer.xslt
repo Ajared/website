@@ -1093,14 +1093,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </xsl:when>
           <xsl:otherwise>
-            <div class="header-cell" style="justify-content: flex-start; gap: 0;">
+            <div class="header-cell">
                 <span class="label" style="color: var(--color-ink);">Information Architecture</span>
-                <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
-                  <a href="/" style="text-decoration: none; display: block;">
-                      <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"/>
-                      <div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div>
-                  </a>
-                </div>
+                <a href="/" style="text-decoration: none; display: block;">
+                    <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"/>
+                    <div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div>
+                </a>
             </div>
             
             <div class="header-cell">
@@ -1172,10 +1170,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </nav>
                 <xsl:choose>
                   <xsl:when test="Nav/@arrow">
-                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
+                    <div style="font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
                   </xsl:when>
                   <xsl:otherwise>
-                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
+                    <div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
                   </xsl:otherwise>
                 </xsl:choose>
             </div>
