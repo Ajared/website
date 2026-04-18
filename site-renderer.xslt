@@ -2080,6 +2080,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .cta-btn:hover{background:var(--terra);color:var(--white);}
         .cta-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
         .cta-hint{font-size:0.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;opacity:0.7;}
+        @media(max-width:600px){
+          .bottom-row{grid-template-columns:1fr;gap:1rem;}
+          .cta-btn{width:100%;text-align:center;align-items:center;}
+        }
         </style>
       </head>
       <body>
