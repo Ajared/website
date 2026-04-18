@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
+<TalkPage>
+
+  <Hero label="Advisory · One-on-One">
+    <Headline>Talk to a human&#10;about AI.</Headline>
+    <Meta duration="30 minutes" price="$50 USD" format="Video call"/>
+    <Lede>Not a sales call. Not a vendor pitch. A direct conversation with an AI practitioner who has shipped products — to help you figure out where AI fits in your work, right now.</Lede>
+    <ForWho>For executives, founders, and operators who want a straight answer — not a six-week engagement.</ForWho>
+    <Timeline>
+      <Phase time="10 min" label="Context"    pct="0"    hourglass="full"/>
+      <Phase time="15 min" label="Diagnosis"  pct="33.3" hourglass="half"/>
+      <Phase time="5 min"  label="Next steps" pct="83.3" hourglass="empty"/>
+    </Timeline>
+  </Hero>
+
+  <Deliverables label="What you get">
+    <Item num="01" tag="Reference · Interactive"           title="AI Landscape and What's Working — 2026"/>
+    <Item num="02" tag="Tool · Interactive"                title="AI Prompt Starter Kit"/>
+    <Item num="03" tag="Post-call · Personalised · Within 24h" title="Action Plan — written specifically for you after the call" full="true"/>
+  </Deliverables>
+
+  <Byline
+    name="Chu Nnodu"
+    role="Enterprise PM · AI Product Builder"
+    photo="https://chunnodu.com/images/headshot2026.jpg"
+    bio="I've built and shipped AI products for enterprises across North America — Graph RAG systems, agentic workflows, production AI agents. This is 30 minutes where you get my honest read on your situation."
+    cta-href="https://cal.com/ajared/talk-to-a-human-about-ai"
+    cta-label="Book Now — $50 USD"
+    cta-hint="30 min · Video call · 24h action plan"/>
+
+</TalkPage>
