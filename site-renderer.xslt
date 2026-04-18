@@ -2051,7 +2051,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .tl-icon{position:absolute;transform:translateX(-50%);}
         .tl-icon.first{transform:translateX(0);}
         .tl-icon.last{transform:translateX(-100%);}
-        .tl-track{height:1px;background:var(--terra);margin:0.22rem 0;}
+        .tl-track{height:1px;background:var(--terra);margin:0.22rem 0;position:relative;}
+        .tl-track::before,.tl-track::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--terra);}
+        .tl-track::before{left:0;}
+        .tl-track::after{right:0;}
         .tl-labels{position:relative;height:2rem;}
         .tl-node{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;}
         .tl-node.first{transform:translateX(0);align-items:flex-start;}
