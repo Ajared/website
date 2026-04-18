@@ -202,7 +202,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             border-right: var(--grid-line);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 0.75rem;
             min-height: 160px;
         }
 
@@ -1124,7 +1125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       <xsl:if test="position() != last()"><br/></xsl:if>
                     </xsl:for-each>
                   </p>
-                  <div style="margin-top:auto">
+                  <div>
                       <span class="label">Status</span>
                       <p style="font-size: 0.85em;"><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
                   </div>

@@ -152,7 +152,7 @@
   </Hero>
 
   <OfferGrid>
-    <Offer number="01" tag="Advisory" title="Talk to a Human about AI" href="https://cal.com/ajared/talk-to-a-human-about-ai">
+    <Offer number="01" tag="Advisory" title="Talk to a Human about AI" href="/talk/">
       <Description>Not a chatbot or a vendor pitch. A 30-minute conversation with an AI practitioner — walk away knowing exactly where AI fits you or your organisation: what to skip, and what's actually working right now.</Description>
       <Byline name="Chu Nnodu" role="Enterprise PM &amp; AI product builder" photo="https://chunnodu.com/images/headshot2026.jpg"/>
     </Offer>

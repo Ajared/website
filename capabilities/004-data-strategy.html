@@ -1,6 +1,7 @@
-<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -12,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
-<title>Data &amp; AI Strategy &#8212; Ajared Research Inc</title>
+<title>Data &amp; AI Strategy — Ajared Research Inc</title>
 <style>
         /* iA Writer Quattro S Font */
         @font-face {
@@ -194,7 +195,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-right: var(--grid-line);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 0.75rem;
             min-height: 160px;
         }
 
@@ -244,7 +246,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: 1rem;
         }
 
-        /* Change 11: Nav hover &#8212; terra cotta */
+        /* Change 11: Nav hover — terra cotta */
         nav a:hover {
             text-decoration: underline;
             color: var(--color-terra);
@@ -300,7 +302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             pointer-events: none;
         }
 
-        /* Change 10: Secondary ripple rings &#8212; subtle terra cotta tint */
+        /* Change 10: Secondary ripple rings — subtle terra cotta tint */
         .ripple-secondary {
             position: absolute;
             border-radius: 50%;
@@ -360,7 +362,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-bottom: 0.5rem;
         }
 
-        /* Arrow &#8212; Change 3: terra cotta by default */
+        /* Arrow — Change 3: terra cotta by default */
         .arrow-icon {
             width: 40px;
             height: 1px;
@@ -393,7 +395,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-right-color: var(--color-bg);
         }
 
-        /* Stretched link &#8212; entire card is clickable */
+        /* Stretched link — entire card is clickable */
         .service-card > a {
             position: static;
         }
@@ -403,7 +405,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             inset: 0;
         }
 
-        /* Button &#8212; Change 1: terra cotta border + text, fills on hover */
+        /* Button — Change 1: terra cotta border + text, fills on hover */
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -549,7 +551,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             color: var(--color-bg);
         }
 
-        /* Offer card tracks (card 03 &#8212; Get Started with AI) */
+        /* Offer card tracks (card 03 — Get Started with AI) */
         .track-list {
             margin-top: 1rem;
             display: flex;
@@ -746,7 +748,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .hero-detail-content { position: relative; z-index: 1; }
         .hero-detail h1 { font-family: var(--font-primary); font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; color: #fff; margin-bottom: 0; }
         
-        /* &#9472;&#9472; Essay + Marginalia layout (capability detail pages) &#9472;&#9472;&#9472; */
+        /* ── Essay + Marginalia layout (capability detail pages) ─── */
         .page-body { border-bottom: var(--grid-line); }
 
         .essay-section {
@@ -901,7 +903,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .cta-btn { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terra); border: 2px solid var(--color-terra); padding: 0.9rem 1.8rem; transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent; }
         .cta-btn:hover { background: var(--color-terra); color: #fff; }
 
-        /* &#9472;&#9472; Deliverable List &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+        /* ── Deliverable List ─────────────────────────────────── */
         .deliverable-list { border-top: var(--grid-line); }
         .deliverable-row {
             display: grid;
@@ -1065,20 +1067,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="essay-section">
 <div class="essay-section-label">What We Do</div>
 <div class="essay-main">
-        <p>We audit your data, figure out what&#8217;s missing, and build a plan to get AI working inside your
+        <p>We audit your data, figure out what’s missing, and build a plan to get AI working inside your
               organization. That includes governance structures, realistic adoption plans, and honest assessments of
-              what you&#8217;re ready for &#8212; and what you&#8217;re not.</p>
+              what you’re ready for — and what you’re not.</p>
       <div class="essay-offerings">
-<p class="essay-offering-para"><strong>Reliable AI</strong>&#160;&#8212;&#160;AI that produces consistent, trustworthy outputs starts with structured knowledge. We build knowledge
-                  graphs and ontologies that give your AI systems a foundation they can reason from &#8212; rather than one
-                  they&#8217;re guessing around.</p>
-<p class="essay-offering-para"><strong>Location Intelligence</strong>&#160;&#8212;&#160;Spatial context changes what data means. We develop geospatial data strategies, build location-aware
+<p class="essay-offering-para"><strong>Reliable AI</strong> — AI that produces consistent, trustworthy outputs starts with structured knowledge. We build knowledge
+                  graphs and ontologies that give your AI systems a foundation they can reason from — rather than one
+                  they’re guessing around.</p>
+<p class="essay-offering-para"><strong>Location Intelligence</strong> — Spatial context changes what data means. We develop geospatial data strategies, build location-aware
                   AI applications, and integrate spatial analysis into decision-making workflows that were previously
                   blind to geography.</p>
-<p class="essay-offering-para"><strong>Generative Engine Optimization</strong>&#160;&#8212;&#160;As AI reshapes search, your organization&#8217;s presence in AI-generated answers matters as much as its
+<p class="essay-offering-para"><strong>Generative Engine Optimization</strong> — As AI reshapes search, your organization’s presence in AI-generated answers matters as much as its
                   traditional search ranking. We make sure you appear accurately and prominently in the outputs that now
                   shape how people find information.</p>
-<p class="essay-offering-para"><strong>Executive AI Coaching</strong>&#160;&#8212;&#160;One-to-one advisory for leaders who need to understand AI well enough to make decisions about it &#8212;
+<p class="essay-offering-para"><strong>Executive AI Coaching</strong> — One-to-one advisory for leaders who need to understand AI well enough to make decisions about it —
                   without wading through hype. Strategy, governance, and an honest assessment of what your organization
                   is actually ready for and when.</p>
 </div>
@@ -1094,20 +1096,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="essay-section-label">How We Work</div>
 <div class="essay-main"><ol class="essay-steps">
 <li>
-<strong>Audit</strong>We take full inventory of your data: what you have, where it lives, what quality it&#8217;s in, and where
+<strong>Audit</strong>We take full inventory of your data: what you have, where it lives, what quality it’s in, and where
                     the gaps are. Nothing proceeds on assumptions about the state of your data infrastructure.</li>
 <li>
 <strong>Assessment</strong>We map your AI capabilities against realistic benchmarks, identify specific risks, and score your
-                    readiness across the dimensions that matter for your context &#8212; not against a generic maturity
+                    readiness across the dimensions that matter for your context — not against a generic maturity
                     framework.</li>
 <li>
 <strong>Strategy</strong>A concrete roadmap with sequenced initiatives, a governance framework that can actually be followed
                     by real teams, and an adoption plan grounded in your organizational reality rather than best-case
                     projections.</li>
 <li>
-<strong>Handoff</strong>We don&#8217;t disappear after delivery. You receive implementation playbooks, training materials, and an
+<strong>Handoff</strong>We don’t disappear after delivery. You receive implementation playbooks, training materials, and an
                     executive alignment session to ensure the strategy lands and the people responsible for it
-                    understand what they&#8217;re holding.</li>
+                    understand what they’re holding.</li>
 </ol></div>
 <div class="sidenote">
 <span class="sidenote-heading">Steps</span><div class="sidenote-item">
@@ -1123,7 +1125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="essay-section">
 <div class="essay-section-label">Deliverables</div>
 <div class="essay-main">
-        <p>The engagement delivers a complete picture of where you stand and a clear path forward &#8212; a data audit report, an AI readiness assessment with scoring, a strategic roadmap with governance framework, and an executive presentation paired with an adoption playbook your team can actually use. For organizations that want ongoing strategic support as the landscape shifts, an advisory retainer is available.</p>
+        <p>The engagement delivers a complete picture of where you stand and a clear path forward — a data audit report, an AI readiness assessment with scoring, a strategic roadmap with governance framework, and an executive presentation paired with an adoption playbook your team can actually use. For organizations that want ongoing strategic support as the landscape shifts, an advisory retainer is available.</p>
       </div>
 <div class="sidenote">
 <span class="sidenote-heading">Included</span><div class="sidenote-item">Data audit + gap analysis</div>
@@ -1135,18 +1137,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div class="cap-nav">
-<a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev">&#8592; Enterprise AI Agents</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/001-applied-research.html" class="cap-nav-next">Applied Research &#8594;</a>
+<a href="/capabilities/003-enterprise-agents.html" class="cap-nav-prev">← Enterprise AI Agents</a><a href="/capabilities/" class="cap-nav-center">All Capabilities</a><a href="/capabilities/001-applied-research.html" class="cap-nav-next">Applied Research →</a>
 </div>
 <div class="cta-block">
 <div><h3>Ready to know where you actually stand?</h3></div>
-<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch &#8594;</div></a>
+<a href="/contact/" style="text-decoration:none;"><div class="cta-btn">Get in touch →</div></a>
 </div>
 <div class="footer">
 <div>
 <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
 </div>
 <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
-<p>&#169; 2026 Ajared Research Inc.</p>
+<p>© 2026 Ajared Research Inc.</p>
 <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
 </div>
