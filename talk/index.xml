@@ -19,7 +19,7 @@
   </Hero>
 
   <Deliverables label="What you get">
-    <Item num="01" tag="Reference · Interactive"           title="AI Landscape and What's Working — 2026"/>
+    <Item num="01" tag="Reference · PDF"           title="AI Landscape and What's Working — 2026"/>
     <Item num="02" tag="Tool · Interactive"                title="AI Prompt Starter Kit"/>
     <Item num="03" tag="Post-call · Personalised · Within 24h" title="Action Plan — written specifically for you after the call" full="true"/>
   </Deliverables>
