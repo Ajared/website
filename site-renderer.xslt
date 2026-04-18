@@ -2078,7 +2078,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .byline{display:flex;gap:0.75rem;align-items:flex-start;}
         .byline-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;}
         .byline-name{font-size:0.82rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
-        .byline-role{font-size:0.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);margin-top:0.08rem;margin-bottom:0.28rem;}
+        .byline-role{font-size:0.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;color:var(--terra);margin-top:0.08rem;margin-bottom:0.28rem;}
         .byline-bio{font-size:0.74rem;color:var(--ink-mid);line-height:1.5;}
         .cta-btn{display:inline-flex;flex-direction:column;gap:0.2rem;border:2px solid var(--terra);color:var(--terra);padding:0.85rem 1.5rem;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
         .cta-btn:hover{background:var(--terra);color:var(--white);}
@@ -2116,7 +2116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <xsl:variable name="cls">
                     <xsl:choose>
                       <xsl:when test="@pct='0'">tl-icon first</xsl:when>
-                      <xsl:when test="position()=last()">tl-icon last</xsl:when>
+                      <xsl:when test="@pct='100'">tl-icon last</xsl:when>
                       <xsl:otherwise>tl-icon</xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>
@@ -2146,7 +2146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <xsl:variable name="cls">
                     <xsl:choose>
                       <xsl:when test="@pct='0'">tl-node first</xsl:when>
-                      <xsl:when test="position()=last()">tl-node last</xsl:when>
+                      <xsl:when test="@pct='100'">tl-node last</xsl:when>
                       <xsl:otherwise>tl-node</xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>
