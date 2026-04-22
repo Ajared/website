@@ -36,11 +36,22 @@ ajared.ca/
 │   ├── 002-ai-product.xml                   # Service Detail
 │   ├── 003-enterprise-agents.xml            # Service Detail
 │   └── 004-data-strategy.xml                # Service Detail
+├── ai-readiness/index.xml                   # AI Readiness landing page
+├── ai-sprint/index.xml                      # AI Sprint offering page
+├── deliverables/index.xml                   # Deliverables hub
+│   ├── 01_AI_Opportunity_Audit_Worksheet.html
+│   ├── 02_Whats_Actually_Working_AI_Briefing.html
+│   ├── 03_AI_Prompt_Starter_Kit.html
+│   ├── 04_AI_Landscape_Mindmap.html
+│   └── 05_Post_Call_Action_Plan.html
+├── talk/index.xml                           # Talk / speaking page
+│   └── prep/index.html                      # Talk prep (static, no XML source)
 ├── scripts/                                 # Page-specific JS logic
 │   ├── build.sh                             # XSLT compiler script
 │   ├── accordion.js                         # Capabilities toggle logic
 │   ├── contact.js                           # Contact map and deliverables logic
-│   └── moire.js, cap-moire.js, etc.         # Hero canvas effects
+│   ├── sprint.js                            # AI Sprint page logic
+│   └── moire.js, cap-moire.js, cap-detail-moire.js   # Hero canvas effects
 ```
 
 ---
