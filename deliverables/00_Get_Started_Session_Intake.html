@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get Started with AI — Session Intake · Ajared Research</title>
+<style>
+  :root {
+    --teal: #058c8c; --teal-dark: #023b3b; --teal-light: #b2dbdb;
+    --terra: #a1665e; --ink: #141414; --mid: #6b7280; --light: #f5f5f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--light); color: var(--ink); }
+
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* Header */
+  .doc-header { background: var(--teal-dark); padding: 2rem; margin-bottom: 2rem; border-top: 4px solid var(--terra); }
+  .doc-header .tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); font-weight: 700; margin-bottom: 0.5rem; }
+  .doc-header h1 { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.5rem; }
+  .doc-header p { font-size: 0.8rem; color: var(--teal-light); }
+
+  /* Sections */
+  .section { background: #fff; border: 1px solid #e5e7eb; margin-bottom: 1.25rem; }
+  .section-head { background: var(--teal-dark); padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-num { font-size: 0.65rem; font-weight: 700; color: var(--terra); font-family: monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+  .section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  /* Fields */
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field label.field-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
+  .field input[type="text"], .field textarea {
+    border: none; border-bottom: 1.5px solid var(--teal-light); padding: 0.4rem 0;
+    font-size: 0.9rem; font-family: inherit; color: var(--ink); background: transparent;
+    outline: none; transition: border-color 0.2s; resize: none; width: 100%;
+  }
+  .field input[type="text"]:focus, .field textarea:focus { border-bottom-color: var(--teal); }
+  .field textarea { min-height: 56px; line-height: 1.5; }
+  .field-full { grid-column: 1 / -1; }
+
+  /* Required marker */
+  .req { color: var(--terra); margin-left: 2px; }
+
+  /* Validation error state */
+  .field input.error, .field textarea.error { border-bottom-color: #8c1305; }
+  .field-error { font-size: 0.68rem; color: #8c1305; margin-top: 0.2rem; display: none; }
+  .field-error.visible { display: block; }
+
+  /* Entry point cards */
+  .entry-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .entry-item { display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; padding: 0.75rem; border: 1px solid #e5e7eb; transition: border-color 0.2s, background 0.2s; }
+  .entry-item:has(input:checked) { border-color: var(--teal); background: #f0fafa; }
+  .entry-item.error-radio { border-color: #8c1305 !important; }
+  .entry-item input[type="radio"] { accent-color: var(--teal); margin-top: 3px; flex-shrink: 0; cursor: pointer; }
+  .entry-num { font-size: 0.65rem; font-weight: 700; color: var(--terra); font-family: monospace; flex-shrink: 0; margin-top: 3px; }
+  .entry-label { font-size: 0.88rem; font-weight: 700; color: var(--ink); }
+  .entry-desc { font-size: 0.75rem; color: var(--mid); margin-top: 0.15rem; }
+  .entry-examples { font-size: 0.7rem; color: var(--teal); margin-top: 0.25rem; font-style: italic; }
+
+  /* Checklist */
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem; }
+  .check-item { display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; }
+  .check-item input[type="checkbox"] { accent-color: var(--teal); width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+  .check-item span { font-size: 0.85rem; color: var(--ink); }
+
+  /* Hint text */
+  .hint { font-size: 0.78rem; color: var(--mid); }
+
+  /* Cowork callout */
+  .callout { background: #f0fafa; border-left: 3px solid var(--teal); padding: 0.75rem 1rem; }
+  .callout strong { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); display: block; margin-bottom: 0.3rem; }
+  .callout p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; }
+
+  /* Submit area */
+  .submit-area { margin-bottom: 1.5rem; }
+  .submit-hint { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.75rem; line-height: 1.5; }
+  .submit-hint a { color: var(--teal); }
+  .btn-submit {
+    display: block; width: 100%; padding: 1rem; background: var(--teal);
+    color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; border: none; cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--teal-dark); }
+  .btn-submit:disabled { background: var(--mid); cursor: not-allowed; }
+
+  /* Success state */
+  .success-box { display: none; background: var(--teal-dark); padding: 1.5rem; border-top: 3px solid var(--terra); text-align: center; margin-bottom: 1.5rem; }
+  .success-box.visible { display: block; }
+  .success-box .check-mark { font-size: 2rem; margin-bottom: 0.5rem; }
+  .success-box strong { color: #fff; display: block; font-size: 1rem; margin-bottom: 0.4rem; }
+  .success-box p { color: var(--teal-light); font-size: 0.82rem; line-height: 1.5; }
+
+  /* Global form error banner */
+  .form-error-banner { display: none; background: #fff0f0; border: 1px solid #8c1305; border-left: 3px solid #8c1305; padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; color: #8c1305; }
+  .form-error-banner.visible { display: block; }
+
+  /* ── Print styles ─────────────────────────────────────────── */
+  @media print {
+    body { background: #fff; font-size: 9pt; }
+    .page-wrap { max-width: 100%; padding: 0; }
+    .no-print { display: none !important; }
+    .section { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 0.75rem; }
+    .section-head { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc-header { background: #023b3b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; margin-bottom: 1rem; }
+    .entry-item:has(input:checked) { border-color: #058c8c !important; background: #f0fafa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout { background: #f0fafa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    input, textarea { border-bottom: 1px solid #ccc !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-header">
+    <div class="tag">Session Intake · Ajared Research 2026</div>
+    <h1>Get Started with AI</h1>
+    <p>Fill this in before your session with Chu — takes about 5 minutes. Your answers shape the conversation so we don't waste time covering ground that isn't relevant to you.</p>
+  </div>
+
+  <div class="form-error-banner" id="formErrorBanner">Please fill in the required fields before submitting.</div>
+
+  <form id="intakeForm" novalidate>
+
+    <!-- Section 1: Who You Are -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">Who You Are</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="name">Your name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name"/>
+            <span class="field-error" id="nameError">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label class="field-label" for="role">Role / title <span class="req">*</span></label>
+            <input type="text" id="role" name="role"/>
+            <span class="field-error" id="roleError">Please enter your role.</span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="org">Organization</label>
+            <input type="text" id="org" name="org"/>
+          </div>
+          <div class="field">
+            <label class="field-label" for="industry">Industry</label>
+            <input type="text" id="industry" name="industry" placeholder="e.g. Legal, Health, Finance, Consulting"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="teamSize">Team size</label>
+            <input type="text" id="teamSize" name="teamSize" placeholder="e.g. Solo, 5-person team, 200-person org"/>
+          </div>
+          <div class="field">
+            <label class="field-label" for="timezone">Your timezone</label>
+            <input type="text" id="timezone" name="timezone" placeholder="e.g. America/Chicago (CT)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Entry Point -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">Where Are You Starting From? <span class="req" style="color:var(--terra);">*</span></span>
+      </div>
+      <div class="section-body">
+        <p class="hint">This session has three entry points. Pick the one that best describes where you are today — it's okay if you're not sure yet.</p>
+        <div class="entry-grid" id="entryGrid">
+          <label class="entry-item">
+            <input type="radio" name="entry" value="01 – Using an Assistant"/>
+            <span class="entry-num">01</span>
+            <div>
+              <div class="entry-label">Using an Assistant</div>
+              <div class="entry-desc">You're new to AI or use it casually. You want to understand what it can actually do for you — in plain terms.</div>
+              <div class="entry-examples">e.g. You've tried ChatGPT a few times but haven't made it a habit. You're wondering if there's a better way.</div>
+            </div>
+          </label>
+          <label class="entry-item">
+            <input type="radio" name="entry" value="02 – Adding Tool Use"/>
+            <span class="entry-num">02</span>
+            <div>
+              <div class="entry-label">Adding Tool Use</div>
+              <div class="entry-desc">You use AI regularly and want to connect it to your actual work — documents, data, apps, and workflows.</div>
+              <div class="entry-examples">e.g. You want Claude to read your files, search your inbox, or interact with your tools — not just answer questions.</div>
+            </div>
+          </label>
+          <label class="entry-item">
+            <input type="radio" name="entry" value="03 – Agentic Workflows"/>
+            <span class="entry-num">03</span>
+            <div>
+              <div class="entry-label">Agentic Workflows</div>
+              <div class="entry-desc">You're ready to let AI handle multi-step tasks end to end — operating on your behalf with minimal supervision.</div>
+              <div class="entry-examples">e.g. You want AI to run a research workflow, manage files, send outputs, and hand things off without you prompting each step.</div>
+            </div>
+          </label>
+        </div>
+        <span class="field-error" id="entryError">Please select an entry point.</span>
+      </div>
+    </div>
+
+    <!-- Section 3: Your Current Setup -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">Your Current Setup</span>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label class="field-label">AI tools you currently use (check all that apply)</label>
+          <div class="check-grid" style="margin-top:0.4rem;">
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Claude (Anthropic)"/><span>Claude (Anthropic)</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="ChatGPT / GPT-4"/><span>ChatGPT / GPT-4</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Copilot (Microsoft)"/><span>Copilot (Microsoft)</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Gemini (Google)"/><span>Gemini (Google)</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Perplexity"/><span>Perplexity</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Notion AI"/><span>Notion AI</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="Custom / internal build"/><span>Custom / internal build</span></label>
+            <label class="check-item"><input type="checkbox" name="aiTools" value="None yet"/><span>None yet</span></label>
+          </div>
+        </div>
+        <div class="field field-full">
+          <label class="field-label" for="dailyTools">Key tools and apps you use day-to-day</label>
+          <textarea id="dailyTools" name="dailyTools" rows="2" placeholder="e.g. Google Workspace, Microsoft 365, Slack, Notion, Salesforce, Clio, QuickBooks — whatever you live in"></textarea>
+        </div>
+        <div class="field field-full">
+          <label class="field-label" for="currentUse">What are you currently using AI for (if anything)?</label>
+          <textarea id="currentUse" name="currentUse" rows="2" placeholder="e.g. Drafting emails, summarizing documents, answering quick questions — or nothing yet"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: What You Want to Explore -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">What You'd Like to Explore</span>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label class="field-label">Topics you're interested in (check all that apply)</label>
+          <div class="check-grid" style="margin-top:0.4rem;">
+            <label class="check-item"><input type="checkbox" name="topics" value="Cowork (desktop AI agent)"/><span>Cowork (desktop AI agent)</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Claude as a daily assistant"/><span>Claude as a daily assistant</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="File & document automation"/><span>File &amp; document automation</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Connecting AI to my apps"/><span>Connecting AI to my apps</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Research & synthesis workflows"/><span>Research &amp; synthesis workflows</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Writing & communication drafting"/><span>Writing &amp; communication drafting</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Building custom AI agents"/><span>Building custom AI agents</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Getting my team started"/><span>Getting my team started</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="AI strategy for my organization"/><span>AI strategy for my organization</span></label>
+            <label class="check-item"><input type="checkbox" name="topics" value="Data analysis & reporting"/><span>Data analysis &amp; reporting</span></label>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>About Cowork</strong>
+          <p>Cowork is a desktop AI agent that works directly with your files and apps. It can read documents, organize folders, connect to tools like Google Drive, Slack, or your calendar, and handle multi-step tasks while you watch or step away. If you'd like to see a demo, let Chu know below.</p>
+        </div>
+        <div class="field field-full">
+          <label class="field-label" for="specificQuestions">Specific questions or things you want to see</label>
+          <textarea id="specificQuestions" name="specificQuestions" rows="3" placeholder="e.g. Can Cowork read my Google Drive and summarize documents? Can I use AI to help with client intake? Can I see a live demo of an agent running a workflow?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Your Goals -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <span class="section-title">What Would Make This Session a Success?</span>
+      </div>
+      <div class="section-body">
+        <div class="field field-full">
+          <label class="field-label" for="topGoal">The #1 thing you want to walk away with <span class="req">*</span></label>
+          <textarea id="topGoal" name="topGoal" rows="2" placeholder="e.g. A clear picture of what Cowork can do for my practice / A concrete first step I can take this week"></textarea>
+          <span class="field-error" id="topGoalError">Please share what you'd like to walk away with.</span>
+        </div>
+        <div class="field field-full">
+          <label class="field-label" for="blockers">Any blockers, constraints, or concerns</label>
+          <textarea id="blockers" name="blockers" rows="2" placeholder="e.g. Data privacy requirements, team buy-in, budget, tech limitations — anything that might affect what's possible"></textarea>
+        </div>
+        <div class="field field-full">
+          <label class="field-label" for="extraNotes">Anything else Chu should know before the call?</label>
+          <textarea id="extraNotes" name="extraNotes" rows="2" placeholder="Context, history, or anything that would help make the conversation more useful"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success confirmation -->
+    <div class="success-box" id="successBox">
+      <div class="check-mark">✓</div>
+      <strong>Your intake is on its way to Chu.</strong>
+      <p>Submitted successfully — Chu will review your answers before the session. See you soon.</p>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-area no-print">
+      <p class="submit-hint">Your answers go directly to Chu at Ajared Research. Fields marked <span class="req">*</span> are required.</p>
+      <button type="submit" class="btn-submit" id="submitBtn">Send to Chu →</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // ── Validation ──────────────────────────────────────────────
+    let valid = true;
+
+    function setError(fieldId, errorId, show) {
+      const field = document.getElementById(fieldId);
+      const err   = document.getElementById(errorId);
+      if (show) { field && field.classList.add('error'); err && err.classList.add('visible'); valid = false; }
+      else       { field && field.classList.remove('error'); err && err.classList.remove('visible'); }
+    }
+
+    const name    = document.getElementById('name').value.trim();
+    const role    = document.getElementById('role').value.trim();
+    const topGoal = document.getElementById('topGoal').value.trim();
+    const entry   = document.querySelector('input[name="entry"]:checked');
+
+    setError('name',    'nameError',    !name);
+    setError('role',    'roleError',    !role);
+    setError('topGoal', 'topGoalError', !topGoal);
+
+    const entryErr   = document.getElementById('entryError');
+    const entryItems = document.querySelectorAll('.entry-item');
+    if (!entry) {
+      entryErr.classList.add('visible');
+      entryItems.forEach(el => el.classList.add('error-radio'));
+      valid = false;
+    } else {
+      entryErr.classList.remove('visible');
+      entryItems.forEach(el => el.classList.remove('error-radio'));
+    }
+
+    const banner = document.getElementById('formErrorBanner');
+    if (!valid) { banner.classList.add('visible'); banner.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    banner.classList.remove('visible');
+
+    // ── Collect checkboxes ──────────────────────────────────────
+    const checks = n => [...document.querySelectorAll(`input[name="${n}"]:checked`)].map(cb => cb.value).join(', ') || '—';
+
+    // ── Build Formspree payload ─────────────────────────────────
+    const payload = {
+      _subject:            'Get Started with AI – Session Intake',
+      Name:                name,
+      Role:                role,
+      Organization:        document.getElementById('org').value.trim()           || '—',
+      Industry:            document.getElementById('industry').value.trim()       || '—',
+      'Team Size':         document.getElementById('teamSize').value.trim()       || '—',
+      Timezone:            document.getElementById('timezone').value.trim()       || '—',
+      'Entry Point':       entry.value,
+      'AI Tools':          checks('aiTools'),
+      'Day-to-day Apps':   document.getElementById('dailyTools').value.trim()     || '—',
+      'Current AI Use':    document.getElementById('currentUse').value.trim()     || '—',
+      'Topics of Interest':checks('topics'),
+      'Specific Questions':document.getElementById('specificQuestions').value.trim() || '—',
+      'Top Goal':          topGoal,
+      'Blockers':          document.getElementById('blockers').value.trim()       || '—',
+      'Extra Notes':       document.getElementById('extraNotes').value.trim()     || '—',
+    };
+
+    // ── Submit to Formspree ─────────────────────────────────────
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mrearkjn', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        document.getElementById('successBox').classList.add('visible');
+        submitBtn.textContent = 'Sent ✓';
+        document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const data = await res.json();
+        throw new Error(data?.error || 'Submission failed');
+      }
+    } catch (err) {
+      submitBtn.textContent = 'Send to Chu →';
+      submitBtn.disabled = false;
+      banner.textContent = 'Something went wrong — please try again or email innovation@ajared.ca directly.';
+      banner.classList.add('visible');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  // Clear error on input
+  ['name','role','topGoal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      el.classList.remove('error');
+      const errEl = document.getElementById(id + 'Error');
+      if (errEl) errEl.classList.remove('visible');
+    });
+  });
+
+  document.querySelectorAll('input[name="entry"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('entryError').classList.remove('visible');
+      document.querySelectorAll('.entry-item').forEach(el => el.classList.remove('error-radio'));
+    });
+  });
+</script>
+</body>
+</html>
