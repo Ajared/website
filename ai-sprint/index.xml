@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="ai-sprint" title="1 Month AI Development Sprint — Readiness Assessment">
+<Page id="ai-sprint" title="1-Month AI Development Sprint" description="Ajared's 1-month AI Development Sprint takes your organization from readiness assessment to a working AI product — fast, focused, and built to last." url="https://ajared.ca/ai-sprint/">
 
   <Schema><![CDATA[
     {

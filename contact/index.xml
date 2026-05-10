@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="contact" title="Contact">
+<Page id="contact" title="Contact" description="Get in touch with Ajared Research Inc. Start a conversation about applied AI, enterprise agents, or your next AI initiative." url="https://ajared.ca/contact/">
   
   <Schema><![CDATA[
     {

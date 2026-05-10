@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="capabilities" title="Capabilities">
+<Page id="capabilities" title="Capabilities" description="Explore Ajared Research Inc's capabilities: applied AI research, AI product development, enterprise agents, and data strategy for modern organizations." url="https://ajared.ca/capabilities/">
   
   <Schema><![CDATA[
     {

@@ -21,6 +21,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png"/>
         <title><xsl:value-of select="@title" /> — Ajared Research Inc</title>
+        <!-- SEO: meta description + Open Graph (set description and url attrs on <Page>) -->
+        <xsl:if test="@description">
+          <meta name="description"><xsl:attribute name="content"><xsl:value-of select="@description"/></xsl:attribute></meta>
+        </xsl:if>
+        <xsl:if test="@url">
+          <meta property="og:type" content="website"/>
+          <meta property="og:url"><xsl:attribute name="content"><xsl:value-of select="@url"/></xsl:attribute></meta>
+          <meta property="og:title"><xsl:attribute name="content"><xsl:value-of select="@title"/> — Ajared Research Inc</xsl:attribute></meta>
+          <xsl:if test="@description">
+            <meta property="og:description"><xsl:attribute name="content"><xsl:value-of select="@description"/></xsl:attribute></meta>
+          </xsl:if>
+          <meta property="og:image" content="https://ajared.ca/social-card-bw.png"/>
+          <meta property="og:image:width" content="1200"/>
+          <meta property="og:image:height" content="628"/>
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:title"><xsl:attribute name="content"><xsl:value-of select="@title"/> — Ajared Research Inc</xsl:attribute></meta>
+          <xsl:if test="@description">
+            <meta name="twitter:description"><xsl:attribute name="content"><xsl:value-of select="@description"/></xsl:attribute></meta>
+          </xsl:if>
+          <meta name="twitter:image" content="https://ajared.ca/social-card-bw.png"/>
+        </xsl:if>
+        <!-- Google Search Console verification (replace XXXX with code from GSC) -->
+        <!-- <meta name="google-site-verification" content="XXXX"/> -->
         <style>
         /* iA Writer Quattro S Font */
         @font-face {

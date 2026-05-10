@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="case-studies" title="Case Studies">
+<Page id="case-studies" title="Case Studies" description="Real-world AI implementations by Ajared Research Inc. See how we've helped enterprises ship AI products and automate complex workflows." url="https://ajared.ca/case-studies/">
   
   <Schema><![CDATA[
     {

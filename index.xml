@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="index" title="Ajared Research Inc - Applied AI for Enterprises">
+<Page id="index" title="Applied AI for Enterprises" description="Ajared Research Inc helps enterprises implement AI that works — applied research, product development, and intelligent agents built for real operations." url="https://ajared.ca/">
   
   <Schema><![CDATA[
     {
