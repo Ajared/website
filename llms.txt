@@ -1,0 +1,35 @@
+# Ajared Research Inc.
+
+> Applied AI research and product studio based in Toronto (Canada) and Abuja (Nigeria). We help enterprises move from AI proof-of-concept to production-ready solutions — applied research, product development, enterprise AI agents, and data & AI strategy.
+
+Ajared is led by Chu Nnodu, an enterprise product manager and AI product builder. We work with executives, founders, and operators across North America and Africa who want AI that actually works, not just demos.
+
+## Services
+
+- [Applied Research](https://ajared.ca/capabilities/001-applied-research.html): UX research, market research, and business idea testing. We figure out what's true before anyone starts building — interviews, usability studies, demand tests, and causal inference.
+- [AI Product Development](https://ajared.ca/capabilities/002-ai-product.html): Full-cycle AI product work — concept development, UX design, product management, and full-stack AI engineering from idea through production launch.
+- [Enterprise AI Agents](https://ajared.ca/capabilities/003-enterprise-agents.html): Production AI agents, Graph RAG systems, and task automation. Built to handle real workflows at scale, with human oversight where it matters.
+- [Data & AI Strategy](https://ajared.ca/capabilities/004-data-strategy.html): Data audits, AI readiness assessments, governance frameworks, Generative Engine Optimization (GEO), location intelligence, and executive AI coaching.
+
+## Offers
+
+- [Talk to a Human about AI](https://ajared.ca/talk/): 30-minute advisory call with Chu Nnodu — $50 USD. Not a sales call. A direct conversation to figure out where AI fits your work right now. Includes a personalized written action plan within 24 hours.
+- [1 Month AI Development Sprint](https://ajared.ca/ai-sprint/): A focused, time-boxed build. Scoped, shipped, and handed over in four weeks. For teams that want momentum, not a six-month SOW.
+- [Get Started with AI](https://cal.com/ajared/get-started-with-ai): Three entry points — using an AI assistant, adding tool use, or building agentic workflows.
+- [Help AI Agents Find Your Brand](https://ajared.ca/contact/): Structured data and schema markup so your site is legible to AI agents. Generative Engine Optimization for discoverability in AI-generated answers.
+
+## Key Pages
+
+- [Home](https://ajared.ca/): Overview of who we are and what we offer.
+- [Capabilities](https://ajared.ca/capabilities/): Full list of services.
+- [AI Readiness Assessment](https://ajared.ca/ai-readiness/): Free 3-minute self-assessment with a personalized action plan.
+- [Contact](https://ajared.ca/contact/): Get in touch — innovation@ajared.ca
+
+## About
+
+- **Founded**: Toronto, Ontario, Canada
+- **Also present in**: Abuja, Nigeria
+- **Websites**: ajared.ca · ajared.ng
+- **Email**: innovation@ajared.ca
+- **Phone**: +1 613 661 3550
+- **Focus areas**: Enterprise AI, Applied Research, AI Agents, Graph RAG, GEO, Data Strategy, Location Intelligence
