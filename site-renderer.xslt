@@ -1112,6 +1112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a>
                 <a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a>
                 <a href="/contact/" style="font-size: 0.72rem;">Contact</a>
+                <a href="/blog/" style="font-size: 0.72rem;">Blog</a>
                 <a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a>
               </nav>
             </div>
@@ -1187,6 +1188,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           </xsl:when>
                           <xsl:otherwise>
                             <a href="/contact/">Contact</a>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                    </p>
+                    <p>
+                        <xsl:choose>
+                          <xsl:when test="Nav/@active='blog'">
+                            <a href="/blog/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Blog</a>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <a href="/blog/">Blog</a>
                           </xsl:otherwise>
                         </xsl:choose>
                     </p>
