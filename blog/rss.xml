@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ajared Research</title>
+    <link>https://ajared.ca</link>
+    <description>Engineering and strategy notes from the Ajared Research team.</description>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 13 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://ajared.ca/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Hello, world</title>
+      <link>https://ajared.ca/blog/hello-world</link>
+      <guid isPermaLink="true">https://ajared.ca/blog/hello-world</guid>
+      <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Your very first Voxx post — edit or delete me.</description>
+      <content:encoded><![CDATA[<p>Welcome to your new blog. This file is just markdown with a little YAML
+frontmatter on top, so you can write a post in any editor and commit it like
+code.</p>
+<h2 id="why-json-was-the-wrong-surface"><a href="#why-json-was-the-wrong-surface">Why JSON was the wrong surface</a></h2>
+<p>Configuration files are great for machines and miserable for writing. Prose
+wants to be prose — headings, paragraphs, the occasional list:</p>
+<ul>
+<li>No database to run</li>
+<li>No admin UI to log into</li>
+<li>Just files you can grep, diff, and version</li>
+</ul>
+<h2 id="one-line-thats-all"><a href="#one-line-thats-all">One line, that's all</a></h2>
+<p>Voxx reads this file, parses the frontmatter, renders the markdown, and hands
+your app clean data. Code blocks are highlighted automatically:</p>
+<pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { getPosts } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "@prudentbird/voxx-core"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> posts</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> await</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> getPosts</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">();</span></span></code></pre>
+<h2 id="a-format-that-plays-well-with-ai"><a href="#a-format-that-plays-well-with-ai">A format that plays well with AI</a></h2>
+<p>Because every post is self-describing — explicit metadata, natural-language
+body — both humans and agents can read and write them. Voxx can even emit an
+<code>llms.txt</code> so models can discover your writing.</p>
+<h2 id="final-thoughts"><a href="#final-thoughts">Final thoughts</a></h2>
+<p>Edit <code>voxx.json</code> to configure the blog, drop more <code>.md</code> files next to this one,
+and you're publishing. That's the whole idea.</p>]]></content:encoded>
+      <category>getting-started</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/@prudentbird/voxx-core/voxx.schema.json",
+  "site": {
+    "title": "Ajared Research",
+    "description": "Engineering and strategy notes from the Ajared Research team.",
+    "url": "https://ajared.ca",
+    "titleHref": "/",
+    "author": { "name": "Ajared Research Inc.", "url": "https://ajared.ca" },
+    "locale": "en-US"
+  },
+  "content": {
+    "type": "blog",
+    "dir": "content",
+    "basePath": "/blog",
+    "drafts": false
+  },
+  "theme": {
+    "preset": "shadcn",
+    "css": null,
+    "codeTheme": "github-light github-dark"
+  },
+  "features": {
+    "toc": true,
+    "rss": true,
+    "sitemap": false,
+    "llmsTxt": false,
+    "tags": true,
+    "readingTime": true
+  },
+  "seo": {
+    "openGraph": true,
+    "twitter": "@ajaredia",
+    "jsonLd": true,
+    "defaultImage": null
+  }
+}

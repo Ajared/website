@@ -50,4 +50,26 @@ for xml_path in glob.glob(f"{site_root}/**/*.xml", recursive=True):
 PYEOF
 fi
 
+echo "Building blog with voxx..."
+(
+  cd "$SITE_ROOT/blog"
+  if ! command -v voxx &>/dev/null; then
+    npx --yes @prudentbird/voxx build --out ..
+  else
+    voxx build --out ..
+  fi
+)
+cat "$SITE_ROOT/blog/ajared-theme.css" >> "$SITE_ROOT/_voxx/voxx.css"
+echo "  Applied Ajared theme to _voxx/voxx.css"
+
+find "$SITE_ROOT/blog" -name "*.html" | while read -r f; do
+  sed -i '' \
+    's|>Ajared Research</a>|><img src="/logo.png" alt="Ajared Research" style="height:28px;width:auto;display:block;"/></a>|g' \
+    "$f"
+done
+sed -i '' \
+  's|<h1>\(Ajared Research\)</h1>|<h1><a href="/" style="text-decoration:none;">\1</a></h1>|g' \
+  "$SITE_ROOT/blog/index.html"
+echo "  Patched blog wordmark and index title"
+
 echo "Build complete."
