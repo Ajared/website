@@ -44,7 +44,9 @@
       "description": "From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.",
       "datePublished": "2026-06-13T00:00:00.000Z",
       "author": {
-        "@id": "https://ajared.ca/#organization"
+        "@type": "Person",
+        "name": "prudentbird",
+        "url": "https://prudentbird.com"
       },
       "publisher": {
         "@id": "https://ajared.ca/#organization"
@@ -72,7 +74,7 @@
       <Tag>Engineering</Tag>
       <Title>Building DeckSense</Title>
       <Desc>From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.</Desc>
-      <Author>prudentbird</Author>
+      <Author url="https://prudentbird.com">prudentbird</Author>
       <Date>June 13, 2026</Date>
     </ArticleHero>
     <ArticleBody><![CDATA[<p>Some months ago, I was asked to build an AI-powered presentation generation tool. My first reaction was skepticism, and I kept asking myself: How do you generate a presentation with AI? How does it work technically? And honestly, I didn't know where to begin.</p>

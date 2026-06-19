@@ -6,6 +6,6 @@
     "build": "echo 'Use the site build instead: run scripts/build.sh from the repo root (it runs build-posts.mjs + XSLT). Do NOT use the voxx CLI build — it overwrites site files.' && exit 1"
   },
   "devDependencies": {
-    "@prudentbird/voxx-core": "^1.1.0"
+    "@prudentbird/voxx-core": "^1.3.0"
   }
 }

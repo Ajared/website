@@ -5,7 +5,9 @@ date: 2026-06-13
 slug: decksense-engineering
 tags: [engineering, ai, product]
 category: Engineering
-author: prudentbird
+author:
+  name: prudentbird
+  url: https://prudentbird.com
 ---
 
 

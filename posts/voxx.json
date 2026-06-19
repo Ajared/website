@@ -12,7 +12,7 @@
     "type": "blog",
     "dir": "content",
     "basePath": "/posts",
-    "drafts": false
+    "drafts": "unlisted"
   },
   "theme": {
     "preset": "shadcn",

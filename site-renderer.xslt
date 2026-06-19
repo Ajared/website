@@ -2620,7 +2620,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="article-desc"><xsl:value-of select="Desc"/></p>
       <span class="article-meta">
         <xsl:if test="Author != ''">
-          <span class="article-author"><xsl:value-of select="Author"/></span>
+          <span class="article-author">
+            <xsl:choose>
+              <xsl:when test="Author/@url != ''">
+                <a href="{Author/@url}" rel="author"><xsl:value-of select="Author"/></a>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="Author"/></xsl:otherwise>
+            </xsl:choose>
+          </span>
           <span class="article-meta-sep"> · </span>
         </xsl:if>
         <xsl:value-of select="Date"/>

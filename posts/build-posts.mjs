@@ -69,7 +69,9 @@ function generatePostXml(post, html) {
   const title = post.title;
   const desc = post.description || post.excerpt || '';
   const tag = post.category || (post.tags && post.tags[0]) || 'Post';
-  const author = post.author || '';
+  const author = (post.authors && post.authors[0]) || null;
+  const authorName = author ? author.name : '';
+  const authorUrl = author && author.url ? author.url : '';
   const breadcrumb = slug
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -93,7 +95,9 @@ function generatePostXml(post, html) {
         headline: title,
         description: desc,
         datePublished: dateIso,
-        author: { '@id': `${siteUrl}/#organization` },
+        author: authorName
+          ? { '@type': 'Person', name: authorName, ...(authorUrl ? { url: authorUrl } : {}) }
+          : { '@id': `${siteUrl}/#organization` },
         publisher: { '@id': `${siteUrl}/#organization` },
         url: postUrl,
         keywords: post.tags || [],
@@ -123,7 +127,7 @@ function generatePostXml(post, html) {
       <Tag>${escapeXmlText(tag)}</Tag>
       <Title>${escapeXmlText(title)}</Title>
       <Desc>${escapeXmlText(desc)}</Desc>
-      <Author>${escapeXmlText(author)}</Author>
+      <Author${authorUrl ? ` url="${escapeAttr(authorUrl)}"` : ''}>${escapeXmlText(authorName)}</Author>
       <Date>${dateHuman}</Date>
     </ArticleHero>
     <ArticleBody><![CDATA[${safeCdata(html)}]]></ArticleBody>
