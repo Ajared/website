@@ -6,6 +6,25 @@ set -euo pipefail
 
 SITE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
+(
+  cd "$SITE_ROOT/posts"
+  if ! command -v node &>/dev/null; then
+    echo "ERROR: 'node' not found. Install Node.js to build posts." >&2
+    exit 1
+  fi
+  # posts/node_modules is gitignored; bootstrap it on a fresh checkout so
+  # build-posts.mjs can import @prudentbird/voxx-core.
+  if [ ! -d node_modules/@prudentbird/voxx-core ]; then
+    echo "Installing posts dependencies (voxx-core)..."
+    if [ -f package-lock.json ]; then
+      npm ci
+    else
+      npm install
+    fi
+  fi
+  node build-posts.mjs
+)
+
 if command -v xsltproc &>/dev/null; then
     echo "Building site with xsltproc..."
     find "$SITE_ROOT" -type f -name "*.xml" -not -path "*/node_modules/*" \
@@ -49,27 +68,5 @@ for xml_path in glob.glob(f"{site_root}/**/*.xml", recursive=True):
         sys.exit(1)
 PYEOF
 fi
-
-echo "Building blog with voxx..."
-(
-  cd "$SITE_ROOT/blog"
-  if ! command -v voxx &>/dev/null; then
-    npx --yes @prudentbird/voxx build --out ..
-  else
-    voxx build --out ..
-  fi
-)
-cat "$SITE_ROOT/blog/ajared-theme.css" >> "$SITE_ROOT/_voxx/voxx.css"
-echo "  Applied Ajared theme to _voxx/voxx.css"
-
-find "$SITE_ROOT/blog" -name "*.html" | while read -r f; do
-  sed -i '' \
-    's|>Ajared Research</a>|><img src="/logo.png" alt="Ajared Research" style="height:28px;width:auto;display:block;"/></a>|g' \
-    "$f"
-done
-sed -i '' \
-  's|<h1>\(Ajared Research\)</h1>|<h1><a href="/" style="text-decoration:none;">\1</a></h1>|g' \
-  "$SITE_ROOT/blog/index.html"
-echo "  Patched blog wordmark and index title"
 
 echo "Build complete."

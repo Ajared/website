@@ -1,0 +1,11 @@
+{
+  "name": "@ajared/posts",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Use the site build instead: run scripts/build.sh from the repo root (it runs build-posts.mjs + XSLT). Do NOT use the voxx CLI build — it overwrites site files.' && exit 1"
+  },
+  "devDependencies": {
+    "@prudentbird/voxx-core": "^1.1.0"
+  }
+}
