@@ -13,18 +13,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
-<title>Case Studies — Ajared Research Inc</title>
-<meta name="description" content="Real-world AI implementations by Ajared Research Inc. See how we've helped enterprises ship AI products and automate complex workflows.">
+<title>Building DeckSense — Ajared Research Inc</title>
+<meta name="description" content="From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ajared.ca/case-studies/">
-<meta property="og:title" content="Case Studies — Ajared Research Inc">
-<meta property="og:description" content="Real-world AI implementations by Ajared Research Inc. See how we've helped enterprises ship AI products and automate complex workflows.">
+<meta property="og:url" content="https://ajared.ca/posts/decksense-engineering/">
+<meta property="og:title" content="Building DeckSense — Ajared Research Inc">
+<meta property="og:description" content="From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.">
 <meta property="og:image" content="https://ajared.ca/social-card-bw.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Case Studies — Ajared Research Inc">
-<meta name="twitter:description" content="Real-world AI implementations by Ajared Research Inc. See how we've helped enterprises ship AI products and automate complex workflows.">
+<meta name="twitter:title" content="Building DeckSense — Ajared Research Inc">
+<meta name="twitter:description" content="From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.">
 <meta name="twitter:image" content="https://ajared.ca/social-card-bw.png">
 <style>
         /* iA Writer Quattro S Font */
@@ -995,79 +995,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .deliverable-title { font-size: 1rem; }
         }
 </style>
-<script type="application/ld+json">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Organization",
+      "@id": "https://ajared.ca/#organization",
+      "name": "Ajared Research Inc.",
+      "url": "https://ajared.ca"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
-          "@id": "https://ajared.ca/#organization",
-          "name": "Ajared Research Inc.",
-          "url": "https://ajared.ca",
-          "logo": "https://ajared.ca/logo.png",
-          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
-          "email": "innovation@ajared.ca",
-          "sameAs": ["https://ajared.ng"],
-          "location": [
-            {
-              "@type": "Place",
-              "name": "Toronto",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Toronto",
-                "addressRegion": "Ontario",
-                "addressCountry": "CA"
-              }
-            },
-            {
-              "@type": "Place",
-              "name": "Abuja",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Abuja",
-                "addressCountry": "NG"
-              }
-            }
-          ],
-          "knowsAbout": [
-            "Artificial Intelligence",
-            "Applied Research",
-            "AI Product Development",
-            "Enterprise AI Agents",
-            "Data Strategy"
-          ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajared.ca"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
-            { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://ajared.ca/case-studies/" }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Posts",
+          "item": "https://ajared.ca/posts/"
         },
         {
-          "@type": "ItemList",
-          "name": "Ajared Research Case Studies",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "url": "https://ajared.ca/case-studies/#decksense",
-              "name": "DeckSense"
-            }
-          ]
-        },
-        {
-          "@type": "TechArticle",
-          "@id": "https://ajared.ca/case-studies/#decksense",
-          "headline": "DeckSense: AI Product Management",
-          "description": "A 2025 case study on AI Product Management for DeckSense.",
-          "author": { "@id": "https://ajared.ca/#organization" },
-          "publisher": { "@id": "https://ajared.ca/#organization" },
-          "url": "https://ajared.ca/case-studies/"
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Building DeckSense",
+          "item": "https://ajared.ca/posts/decksense-engineering/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ajared.ca/posts/decksense-engineering/",
+      "headline": "Building DeckSense",
+      "description": "From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.",
+      "datePublished": "2026-06-13T00:00:00.000Z",
+      "author": {
+        "@id": "https://ajared.ca/#organization"
+      },
+      "publisher": {
+        "@id": "https://ajared.ca/#organization"
+      },
+      "url": "https://ajared.ca/posts/decksense-engineering/",
+      "keywords": [
+        "engineering",
+        "ai",
+        "product"
+      ]
     }
-  </script>
+  ]
+}</script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1077,37 +1057,161 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="main-content">
 <div class="ruler-x"></div>
-<header><div class="header-cell">
-<span class="label" style="color: var(--color-ink);">Information Architecture</span><a href="/" style="text-decoration: none; display: block;"><img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"><div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div></a>
+<header><div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;"><a href="/" style="text-decoration:none;display:flex;align-items:center;"><img src="/logo.png" alt="Ajared Logo" style="height:32px;width:auto;display:block;"><div class="logo-text" style="font-size: 0.72rem; line-height: 1.2; margin-left: 0.6rem;">Research Inc.</div></a></div>
+<div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;"><div class="nav-crumb">
+<a href="/posts/" style="color:inherit;text-decoration:none;">Posts</a><span class="sep">/</span><span class="cur">Decksense Engineering</span>
+</div></div>
+<div class="header-cell" style="padding: 0.9rem 1.2rem; align-items: center; justify-content: center;"><nav style="display: flex; gap: 1.8rem;"><a href="/" style="font-size: 0.72rem;">Index</a><a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a><a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a><a href="/contact/" style="font-size: 0.72rem;">Contact</a><a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a></nav></div></header><style>
+      .article-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        border-left: var(--grid-line);
+        border-right: var(--grid-line);
+        min-height: 60vh;
+      }
+      .article-hero {
+        padding: 4rem 0 2.5rem;
+        border-bottom: var(--grid-line);
+      }
+      .article-tag {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-terra);
+        display: block;
+        margin-bottom: 1.4rem;
+      }
+      .article-title {
+        font-size: clamp(1.9rem, 5vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        margin-bottom: 1.4rem;
+        color: var(--color-ink-darkest);
+      }
+      .article-desc {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--color-ink-dark);
+        max-width: 56ch;
+        margin-bottom: 1.5rem;
+      }
+      .article-meta {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--color-ink-dark);
+        letter-spacing: 0.05em;
+      }
+      .article-author {
+        color: var(--color-ink-darkest);
+        font-weight: 700;
+      }
+      .article-meta-sep { color: var(--color-ink-light); }
+      .article-body {
+        padding: 3rem 0 4rem;
+      }
+      .article-body p {
+        line-height: 1.78;
+        margin-bottom: 1.5rem;
+        max-width: 66ch;
+        color: var(--color-ink-dark);
+      }
+      .article-body h2 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-ink-darkest);
+        margin: 3.5rem 0 1.2rem;
+      }
+      .article-body h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--color-ink-darkest);
+        margin: 2.5rem 0 1rem;
+      }
+      .article-body h2 a,
+      .article-body h3 a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .article-body code {
+        font-family: var(--font-mono);
+        font-size: 0.88em;
+        color: var(--color-terra);
+        background: #f9f6f5;
+        padding: 0.1em 0.35em;
+        border-radius: 2px;
+      }
+      .article-body img {
+        width: 100%;
+        height: auto;
+        border: var(--grid-line);
+        margin: 2rem 0;
+        display: block;
+      }
+      .article-body a {
+        color: var(--color-ink);
+        text-decoration: underline;
+        text-decoration-color: var(--color-ink-lighter);
+        text-underline-offset: 2px;
+      }
+      .article-body a:hover {
+        text-decoration-color: var(--color-ink);
+      }
+      .article-body hr { border: none; border-top: var(--grid-line); margin: 2.5rem 0; }
+      .article-body em {
+        font-style: italic;
+        color: var(--color-ink-dark);
+      }
+      .article-body strong {
+        font-weight: 700;
+      }
+    </style>
+<div class="article-wrap">
+<div class="article-hero">
+<span class="article-tag">Engineering</span><h1 class="article-title">Building DeckSense</h1>
+<p class="article-desc">From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.</p>
+<span class="article-meta"><span class="article-author">prudentbird</span><span class="article-meta-sep"> · </span>June 13, 2026</span>
 </div>
-<div class="header-cell">
-<span class="label">Archive / 02</span><h2>Work</h2>
-<div style="margin-top:auto">
-<span class="label">Projects</span><p>1 Case Study</p>
+<div class="article-body"><p>Some months ago, I was asked to build an AI-powered presentation generation tool. My first reaction was skepticism, and I kept asking myself: How do you generate a presentation with AI? How does it work technically? And honestly, I didn't know where to begin.</p>
+<p>I spent most of my time questioning whether this was actually possible, and later figured out it was. In this post, I'll walk you through that journey, breaking down the uncertainty, experiments, hard decisions that shaped the system and how everything ultimately came together.</p>
+<h2 id="the-product-argument"><a href="#the-product-argument">The Product Argument</a></h2>
+<p>While sitting with that skepticism, I built a few prototypes. My early conclusion was that HTML-based slides with a WYSIWYG editor made the most sense. During that exploration, I came across <a href="https://sli.dev/" target="_blank" rel="noreferrer">Anthony Fu's Slidev</a>⁠, and it reinforced a broader assumption at the time: if models are good at generating code, then slides as code was the right abstraction.</p>
+<p>Considering the product angle, lock-in also felt like a strong advantage. Users would build, edit, and share presentations without relying on any third-party software. Committing fully to this direction, I shared my thoughts with my product lead, expecting alignment, but the conversation that followed completely shifted the direction of the product.</p>
+<p>He pushed back by framing it through existing enterprise workflows and the tools teams already rely on. The goal wasn't lock-in or forcing adoption of a new system, but rather getting teams from zero to about 80% of a usable deck, and letting them finish the rest in tools they already know.</p>
+<h2 id="building-the-product"><a href="#building-the-product">Building the Product</a></h2>
+<p>Having PPTX output as a non-negotiable part of the system, I started with <a href="https://gitbrent.github.io/PptxGenJS/" target="_blank" rel="noreferrer"><code>pptxgenjs</code></a>, generating PPTX files from JSON and building React components that approximated what the file would look like.</p>
+<p>There was a real gap between the preview and the actual PPTX. Layouts shifted, text overflowed, and spacing was wrong. The preview was a lie, and the application UX was built around it. I had to accept it as an interim trade-off since native PPTX rendering in the browser doesn't exist yet.</p>
+<p>At this point, one milestone had been ticked. It was possible to generate a presentation with AI. But I needed more than that. The current pipeline had no visual structure. Each slide looked completely different from the others. Brands rely on style guides, design systems, and templates, and that introduced a new set of requirements, making the product harder to build, especially since the gap between previews and the final PPTX output looking different was yet to be addressed.</p>
+<p>Building a visually consistent presentation led me to <a href="https://github.com/singerla/pptx-automizer" target="_blank" rel="noreferrer"><code>pptx-automizer</code></a>, which works with editing existing PPTX files as templates rather than generating from scratch. But I was not prepared for the problems that came with it.</p>
+<p>A PPTX file is a ZIP archive full of layered XML, and text replacement is very unreliable since placeholders don't always exist where you'd expect them to be. As a result, even small changes often produced broken files.</p>
+<p>I started looking for a new approach that could solve most of the issues I was running into. Eventually, I rewrote the service using python-pptx. This was the most hectic part of the project. I tore everything apart and rebuilt the preview rendering engine and the PowerPoint generation pipeline in a completely new stack.</p>
+<p><img src="./image1.png" alt="Migration Pull Request"></p>
+<p>PR #69 captured the full migration. It was a Python microservice that could edit PPTX files reliably, and a rendering engine that removed the drift between preview and final output.</p>
+<p>Everything else became easy. I had consistent outputs that followed brand guidelines and existing templates, and the renderer converted the PPTX to PDF and PNG, which I could then preview in the browser.</p>
+<p>I made minor improvements to the pipeline, introducing outline generation using the SCR framework, web search, and a QA verification loop.</p>
+<p>I began running evals on the new system immediately, but testing started getting expensive. I wanted to know if a cheaper open-source model could handle the same workload.</p>
+<p>So I switched to OpenRouter, testing different models in the new harness, but benchmark scores don't translate to behavior in a multi-step agentic pipeline. The success rate on tool calls was roughly 2 in 10, and failed attempts burned tokens, stalled the pipeline, and ended up costing more than they saved. None of the models stayed.</p>
+<p>This also made clear that model selection isn't purely an engineering decision. It touches cost, latency, and output quality, all of which are product concerns.</p>
+<p><img src="./image2.png" alt="Chat Conversation"></p>
+<p>The final decision landed on Claude Sonnet 4.6, which gave consistent outputs without degrading performance or quality.</p>
+<h2 id="the-architecture-and-stack"><a href="#the-architecture-and-stack">The Architecture and Stack</a></h2>
+<p>Not much went into deciding the tech stack. I stuck with defaults I ship fast with: Next.js on the frontend and Convex for backend, database, sync, and file storage. Auth was handled via WorkOS, aligning with the decision targeting enterprise users.</p>
+<p>The renderer and PPTX generation engine, built as a long-running process, landed on Fly.io paired with Upstash Redis, reused in the Vercel/Next.js layer for resumable streams.</p>
+<p>Turborepo sits as the glue across all services, managing shared packages, dependencies, and coordination between the frontend, backend, and rendering pipeline.</p>
+<p>For payments, Stripe. Nothing to explain there.</p>
+<p>Model routing goes through OpenRouter, with the Vercel AI SDK for the orchestration layer, custom harness and pipeline.</p>
+<h2 id="where-things-stand"><a href="#where-things-stand">Where Things Stand</a></h2>
+<p><a href="https://decksense.ai" target="_blank" rel="noreferrer">DeckSense</a> is currently live with early users, but there are still rough edges. The template engine has known limitations I haven't addressed, the open-source model question is still open. But the core pipeline works, and that's something I'm proud of.</p>
+<p>conversation → outline → brand guidelines → PPTX.</p>
+<h2 id="final-thoughts"><a href="#final-thoughts">Final Thoughts</a></h2>
+<p>What I walked away with isn't a clean architecture or a perfect pipeline, but a sharper instinct for when to start over, when to accept a trade-off and move on, and how much of the hard work in building a product has nothing to do with code. Picking the right abstraction matters, but so does knowing when to abandon one.</p>
+<p><em>Ajared Research is an applied AI studio. If you're building something with AI and want a second opinion on the architecture or product direction, <a href="https://ajared.ca/talk/" target="_blank" rel="noreferrer">let's talk</a>.</em></p></div>
 </div>
-</div>
-<div class="header-cell">
-<span class="label">Navigation</span><nav><p><a href="/">Index</a></p>
-<p><a href="/case-studies/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a></p>
-<p><a href="/capabilities/">Capabilities</a></p>
-<p><a href="/contact/">Contact</a></p>
-<p><a href="https://www.ajared.ng">Read</a></p></nav><div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
-</div></header><section class="hero-section"><div class="hero-text">
-<span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Work</span><h1>Case<br>Studies</h1>
-</div>
-<div class="moire-static" style="transform: scale(1.5);"></div>
-<div class="moire-static" style="transform: scale(1.2); right: 5%;"></div></section><div class="calibration-grid"><a href="#" class="project-row"><span class="project-id">001</span><div class="project-main">
-<span class="project-meta">AI Product Management</span><span class="project-title">DeckSense</span>
-</div>
-<span class="project-year">2025</span><span style="text-align: right; color: var(--color-terra);">↗</span></a></div>
-<section class="hero-section"><div class="hero-text">
-<span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Writing</span><h1>Posts</h1>
-</div>
-<div class="moire-static" style="transform: scale(1.5);"></div>
-<div class="moire-static" style="transform: scale(1.2); right: 5%;"></div></section><div class="calibration-grid"><a href="/posts/decksense-engineering/" class="project-row"><span class="project-id">001</span><div class="project-main">
-<span class="project-meta">Engineering</span><span class="project-title">Building DeckSense</span>
-</div>
-<span class="project-year">June 13, 2026</span><span style="text-align: right; color: var(--color-terra);">↗</span></a></div>
 <div class="footer">
 <div>
 <span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>

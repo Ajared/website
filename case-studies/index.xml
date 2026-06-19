@@ -97,4 +97,16 @@
     </Project>
   </ProjectList>
 
+  <PostList>
+    <!-- POSTS:START -->
+    <PostEntry href="/posts/decksense-engineering/" date="June 13, 2026">
+      <Title>Building DeckSense</Title>
+      <Excerpt>From the first prototype to production, this is the story of how I built DeckSense, covering the stack, architecture, trade-offs, challenges, and lessons learned from building and scaling the product.</Excerpt>
+      <Tag>Engineering</Tag>
+    </PostEntry>
+  <!-- POSTS:END -->
+  </PostList>
+
+  <Footer email="innovation@ajared.ca" year="2026"/>
+
 </Page>

@@ -11,7 +11,7 @@
   "content": {
     "type": "blog",
     "dir": "content",
-    "basePath": "/blog",
+    "basePath": "/posts",
     "drafts": false
   },
   "theme": {

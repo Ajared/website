@@ -720,12 +720,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         /* Project Rows */
         .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
         .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-        .project-row { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 2fr 1.5fr 1fr 0.5fr; border-bottom: var(--grid-line); padding: 1.5rem 2rem; align-items: center; transition: background 0.3s, color 0.3s; text-decoration: none; color: inherit; }
+        .project-row { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 2fr 1fr 0.5fr; border-bottom: var(--grid-line); padding: 1.5rem 2rem; align-items: start; transition: background 0.3s, color 0.3s; text-decoration: none; color: inherit; }
         .project-row:hover { background: var(--color-ink); color: var(--color-bg); }
         .project-row:hover .project-id, .project-row:hover .project-title, .project-row:hover .project-meta, .project-row:hover .project-year { color: var(--color-bg); }
+        .project-main { display: flex; flex-direction: column; gap: 0.35rem; }
         .project-id { font-family: var(--font-mono); font-weight: 700; color: #a1665e; }
-        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
-        .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
+        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); line-height: 1.1; }
+        .project-meta { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
         .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
 
         /* Capabilities Hero and Accordions */
@@ -1054,6 +1055,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <xsl:apply-templates select="PageBody" />
             <xsl:apply-templates select="CapNav" />
             <xsl:apply-templates select="DeliverableList" />
+            <xsl:apply-templates select="Article" />
+            <xsl:apply-templates select="PostList" />
             <xsl:apply-templates select="CTABlock" />
             
             <xsl:apply-templates select="Footer" />
@@ -1101,7 +1104,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;">
               <div class="nav-crumb">
-                <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
+                <xsl:choose>
+                  <xsl:when test="Nav/Breadcrumbs/@parent-href">
+                    <a href="{Nav/Breadcrumbs/@parent-href}" style="color:inherit;text-decoration:none;"><xsl:value-of select="Nav/Breadcrumbs/@parent-label"/></a>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
+                  </xsl:otherwise>
+                </xsl:choose>
                 <span class="sep">/</span>
                 <span class="cur"><xsl:value-of select="Nav/Breadcrumbs/Current"/></span>
               </div>
@@ -1112,7 +1122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a>
                 <a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a>
                 <a href="/contact/" style="font-size: 0.72rem;">Contact</a>
-                <a href="/blog/" style="font-size: 0.72rem;">Blog</a>
                 <a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a>
               </nav>
             </div>
@@ -1188,16 +1197,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           </xsl:when>
                           <xsl:otherwise>
                             <a href="/contact/">Contact</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='blog'">
-                            <a href="/blog/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Blog</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/blog/">Blog</a>
                           </xsl:otherwise>
                         </xsl:choose>
                     </p>
@@ -1389,8 +1388,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <xsl:template match="Project">
     <a href="{@href}" class="project-row">
         <span class="project-id"><xsl:value-of select="@id"/></span>
-        <span class="project-title"><xsl:value-of select="Title"/></span>
-        <span class="project-meta"><xsl:value-of select="Meta"/></span>
+        <div class="project-main">
+          <span class="project-meta"><xsl:value-of select="Meta"/></span>
+          <span class="project-title"><xsl:value-of select="Title"/></span>
+        </div>
         <span class="project-year"><xsl:value-of select="Year"/></span>
         <span style="text-align: right; color: var(--color-terra);">↗</span>
     </a>
@@ -2462,6 +2463,175 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script src="/ai-readiness/assessment.js" defer="defer"></script>
       </body>
     </html>
+  </xsl:template>
+
+  <!-- ═══════════════════════════════════════════════
+       PostList — writing/posts index on case-studies page
+       ═══════════════════════════════════════════════ -->
+  <xsl:template match="PostList">
+    <section class="hero-section">
+      <div class="hero-text">
+        <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Writing</span>
+        <h1>Posts</h1>
+      </div>
+      <div class="moire-static" style="transform: scale(1.5);"></div>
+      <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
+    </section>
+    <div class="calibration-grid">
+      <xsl:for-each select="PostEntry">
+        <a href="{@href}" class="project-row">
+          <span class="project-id"><xsl:number format="001"/></span>
+          <div class="project-main">
+            <span class="project-meta"><xsl:value-of select="Tag"/></span>
+            <span class="project-title"><xsl:value-of select="Title"/></span>
+          </div>
+          <span class="project-year"><xsl:value-of select="@date"/></span>
+          <span style="text-align: right; color: var(--color-terra);">&#8599;</span>
+        </a>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <!-- ═══════════════════════════════════════════════
+       Article templates — long-form engineering posts
+       Used by case-studies/*/index.xml
+       ═══════════════════════════════════════════════ -->
+  <xsl:template match="Article">
+    <style>
+      .article-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        border-left: var(--grid-line);
+        border-right: var(--grid-line);
+        min-height: 60vh;
+      }
+      .article-hero {
+        padding: 4rem 0 2.5rem;
+        border-bottom: var(--grid-line);
+      }
+      .article-tag {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-terra);
+        display: block;
+        margin-bottom: 1.4rem;
+      }
+      .article-title {
+        font-size: clamp(1.9rem, 5vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        margin-bottom: 1.4rem;
+        color: var(--color-ink-darkest);
+      }
+      .article-desc {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--color-ink-dark);
+        max-width: 56ch;
+        margin-bottom: 1.5rem;
+      }
+      .article-meta {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--color-ink-dark);
+        letter-spacing: 0.05em;
+      }
+      .article-author {
+        color: var(--color-ink-darkest);
+        font-weight: 700;
+      }
+      .article-meta-sep { color: var(--color-ink-light); }
+      .article-body {
+        padding: 3rem 0 4rem;
+      }
+      .article-body p {
+        line-height: 1.78;
+        margin-bottom: 1.5rem;
+        max-width: 66ch;
+        color: var(--color-ink-dark);
+      }
+      .article-body h2 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-ink-darkest);
+        margin: 3.5rem 0 1.2rem;
+      }
+      .article-body h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--color-ink-darkest);
+        margin: 2.5rem 0 1rem;
+      }
+      .article-body h2 a,
+      .article-body h3 a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .article-body code {
+        font-family: var(--font-mono);
+        font-size: 0.88em;
+        color: var(--color-terra);
+        background: #f9f6f5;
+        padding: 0.1em 0.35em;
+        border-radius: 2px;
+      }
+      .article-body img {
+        width: 100%;
+        height: auto;
+        border: var(--grid-line);
+        margin: 2rem 0;
+        display: block;
+      }
+      .article-body a {
+        color: var(--color-ink);
+        text-decoration: underline;
+        text-decoration-color: var(--color-ink-lighter);
+        text-underline-offset: 2px;
+      }
+      .article-body a:hover {
+        text-decoration-color: var(--color-ink);
+      }
+      .article-body hr { border: none; border-top: var(--grid-line); margin: 2.5rem 0; }
+      .article-body em {
+        font-style: italic;
+        color: var(--color-ink-dark);
+      }
+      .article-body strong {
+        font-weight: 700;
+      }
+    </style>
+    <div class="article-wrap">
+      <xsl:apply-templates select="ArticleHero"/>
+      <xsl:apply-templates select="ArticleBody"/>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="ArticleHero">
+    <div class="article-hero">
+      <span class="article-tag"><xsl:value-of select="Tag"/></span>
+      <h1 class="article-title"><xsl:value-of select="Title"/></h1>
+      <p class="article-desc"><xsl:value-of select="Desc"/></p>
+      <span class="article-meta">
+        <xsl:if test="Author != ''">
+          <span class="article-author"><xsl:value-of select="Author"/></span>
+          <span class="article-meta-sep"> · </span>
+        </xsl:if>
+        <xsl:value-of select="Date"/>
+      </span>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="ArticleBody">
+    <div class="article-body">
+      <xsl:value-of select="." disable-output-escaping="yes"/>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -690,12 +690,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         /* Project Rows */
         .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
         .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-        .project-row { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 2fr 1.5fr 1fr 0.5fr; border-bottom: var(--grid-line); padding: 1.5rem 2rem; align-items: center; transition: background 0.3s, color 0.3s; text-decoration: none; color: inherit; }
+        .project-row { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 2fr 1fr 0.5fr; border-bottom: var(--grid-line); padding: 1.5rem 2rem; align-items: start; transition: background 0.3s, color 0.3s; text-decoration: none; color: inherit; }
         .project-row:hover { background: var(--color-ink); color: var(--color-bg); }
         .project-row:hover .project-id, .project-row:hover .project-title, .project-row:hover .project-meta, .project-row:hover .project-year { color: var(--color-bg); }
+        .project-main { display: flex; flex-direction: column; gap: 0.35rem; }
         .project-id { font-family: var(--font-mono); font-weight: 700; color: #a1665e; }
-        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
-        .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
+        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); line-height: 1.1; }
+        .project-meta { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
         .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
 
         /* Capabilities Hero and Accordions */
@@ -1005,7 +1006,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><a href="/case-studies/">Case Studies</a></p>
 <p><a href="/capabilities/">Capabilities</a></p>
 <p><a href="/contact/">Contact</a></p>
-<p><a href="/blog/">Blog</a></p>
 <p><a href="https://www.ajared.ng">Read</a></p></nav><div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
 </div></header><section class="hero-fullbleed"><canvas class="moire-canvas" id="moireCanvas"></canvas><div class="hero-center-text">
 <span class="label">Talk to a Human about AI — Resources</span><h1>Your AI<br>Starter Kit</h1>
