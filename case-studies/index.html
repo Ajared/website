@@ -1100,11 +1100,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="project-meta">AI Product Management</span><span class="project-title">DeckSense</span>
 </div>
 <span class="project-year">2025</span><span style="text-align: right; color: var(--color-terra);">↗</span></a></div>
-<section class="hero-section"><div class="hero-text">
-<span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Writing</span><h1>Posts</h1>
-</div>
-<div class="moire-static" style="transform: scale(1.5);"></div>
-<div class="moire-static" style="transform: scale(1.2); right: 5%;"></div></section><div class="calibration-grid"><a href="/posts/decksense-engineering/" class="project-row"><span class="project-id">001</span><div class="project-main">
+<style>
+      /* Posts index — lighter than the Case Studies hero: smaller heading,
+         no min-height (so it peeks above the fold), no repeated swirl,
+         and no leading id column on each row. */
+      .post-hero { min-height: auto; }
+      .post-hero .hero-text { padding: 2.5rem 2rem 2rem; }
+      .post-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+      .post-row { grid-template-columns: 2fr 1fr 0.5fr; }
+      @media (max-width: 768px) { .post-row { grid-template-columns: 1fr; } }
+    </style>
+<section class="hero-section post-hero"><div class="hero-text"><h1>Posts</h1></div></section><div class="calibration-grid"><a href="/posts/decksense-engineering/" class="project-row post-row"><div class="project-main">
 <span class="project-meta">Engineering</span><span class="project-title">Building DeckSense</span>
 </div>
 <span class="project-year">June 13, 2026</span><span style="text-align: right; color: var(--color-terra);">↗</span></a></div>

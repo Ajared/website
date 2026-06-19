@@ -183,9 +183,12 @@ function injectPostList(posts) {
 console.log('Building posts from Voxx...');
 
 const config = await loadConfig({ cwd: postsDir });
-const posts = await getPosts({ config });
+// Reachable posts get a built page (includes unlisted drafts);
+// listed posts are the subset shown in the index / case-studies list.
+const reachablePosts = await getPosts({ config, reachable: true });
+const listedPosts = await getPosts({ config });
 
-for (const post of posts) {
+for (const post of reachablePosts) {
   const slug = post.slug;
   const assetBase = `/posts/${slug}`;
   const outDir = join(postsOutDir, slug);
@@ -205,6 +208,6 @@ for (const post of posts) {
   console.log(`  Generated /posts/${slug}/index.xml`);
 }
 
-injectPostList(posts);
+injectPostList(listedPosts);
 
-console.log(`  Done. ${posts.length} post(s) processed.`);
+console.log(`  Done. ${reachablePosts.length} post(s) built, ${listedPosts.length} listed.`);

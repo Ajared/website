@@ -2469,18 +2469,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        PostList — writing/posts index on case-studies page
        ═══════════════════════════════════════════════ -->
   <xsl:template match="PostList">
-    <section class="hero-section">
+    <style>
+      /* Posts index — lighter than the Case Studies hero: smaller heading,
+         no min-height (so it peeks above the fold), no repeated swirl,
+         and no leading id column on each row. */
+      .post-hero { min-height: auto; }
+      .post-hero .hero-text { padding: 2.5rem 2rem 2rem; }
+      .post-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+      .post-row { grid-template-columns: 2fr 1fr 0.5fr; }
+      @media (max-width: 768px) { .post-row { grid-template-columns: 1fr; } }
+    </style>
+    <section class="hero-section post-hero">
       <div class="hero-text">
-        <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Writing</span>
         <h1>Posts</h1>
       </div>
-      <div class="moire-static" style="transform: scale(1.5);"></div>
-      <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
     </section>
     <div class="calibration-grid">
       <xsl:for-each select="PostEntry">
-        <a href="{@href}" class="project-row">
-          <span class="project-id"><xsl:number format="001"/></span>
+        <a href="{@href}" class="project-row post-row">
           <div class="project-main">
             <span class="project-meta"><xsl:value-of select="Tag"/></span>
             <span class="project-title"><xsl:value-of select="Title"/></span>
