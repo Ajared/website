@@ -2036,11 +2036,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Talk to a Human about AI — Ajared Research Inc.</title>
-        <meta name="description" content="A 30-minute conversation with an AI practitioner who has shipped products. $100 USD. Walk away knowing exactly where AI fits your work."/>
+        <meta name="description" content="A 30-minute conversation with an AI practitioner who has shipped products. $500 USD. Walk away knowing exactly where AI fits your work."/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://ajared.ca/talk/"/>
         <meta property="og:title" content="Talk to a Human about AI — Ajared Research Inc."/>
-        <meta property="og:description" content="30 minutes. $100 USD. A direct conversation with an AI practitioner — not a pitch."/>
+        <meta property="og:description" content="30 minutes. $500 USD. A direct conversation with an AI practitioner — not a pitch."/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
