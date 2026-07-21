@@ -32,7 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
           <xsl:if test="@description">
             <meta property="og:description"><xsl:attribute name="content"><xsl:value-of select="@description"/></xsl:attribute></meta>
           </xsl:if>
-          <meta property="og:image" content="https://ajared.ca/social-card-bw.png"/>
+          <meta property="og:image" content="https://ajared.ca/social-card.png"/>
           <meta property="og:image:width" content="1200"/>
           <meta property="og:image:height" content="628"/>
           <meta name="twitter:card" content="summary_large_image"/>
@@ -40,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
           <xsl:if test="@description">
             <meta name="twitter:description"><xsl:attribute name="content"><xsl:value-of select="@description"/></xsl:attribute></meta>
           </xsl:if>
-          <meta name="twitter:image" content="https://ajared.ca/social-card-bw.png"/>
+          <meta name="twitter:image" content="https://ajared.ca/social-card.png"/>
         </xsl:if>
         <!-- Google Search Console verification (replace XXXX with code from GSC) -->
         <!-- <meta name="google-site-verification" content="XXXX"/> -->
