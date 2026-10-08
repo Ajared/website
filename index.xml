@@ -194,10 +194,27 @@
     <Nav active="index" />
   </Header>
 
-  <Hero label="AI Research &amp; Product Studio">
-    <Headline>Get AI<br/>working<br/>for you<br/><span style="color:#a1665e;">today.</span></Headline>
-    <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity — first personally, and then for your organization.</Sub>
-    <CTA href="/ai-readiness/" hint="Free · 3 minutes · Personalized action plan">Assess your AI readiness →</CTA>
+  <Hero>
+    <Slide name="AI Studio" theme="studio" label="AI Research &amp; Product Studio">
+      <Headline>Get AI<br/>working<br/>for you<br/><span class="accent">today.</span></Headline>
+      <Sub>We go past proofs of concepts to AI products that actually work for you. When you start <em>really</em> using AI today, you can supercharge your productivity — first personally, and then for your organization.</Sub>
+      <CTA href="/ai-readiness/" hint="Free · 3 minutes · Personalized action plan">Assess your AI readiness →</CTA>
+    </Slide>
+    <Slide name="Family Tree" theme="familytree" label="Family Tree · Family History">
+      <Headline>Keep your<br/>family's<br/>stories<br/><span class="accent">alive.</span></Headline>
+      <Sub>Build your family tree online, record each relative's story, and share your lineage with the people who matter. Add your family members, send one link, and everyone can see where they fit — this generation and the ones before it.</Sub>
+      <CTA href="https://familytree.ajared.ng" hint="Web app · Add relatives · Share with one link">Start your family tree →</CTA>
+    </Slide>
+    <Slide name="Retailytics" theme="retailytics" label="Retailytics · Market Intelligence">
+      <Headline>Turn<br/>stores<br/>into<br/><span class="accent">insight.</span></Headline>
+      <Sub>Know which outlets are in a territory and where the gaps are. Retailytics collects the store data, then gives you the market reports and location intelligence to act on it.</Sub>
+      <CTA href="https://retailytics.ajared.ng" hint="Market reports · Location intelligence">Explore Retailytics →</CTA>
+    </Slide>
+    <Slide name="Sense of Self" theme="senseofself" soon="true" label="Sense of Self · Coming soon">
+      <Headline>Meet<br/>your<br/>digital<br/><span class="accent">self.</span></Headline>
+      <Sub>Sense of Self reads your social media archive and paints a portrait of the person in it: what you talk about, when you post, the habits you have formed, and how other people respond to you. It is in development now.</Sub>
+      <CTA href="/contact/" hint="Coming soon · Starts with your X archive">Get notified at launch →</CTA>
+    </Slide>
   </Hero>
 
   <OfferGrid>

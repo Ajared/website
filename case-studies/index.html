@@ -678,6 +678,94 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
         }
     
+        /* Hero carousel (home page) */
+        .hero-carousel {
+            --h-head: var(--color-ink-darkest); --h-acc: var(--color-terra); --h-body: var(--color-ink-dark);
+            --h-label: var(--color-terra); --h-ring1: var(--color-ink); --h-ring2: var(--color-terra); --h-ring2o: 0.32;
+            --h-line: var(--color-ink-light); --b-bg: transparent; --b-fg: var(--color-terra); --b-bd: var(--color-terra);
+            --b-hbg: var(--color-terra); --t-fg: var(--color-ink); --t-sel: var(--color-ink-darkest); --t-num: var(--color-terra);
+            --r1x: 30%; --r1y: 50%; --r2x: 80%; --r2y: 20%;
+        }
+        /* Each product slide borrows that product's own palette */
+        .hero-carousel.th-familytree {
+            --h-head: #442b27; --h-acc: #a1665e; --h-body: #6b5248; --h-label: #a1665e; --h-ring1: #ffa18a; --h-ring2: #ec9a29; --h-ring2o: 0.5;
+            --h-line: rgba(107, 82, 72, 0.3); --b-bg: #a1665e; --b-fg: #fff; --b-bd: #a1665e; --b-hbg: #b0736a; --t-fg: #6b5248; --t-sel: #442b27; --t-num: #a1665e;
+        }
+        .hero-carousel.th-retailytics {
+            --h-head: #023b3b; --h-acc: #058c8c; --h-body: #046363; --h-label: #046363; --h-ring1: #5fb6b6; --h-ring2: #e0b400; --h-ring2o: 0.5;
+            --h-line: #5fb6b6; --b-bg: #046363; --b-fg: #fff; --b-bd: #046363; --b-hbg: #023b3b; --t-fg: #046363; --t-sel: #023b3b; --t-num: #046363;
+        }
+        .hero-carousel.th-senseofself {
+            --h-head: #141414; --h-acc: #058c8c; --h-body: #434343; --h-label: #626262; --h-ring1: #058c8c; --h-ring2: #d09958;
+            --h-line: #b6b6b6; --b-bg: #141414; --b-fg: #fff; --b-bd: #141414; --b-hbg: #058c8c; --t-fg: #626262; --t-sel: #141414; --t-num: #046363;
+        }
+        .hero-carousel[data-active="1"] { --r1x: 66%; --r1y: 62%; --r2x: 18%; --r2y: 24%; }
+        .hero-carousel[data-active="2"] { --r1x: 84%; --r1y: 40%; --r2x: 34%; --r2y: 78%; }
+        .hero-carousel[data-active="3"] { --r1x: 50%; --r1y: 30%; --r2x: 70%; --r2y: 74%; }
+
+        .hero-slides { grid-column: 1; display: grid; position: relative; z-index: 2; }
+        .hero-carousel .hero-slide {
+            grid-area: 1 / 1; align-items: flex-start;
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+        }
+        .hero-carousel .hero-slide.is-active {
+            opacity: 1; visibility: visible; transform: none;
+            transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+        }
+        .hero-carousel .hero-label { margin-bottom: 2rem; color: var(--h-label); }
+        .hero-carousel .hero-headline {
+            font-size: clamp(4rem, 10vw, 9rem); line-height: 0.9; letter-spacing: -0.04em;
+            font-weight: 700; margin: 0; color: var(--h-head);
+        }
+        .hero-carousel .hero-headline .accent { color: var(--h-acc); }
+        .hero-carousel.th-familytree .hero-headline .accent {
+            text-decoration: underline wavy rgba(255, 161, 138, 0.5); text-decoration-thickness: 3px; text-underline-offset: 0.1em;
+        }
+        .hero-carousel .hero-sub { margin-top: 2rem; max-width: none; color: var(--h-body); }
+        .hero-carousel .hero-sub:hover { color: var(--h-acc); }
+        .hero-carousel .btn { background: var(--b-bg); color: var(--b-fg); border-color: var(--b-bd); }
+        .hero-carousel .btn:hover { background: var(--b-hbg); border-color: var(--b-hbg); color: var(--color-bg); }
+        .hero-carousel .ripple-center {
+            left: var(--r1x); top: var(--r1y); border-color: var(--h-ring1);
+            transition: left 1.4s cubic-bezier(0.6, 0, 0.2, 1), top 1.4s cubic-bezier(0.6, 0, 0.2, 1), border-color 0.6s ease;
+        }
+        .hero-carousel .ripple-secondary {
+            left: var(--r2x); top: var(--r2y); border-color: var(--h-ring2); opacity: var(--h-ring2o);
+            transition: left 1.4s cubic-bezier(0.6, 0, 0.2, 1), top 1.4s cubic-bezier(0.6, 0, 0.2, 1), border-color 0.6s ease;
+        }
+
+        .hero-index { grid-column: 2; align-self: end; position: relative; z-index: 2; display: flex; flex-direction: column; padding: 3rem 2rem; }
+        .hero-tab {
+            position: relative; appearance: none; background: none; border: 0; border-top: 1px solid var(--h-line);
+            font: inherit; text-align: left; padding: 0.8rem 0; display: flex; gap: 1rem; align-items: baseline;
+            color: var(--t-fg); transition: color 0.25s ease;
+        }
+        .hero-tab .n { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: var(--t-num); }
+        .hero-tab .name { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+        .hero-tab .soon { font-size: 0.65rem; font-weight: 400; opacity: 0.7; }
+        .hero-tab:hover, .hero-tab[aria-selected="true"] { color: var(--t-sel); }
+        .hero-tab:focus-visible { outline: 2px solid var(--color-terra); outline-offset: 2px; }
+        .hero-tab::before {
+            content: ''; position: absolute; left: 0; top: -1px; width: 100%; height: 3px;
+            background: var(--t-num); transform: scaleX(0); transform-origin: left;
+        }
+        .hero-tab[aria-selected="true"]::before { transform: scaleX(1); }
+        .hero-carousel.is-auto .hero-tab[aria-selected="true"]::before { animation: hero-tab-fill 8s linear forwards; }
+        .hero-carousel.is-auto.is-paused .hero-tab[aria-selected="true"]::before { animation-play-state: paused; }
+        @keyframes hero-tab-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+        @media (max-width: 900px) {
+            .hero-carousel .hero-headline { font-size: 3.5rem; }
+            .hero-carousel { grid-template-rows: 1fr auto; }
+            .hero-index { grid-column: 1; padding: 0 1rem 2rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-carousel .hero-slide, .hero-carousel .hero-slide.is-active,
+            .hero-carousel .ripple-center, .hero-carousel .ripple-secondary { transition: none; }
+            .hero-carousel[data-active] { --r1x: 30%; --r1y: 50%; --r2x: 80%; --r2y: 20%; }
+        }
+
         /* Form Layout */
         .form-section { display: grid; grid-template-columns: 1fr 1fr; flex-grow: 1; }
         .form-left h1 { font-size: clamp(2.8rem, 7vw, 6.3rem); line-height: 1; margin-bottom: 2.5rem; }
