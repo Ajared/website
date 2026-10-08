@@ -12,7 +12,7 @@ Chu, Founder/Owner of Ajared Research Inc. Running an AI research and product st
 | **Phone** | +1 613 661 3550 |
 | **Toronto** | 68 Abell St, M6J 0B1, Ontario, Canada |
 | **Abuja** | Nigeria |
-| **Tagline** | Applied AI for Enterprises |
+| **Tagline** | Applied Intelligence for Enterprises |
 | **Mission** | Help enterprises move from AI proof-of-concept to production-ready solutions |
 
 ## Capabilities (Services)

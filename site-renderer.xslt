@@ -1320,6 +1320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2><a href="mailto:{@email}">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
         </div>
         <div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+            <p style="font-weight:700; color: var(--color-ink-darkest); max-width:none;">Applied Intelligence for Enterprises</p>
             <p>© <xsl:value-of select="@year"/> Ajared Research Inc.</p>
             <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
                 <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
