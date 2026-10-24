@@ -109,31 +109,31 @@
   </CapHero>
 
   <CapabilityList>
-    <Capability number="001" title="Product Development &amp; Management" icon="product" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
-        <Description>We help you build and manage products in this AI age. It starts with finding out what's true about your users and your market, then runs from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
+    <Capability number="001" title="Product Development &amp; Management" icon="product" subtitle="From idea to a product customers use" href="/capabilities/002-ai-product.html">
+        <Description>Get a working product in front of customers without hiring a product team first. We find out what your users actually need, then design, build and ship it with you, and keep improving it after launch.</Description>
         <Does>
-          <Do name="Applied Research">UX research, market research and testing business ideas, so what we build rests on evidence.</Do>
-          <Do name="Concept Development">Workshops, assumption pressure-testing, feasibility and positioning.</Do>
-          <Do name="Design Thinking">Research-led UX, information architecture, prototyping and user testing.</Do>
-          <Do name="Product Management">Roadmaps, OKRs, prioritisation, stakeholder alignment and go-to-market.</Do>
-          <Do name="AI-Powered Engineering">Full-stack development, API integration, QA and deployment.</Do>
+          <Do name="Applied Research">Know what customers will pay for before you spend money building it.</Do>
+          <Do name="Concept Development">Turn a rough idea into a clear, scoped product you can explain to your team and investors.</Do>
+          <Do name="Design Thinking">Ship something people understand the first time they use it, tested with real users before any code is written.</Do>
+          <Do name="Product Management">Always know what to build next and why, without a full-time product hire.</Do>
+          <Do name="AI-Powered Engineering">A production-ready product, not a demo that breaks the first time real customers use it.</Do>
         </Does>
     </Capability>
-    <Capability number="002" title="Enterprise AI Agents" icon="agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
-        <Description>Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</Description>
+    <Capability number="002" title="Enterprise AI Agents" icon="agents" subtitle="Hours back for your team every week" href="/capabilities/003-enterprise-agents.html">
+        <Description>Take repetitive work off your team's plate. Agents handle documents, data entry and routine decisions across the tools you already use, and a person steps in only where judgment matters.</Description>
         <Does>
-          <Do name="AI Agents">Task-specific agents with tools, memory, decision logic and human oversight.</Do>
-          <Do name="Graph RAG">Knowledge-graph retrieval for interconnected data, with fewer hallucinations.</Do>
-          <Do name="Task Automation">End-to-end workflows across your existing systems, edge cases included.</Do>
+          <Do name="AI Agents">Routine tasks handled for you, with your team approving only the calls that need a human.</Do>
+          <Do name="Graph RAG">Ask your company’s documents and data a question and get an answer you can trust, with sources.</Do>
+          <Do name="Task Automation">Fewer copy-paste jobs between systems, and fewer mistakes from doing them by hand.</Do>
         </Does>
     </Capability>
-    <Capability number="003" title="Data and AI Strategy" icon="strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
-        <Description>Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</Description>
+    <Capability number="003" title="Data and AI Strategy" icon="strategy" subtitle="Know where AI pays off before you spend" href="/capabilities/004-data-strategy.html">
+        <Description>Know exactly where AI will pay off in your business before you spend on it. We look at your data and your operations, then give you a plan your team can act on, not a slide deck that sits in a drawer.</Description>
         <Does>
-          <Do name="Reliable AI">Knowledge graphs and ontologies for consistent, trustworthy outputs.</Do>
-          <Do name="Location Intelligence">Geospatial data strategy and location-aware AI applications.</Do>
-          <Do name="Generative Engine Optimization">Making your organisation visible in AI-generated answers.</Do>
-          <Do name="Executive AI Coaching">One-to-one advisory for leaders making AI decisions.</Do>
+          <Do name="Reliable AI">AI answers your team can rely on, grounded in your own data instead of guesswork.</Do>
+          <Do name="Location Intelligence">See where your customers, outlets and opportunities are, and decide where to grow next.</Do>
+          <Do name="Generative Engine Optimization">Get recommended when customers ask ChatGPT and other AI assistants about what you do.</Do>
+          <Do name="Executive AI Coaching">Make confident AI decisions as a founder or leader without having to become a technologist.</Do>
         </Does>
     </Capability>
   </CapabilityList>
