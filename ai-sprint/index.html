@@ -788,41 +788,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
         .brief-textarea::placeholder { color: var(--color-ink-light); }
 
-        /* Inquiry dialog: the inquiry form, opened from any a[href="#inquire"] */
+        /* Inquiry dialog: compact card, opened from any a[href="#inquire"]; a bottom sheet on phones */
         :root:has(.inquiry[open]) { overflow: hidden; }
-        .inquiry { border: none; padding: 0; margin: auto; width: min(1040px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); background: var(--color-bg); color: var(--color-ink); border-top: 3px solid var(--color-terra); border-radius: var(--radius-sm); box-shadow: 0 30px 80px rgba(2, 59, 59, 0.35); overflow: auto; overscroll-behavior: contain; }
+        .inquiry { border: 0; padding: 0; margin: auto; width: min(560px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; overscroll-behavior: contain; background: var(--color-bg); color: var(--color-ink-darkest); border-radius: 6px; box-shadow: 0 30px 80px rgba(2, 59, 59, 0.35); }
         .inquiry:focus { outline: none; }
-        .inquiry::backdrop { background: rgba(2, 59, 59, 0.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
-        .inquiry[open] { animation: inquiryIn 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
-        .inquiry[open]::backdrop { animation: inquiryFade 0.28s ease; }
-        @keyframes inquiryIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-        @keyframes inquiryFade { from { opacity: 0; } to { opacity: 1; } }
-        .inquiry-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 2rem; background: var(--color-bg); border-bottom: var(--grid-line); }
-        .inquiry-bar .label { margin: 0; }
-        .inquiry-re { color: var(--color-terra); }
-        .inquiry-close { background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-dark); padding: 0.4rem 0; }
-        .inquiry-close:hover, .inquiry-close:focus-visible { color: var(--color-terra); }
-        .inquiry .form-section { min-height: 0; }
-        .inquiry .form-left { padding: 2.5rem 2rem 2rem; }
-        .inquiry .form-left h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 0.95; margin-bottom: 2.25rem; }
-        .inquiry .instrument-field { margin-bottom: 2.25rem; }
-        .inquiry .btn-submit { padding: 1.4rem 1.5rem; font-size: 1rem; margin-top: 1rem; }
-        .inquiry .btn-submit:disabled { opacity: 0.6; }
-        .inquiry .form-right { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
-        .inquiry .form-right p { font-size: 0.9rem; line-height: 1.6; }
-        .inquiry-direct a { color: var(--color-ink-darkest); text-decoration: none; border-bottom: 1px solid var(--color-ink-light); }
-        .inquiry-direct a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
-        .inquiry-direct .city { display: block; font-weight: 700; color: var(--color-ink-darkest); margin-top: 0.9rem; }
-        @media (max-width: 768px) {
-            .inquiry { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
-            .inquiry-bar { padding: 0.85rem 1rem; }
-            .inquiry .form-section { grid-template-columns: 1fr; }
-            .inquiry .form-left { padding: 2rem 1rem; border-right: none; border-bottom: var(--grid-line); }
-            .inquiry .form-right { padding: 2rem 1rem; }
+        .inquiry::backdrop { background: rgba(2, 59, 59, 0.55); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+        .inquiry[open] { animation: inqIn 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        @keyframes inqIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        .inquiry h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; letter-spacing: -0.035em; margin: 0 0 1.25rem; color: var(--color-ink-darkest); }
+        .inq-form { padding: 1.5rem 1.75rem 1.75rem; }
+        .inq-form[hidden], .inq-done[hidden], .inq-status[hidden] { display: none; }
+        .inq-top { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+        .inq-pyr { width: 18px; height: 17px; fill: #16a99c; flex-shrink: 0; }
+        .inq-kicker { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-terra); font-weight: 700; }
+        .inq-re:not(:empty)::before { content: ' / '; color: var(--color-ink-light); }
+        .inq-x { margin-left: auto; background: none; border: 0; font-size: 1rem; color: var(--color-ink-dark); padding: 0.25rem 0.45rem; border-radius: 4px; }
+        .inq-x:hover { background: #eef6f6; }
+        .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+        .inq-field { display: flex; flex-direction: column; gap: 0.35rem; margin: 0 0 1rem; border: 0; padding: 0; min-width: 0; }
+        .inq-field > span, .inq-field > legend { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink); padding: 0; margin-bottom: 0.35rem; }
+        .inq-field input, .inq-field textarea { font: inherit; font-size: 0.95rem; color: var(--color-ink-darkest); border: 1px solid var(--color-ink-light); border-radius: 4px; padding: 0.65rem 0.75rem; background: #fff; width: 100%; }
+        .inq-field input:focus, .inq-field textarea:focus { outline: 2px solid rgba(161, 102, 94, 0.35); border-color: var(--color-terra); }
+        .inq-field input[aria-invalid="true"] { border-color: var(--color-terra); }
+        .inq-field textarea { resize: vertical; }
+        .inq-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .inq-chip input { position: absolute; opacity: 0; pointer-events: none; }
+        .inq-chip span { display: inline-block; border: 1px solid var(--color-ink-light); border-radius: 999px; padding: 0.4rem 0.8rem; font-size: 0.8rem; color: var(--color-ink-dark); cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .inq-chip span:hover { border-color: var(--color-terra); }
+        .inq-chip input:checked + span { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); color: #fff; }
+        .inq-chip input:focus-visible + span { outline: 2px solid var(--color-terra); outline-offset: 2px; }
+        .inq-status { font-size: 0.85rem; color: var(--color-terra); margin: 0 0 0.75rem; max-width: none; }
+        .inq-status a { color: inherit; text-decoration: underline; }
+        .inq-send { width: 100%; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: 2px solid var(--color-terra); background: var(--color-terra); color: #fff; padding: 0.85rem 1.2rem; border-radius: 4px; transition: background 0.2s, border-color 0.2s; }
+        .inq-send:hover { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); }
+        .inq-send:disabled { opacity: 0.6; }
+        .inq-foot { font-size: 0.78rem; line-height: 1.6; color: var(--color-ink-dark); margin-top: 0.9rem; max-width: none; }
+        .inq-foot a { color: inherit; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+        .inq-done { padding: 2.5rem 1.75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+        .inq-done .inq-pyr { width: 44px; height: 42px; }
+        .inq-done p { font-size: 0.95rem; max-width: 26rem; }
+        .inq-done .inq-send { width: auto; padding: 0.75rem 2rem; }
+        @media (max-width: 700px) {
+            .inquiry { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 14px 14px 0 0; max-height: 92dvh; }
+            .inquiry[open] { animation: inqUp 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+            .inq-form { padding: 1.25rem 1rem 1.5rem; }
+            .inq-row { grid-template-columns: 1fr; }
         }
-        @media (prefers-reduced-motion: reduce) {
-            .inquiry[open], .inquiry[open]::backdrop { animation: none; }
-        }
+        @keyframes inqUp { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { .inquiry[open] { animation: none; } }
 
         /* About & Contact page */
         .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
@@ -1751,40 +1764,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 </div>
-<dialog class="inquiry" id="inquire" aria-labelledby="inquiry-title"><div class="inquiry-bar">
-<span class="label">New Inquiry <span class="inquiry-re" id="inquiry-re"></span></span><button type="button" class="inquiry-close" id="inquiry-close" aria-label="Close inquiry form">Close ✕</button>
+<dialog class="inquiry" id="inquire" aria-labelledby="inquiry-title"><form id="inquiry-form" class="inq-form" action="https://formspree.io/f/mrearkjn" method="POST" novalidate="novalidate">
+<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><input type="hidden" name="page" id="inquiry-page" value=""><input type="hidden" name="topic" id="inquiry-topic" value=""><div class="inq-top">
+<svg class="inq-pyr" viewBox="0 0 110 105" aria-hidden="true"><path fill-rule="evenodd" d="M7 0 0 105h110zM15 30l-5 63h72z"></path></svg><span class="inq-kicker">New inquiry<span class="inq-re" id="inquiry-re"></span></span><button type="button" class="inq-x" id="inquiry-close" aria-label="Close inquiry form">✕</button>
 </div>
-<div class="form-section">
-<div class="form-left">
-<h2 id="inquiry-title">Start a conversation.</h2>
-<form id="inquiry-form" action="https://formspree.io/f/mrearkjn" method="POST">
-<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><input type="hidden" name="service" id="inquiry-service" value=""><input type="hidden" name="page" id="inquiry-page" value=""><div class="instrument-field">
-<label class="label" for="inquiry-name">01 / Principal Contact</label><input type="text" name="name" id="inquiry-name" required="required" autocomplete="name" class="instrument-input" placeholder="Organization or Individual">
+<h2 id="inquiry-title">Tell us what you're building.</h2>
+<div class="inq-row">
+<label class="inq-field"><span>Name</span><input type="text" name="name" id="inquiry-name" required="required" autocomplete="name" placeholder="Your name or company"></label><label class="inq-field"><span>Email</span><input type="email" name="email" id="inquiry-email" required="required" autocomplete="email" placeholder="you@company.com"></label>
 </div>
-<div class="instrument-field">
-<label class="label" for="inquiry-email">02 / Email</label><input type="email" name="email" id="inquiry-email" required="required" autocomplete="email" class="instrument-input" placeholder="your-email@domain.com">
+<label class="inq-field"><span>What are you working on?</span><textarea name="message" id="inquiry-message" rows="3" placeholder="A sentence or two is plenty."></textarea></label><fieldset class="inq-field">
+<legend>Interested in</legend>
+<div class="inq-chips">
+<label class="inq-chip"><input type="radio" name="service" value="Product Development &amp; Management"><span>Product Development &amp; Management</span></label><label class="inq-chip"><input type="radio" name="service" value="Enterprise AI Agents"><span>Enterprise AI Agents</span></label><label class="inq-chip"><input type="radio" name="service" value="Data &amp; AI Strategy"><span>Data &amp; AI Strategy</span></label><label class="inq-chip"><input type="radio" name="service" value="Not sure yet"><span>Not sure yet</span></label>
 </div>
-<div class="instrument-field" id="inquiry-deliverable-field" hidden="hidden">
-<label class="label" for="inquiry-deliverable">03 / Specific Deliverable (Optional)</label><select name="deliverable" id="inquiry-deliverable" class="instrument-input"><option value="">Select a deliverable...</option></select>
-</div>
-<div class="instrument-field">
-<label class="label" for="inquiry-message" id="inquiry-scope-label">03 / Project Scope / Brief</label><textarea name="message" id="inquiry-message" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
-</div>
-<div id="inquiry-status" role="status" aria-live="polite" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
-<button type="submit" class="btn-submit" id="inquiry-submit">Send Message ↗</button>
+</fieldset>
+<p class="inq-status" id="inquiry-status" role="status" aria-live="polite" hidden="hidden"></p>
+<button type="submit" class="inq-send" id="inquiry-submit">Send inquiry ↗</button><p class="inq-foot">Reply within 48–72 hours · Toronto <a href="tel:+16136613550">+1 613 661 3550</a> · Abuja <a href="tel:+2348050644454">+234 805 064 4454</a></p>
 </form>
-</div>
-<div class="form-right">
-<div>
-<span class="label">Response Times</span><p>We typically respond within 48–72 hours.</p>
-</div>
-<div class="inquiry-direct">
-<span class="label">Or reach us directly</span><p><span class="city">Toronto</span><a href="tel:+16136613550">+1 613 661 3550</a><br><a href="mailto:innovation@ajared.ca">innovation@ajared.ca</a><span class="city">Abuja</span><a href="tel:+2348050644454">+234 805 064 4454</a><br><a href="mailto:emeka@ajared.ng">emeka@ajared.ng</a></p>
-</div>
-<div>
-<span class="label">Prefer to talk?</span><p><a href="/talk/" style="color: var(--color-terra);">Book a 30-minute call →</a></p>
-</div>
-</div>
+<div class="inq-done" id="inquiry-done" hidden="hidden">
+<svg class="inq-pyr" viewBox="0 0 110 105" aria-hidden="true"><path fill-rule="evenodd" d="M7 0 0 105h110zM15 30l-5 63h72z"></path></svg><h2>Thanks<span id="inquiry-done-name"></span>.</h2>
+<p>Your message is in. We reply within 48–72 hours.</p>
+<button type="button" class="inq-send" data-close="data-close">Close</button>
 </div></dialog><script src="/scripts/inquiry.js" defer></script><script src="/scripts/nav.js" defer></script><script src="/scripts/sprint.js" defer></script>
 </body>
 </html>
