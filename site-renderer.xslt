@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" doctype-system="about:legacy-compat" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
+  <!-- Asset fingerprint, passed in by scripts/build.sh so browsers fetch changed scripts immediately -->
+  <xsl:param name="assetv" select="'dev'"/>
 
   <!-- Root template -->
   <xsl:template match="/Page">
@@ -1436,28 +1438,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <!-- Page specific scripts -->
         <xsl:if test="@id='index'">
-          <script src="/scripts/moire.js" defer="defer"></script>
-          <script src="/scripts/hero-carousel.js" defer="defer"></script>
+          <script src="/scripts/moire.js?v={$assetv}" defer="defer"></script>
+          <script src="/scripts/hero-carousel.js?v={$assetv}" defer="defer"></script>
         </xsl:if>
         <!-- Inquiry dialog: on every page so any a[href="#inquire"] opens it in place -->
         <xsl:call-template name="InquiryDialog" />
-        <script src="/scripts/inquiry.js" defer="defer"></script>
-        <script src="/scripts/nav.js" defer="defer"></script>
+        <script src="/scripts/inquiry.js?v={$assetv}" defer="defer"></script>
+        <script src="/scripts/nav.js?v={$assetv}" defer="defer"></script>
         <xsl:if test="@id='about'">
-          <script src="/scripts/way.js" defer="defer"></script>
+          <script src="/scripts/way.js?v={$assetv}" defer="defer"></script>
         </xsl:if>
       
         <xsl:if test="@id='capabilities'">
-          <script src="/scripts/cap-moire.js" defer="defer"></script>
+          <script src="/scripts/cap-moire.js?v={$assetv}" defer="defer"></script>
         </xsl:if>
 
       
         <xsl:if test="@id='capability-detail'">
-          <script src="/scripts/cap-detail-moire.js" defer="defer"></script>
+          <script src="/scripts/cap-detail-moire.js?v={$assetv}" defer="defer"></script>
         </xsl:if>
 
         <xsl:if test="@id='ai-sprint'">
-          <script src="/scripts/sprint.js" defer="defer"></script>
+          <script src="/scripts/sprint.js?v={$assetv}" defer="defer"></script>
         </xsl:if>
 
       </body>

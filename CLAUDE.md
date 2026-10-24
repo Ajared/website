@@ -50,4 +50,5 @@ Applied Research (formerly 001) is folded into 002; `capabilities/001-applied-re
 - **Deploy**: `git commit` → pre-commit hook auto-runs build.sh → compiles .xml → .html
 - **Push**: `git push origin main` (must be done from own machine — sandbox has no internet)
 - Stack: XML + XSLT 1.0, Vanilla CSS/JS, GitHub Pages, Formspree (forms), iA Writer Quattro S (font)
+- Script URLs get `?v=<hash of scripts/*.js>` from build.sh (XSLT param `assetv`), so changed JS is never served stale from cache
 → Full details: memory/context/site-architecture.md

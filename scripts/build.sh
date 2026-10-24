@@ -25,6 +25,9 @@ SITE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
   node build-posts.mjs
 )
 
+# Fingerprint of the page scripts: appended as ?v= so browsers refetch a script only when it changes
+ASSETV="$(cat "$SITE_ROOT"/scripts/*.js | shasum | cut -c1-10)"
+
 if command -v xsltproc &>/dev/null; then
     echo "Building site with xsltproc..."
     find "$SITE_ROOT" -type f -name "*.xml" -not -path "*/node_modules/*" \
@@ -33,12 +36,12 @@ if command -v xsltproc &>/dev/null; then
         if grep -q '<Page ' "$xml_file"; then
             html_file="${xml_file%.xml}.html"
             echo "  Compiling $xml_file -> $html_file"
-            xsltproc "$SITE_ROOT/site-renderer.xslt" "$xml_file" > "$html_file"
+            xsltproc --stringparam assetv "$ASSETV" "$SITE_ROOT/site-renderer.xslt" "$xml_file" > "$html_file"
         fi
     done
 else
     echo "xsltproc not found — using Python lxml fallback..."
-    python3 - "$SITE_ROOT" <<'PYEOF'
+    python3 - "$SITE_ROOT" "$ASSETV" <<'PYEOF'
 import sys
 from lxml import etree
 import glob
@@ -58,7 +61,7 @@ for xml_path in glob.glob(f"{site_root}/**/*.xml", recursive=True):
         if doc.getroot().tag != "Page":
             print(f"  SKIP {xml_path} (not a Page)")
             continue
-        result = transform(doc)
+        result = transform(doc, assetv=etree.XSLT.strparam(sys.argv[2]))
         html_path = xml_path.replace(".xml", ".html")
         with open(html_path, "wb") as f:
             f.write(etree.tostring(result, pretty_print=True, method="html"))
