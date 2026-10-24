@@ -241,7 +241,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .project-meta, .project-year { display: none; }
             .hero-fullbleed { height: 25vh; }
             .capability-header { padding: 1.5rem 1.5rem; grid-template-columns: 50px 1fr 50px; }
-            .cap-subtitle { display: none; }
             .detail-inner { padding: 1.5rem 1.5rem; grid-template-columns: 1fr; }
             .detail-brief { grid-column: 1; }
             .detail-row-link { grid-column: 1; }
@@ -985,7 +984,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .cap-row h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin: 0; }
         .cap-row h2 a { color: inherit; text-decoration: none; }
         .cap-row h2 a:hover { color: var(--cap-accent, var(--color-terra)); }
-        .cap-row .cap-subtitle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-subtitle { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-terra); }
         .cap-row .cap-desc { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 34rem; }
         .cap-row .detail-link { padding: 0.25rem 0 0; margin-top: auto; }
         .cap-row .detail-link .link-label, .cap-row .detail-link .link-arrow { font-size: 1rem; }
