@@ -814,7 +814,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         /* About & Contact page */
         .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
-        .office { padding: 1rem 2rem 1.1rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.45rem; }
+        .office { padding: 1rem 2rem 1.1rem; border-right: 1px solid rgba(5, 140, 140, 0.12); display: flex; flex-direction: column; gap: 0.45rem; }
         .office:last-child { border-right: none; }
         .office h2 { font-size: 14px; line-height: 1; margin: 0; display: inline; letter-spacing: -0.02em; }
         .office-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
@@ -831,7 +831,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .contact-actions .btn-solid:hover { background: #fff; border-color: #fff; color: var(--color-ink-darkest); }
         .about-intro { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--grid-line); }
         .about-intro > div { padding: 4rem 2rem; }
-        .about-intro > div:first-child { border-right: var(--grid-line); }
+        .about-intro > div:first-child { border-right: 1px solid rgba(5, 140, 140, 0.12); }
         .about-intro h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 0.95; margin: 1rem 0 0; }
         .about-intro h2 .accent { color: var(--color-terra); }
         .about-intro p { font-size: 1.1rem; line-height: 1.65; color: var(--color-neutral-dark); max-width: 36rem; }
@@ -901,10 +901,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         @media (max-width: 768px) {
             .offices, .about-intro { grid-template-columns: 1fr; }
-            .office { border-right: none; border-bottom: var(--grid-line); padding: 0.9rem 1rem 1rem; }
+            .office { border-right: none; border-bottom: 1px solid rgba(5, 140, 140, 0.12); padding: 0.9rem 1rem 1rem; }
             .office:last-child { border-bottom: none; }
             .about-intro > div { padding: 2.5rem 1rem; }
-            .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
+            .about-intro > div:first-child { border-right: none; border-bottom: 1px solid rgba(5, 140, 140, 0.12); }
             .contact-actions { grid-template-columns: 1fr; padding: 1.75rem 1rem; }
             .contact-actions .btn { text-align: center; }
         }
