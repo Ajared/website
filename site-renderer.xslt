@@ -209,6 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         .main-content {
             grid-column: 2 / -1;
+            min-width: 0;
             display: flex;
             flex-direction: column;
         }
@@ -843,21 +844,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         /* About &amp; Contact page */
         .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
-        .office { padding: 3rem 2rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 1.5rem; }
+        .office { padding: 1.4rem 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
         .office:last-child { border-right: none; }
-        .office h2 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; margin: 0; }
+        .office h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1; margin: 0; display: inline; }
+        .office-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
         .office-coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
-        .office-lines { display: grid; grid-template-columns: 7rem 1fr; gap: 0.9rem 1rem; align-items: baseline; margin-top: 0.5rem; }
+        .office-lines { display: grid; grid-template-columns: 5rem 1fr; gap: 0.35rem 1rem; align-items: baseline; margin-top: 0.25rem; }
         .office-lines .label { margin: 0; }
-        .office-lines a, .office-lines address { font-style: normal; font-size: 1.15rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-lines a, .office-lines address { font-style: normal; font-size: 0.98rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
         .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
         .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
-        .contact-actions { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.5rem; padding: 2rem; border-bottom: var(--grid-line); background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
-        .contact-actions p { font-size: 1rem; color: var(--color-ink-darkest); background: var(--color-bg); justify-self: start; padding: 0.25rem 0.5rem 0.25rem 0; }
-        .contact-actions .btn { margin-top: 0; background: var(--color-bg); }
-        .contact-actions .btn:hover { background: var(--color-terra); }
-        .contact-actions .btn-solid { background: var(--color-terra); color: var(--color-bg); }
-        .contact-actions .btn-solid:hover { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); }
+        .contact-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 1.25rem 1.5rem; padding: 2.25rem 2rem; background: var(--color-ink-darkest); border-top: 3px solid var(--color-terra); }
+        .contact-actions p { font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.4; color: #fff; max-width: none; text-wrap: balance; }
+        .contact-actions .btn { margin-top: 0; text-align: center; white-space: nowrap; color: #fff; border-color: rgba(255, 255, 255, 0.55); background: transparent; }
+        .contact-actions .btn:hover { background: #fff; color: var(--color-ink-darkest); border-color: #fff; }
+        .contact-actions .btn-solid { background: var(--color-terra); border-color: var(--color-terra); color: #fff; }
+        .contact-actions .btn-solid:hover { background: #fff; border-color: #fff; color: var(--color-ink-darkest); }
         .about-intro { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--grid-line); }
         .about-intro > div { padding: 4rem 2rem; }
         .about-intro > div:first-child { border-right: var(--grid-line); }
@@ -865,38 +867,73 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .about-intro h2 .accent { color: var(--color-terra); }
         .about-intro p { font-size: 1.1rem; line-height: 1.65; color: var(--color-neutral-dark); max-width: 36rem; }
         .about-intro p + p { margin-top: 1.1rem; }
-        .about-row { display: grid; grid-template-columns: 220px 1fr; border-bottom: var(--grid-line); }
-        .about-row-label { padding: 2rem; border-right: var(--grid-line); }
-        .about-row-label .label { margin: 0; }
-        .about-row-label p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--color-ink-dark); line-height: 1.5; }
-        .about-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-        .about-cell { padding: 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
-        .about-cell:last-child { border-right: none; }
-        .about-cell .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-terra); letter-spacing: 0.08em; }
-        .about-cell h3 { font-size: 1.35rem; line-height: 1; }
-        .about-cell h3 .initial { color: var(--color-terra); }
-        .about-cell p { font-size: 0.92rem; line-height: 1.55; color: var(--color-neutral-dark); }
-        .about-cell a { color: var(--color-ink-dark); font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin-top: auto; padding-top: 0.5rem; }
-        .about-cell a:hover { color: var(--color-terra); }
-        .about-guarantee { background: var(--color-ink-darkest); color: #fff; padding: 2.5rem 2rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; border-top: 3px solid var(--color-terra); }
-        .about-guarantee .label { color: var(--color-terra); margin: 0; }
-        .about-guarantee p { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #fff; max-width: none; }
+        .about-block { padding: 2.75rem 2rem 3rem; border-bottom: var(--grid-line); }
+        .about-block-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.25rem; margin-bottom: 1.75rem; }
+        .about-block-head .cap-section-title { margin: 0; }
+        .about-block-head p { font-size: 0.9rem; color: var(--color-ink-dark); max-width: none; }
+        .about-block h3 { letter-spacing: -0.03em; }
+        .about-block p { max-width: none; }
+
+        .why-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.5rem; }
+        .why { display: flex; flex-direction: column; gap: 0.7rem; }
+        .why h3 { font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1; }
+        .why p { font-size: 1rem; line-height: 1.55; color: var(--color-neutral-dark); }
+
+        .about-prose-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: center; }
+        .seal { width: 190px; height: 190px; display: block; }
+        .seal text { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 2.6px; text-transform: uppercase; font-weight: 700; fill: var(--color-terra); }
+        .seal .seal-accent { fill: #16a99c; }
+        .seal-ring { fill: none; stroke: var(--color-terra); stroke-width: 1.5; }
+        .seal-pyr { fill: #16a99c; }
+        @media (prefers-reduced-motion: no-preference) { .seal-spin { animation: seal-spin 24s linear infinite; transform-origin: 100px 100px; } }
+        @keyframes seal-spin { to { transform: rotate(360deg); } }
+        .about-prose-text { font-size: clamp(1.25rem, 2.2vw, 1.9rem); line-height: 1.4; letter-spacing: -0.015em; color: var(--color-ink-dark); max-width: 58rem; }
+        .about-prose-text strong { color: var(--color-ink-darkest); font-weight: 700; }
+        .way-track { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
+        .way-track li { position: relative; display: flex; flex-direction: column; gap: 1rem; }
+        .way-track li:not(:last-child)::before { content: ''; position: absolute; top: 1.2rem; left: 2.4rem; right: -1.5rem; height: 2px; background: var(--color-ink-lighter); }
+        .way-node { position: relative; z-index: 1; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px solid var(--color-terra); background: var(--color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-terra); }
+        .way-node { transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease; }
+        .way-track li.is-active .way-node { background: var(--color-terra); color: #fff; transform: scale(1.12); }
+        .way-body h3 { transition: color 0.4s ease; }
+        .way-track li.is-active .way-body h3 { color: var(--color-terra); }
+        .way-body { display: flex; flex-direction: column; gap: 0.45rem; }
+        .way-body h3 { font-size: 1.35rem; line-height: 1; }
+        .way-body p { font-size: 0.9rem; line-height: 1.5; color: var(--color-neutral-dark); }
+        .way-body a { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-terra); text-decoration: none; margin-top: 0.2rem; }
+        .way-body a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        .about-acronym { background: #f1f8f8; }
+        .values-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+        .value { display: flex; flex-direction: column; gap: 0.5rem; }
+        .value-word { display: flex; align-items: baseline; font-size: clamp(1.4rem, 2.5vw, 2.4rem); line-height: 0.8; letter-spacing: -0.03em; color: var(--color-ink-darkest); margin-bottom: 0.9rem; white-space: nowrap; }
+        .value-initial { font-size: clamp(4rem, 8vw, 7.5rem); letter-spacing: -0.05em; color: var(--color-terra); margin-right: 0.04em; }
+        .value p { font-size: 0.9rem; line-height: 1.5; color: var(--color-neutral-dark); }
+
         @media (max-width: 900px) {
-            .about-row, .about-guarantee { grid-template-columns: 1fr; }
-            .about-row-label { border-right: none; border-bottom: var(--grid-line); }
-            .about-cell { border-right: none; border-bottom: var(--grid-line); }
-            .about-cell:last-child { border-bottom: none; }
+            .about-block { padding: 2rem 1rem 2.25rem; }
+            .about-prose-row { grid-template-columns: 1fr; gap: 1.5rem; }
+            .seal { width: 150px; height: 150px; }
+            .why-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+            .way-track { grid-template-columns: 1fr; gap: 0; }
+            .way-track li { flex-direction: row; gap: 1rem; padding-bottom: 1.5rem; }
+            .way-track li:last-child { padding-bottom: 0; }
+            .way-track li:not(:last-child)::before { top: 2.4rem; bottom: 0; left: 1.15rem; right: auto; width: 2px; height: auto; }
+            .way-node { flex-shrink: 0; }
+            .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem; }
+            .value-word { font-size: 1.3rem; }
+            .value-initial { font-size: 3.6rem; }
+        }
+        @media (max-width: 900px) {
         }
         @media (max-width: 768px) {
             .offices, .about-intro { grid-template-columns: 1fr; }
-            .office { border-right: none; border-bottom: var(--grid-line); padding: 2.5rem 1rem; }
+            .office { border-right: none; border-bottom: var(--grid-line); padding: 1.25rem 1rem; }
             .office:last-child { border-bottom: none; }
-            .office-lines { grid-template-columns: 5.5rem 1fr; }
+            .office-lines { grid-template-columns: 4.5rem 1fr; }
             .about-intro > div { padding: 2.5rem 1rem; }
             .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
-            .about-row-label, .about-cell { padding: 1.75rem 1rem; }
-            .about-guarantee { padding: 2rem 1rem; gap: 0.75rem; }
-            .contact-actions { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+            .contact-actions { grid-template-columns: 1fr; padding: 1.75rem 1rem; }
             .contact-actions .btn { text-align: center; }
         }
 
@@ -1137,22 +1174,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .cap-nav-center:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
         .cap-nav-next { justify-content: flex-end; }
 
-        /* ── Capability detail pages: one-row header, full-width sections ── */
-        header.header-detail { display: block; }
-        .detail-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; min-height: 76px; }
-        .detail-head-logo { display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; border-right: var(--grid-line); text-decoration: none; }
-        .detail-head-logo img { height: 30px; width: auto; display: block; }
-        .detail-head-logo .logo-text { font-size: 0.75rem; line-height: 1.15; }
-        .detail-head-title { position: relative; overflow: hidden; background: var(--color-ink-darkest); border-bottom: 3px solid var(--color-terra); display: flex; align-items: baseline; gap: 0.9rem; padding: 0 1.8rem; align-content: center; flex-wrap: wrap; }
-        .detail-head-title > * { position: relative; z-index: 1; }
-        .detail-head-title .hero-detail-moire { position: absolute; z-index: 0; }
-        .detail-head-crumb { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-light); text-decoration: none; align-self: center; }
-        .detail-head-crumb:hover { color: #fff; }
-        .detail-head-title h1 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1; letter-spacing: -0.04em; color: #fff; margin: 0; align-self: center; }
-        .detail-head-nav { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.5rem; border-left: var(--grid-line); }
-        .detail-head-nav a { font-size: 0.75rem; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
-        .detail-head-nav a:hover, .detail-head-nav a[aria-current] { color: var(--color-terra); }
-        .detail-head-nav a[aria-current] { text-decoration: underline; font-weight: 600; }
+        /* ── Capability detail pages: dark title band, full-width sections ── */
+        .detail-title { position: relative; overflow: hidden; background: var(--color-ink-darkest); border-bottom: 3px solid var(--color-terra); display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem 0.9rem; padding: 1rem 2rem; min-height: 72px; }
+        .detail-title > * { position: relative; z-index: 1; }
+        .detail-title .hero-detail-moire { position: absolute; z-index: 0; }
+        .detail-title-crumb { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-light); text-decoration: none; }
+        .detail-title-crumb:hover { color: #fff; }
+        .detail-title h1 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1; letter-spacing: -0.04em; color: #fff; margin: 0; }
 
         /* Shared section styles */
         .cap-lead { padding: 2.5rem 2rem 2.25rem; border-bottom: var(--grid-line); }
@@ -1188,22 +1216,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
 
         @media (max-width: 1100px) {
-            .detail-head .logo-text, .detail-head-nav .nav-index { display: none; }
-            .detail-head-nav { gap: 1rem; }
         }
         @media (max-width: 900px) {
             .page-capability-detail .grid-container { grid-template-columns: 1fr; }
             .page-capability-detail .ruler-y { display: none; }
             .page-capability-detail .main-content { grid-column: 1 / -1; min-width: 0; }
-            .page-capability-detail .ruler-x { height: 14px; }
-            .detail-head { grid-template-columns: auto 1fr; min-height: 0; }
-            .detail-head-logo { padding: 0.7rem 1rem; border-right: none; border-bottom: var(--grid-line); }
-            .detail-head-logo img { height: 24px; }
-            .detail-head-nav { justify-content: flex-end; flex-wrap: wrap; min-width: 0; border-left: none; border-bottom: var(--grid-line); padding: 0.7rem 1rem; gap: 0.3rem 0.9rem; }
-            .detail-head-nav a { font-size: 0.7rem; }
-            .detail-head-title { grid-column: 1 / -1; grid-row: 2; padding: 0.85rem 1rem; gap: 0.25rem 0.6rem; }
-            .detail-head-title h1 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
-            .detail-head-crumb { font-size: 0.62rem; }
             .cap-lead { padding: 1.75rem 1rem 1.5rem; }
             .cap-section { padding: 1.75rem 1rem 2rem; }
             .cap-card { padding-left: 1rem; padding-right: 1rem; }
@@ -1221,10 +1238,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .page-capability-detail .cap-nav-prev, .page-capability-detail .cap-nav-next { padding: 0.9rem 1rem; font-size: 0.7rem; line-height: 1.4; }
         }
         @media (max-width: 420px) {
-            .detail-head-logo { padding: 0.7rem 0.75rem 0.7rem 1rem; }
-            .detail-head-logo img { height: 20px; }
-            .detail-head-nav { padding-left: 0.25rem; gap: 0.3rem 0.6rem; }
-            .detail-head-nav a { font-size: 0.64rem; letter-spacing: -0.01em; }
         }
         
         .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
@@ -1310,6 +1323,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .deliverable-num { padding-right: 1rem; font-size: 0.65rem; }
             .deliverable-title { font-size: 1rem; }
         }
+
+        /* ── Site navigation: logo, links and pill sit in the sticky top ruler strip ── */
+        header.site-header { display: block; position: sticky; top: 0; z-index: 101; margin-top: -40px; height: 40px; border-bottom: none; background: transparent; pointer-events: none; }
+        .site-bar { display: flex; align-items: center; gap: 1rem; height: 40px; padding: 0 1rem; }
+        .site-bar > * { pointer-events: auto; }
+        .site-brand { display: flex; align-items: center; gap: 0.45rem; height: 28px; padding: 0 0.5rem; background: var(--color-bg); text-decoration: none; flex-shrink: 0; }
+        .site-brand img { height: 20px; width: auto; display: block; }
+        .site-brand .logo-text { font-size: 0.72rem; line-height: 1; white-space: nowrap; }
+        .site-links { display: flex; align-items: center; margin-left: auto; padding: 0 0.25rem; background: var(--color-bg); }
+        .site-links a { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.35rem 0.6rem; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
+        .site-links a:hover, .site-links a[aria-current] { color: var(--color-terra); }
+        .site-links a[aria-current] { text-decoration: underline; text-underline-offset: 4px; font-weight: 600; }
+
+        /* Collaboration pill: pyramid + label, shrinks to a small pyramid on scroll and on phones */
+        .site-cta { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-terra); background: var(--color-bg); border: 1px solid var(--color-terra); border-radius: 999px; padding: 0.25rem 0.75rem 0.25rem 0.45rem; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: padding 0.3s ease, gap 0.3s ease, border-color 0.3s ease, background 0.2s, color 0.2s; }
+        .site-cta .pyr { width: 20px; height: 19px; fill: #16a99c; flex-shrink: 0; transition: width 0.3s ease, height 0.3s ease, fill 0.2s; }
+        .site-cta .t { max-width: 15rem; overflow: hidden; transition: max-width 0.35s ease, opacity 0.25s ease; }
+        .site-cta:hover { background: var(--color-terra); color: #fff; }
+        .site-cta:hover .pyr { fill: #fff; }
+        html.is-scrolled .site-cta:not(:hover):not(:focus-visible) { gap: 0; padding: 0.3rem; border-color: transparent; }
+        html.is-scrolled .site-cta:not(:hover):not(:focus-visible) .t { max-width: 0; opacity: 0; }
+        html.is-scrolled .site-cta:not(:hover):not(:focus-visible) .pyr { width: 13px; height: 12px; }
+
+        @media (max-width: 900px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .ruler-y { display: none; }
+            .main-content { grid-column: 1 / -1; }
+            .site-bar { padding: 0 0.3rem; gap: 0.15rem; }
+            .site-brand { padding: 0 0.3rem; gap: 0.3rem; }
+            .site-brand img { height: 17px; }
+            .site-brand .logo-text { font-size: 0.6rem; }
+            .site-links { overflow-x: auto; scrollbar-width: none; min-width: 0; }
+            .site-links::-webkit-scrollbar { display: none; }
+            .site-links a { padding: 0.35rem 0.35rem; font-size: 0.64rem; text-transform: none; letter-spacing: 0; }
+            .site-cta { gap: 0; padding: 0.3rem; border-color: transparent; }
+            .site-cta .t { max-width: 0; opacity: 0; }
+            .site-cta .pyr { width: 15px; height: 14px; }
+            .detail-title { padding: 0.85rem 1rem; min-height: 0; }
+            .detail-title h1 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+            .detail-title-crumb { font-size: 0.62rem; }
+            .stats-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
 </style>
         
         <!-- Inject any page-specific JSON-LD schemas from XML -->
@@ -1341,6 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <xsl:apply-templates select="OfferGrid" />
             <xsl:apply-templates select="Offices" />
             <xsl:apply-templates select="About" />
+            <xsl:apply-templates select="Offices/Actions" />
             <xsl:apply-templates select="SprintForm" />
             <xsl:apply-templates select="StaticHero" />
             <xsl:apply-templates select="ProjectList" />
@@ -1370,6 +1426,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Inquiry dialog: on every page so any a[href="#inquire"] opens it in place -->
         <xsl:call-template name="InquiryDialog" />
         <script src="/scripts/inquiry.js" defer="defer"></script>
+        <script src="/scripts/nav.js" defer="defer"></script>
+        <xsl:if test="@id='contact'">
+          <script src="/scripts/way.js" defer="defer"></script>
+        </xsl:if>
       
         <xsl:if test="@id='capabilities'">
           <script src="/scripts/cap-moire.js" defer="defer"></script>
@@ -1389,178 +1449,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </xsl:template>
 
   <!-- Component Templates -->
+  <!-- Site nav: lives in the sticky ruler strip at the top of every page -->
   <xsl:template match="Header">
-    <header>
-      <xsl:if test="Nav/Breadcrumbs and ../CapabilityHero"><xsl:attribute name="class">header-detail</xsl:attribute></xsl:if>
-      
-        <xsl:choose>
-          <xsl:when test="Nav/Breadcrumbs and ../CapabilityHero">
-            <div class="detail-head">
-              <a href="/" class="detail-head-logo" aria-label="Ajared Research home">
-                  <img src="/logo.png" alt="Ajared" />
-                  <span class="logo-text">Research Inc.</span>
-              </a>
-              <div class="detail-head-title">
-                  <canvas class="hero-detail-moire" id="heroMoire"></canvas>
-                  <a href="/capabilities/" class="detail-head-crumb">Capabilities /</a>
-                  <h1><xsl:value-of select="../CapabilityHero/Title"/></h1>
-              </div>
-              <nav class="detail-head-nav" aria-label="Main">
-                  <a href="/" class="nav-index">Index</a>
-                  <a href="/case-studies/">Case Studies</a>
-                  <a href="/capabilities/" aria-current="page">Capabilities</a>
-                  <a href="/contact/">Contact</a>
-                  <a href="https://www.ajared.ng">Read</a>
-              </nav>
-            </div>
-          </xsl:when>
-          <xsl:when test="Nav/Breadcrumbs">
-            <div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;">
-              <a href="/" style="text-decoration:none;display:flex;align-items:center;">
-                  <img src="/logo.png" alt="Ajared Logo" style="height:32px;width:auto;display:block;"/>
-                  <div class="logo-text" style="font-size: 0.72rem; line-height: 1.2; margin-left: 0.6rem;">Research Inc.</div>
-              </a>
-            </div>
-            <div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;">
-              <div class="nav-crumb">
-                <xsl:choose>
-                  <xsl:when test="Nav/Breadcrumbs/@parent-href">
-                    <a href="{Nav/Breadcrumbs/@parent-href}" style="color:inherit;text-decoration:none;"><xsl:value-of select="Nav/Breadcrumbs/@parent-label"/></a>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <a href="/capabilities/" style="color:inherit;text-decoration:none;">Capabilities</a>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <span class="sep">/</span>
-                <span class="cur"><xsl:value-of select="Nav/Breadcrumbs/Current"/></span>
-              </div>
-            </div>
-            <div class="header-cell" style="padding: 0.9rem 1.2rem; align-items: center; justify-content: center;">
-              <nav style="display: flex; gap: 1.8rem;">
-                <a href="/" style="font-size: 0.72rem;">Index</a>
-                <a href="/case-studies/" style="font-size: 0.72rem;">Case Studies</a>
-                <a href="/capabilities/" style="font-size: 0.72rem;">Capabilities</a>
-                <a href="/contact/" style="font-size: 0.72rem;">Contact</a>
-                <a href="https://www.ajared.ng" style="font-size: 0.72rem;">Read</a>
-              </nav>
-            </div>
-          </xsl:when>
-          <xsl:otherwise>
-            <div class="header-cell">
-                <span class="label" style="color: var(--color-ink);">Information Architecture</span>
-                <a href="/" style="text-decoration: none; display: block;">
-                    <img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"/>
-                    <div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div>
-                </a>
-            </div>
-            
-            <div class="header-cell">
-              <xsl:choose>
-                <xsl:when test="ArchiveBox">
-                  <span class="label"><xsl:value-of select="ArchiveBox/@label"/></span>
-                  <h2><xsl:value-of select="ArchiveBox/Title"/></h2>
-                  <div style="margin-top:auto">
-                      <span class="label"><xsl:value-of select="ArchiveBox/StatLabel"/></span>
-                      <p><xsl:value-of select="ArchiveBox/StatValue"/></p>
-                  </div>
-                </xsl:when>
-                <xsl:when test="Description">
-                  <span class="label">Description</span>
-                  <p><xsl:value-of select="Description"/></p>
-                </xsl:when>
-                <xsl:otherwise>
-                  <span class="label">Coordinates</span>
-                  <p style="font-size: 0.85em;">
-                    <xsl:for-each select="CoordCell">
-                      <xsl:value-of select="@city"/><br/>
-                      <span style="color: var(--color-terra);"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
-                      <xsl:if test="position() != last()"><br/></xsl:if>
-                    </xsl:for-each>
-                  </p>
-                  <div>
-                      <span class="label">Status</span>
-                      <p style="font-size: 0.85em;"><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><a href="#inquire" style="color: var(--color-terra);">Open for Collaboration</a></p>
-                  </div>
-                </xsl:otherwise>
-              </xsl:choose>
-            </div>
-            
-            <div class="header-cell">
-                <span class="label">Navigation</span>
-                <nav>
-                    <p><a href="/">Index</a></p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='case-studies'">
-                            <a href="/case-studies/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/case-studies/">Case Studies</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='capabilities'">
-                            <a href="/capabilities/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Capabilities</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/capabilities/">Capabilities</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p>
-                        <xsl:choose>
-                          <xsl:when test="Nav/@active='contact'">
-                            <a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <a href="/contact/">Contact</a>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                    </p>
-                    <p><a href="https://www.ajared.ng">Read</a></p>
-                </nav>
-                <xsl:choose>
-                  <xsl:when test="Nav/@arrow">
-                    <div style="font-size: 2rem; line-height: 1; color: var(--color-terra);"><xsl:value-of select="Nav/@arrow"/></div>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
-                  </xsl:otherwise>
-                </xsl:choose>
-            </div>
-          </xsl:otherwise>
-        </xsl:choose>
-      </header>
+    <xsl:variable name="active">
+      <xsl:choose>
+        <xsl:when test="../CapabilityHero">capabilities</xsl:when>
+        <xsl:otherwise><xsl:value-of select="Nav/@active"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <header class="site-header">
+      <div class="site-bar">
+        <a href="/" class="site-brand" aria-label="Ajared Research home">
+            <img src="/logo.png" alt="Ajared" />
+            <span class="logo-text">Research Inc.</span>
+        </a>
+        <nav class="site-links" aria-label="Main">
+              <!-- Case Studies hidden from the nav until there are more of them -->
+              <a href="/capabilities/"><xsl:if test="$active='capabilities'"><xsl:attribute name="aria-current">page</xsl:attribute></xsl:if>Capabilities</a>
+              <a href="/contact/"><xsl:if test="$active='contact'"><xsl:attribute name="aria-current">page</xsl:attribute></xsl:if>About</a>
+              <a href="https://www.ajared.ng">Read</a>
+        </nav>
+        <a href="#inquire" class="site-cta" aria-label="Open for collaboration: start an inquiry"><svg class="pyr" viewBox="0 0 110 105" aria-hidden="true"><path fill-rule="evenodd" d="M7 0 0 105h110zM15 30l-5 63h72z"/></svg><span class="t">Open for collaboration</span></a>
+      </div>
+    </header>
   </xsl:template>
 
-  <xsl:template match="Nav">
-    <nav>
-        <p><a href="/">
-          <xsl:if test="@active='index'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-          Index</a>
-        </p>
-        <p><a href="/case-studies/">
-          <xsl:if test="@active='case-studies'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Case Studies</a></p>
-        <p><a href="/capabilities/">
-          <xsl:if test="@active='capabilities'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Capabilities</a></p>
-        <p><a href="/contact/">
-          <xsl:if test="@active='contact'">
-            <xsl:attribute name="style">text-decoration:underline; font-weight:600; color: var(--color-terra);</xsl:attribute>
-          </xsl:if>
-        Contact</a></p>
-        <p><a href="https://www.ajared.ng">Read</a></p>
-    </nav>
-  </xsl:template>
 
   <xsl:template match="Hero">
     <section class="hero-section">
@@ -1757,9 +1670,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="offices" aria-label="Offices">
       <xsl:for-each select="Office">
         <div class="office">
-            <span class="label"><span style="color: var(--color-terra);"><xsl:value-of select="format-number(position(), '00')"/></span> — <xsl:value-of select="@country"/></span>
-            <h2><xsl:value-of select="@city"/></h2>
-            <span class="office-coords"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+            <span class="label"><xsl:value-of select="@country"/></span>
+            <div class="office-name">
+                <h2><xsl:value-of select="@city"/></h2>
+                <span class="office-coords"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+            </div>
             <div class="office-lines">
                 <span class="label">Phone</span>
                 <a href="tel:{@tel}"><xsl:value-of select="@phone"/></a>
@@ -1773,17 +1688,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </xsl:for-each>
     </section>
-    <xsl:if test="Actions">
+  </xsl:template>
+
+  <!-- About & Contact page: call-to-action bar, placed after the About sections -->
+  <xsl:template match="Actions">
       <div class="contact-actions">
-          <p><xsl:copy-of select="Actions/Lead/node()"/></p>
-          <xsl:for-each select="Actions/Action">
+          <p><xsl:copy-of select="Lead/node()"/></p>
+          <xsl:for-each select="Action">
             <a href="{@href}">
               <xsl:attribute name="class">btn<xsl:if test="@primary='true'"> btn-solid</xsl:if></xsl:attribute>
               <xsl:value-of select="."/>
             </a>
           </xsl:for-each>
       </div>
-    </xsl:if>
   </xsl:template>
 
   <!-- About & Contact page: short About drawn from the V/TO -->
@@ -1800,34 +1717,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
     <xsl:for-each select="Group">
-      <section class="about-row">
-          <div class="about-row-label">
-              <span class="label"><xsl:value-of select="@title"/></span>
-              <xsl:if test="@note"><p><xsl:value-of select="@note"/></p></xsl:if>
-          </div>
-          <div class="about-cells">
-            <xsl:for-each select="Item">
-              <div class="about-cell">
-                  <span class="n"><xsl:value-of select="format-number(position(), '00')"/></span>
-                  <h3>
-                    <xsl:choose>
-                      <xsl:when test="../@initials='true'"><span class="initial"><xsl:value-of select="substring(@name, 1, 1)"/></span><xsl:value-of select="substring(@name, 2)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
-                    </xsl:choose>
-                  </h3>
+      <section class="about-block about-{@layout}">
+        <div class="about-block-head">
+          <h2 class="cap-section-title"><xsl:value-of select="@title"/></h2>
+          <xsl:if test="@note"><p><xsl:value-of select="@note"/></p></xsl:if>
+        </div>
+        <xsl:choose>
+          <!-- Core values: the acronym spelled out in large initials -->
+          <xsl:when test="@layout='acronym'">
+            <div class="values-grid">
+              <xsl:for-each select="Item">
+                <div class="value">
+                  <h3 class="value-word"><span class="value-initial"><xsl:value-of select="substring(@name, 1, 1)"/></span><xsl:value-of select="substring(@name, 2)"/></h3>
                   <p><xsl:copy-of select="node()"/></p>
-                  <xsl:if test="@href"><a href="{@href}"><xsl:value-of select="@link"/> →</a></xsl:if>
+                </div>
+              </xsl:for-each>
+            </div>
+          </xsl:when>
+          <!-- Prose: a short statement set large -->
+          <xsl:when test="@layout='prose'">
+            <div class="about-prose-row">
+              <div>
+                <xsl:for-each select="P"><p class="about-prose-text"><xsl:copy-of select="node()"/></p></xsl:for-each>
               </div>
-            </xsl:for-each>
-          </div>
+              <xsl:if test="../Guarantee">
+                <xsl:call-template name="GuaranteeSeal"><xsl:with-param name="g" select="../Guarantee"/></xsl:call-template>
+              </xsl:if>
+            </div>
+          </xsl:when>
+          <!-- Process: a connected track of numbered steps -->
+          <xsl:when test="@layout='track'">
+            <ol class="way-track">
+              <xsl:for-each select="Item">
+                <li>
+                  <xsl:if test="position() = 1"><xsl:attribute name="class">is-active</xsl:attribute></xsl:if>
+                  <span class="way-node"><xsl:value-of select="format-number(position(), '00')"/></span>
+                  <div class="way-body">
+                    <h3><xsl:value-of select="@name"/></h3>
+                    <p><xsl:copy-of select="node()"/></p>
+                    <xsl:if test="@href"><a href="{@href}"><xsl:value-of select="@link"/> →</a></xsl:if>
+                  </div>
+                </li>
+              </xsl:for-each>
+            </ol>
+          </xsl:when>
+          <!-- Statements: short bold claims under a terracotta rule -->
+          <xsl:otherwise>
+            <div class="why-grid">
+              <xsl:for-each select="Item">
+                <div class="why">
+                  <h3><xsl:value-of select="@name"/></h3>
+                  <p><xsl:copy-of select="node()"/></p>
+                </div>
+              </xsl:for-each>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
       </section>
     </xsl:for-each>
-    <xsl:if test="Guarantee">
-      <section class="about-guarantee">
-          <span class="label">Our Guarantee</span>
-          <p><xsl:copy-of select="Guarantee/node()"/></p>
-      </section>
-    </xsl:if>
+  </xsl:template>
+
+  <!-- Guarantee seal: the guarantee runs round a slowly turning ring, @accent in teal, pyramid at the centre -->
+  <xsl:template name="GuaranteeSeal">
+    <xsl:param name="g"/>
+    <xsl:variable name="text" select="normalize-space($g)"/>
+    <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Our guarantee: {$text}">
+      <defs><path id="seal-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+      <circle class="seal-ring" cx="100" cy="100" r="96"/>
+      <circle class="seal-ring" cx="100" cy="100" r="62"/>
+      <g class="seal-spin">
+        <text><textPath href="#seal-path" textLength="486" lengthAdjust="spacing">
+          <xsl:choose>
+            <xsl:when test="$g/@accent and contains($text, $g/@accent)">
+              <xsl:value-of select="substring-before($text, $g/@accent)"/><tspan class="seal-accent"><xsl:value-of select="$g/@accent"/></tspan><xsl:value-of select="substring-after($text, $g/@accent)"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$text"/></xsl:otherwise>
+          </xsl:choose>
+          <xsl:text> · Our guarantee · </xsl:text>
+        </textPath></text>
+      </g>
+      <g transform="translate(72.5 73.75) scale(0.5)"><path class="seal-pyr" fill-rule="evenodd" d="M7 0 0 105h110zM15 30l-5 63h72z"/></g>
+    </svg>
   </xsl:template>
 
 
@@ -1927,13 +1897,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </xsl:template>
 
-  <xsl:template match="CapabilityHero[../Header/Nav/Breadcrumbs]" />
   <xsl:template match="CapabilityHero">
-    <div class="hero-detail">
+    <div class="detail-title">
       <canvas class="hero-detail-moire" id="heroMoire"></canvas>
-      <div class="hero-detail-content">
-        <h1><xsl:value-of select="Title"/></h1>
-      </div>
+      <a href="/capabilities/" class="detail-title-crumb">Capabilities /</a>
+      <h1><xsl:value-of select="Title"/></h1>
     </div>
   </xsl:template>
 

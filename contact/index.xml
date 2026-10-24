@@ -93,9 +93,7 @@
   </Header>
 
   <Offices>
-    <Office city="Toronto" country="Canada" lat="43.6332° N" lng="79.4141° W" phone="+1 613 661 3550" tel="+16136613550" email="innovation@ajared.ca">
-      <Address>68 Abell St<br/>Toronto, ON M6J 0B1</Address>
-    </Office>
+    <Office city="Toronto" country="Canada" lat="43.6332° N" lng="79.4141° W" phone="+1 613 661 3550" tel="+16136613550" email="innovation@ajared.ca" />
     <Office city="Abuja" country="Nigeria" lat="8.9976° N" lng="7.4674° E" phone="+234 805 064 4454" tel="+2348050644454" email="emeka@ajared.ng" />
     <Actions>
       <Lead>Have a project in mind? Tell us about it. We reply within 48–72 hours.</Lead>
@@ -110,25 +108,23 @@
       <P>Ajared Research Inc. is an applied research and product studio. We build data products and information systems for businesses, using technology to solve real business problems.</P>
       <P>We work with founder-led startups and small teams across North America and Nigeria who want AI and data working in a real product or workflow now, not another proof of concept. Over the long run we are building toward a platform of products and systems for cities.</P>
     </Intro>
-    <Group title="Why Ajared">
-      <Item name="Practical value">We cut out the fluff and deliver what is actually useful.</Item>
-      <Item name="End-to-end ownership">Strategy, PRD, design and build under one roof, so nothing gets lost between handoffs.</Item>
-      <Item name="International team">Delivery from Canada and Nigeria: high-quality work with diverse perspectives.</Item>
+    <Group title="Core Values" layout="acronym">
+      <Item name="Simplicity">Simple is not easy, but it is still useful.</Item>
+      <Item name="Innovation">Curious, always learning, improving through tiny experiments.</Item>
+      <Item name="Reliability">We keep our commitments, and renegotiate early when we need to.</Item>
+      <Item name="Excellence">A possibility mentality, plus discipline and capacity building.</Item>
     </Group>
-    <Group title="The Ajared Way" note="Our proven process. Each step stands alone, so start wherever you are.">
+    <Group title="Why Ajared" layout="prose">
+      <P>We deliver <strong>practical value</strong>: what is actually useful, by cutting out the fluff, and taking <strong>ownership end-to-end</strong> with a <strong>diverse team</strong>.</P>
+    </Group>
+    <Group title="The Ajared Way" layout="track" note="Start where you are.">
       <Item name="Assess" href="/ai-readiness/" link="Take the check">A free readiness check of your business, data and technology, with an action plan.</Item>
       <Item name="Advise" href="/talk/" link="Book a call">A 30-minute conversation with a practitioner about fit and priorities.</Item>
       <Item name="Shape">A PRD, user journeys and flows, so everyone knows what is being built.</Item>
       <Item name="Sprint" href="/ai-sprint/" link="See the sprint">We build and ship in four weeks.</Item>
       <Item name="Enable">Learnings, embedded tools and systems, and a roadmap forward.</Item>
     </Group>
-    <Group title="Core Values" note="SIRE" initials="true">
-      <Item name="Simplicity">Simple is not easy, but it is still useful.</Item>
-      <Item name="Innovation">Curious, always learning, improving through tiny experiments.</Item>
-      <Item name="Reliability">We keep our commitments, and renegotiate early when we need to.</Item>
-      <Item name="Excellence">A possibility mentality, plus discipline, plus capacity.</Item>
-    </Group>
-    <Guarantee>We always deliver added value.</Guarantee>
+    <Guarantee accent="added value">We always deliver added value</Guarantee>
   </About>
 
   <Footer email="innovation@ajared.ca" year="2026" />
