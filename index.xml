@@ -104,7 +104,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Talk to a Human about AI",
-              "url": "https://ajared.ca/contact/"
+              "url": "https://ajared.ca/talk/"
             }
           },
           {
@@ -112,7 +112,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "1 Month AI Development Sprint",
-              "url": "https://ajared.ca/contact/"
+              "url": "https://ajared.ca/ai-sprint/"
             }
           },
           {
@@ -120,7 +120,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Get Started with AI",
-              "url": "https://ajared.ca/contact/"
+              "url": "https://cal.com/ajared/get-started-with-ai"
             }
           },
           {
@@ -128,7 +128,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Help AI Agents easily find your brand",
-              "url": "https://ajared.ca/contact/"
+              "url": "https://ajared.ca/about/"
             }
           }
         ]

@@ -92,7 +92,7 @@ Audits data, finds what's missing, builds a plan to get AI working inside an org
 | Advisory | Talk to a Human about AI | Real conversation with early adopters about what AI can do for your org | cal.com/ajared/talk-to-a-human-about-ai |
 | Build | 1 Month AI Development Sprint | Scoped, shipped, handed over in 4 weeks. For teams that want momentum, not a 6-month SOW | ajared.ca/ai-sprint/ |
 | Learn | Get Started with AI | Three tracks: Using an assistant → Adding Tool Use → Agentic Workflows | cal.com/ajared/get-started-with-ai |
-| AI Search | Help AI Agents find your brand | Schema markup + structured data so AI agents can discover and accurately represent the brand | ajared.ca/contact/ |
+| AI Search | Help AI Agents find your brand | Schema markup + structured data so AI agents can discover and accurately represent the brand | ajared.ca/about/ |
 | Free | AI Readiness Assessment | Free, 3-minute, personalized action plan | ajared.ca/ai-readiness/ |
 
 ---

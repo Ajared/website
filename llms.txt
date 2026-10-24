@@ -15,14 +15,14 @@ Ajared is led by Chu Nnodu, an enterprise product manager and AI product builder
 - [Talk to a Human about AI](https://ajared.ca/talk/): 30-minute advisory call with Chu Nnodu — $50 USD. Not a sales call. A direct conversation to figure out where AI fits your work right now. Includes a personalized written action plan within 24 hours.
 - [1 Month AI Development Sprint](https://ajared.ca/ai-sprint/): A focused, time-boxed build. Scoped, shipped, and handed over in four weeks. For teams that want momentum, not a six-month SOW.
 - [Get Started with AI](https://cal.com/ajared/get-started-with-ai): Three entry points — using an AI assistant, adding tool use, or building agentic workflows.
-- [Help AI Agents Find Your Brand](https://ajared.ca/contact/): Structured data and schema markup so your site is legible to AI agents. Generative Engine Optimization for discoverability in AI-generated answers.
+- [Help AI Agents Find Your Brand](https://ajared.ca/about/): Structured data and schema markup so your site is legible to AI agents. Generative Engine Optimization for discoverability in AI-generated answers.
 
 ## Key Pages
 
 - [Home](https://ajared.ca/): Overview of who we are and what we offer.
 - [Capabilities](https://ajared.ca/capabilities/): Full list of services.
 - [AI Readiness Assessment](https://ajared.ca/ai-readiness/): Free 3-minute self-assessment with a personalized action plan.
-- [About & Contact](https://ajared.ca/contact/): Who we are, how we work (The Ajared Way), and our Toronto and Abuja offices
+- [About & Contact](https://ajared.ca/about/): Who we are, how we work (The Ajared Way), and our Toronto and Abuja offices
 
 ## About
 

@@ -31,7 +31,7 @@ Applied Research (formerly 001) is folded into 002; `capabilities/001-applied-re
 | Advisory | Talk to a Human about AI | cal.com/ajared/talk-to-a-human-about-ai |
 | Build | 1 Month AI Development Sprint | ajared.ca/ai-sprint/ |
 | Learn | Get Started with AI | cal.com/ajared/get-started-with-ai |
-| AI Search | Help AI Agents find your brand | ajared.ca/contact/ |
+| AI Search | Help AI Agents find your brand | ajared.ca/about/ |
 
 ## Terms
 | Term | Meaning |

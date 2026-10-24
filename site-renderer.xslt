@@ -1427,7 +1427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <xsl:call-template name="InquiryDialog" />
         <script src="/scripts/inquiry.js" defer="defer"></script>
         <script src="/scripts/nav.js" defer="defer"></script>
-        <xsl:if test="@id='contact'">
+        <xsl:if test="@id='about'">
           <script src="/scripts/way.js" defer="defer"></script>
         </xsl:if>
       
@@ -1466,7 +1466,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="site-links" aria-label="Main">
               <!-- Case Studies hidden from the nav until there are more of them -->
               <a href="/capabilities/"><xsl:if test="$active='capabilities'"><xsl:attribute name="aria-current">page</xsl:attribute></xsl:if>Capabilities</a>
-              <a href="/contact/"><xsl:if test="$active='contact'"><xsl:attribute name="aria-current">page</xsl:attribute></xsl:if>About</a>
+              <a href="/about/"><xsl:if test="$active='about'"><xsl:attribute name="aria-current">page</xsl:attribute></xsl:if>About</a>
               <a href="https://www.ajared.ng">Read</a>
         </nav>
         <a href="#inquire" class="site-cta" aria-label="Open for collaboration: start an inquiry"><svg class="pyr" viewBox="0 0 110 105" aria-hidden="true"><path fill-rule="evenodd" d="M7 0 0 105h110zM15 30l-5 63h72z"/></svg><span class="t">Open for collaboration</span></a>

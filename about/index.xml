@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="contact" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses." url="https://ajared.ca/contact/">
+<Page id="about" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses." url="https://ajared.ca/about/">
 
   <Schema><![CDATA[
     {
@@ -72,13 +72,13 @@
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
-            { "@type": "ListItem", "position": 2, "name": "About & Contact", "item": "https://ajared.ca/contact/" }
+            { "@type": "ListItem", "position": 2, "name": "About & Contact", "item": "https://ajared.ca/about/" }
           ]
         },
         {
           "@type": ["ContactPage", "AboutPage"],
-          "@id": "https://ajared.ca/contact/#webpage",
-          "url": "https://ajared.ca/contact/",
+          "@id": "https://ajared.ca/about/#webpage",
+          "url": "https://ajared.ca/about/",
           "name": "About & Contact — Ajared Research Inc.",
           "description": "Who Ajared Research is, how we work, and how to reach our Toronto and Abuja offices.",
           "mainEntity": { "@id": "https://ajared.ca/#organization" }
@@ -89,7 +89,7 @@
 
   <Header>
     <Description>Who we are, how we work, and how to reach us in Toronto and Abuja.</Description>
-    <Nav active="contact" />
+    <Nav active="about" />
   </Header>
 
   <Offices>

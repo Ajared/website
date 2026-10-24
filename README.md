@@ -29,7 +29,8 @@ The repository includes a Git `pre-commit` hook that automatically runs `./scrip
 ajared.ca/
 ├── site-renderer.xslt                       # Single source of truth for all CSS, layout, and rendering logic
 ├── index.xml                                # Homepage
-├── contact/index.xml                        # About & Contact: offices, phones, short About (from the EOS V/TO)
+├── about/index.xml                          # About & Contact: offices, phones, short About (from the EOS V/TO)
+├── contact/index.html                       # Redirect → /about/ (no .xml)
 ├── case-studies/index.xml                   # Case Studies archive
 ├── capabilities/index.xml                   # Capabilities overview
 │   ├── 001-applied-research.html            # Redirect → 002 (Applied Research folded in; no .xml)

@@ -28,7 +28,8 @@
 ajared.ca/
 ├── site-renderer.xslt          ← Single source of truth for ALL CSS, layout, rendering
 ├── index.xml                   ← Homepage
-├── contact/index.xml           ← Contact form + advisory booking
+├── about/index.xml             ← About & Contact (offices, values, Ajared Way)
+├── contact/index.html          ← redirect → /about/ (no .xml)
 ├── case-studies/index.xml      ← Case studies archive
 ├── ai-readiness/               ← Free AI readiness assessment
 ├── ai-sprint/index.xml         ← 1 Month AI Development Sprint page
@@ -40,7 +41,7 @@ ajared.ca/
 │   └── 004-data-strategy.xml
 └── scripts/
     ├── build.sh                ← XSLT compiler (runs on git commit)
-    ├── contact.js
+    ├── inquiry.js
     └── moire.js, cap-moire.js  ← Hero canvas effects
 ```
 
