@@ -104,7 +104,7 @@
     <Nav active="capabilities" arrow="↓" />
   </Header>
 
-  <CapHero label="What We Do" compact="true">
+  <CapHero label="What We Do For You" compact="true">
     <Headline>Capabilities</Headline>
   </CapHero>
 
