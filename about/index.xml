@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="about" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied AI research and product studio that solves real business problems and builds data products and information systems for enterprises." url="https://ajared.ca/about/">
+<Page id="about" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied AI research and product studio. We solve real business problems, build data products, and information systems for enterprises." url="https://ajared.ca/about/">
 
   <Schema><![CDATA[
     {
@@ -12,7 +12,7 @@
           "name": "Ajared Research Inc.",
           "url": "https://ajared.ca",
           "logo": "https://ajared.ca/logo.png",
-          "description": "An applied AI research and product studio that solves real business problems and builds data products and information systems for enterprises.",
+          "description": "An applied AI research and product studio. We solve real business problems, build data products, and information systems for enterprises.",
           "slogan": "Make things better by making better things.",
           "email": "innovation@ajared.ca",
           "telephone": "+16136613550",
