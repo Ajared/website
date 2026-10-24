@@ -844,14 +844,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         /* About &amp; Contact page */
         .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
-        .office { padding: 1.4rem 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
+        .office { padding: 1rem 2rem 1.1rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.45rem; }
         .office:last-child { border-right: none; }
-        .office h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1; margin: 0; display: inline; }
+        .office h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1; margin: 0; display: inline; }
         .office-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
-        .office-coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
-        .office-lines { display: grid; grid-template-columns: 5rem 1fr; gap: 0.35rem 1rem; align-items: baseline; margin-top: 0.25rem; }
-        .office-lines .label { margin: 0; }
-        .office-lines a, .office-lines address { font-style: normal; font-size: 0.98rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-coords { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
+        .office-lines { display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; }
+        .office-lines a { font-size: 0.95rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
         .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
         .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
         .contact-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 1.25rem 1.5rem; padding: 2.25rem 2rem; background: var(--color-ink-darkest); border-top: 3px solid var(--color-terra); }
@@ -891,7 +890,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .about-prose-text strong { color: var(--color-ink-darkest); font-weight: 700; }
         .way-track { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
         .way-track li { position: relative; display: flex; flex-direction: column; gap: 1rem; }
-        .way-track li:not(:last-child)::before { content: ''; position: absolute; top: 1.2rem; left: 2.4rem; right: -1.5rem; height: 2px; background: var(--color-ink-lighter); }
+        .way-track li:not(:last-child)::before { content: ''; position: absolute; top: calc(1.2rem - 1px); left: 2.4rem; right: -1.5rem; height: 2px; background: repeating-linear-gradient(to right, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
         .way-node { position: relative; z-index: 1; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px solid var(--color-terra); background: var(--color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-terra); }
         .way-node { transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease; }
         .way-track li.is-active .way-node { background: var(--color-terra); color: #fff; transform: scale(1.12); }
@@ -908,7 +907,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .value { display: flex; flex-direction: column; gap: 0.5rem; }
         .value-word { display: flex; align-items: baseline; font-size: clamp(1.4rem, 2.5vw, 2.4rem); line-height: 0.8; letter-spacing: -0.03em; color: var(--color-ink-darkest); margin-bottom: 0.9rem; white-space: nowrap; }
         .value-initial { font-size: clamp(4rem, 8vw, 7.5rem); letter-spacing: -0.05em; color: var(--color-terra); margin-right: 0.04em; }
-        .value p { font-size: 0.9rem; line-height: 1.5; color: var(--color-neutral-dark); }
+        .value p { font-size: 0.9rem; line-height: 1.5; color: var(--color-neutral-dark); text-wrap: balance; }
+        @media (max-width: 1200px) and (min-width: 901px) { .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 3rem; } }
 
         @media (max-width: 900px) {
             .about-block { padding: 2rem 1rem 2.25rem; }
@@ -918,9 +918,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .way-track { grid-template-columns: 1fr; gap: 0; }
             .way-track li { flex-direction: row; gap: 1rem; padding-bottom: 1.5rem; }
             .way-track li:last-child { padding-bottom: 0; }
-            .way-track li:not(:last-child)::before { top: 2.4rem; bottom: 0; left: 1.15rem; right: auto; width: 2px; height: auto; }
+            .way-track li:not(:last-child)::before { top: 2.4rem; bottom: 0; left: calc(1.2rem - 1px); right: auto; width: 2px; height: auto; background: repeating-linear-gradient(to bottom, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
             .way-node { flex-shrink: 0; }
-            .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem; }
+            .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .value-word { font-size: 1.3rem; }
             .value-initial { font-size: 3.6rem; }
         }
@@ -928,9 +928,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         }
         @media (max-width: 768px) {
             .offices, .about-intro { grid-template-columns: 1fr; }
-            .office { border-right: none; border-bottom: var(--grid-line); padding: 1.25rem 1rem; }
+            .office { border-right: none; border-bottom: var(--grid-line); padding: 0.9rem 1rem 1rem; }
             .office:last-child { border-bottom: none; }
-            .office-lines { grid-template-columns: 4.5rem 1fr; }
             .about-intro > div { padding: 2.5rem 1rem; }
             .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
             .contact-actions { grid-template-columns: 1fr; padding: 1.75rem 1rem; }
@@ -962,7 +961,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         /* Capability rows: everything we do is visible without a click */
         .cap-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 2.5rem; padding: 2.75rem 2rem; border-bottom: var(--grid-line); }
-        .cap-row .cap-number { padding-top: 0.45rem; }
+        .cap-icon { color: var(--color-terra); padding-top: 0.1rem; }
+        .cap-icon svg { width: 64px; height: 64px; display: block; }
         .cap-summary { display: flex; flex-direction: column; gap: 0.9rem; }
         .cap-row h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin: 0; }
         .cap-row h2 a { color: inherit; text-decoration: none; }
@@ -978,7 +978,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .cap-does span { font-size: 0.88rem; line-height: 1.5; color: var(--color-neutral-dark); }
         @media (max-width: 900px) {
             .cap-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 2.25rem 1.2rem; }
-            .cap-row .cap-number { padding-top: 0; }
+            .cap-icon svg { width: 52px; height: 52px; }
         }
         [data-cap="001"] { --cap-accent: #a1665e; }
         [data-cap="002"] { --cap-accent: #3d7878; }
@@ -1670,20 +1670,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="offices" aria-label="Offices">
       <xsl:for-each select="Office">
         <div class="office">
-            <span class="label"><xsl:value-of select="@country"/></span>
             <div class="office-name">
                 <h2><xsl:value-of select="@city"/></h2>
-                <span class="office-coords"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+                <span class="office-coords"><xsl:value-of select="@country"/> · <xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
             </div>
             <div class="office-lines">
-                <span class="label">Phone</span>
                 <a href="tel:{@tel}"><xsl:value-of select="@phone"/></a>
-                <span class="label">Email</span>
                 <a href="mailto:{@email}"><xsl:value-of select="@email"/></a>
-                <xsl:if test="Address">
-                  <span class="label">Address</span>
-                  <address><xsl:copy-of select="Address/node()"/></address>
-                </xsl:if>
             </div>
         </div>
       </xsl:for-each>
@@ -1861,7 +1854,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <xsl:template match="Capability">
     <article class="cap-row" data-cap="{@number}">
-        <span class="cap-number"><xsl:value-of select="@number"/></span>
+        <span class="cap-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <xsl:choose>
+              <xsl:when test="@icon='product'">
+                <rect x="5" y="8" width="34" height="27" rx="3"/>
+                <path d="M5 15h34"/>
+                <circle cx="9.5" cy="11.5" r="0.8" fill="currentColor"/><circle cx="13" cy="11.5" r="0.8" fill="currentColor"/>
+                <rect x="10" y="20" width="11" height="10" rx="1.5"/>
+                <path d="M25 21h9M25 25.5h9M25 30h5"/>
+                <circle cx="38" cy="36" r="7" fill="var(--color-bg)"/>
+                <path d="M34.8 36.2l2.2 2.2 4.2-4.6"/>
+              </xsl:when>
+              <xsl:when test="@icon='agents'">
+                <circle cx="24" cy="23" r="6.5"/>
+                <circle cx="24" cy="23" r="2" fill="currentColor"/>
+                <rect x="4" y="5" width="10" height="10" rx="2"/>
+                <rect x="34" y="5" width="10" height="10" rx="2"/>
+                <rect x="19" y="36" width="10" height="9" rx="2"/>
+                <path d="M19.4 18.4L14 15M28.6 18.4L34 15M24 29.5V36"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <path d="M9 39c8 0 6-11 14-11s9-8 13-8" stroke-dasharray="3.5 3.5"/>
+                <circle cx="8" cy="39" r="4"/>
+                <circle cx="23" cy="28" r="3.2" fill="currentColor"/>
+                <path d="M37 26V5"/>
+                <path d="M37 5h9l-3 4.5 3 4.5h-9" fill="currentColor" fill-opacity="0.18"/>
+                <path d="M33 26h8"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </svg>
+        </span>
         <div class="cap-summary">
             <h2><a href="{@href}"><xsl:value-of select="@title"/></a></h2>
             <span class="cap-subtitle label"><xsl:value-of select="@subtitle"/></span>

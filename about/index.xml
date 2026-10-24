@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="about" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses." url="https://ajared.ca/about/">
+<Page id="about" title="About &amp; Contact" description="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that solves real business problems and builds data products and information systems for enterprises." url="https://ajared.ca/about/">
 
   <Schema><![CDATA[
     {
@@ -12,7 +12,7 @@
           "name": "Ajared Research Inc.",
           "url": "https://ajared.ca",
           "logo": "https://ajared.ca/logo.png",
-          "description": "An applied research and product studio that builds data products and information systems for businesses.",
+          "description": "An applied research and product studio that solves real business problems and builds data products and information systems for enterprises.",
           "slogan": "Make things better by making better things.",
           "email": "innovation@ajared.ca",
           "telephone": "+16136613550",
@@ -105,8 +105,8 @@
   <About>
     <Purpose>Make things better by making <span class="accent">better things.</span></Purpose>
     <Intro>
-      <P>Ajared Research Inc. is an applied research and product studio. We build data products and information systems for businesses, using technology to solve real business problems.</P>
-      <P>We work with founder-led startups and small teams across North America and Nigeria who want AI and data working in a real product or workflow now, not another proof of concept. Over the long run we are building toward a platform of products and systems for cities.</P>
+      <P>Ajared Research Inc. is an applied research and product studio. We solve real business problems, and build data products and information systems for enterprises.</P>
+      <P>We help founders, small, and medium enterprises across North America and Nigeria apply AI and data to improve real products or workflows. Over the long run we are building a platform of intelligent products and systems for cities.</P>
     </Intro>
     <Group title="Core Values" layout="acronym">
       <Item name="Simplicity">Simple is not easy, but it is still useful.</Item>

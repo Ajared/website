@@ -109,7 +109,7 @@
   </CapHero>
 
   <CapabilityList>
-    <Capability number="001" title="Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
+    <Capability number="001" title="Product Development &amp; Management" icon="product" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
         <Description>We help you build and manage products in this AI age. It starts with finding out what's true about your users and your market, then runs from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
         <Does>
           <Do name="Applied Research">UX research, market research and testing business ideas, so what we build rests on evidence.</Do>
@@ -119,7 +119,7 @@
           <Do name="AI-Powered Engineering">Full-stack development, API integration, QA and deployment.</Do>
         </Does>
     </Capability>
-    <Capability number="002" title="Enterprise AI Agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
+    <Capability number="002" title="Enterprise AI Agents" icon="agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
         <Description>Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</Description>
         <Does>
           <Do name="AI Agents">Task-specific agents with tools, memory, decision logic and human oversight.</Do>
@@ -127,7 +127,7 @@
           <Do name="Task Automation">End-to-end workflows across your existing systems, edge cases included.</Do>
         </Does>
     </Capability>
-    <Capability number="003" title="Data and AI Strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
+    <Capability number="003" title="Data and AI Strategy" icon="strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
         <Description>Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</Description>
         <Does>
           <Do name="Reliable AI">Knowledge graphs and ontologies for consistent, trustworthy outputs.</Do>
