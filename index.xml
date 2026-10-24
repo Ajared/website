@@ -39,6 +39,7 @@
         {
           "@type": "Place",
           "name": "Abuja",
+          "telephone": "+2348050644454",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Abuja",
@@ -74,14 +75,6 @@
         "@type": "OfferCatalog",
         "name": "AI Services",
         "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Applied Research",
-              "url": "https://ajared.ca/capabilities/001-applied-research.html"
-            }
-          },
           {
             "@type": "Offer",
             "itemOffered": {
@@ -213,7 +206,7 @@
     <Slide name="Sense of Self" theme="senseofself" soon="true" label="Sense of Self · Coming soon">
       <Headline>Meet<br/>your<br/>digital<br/><span class="accent">self.</span></Headline>
       <Sub>Sense of Self reads your social media archive and paints a portrait of the person in it: what you talk about, when you post, the habits you have formed, and how other people respond to you. It is in development now.</Sub>
-      <CTA href="/contact/" hint="Coming soon · Starts with your X archive">Get notified at launch →</CTA>
+      <CTA href="#inquire" service="Sense of Self launch" hint="Coming soon · Starts with your X archive">Get notified at launch →</CTA>
     </Slide>
   </Hero>
 
@@ -233,7 +226,7 @@
         <Track n="03">Agentic Workflows</Track>
       </Tracks>
     </Offer>
-    <Offer number="04" tag="AI Search" title="Help AI Agents easily find your brand" href="/contact/">
+    <Offer number="04" tag="AI Search" title="Help AI Agents easily find your brand" href="#inquire" service="Data &amp; AI Strategy">
       <Description>AI agents are how people will discover you next. We add the structured data and schema markup that makes your site legible to them — today.</Description>
     </Offer>
   </OfferGrid>

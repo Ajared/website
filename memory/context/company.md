@@ -8,14 +8,14 @@
 - **Email:** innovation@ajared.ca
 - **Phone:** +1 613 661 3550
 - **Toronto:** 68 Abell St, M6J 0B1, Ontario, Canada
-- **Abuja:** Nigeria
+- **Abuja:** Nigeria · +234 805 064 4454 · emeka@ajared.ng
 - **Founded/Active:** 2026
 
 ---
 
 ## Capabilities (Core Services)
 
-### 001 — Applied Research
+### Applied Research (folded into 002 — AI Product Development)
 *"How We Learn What's True"*
 
 Figures out what's actually going on before anyone starts building. Draws on behavioural science, statistics, and deep domain knowledge.

@@ -56,7 +56,7 @@
           "@id": "https://ajared.ca/capabilities/002-ai-product.html#service",
           "name": "AI Product Development & Management",
           "alternateName": "Strategy & Delivery",
-          "description": "Full lifecycle AI product development from concept through launch and optimization. Covers product strategy, roadmap planning, model selection, launch coordination, and performance analytics.",
+          "description": "Full lifecycle AI product development from applied research and concept through launch and optimization. Covers UX and market research, testing business ideas, product strategy, roadmap planning, model selection, launch coordination, and performance analytics.",
           "provider": { "@id": "https://ajared.ca/#organization" },
           "url": "https://ajared.ca/capabilities/002-ai-product.html",
           "serviceType": "AI Product Development",
@@ -82,11 +82,20 @@
   <PageBody>
     <Section title="What We Do">
       <Intro>
-        <p>We help you build products and keep them running. That covers everything from the first idea through
-              launch, growth, and the ongoing work of making them better — concept development, UX design, product
-              management, and full-stack engineering under one roof.</p>
+        <p>We help you build products and keep them running. It starts with finding out what’s actually true about your
+              users and your market, and runs from the first idea through launch, growth, and the ongoing work of making
+              them better — applied research, concept development, UX design, product management, and full-stack
+              engineering under one roof.</p>
       </Intro>
       <Offerings>
+        <Offering>
+          <Title>Applied Research</Title>
+          <Description>We figure out what’s actually going on before anyone starts building. UX research goes to where
+                  your users are — interviews, diary studies, usability tests, in-context observation. Market research
+                  maps the landscape — competitive analysis, sizing, segmentation, trends. And lean experiments — demand
+                  tests, concierge MVPs, causal inference — show which assumptions to kill early. Early failure is cheap.
+                  Late failure is not.</Description>
+        </Offering>
         <Offering>
           <Title>Concept Development</Title>
           <Description>From rough idea to defined product. We run structured workshops to frame the opportunity,
@@ -118,8 +127,9 @@
       <Process>
         <Step num="01">
           <Title>Discovery</Title>
-          <Description>Define the vision, identify the right success metrics, and establish the opportunity clearly enough
-                    that every subsequent decision has a reference point to return to.</Description>
+          <Description>Research your users and your market, define the vision, identify the right success metrics, and
+                    establish the opportunity clearly enough that every subsequent decision has a reference point to
+                    return to.</Description>
         </Step>
         <Step num="02">
           <Title>Design</Title>
@@ -142,9 +152,10 @@
 
     <Section title="Deliverables">
       <Intro>
-        <p>The engagement closes with a complete product package — concept brief, strategy, and roadmap through to a UX design system with tested prototypes and a production-ready working product. Launch plan and analytics instrumentation are included as standard, along with a one-month MVP sprint. Teams that want ongoing ownership support can extend into a fractional product management retainer.</p>
+        <p>The engagement closes with a complete product package — research findings, concept brief, strategy, and roadmap through to a UX design system with tested prototypes and a production-ready working product. Launch plan and analytics instrumentation are included as standard, along with a one-month MVP sprint. Teams that want ongoing ownership support can extend into a fractional product management retainer.</p>
       </Intro>
       <Deliverables>
+        <Row checked="true" label="Research findings">Research brief + findings report + evidence archive</Row>
         <Row checked="true" label="Concept brief + roadmap">Concept brief + product strategy + roadmap</Row>
         <Row checked="true" label="UX design system">UX design system + tested prototypes</Row>
         <Row checked="true" label="Working product">Working product — production-ready</Row>
@@ -156,13 +167,13 @@
   </PageBody>
 
   <CapNav>
-    <Prev href="/capabilities/001-applied-research.html">Applied Research</Prev>
+    <Prev href="/capabilities/004-data-strategy.html">Data &amp; AI Strategy</Prev>
     <Next href="/capabilities/003-enterprise-agents.html">Enterprise AI Agents</Next>
   </CapNav>
 
   <CTABlock>
     <Title>Ready to build something that works?</Title>
-    <Button href="/contact/">Get in touch &#8594;</Button>
+    <Button href="#inquire" service="AI Product Development">Get in touch &#8594;</Button>
   </CTABlock>
 
   <Footer email="innovation@ajared.ca" year="2026" />

@@ -11,17 +11,18 @@ Chu, Founder/Owner of Ajared Research Inc. Running an AI research and product st
 | **Email** | innovation@ajared.ca |
 | **Phone** | +1 613 661 3550 |
 | **Toronto** | 68 Abell St, M6J 0B1, Ontario, Canada |
-| **Abuja** | Nigeria |
+| **Abuja** | Nigeria · +234 805 064 4454 · emeka@ajared.ng |
 | **Tagline** | Applied Intelligence for Enterprises |
 | **Mission** | Help enterprises move from AI proof-of-concept to production-ready solutions |
 
 ## Capabilities (Services)
 | # | Name | What |
 |---|------|------|
-| 001 | **Applied Research** | UX research, market research, testing business ideas |
-| 002 | **AI Product Development** | Concept → design → build → launch, full-stack AI engineering |
+| 002 | **AI Product Development** | Applied research (UX, market, testing ideas) → concept → design → build → launch, full-stack AI engineering |
 | 003 | **Enterprise AI Agents** | Production agents, Graph RAG, task automation |
 | 004 | **Data & AI Strategy** | Audits, readiness assessments, governance, GEO, exec coaching |
+
+Applied Research (formerly 001) is folded into 002; `capabilities/001-applied-research.html` is a hand-written redirect with no .xml source. File numbers stay 002–004 to keep URLs; the overview page displays them as 001–003.
 → Details: memory/context/company.md
 
 ## Products / Offers
@@ -44,7 +45,7 @@ Chu, Founder/Owner of Ajared Research Inc. Running an AI research and product st
 
 ## Site Architecture (CRITICAL)
 - **NEVER edit .html files** — they are auto-generated
-- **Edit .xml files** instead (e.g. index.xml, capabilities/001-applied-research.xml)
+- **Edit .xml files** instead (e.g. index.xml, capabilities/002-ai-product.xml)
 - **Preview**: Open .xml in browser (XSLT renders live)
 - **Deploy**: `git commit` → pre-commit hook auto-runs build.sh → compiles .xml → .html
 - **Push**: `git push origin main` (must be done from own machine — sandbox has no internet)

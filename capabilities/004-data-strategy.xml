@@ -158,12 +158,12 @@
 
   <CapNav>
     <Prev href="/capabilities/003-enterprise-agents.html">Enterprise AI Agents</Prev>
-    <Next href="/capabilities/001-applied-research.html">Applied Research</Next>
+    <Next href="/capabilities/002-ai-product.html">Product Development</Next>
   </CapNav>
 
   <CTABlock>
     <Title>Ready to know where you actually stand?</Title>
-    <Button href="/contact/">Get in touch &#8594;</Button>
+    <Button href="#inquire" service="Data &amp; AI Strategy">Get in touch &#8594;</Button>
   </CTABlock>
 
   <Footer email="innovation@ajared.ca" year="2026" />

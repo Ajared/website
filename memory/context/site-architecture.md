@@ -34,13 +34,12 @@ ajared.ca/
 ├── ai-sprint/index.xml         ← 1 Month AI Development Sprint page
 ├── capabilities/
 │   ├── index.xml               ← Capabilities overview
-│   ├── 001-applied-research.xml
+│   ├── 001-applied-research.html   (redirect → 002, no .xml)
 │   ├── 002-ai-product.xml
 │   ├── 003-enterprise-agents.xml
 │   └── 004-data-strategy.xml
 └── scripts/
     ├── build.sh                ← XSLT compiler (runs on git commit)
-    ├── accordion.js
     ├── contact.js
     └── moire.js, cap-moire.js  ← Hero canvas effects
 ```

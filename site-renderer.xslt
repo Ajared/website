@@ -805,6 +805,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
         .brief-textarea::placeholder { color: var(--color-ink-light); }
 
+        /* Inquiry dialog: the inquiry form, opened from any a[href="#inquire"] */
+        :root:has(.inquiry[open]) { overflow: hidden; }
+        .inquiry { border: none; padding: 0; margin: auto; width: min(1040px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); background: var(--color-bg); color: var(--color-ink); border-top: 3px solid var(--color-terra); border-radius: var(--radius-sm); box-shadow: 0 30px 80px rgba(2, 59, 59, 0.35); overflow: auto; overscroll-behavior: contain; }
+        .inquiry:focus { outline: none; }
+        .inquiry::backdrop { background: rgba(2, 59, 59, 0.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+        .inquiry[open] { animation: inquiryIn 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .inquiry[open]::backdrop { animation: inquiryFade 0.28s ease; }
+        @keyframes inquiryIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+        @keyframes inquiryFade { from { opacity: 0; } to { opacity: 1; } }
+        .inquiry-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 2rem; background: var(--color-bg); border-bottom: var(--grid-line); }
+        .inquiry-bar .label { margin: 0; }
+        .inquiry-re { color: var(--color-terra); }
+        .inquiry-close { background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-dark); padding: 0.4rem 0; }
+        .inquiry-close:hover, .inquiry-close:focus-visible { color: var(--color-terra); }
+        .inquiry .form-section { min-height: 0; }
+        .inquiry .form-left { padding: 2.5rem 2rem 2rem; }
+        .inquiry .form-left h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 0.95; margin-bottom: 2.25rem; }
+        .inquiry .instrument-field { margin-bottom: 2.25rem; }
+        .inquiry .btn-submit { padding: 1.4rem 1.5rem; font-size: 1rem; margin-top: 1rem; }
+        .inquiry .btn-submit:disabled { opacity: 0.6; }
+        .inquiry .form-right { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        .inquiry .form-right p { font-size: 0.9rem; line-height: 1.6; }
+        .inquiry-direct a { color: var(--color-ink-darkest); text-decoration: none; border-bottom: 1px solid var(--color-ink-light); }
+        .inquiry-direct a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .inquiry-direct .city { display: block; font-weight: 700; color: var(--color-ink-darkest); margin-top: 0.9rem; }
+        @media (max-width: 768px) {
+            .inquiry { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+            .inquiry-bar { padding: 0.85rem 1rem; }
+            .inquiry .form-section { grid-template-columns: 1fr; }
+            .inquiry .form-left { padding: 2rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .inquiry .form-right { padding: 2rem 1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .inquiry[open], .inquiry[open]::backdrop { animation: none; }
+        }
+
+        /* About &amp; Contact page */
+        .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
+        .office { padding: 3rem 2rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 1.5rem; }
+        .office:last-child { border-right: none; }
+        .office h2 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; margin: 0; }
+        .office-coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
+        .office-lines { display: grid; grid-template-columns: 7rem 1fr; gap: 0.9rem 1rem; align-items: baseline; margin-top: 0.5rem; }
+        .office-lines .label { margin: 0; }
+        .office-lines a, .office-lines address { font-style: normal; font-size: 1.15rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
+        .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .contact-actions { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.5rem; padding: 2rem; border-bottom: var(--grid-line); background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
+        .contact-actions p { font-size: 1rem; color: var(--color-ink-darkest); background: var(--color-bg); justify-self: start; padding: 0.25rem 0.5rem 0.25rem 0; }
+        .contact-actions .btn { margin-top: 0; background: var(--color-bg); }
+        .contact-actions .btn:hover { background: var(--color-terra); }
+        .contact-actions .btn-solid { background: var(--color-terra); color: var(--color-bg); }
+        .contact-actions .btn-solid:hover { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); }
+        .about-intro { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--grid-line); }
+        .about-intro > div { padding: 4rem 2rem; }
+        .about-intro > div:first-child { border-right: var(--grid-line); }
+        .about-intro h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 0.95; margin: 1rem 0 0; }
+        .about-intro h2 .accent { color: var(--color-terra); }
+        .about-intro p { font-size: 1.1rem; line-height: 1.65; color: var(--color-neutral-dark); max-width: 36rem; }
+        .about-intro p + p { margin-top: 1.1rem; }
+        .about-row { display: grid; grid-template-columns: 220px 1fr; border-bottom: var(--grid-line); }
+        .about-row-label { padding: 2rem; border-right: var(--grid-line); }
+        .about-row-label .label { margin: 0; }
+        .about-row-label p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--color-ink-dark); line-height: 1.5; }
+        .about-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .about-cell { padding: 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
+        .about-cell:last-child { border-right: none; }
+        .about-cell .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-terra); letter-spacing: 0.08em; }
+        .about-cell h3 { font-size: 1.35rem; line-height: 1; }
+        .about-cell h3 .initial { color: var(--color-terra); }
+        .about-cell p { font-size: 0.92rem; line-height: 1.55; color: var(--color-neutral-dark); }
+        .about-cell a { color: var(--color-ink-dark); font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin-top: auto; padding-top: 0.5rem; }
+        .about-cell a:hover { color: var(--color-terra); }
+        .about-guarantee { background: var(--color-ink-darkest); color: #fff; padding: 2.5rem 2rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; border-top: 3px solid var(--color-terra); }
+        .about-guarantee .label { color: var(--color-terra); margin: 0; }
+        .about-guarantee p { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #fff; max-width: none; }
+        @media (max-width: 900px) {
+            .about-row, .about-guarantee { grid-template-columns: 1fr; }
+            .about-row-label { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell:last-child { border-bottom: none; }
+        }
+        @media (max-width: 768px) {
+            .offices, .about-intro { grid-template-columns: 1fr; }
+            .office { border-right: none; border-bottom: var(--grid-line); padding: 2.5rem 1rem; }
+            .office:last-child { border-bottom: none; }
+            .office-lines { grid-template-columns: 5.5rem 1fr; }
+            .about-intro > div { padding: 2.5rem 1rem; }
+            .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
+            .about-row-label, .about-cell { padding: 1.75rem 1rem; }
+            .about-guarantee { padding: 2rem 1rem; gap: 0.75rem; }
+            .contact-actions { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+            .contact-actions .btn { text-align: center; }
+        }
+
         /* Project Rows */
         .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
         .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -823,10 +918,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .hero-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; pointer-events: none; }
         .hero-center-text h1 { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--color-ink-darkest); mix-blend-mode: multiply; }
         .hero-center-text .label { font-size: 1rem; margin-bottom: 2rem; color: var(--color-ink-dark); }
-        .capability-row[data-cap="001"] { --cap-accent: #a1665e; }
-        .capability-row[data-cap="002"] { --cap-accent: #3d7878; }
-        .capability-row[data-cap="003"] { --cap-accent: #046363; }
-        .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+        .hero-fullbleed.hero-compact { height: clamp(96px, 13vh, 140px); }
+        .hero-compact .hero-center-text { display: flex; flex-direction: column; align-items: center; gap: 1rem; white-space: nowrap; }
+        .hero-compact .hero-center-text .label { order: 2; margin: 0; font-size: 0.8rem; }
+        .hero-compact .hero-center-text h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+        /* Capability rows: everything we do is visible without a click */
+        .cap-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 2.5rem; padding: 2.75rem 2rem; border-bottom: var(--grid-line); }
+        .cap-row .cap-number { padding-top: 0.45rem; }
+        .cap-summary { display: flex; flex-direction: column; gap: 0.9rem; }
+        .cap-row h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin: 0; }
+        .cap-row h2 a { color: inherit; text-decoration: none; }
+        .cap-row h2 a:hover { color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-subtitle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-desc { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 34rem; }
+        .cap-row .detail-link { padding: 0.25rem 0 0; margin-top: auto; }
+        .cap-row .detail-link .link-label, .cap-row .detail-link .link-arrow { font-size: 1rem; }
+        .cap-does { list-style: none; border-left: 3px solid var(--cap-accent, var(--color-terra)); align-self: start; }
+        .cap-does li { padding: 0.95rem 0 0.95rem 1.4rem; border-bottom: 1px solid var(--color-ink-lighter); }
+        .cap-does li:last-child { border-bottom: none; }
+        .cap-does strong { display: block; font-size: 1.05rem; color: var(--color-ink-darkest); margin-bottom: 0.25rem; }
+        .cap-does span { font-size: 0.88rem; line-height: 1.5; color: var(--color-neutral-dark); }
+        @media (max-width: 900px) {
+            .cap-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 2.25rem 1.2rem; }
+            .cap-row .cap-number { padding-top: 0; }
+        }
+        [data-cap="001"] { --cap-accent: #a1665e; }
+        [data-cap="002"] { --cap-accent: #3d7878; }
+        [data-cap="003"] { --cap-accent: #046363; }
+        [data-cap="004"] { --cap-accent: #7a6050; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
         .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
@@ -1016,6 +1136,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
         .cap-nav-center:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
         .cap-nav-next { justify-content: flex-end; }
+
+        /* ── Capability detail pages: one-row header, full-width sections ── */
+        header.header-detail { display: block; }
+        .detail-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; min-height: 76px; }
+        .detail-head-logo { display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; border-right: var(--grid-line); text-decoration: none; }
+        .detail-head-logo img { height: 30px; width: auto; display: block; }
+        .detail-head-logo .logo-text { font-size: 0.75rem; line-height: 1.15; }
+        .detail-head-title { position: relative; overflow: hidden; background: var(--color-ink-darkest); border-bottom: 3px solid var(--color-terra); display: flex; align-items: baseline; gap: 0.9rem; padding: 0 1.8rem; align-content: center; flex-wrap: wrap; }
+        .detail-head-title > * { position: relative; z-index: 1; }
+        .detail-head-title .hero-detail-moire { position: absolute; z-index: 0; }
+        .detail-head-crumb { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-light); text-decoration: none; align-self: center; }
+        .detail-head-crumb:hover { color: #fff; }
+        .detail-head-title h1 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1; letter-spacing: -0.04em; color: #fff; margin: 0; align-self: center; }
+        .detail-head-nav { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.5rem; border-left: var(--grid-line); }
+        .detail-head-nav a { font-size: 0.75rem; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
+        .detail-head-nav a:hover, .detail-head-nav a[aria-current] { color: var(--color-terra); }
+        .detail-head-nav a[aria-current] { text-decoration: underline; font-weight: 600; }
+
+        /* Shared section styles */
+        .cap-lead { padding: 2.5rem 2rem 2.25rem; border-bottom: var(--grid-line); }
+        .cap-lead p { font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.5; letter-spacing: -0.01em; color: var(--color-ink-darkest); max-width: 64rem; }
+        .cap-section { padding: 2.25rem 2rem 2.5rem; border-bottom: var(--grid-line); }
+        .cap-section:last-child { border-bottom: none; }
+        .cap-section-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; color: var(--color-terra); margin: 0 0 1.4rem; }
+        .cap-section-intro { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 64rem; margin-bottom: 1.25rem; }
+        .cap-card h3 { font-size: 1.2rem; line-height: 1.15; letter-spacing: -0.02em; }
+        .cap-card p { font-size: 0.95rem; line-height: 1.6; color: var(--color-neutral-dark); max-width: none; }
+        .cap-flow { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 0.6rem; }
+        .cap-flow li { display: flex; align-items: baseline; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink-darkest); }
+        .cap-flow .n { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; color: var(--color-terra); margin-right: 0.5rem; }
+        .cap-flow li:not(:last-child)::after { content: '→'; margin: 0 1.2rem; font-weight: 400; color: var(--color-ink-light); }
+        .cap-deliverables { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 2rem; }
+        .cap-deliverables li { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.8rem 0; border-bottom: 1px solid var(--color-ink-lighter); font-size: 0.95rem; line-height: 1.45; color: var(--color-ink-darkest); }
+        .cap-deliverables .d-mark { font-family: var(--font-mono); color: var(--color-terra); min-width: 1rem; }
+        .cap-deliverables li.optional { color: var(--color-ink-dark); font-style: italic; }
+        .cap-deliverables li.optional .d-mark { color: var(--color-ink-light); font-style: normal; }
+
+
+        /* Detail layout: overview band (lead + steps), accent cards, deliverables as chips */
+        .page-capability-detail .page-body { display: flex; flex-direction: column; }
+        .page-capability-detail .cap-lead { order: 0; background: #f1f8f8; border-bottom: none; padding-bottom: 1.25rem; }
+        .page-capability-detail .cap-section--how { order: 1; background: #f1f8f8; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem 1.5rem; padding-top: 0.5rem; padding-bottom: 2.25rem; }
+        .page-capability-detail .cap-section--how .cap-section-title { margin: 0; }
+        .page-capability-detail .cap-section--what { order: 2; }
+        .page-capability-detail .cap-section--deliverables { order: 3; }
+        .page-capability-detail .cap-offerings { display: flex; flex-wrap: wrap; gap: 1.75rem 2rem; }
+        .page-capability-detail .cap-card { flex: 1 1 340px; border-top: 3px solid var(--color-terra); padding-top: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables li { border: 1px solid var(--color-ink-light); border-radius: 999px; padding: 0.5rem 1rem; font-size: 0.88rem; gap: 0.5rem; }
+
+
+        @media (max-width: 1100px) {
+            .detail-head .logo-text, .detail-head-nav .nav-index { display: none; }
+            .detail-head-nav { gap: 1rem; }
+        }
+        @media (max-width: 900px) {
+            .page-capability-detail .grid-container { grid-template-columns: 1fr; }
+            .page-capability-detail .ruler-y { display: none; }
+            .page-capability-detail .main-content { grid-column: 1 / -1; min-width: 0; }
+            .page-capability-detail .ruler-x { height: 14px; }
+            .detail-head { grid-template-columns: auto 1fr; min-height: 0; }
+            .detail-head-logo { padding: 0.7rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .detail-head-logo img { height: 24px; }
+            .detail-head-nav { justify-content: flex-end; flex-wrap: wrap; min-width: 0; border-left: none; border-bottom: var(--grid-line); padding: 0.7rem 1rem; gap: 0.3rem 0.9rem; }
+            .detail-head-nav a { font-size: 0.7rem; }
+            .detail-head-title { grid-column: 1 / -1; grid-row: 2; padding: 0.85rem 1rem; gap: 0.25rem 0.6rem; }
+            .detail-head-title h1 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+            .detail-head-crumb { font-size: 0.62rem; }
+            .cap-lead { padding: 1.75rem 1rem 1.5rem; }
+            .cap-section { padding: 1.75rem 1rem 2rem; }
+            .cap-card { padding-left: 1rem; padding-right: 1rem; }
+            .page-capability-detail .cap-card { padding-left: 0; padding-right: 0; }
+            .cap-flow { flex-wrap: nowrap; }
+            .cap-flow li { font-size: clamp(0.82rem, 3.9vw, 1rem); white-space: nowrap; }
+            .cap-flow .n { display: none; }
+            .cap-flow li:not(:last-child)::after { margin: 0 0.45rem; }
+            .page-capability-detail .cap-nav-center { display: none; }
+            .page-capability-detail .cta-block { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1rem; }
+            .page-capability-detail .cta-btn { white-space: normal; text-align: center; }
+            .cap-deliverables { grid-template-columns: 1fr !important; }
+            .page-capability-detail .cap-deliverables { display: flex; }
+            .page-capability-detail .cap-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .page-capability-detail .cap-nav-prev, .page-capability-detail .cap-nav-next { padding: 0.9rem 1rem; font-size: 0.7rem; line-height: 1.4; }
+        }
+        @media (max-width: 420px) {
+            .detail-head-logo { padding: 0.7rem 0.75rem 0.7rem 1rem; }
+            .detail-head-logo img { height: 20px; }
+            .detail-head-nav { padding-left: 0.25rem; gap: 0.3rem 0.6rem; }
+            .detail-head-nav a { font-size: 0.64rem; letter-spacing: -0.01em; }
+        }
         
         .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
         .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
@@ -1109,7 +1319,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             </script>
         </xsl:if>
       </head>
-      <body>
+      <body class="page-{@id}">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1129,7 +1339,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="ruler-x" style="position: relative; z-index: 1;"></div>
             </xsl:if>
             <xsl:apply-templates select="OfferGrid" />
-            <xsl:apply-templates select="ContactForm" />
+            <xsl:apply-templates select="Offices" />
+            <xsl:apply-templates select="About" />
             <xsl:apply-templates select="SprintForm" />
             <xsl:apply-templates select="StaticHero" />
             <xsl:apply-templates select="ProjectList" />
@@ -1156,14 +1367,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <script src="/scripts/moire.js" defer="defer"></script>
           <script src="/scripts/hero-carousel.js" defer="defer"></script>
         </xsl:if>
-        <!-- Contact scripts -->
-        <xsl:if test="@id='contact'">
-          <script src="/scripts/contact.js" defer="defer"></script>
-        </xsl:if>
+        <!-- Inquiry dialog: on every page so any a[href="#inquire"] opens it in place -->
+        <xsl:call-template name="InquiryDialog" />
+        <script src="/scripts/inquiry.js" defer="defer"></script>
       
         <xsl:if test="@id='capabilities'">
           <script src="/scripts/cap-moire.js" defer="defer"></script>
-          <script src="/scripts/accordion.js" defer="defer"></script>
         </xsl:if>
 
       
@@ -1182,8 +1391,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Component Templates -->
   <xsl:template match="Header">
     <header>
+      <xsl:if test="Nav/Breadcrumbs and ../CapabilityHero"><xsl:attribute name="class">header-detail</xsl:attribute></xsl:if>
       
         <xsl:choose>
+          <xsl:when test="Nav/Breadcrumbs and ../CapabilityHero">
+            <div class="detail-head">
+              <a href="/" class="detail-head-logo" aria-label="Ajared Research home">
+                  <img src="/logo.png" alt="Ajared" />
+                  <span class="logo-text">Research Inc.</span>
+              </a>
+              <div class="detail-head-title">
+                  <canvas class="hero-detail-moire" id="heroMoire"></canvas>
+                  <a href="/capabilities/" class="detail-head-crumb">Capabilities /</a>
+                  <h1><xsl:value-of select="../CapabilityHero/Title"/></h1>
+              </div>
+              <nav class="detail-head-nav" aria-label="Main">
+                  <a href="/" class="nav-index">Index</a>
+                  <a href="/case-studies/">Case Studies</a>
+                  <a href="/capabilities/" aria-current="page">Capabilities</a>
+                  <a href="/contact/">Contact</a>
+                  <a href="https://www.ajared.ng">Read</a>
+              </nav>
+            </div>
+          </xsl:when>
           <xsl:when test="Nav/Breadcrumbs">
             <div class="header-cell" style="padding: 0.9rem 1.2rem; justify-content: center;">
               <a href="/" style="text-decoration:none;display:flex;align-items:center;">
@@ -1249,7 +1479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   </p>
                   <div>
                       <span class="label">Status</span>
-                      <p style="font-size: 0.85em;"><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><span style="color: var(--color-terra);">Open for Collaboration</span></p>
+                      <p style="font-size: 0.85em;"><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--color-terra); margin-right:7px; vertical-align:middle; position:relative; top:-1px;"></span><a href="#inquire" style="color: var(--color-terra);">Open for Collaboration</a></p>
                   </div>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1368,6 +1598,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </xsl:choose>
                 <p class="hero-sub"><xsl:copy-of select="Sub/node()"/></p>
                 <a href="{CTA/@href}" class="btn btn-stacked">
+                  <xsl:if test="CTA/@service"><xsl:attribute name="data-service"><xsl:value-of select="CTA/@service"/></xsl:attribute></xsl:if>
                   <span class="btn-label"><xsl:value-of select="CTA"/></span>
                   <xsl:if test="CTA/@hint">
                     <span class="btn-hint"><xsl:value-of select="CTA/@hint"/></span>
@@ -1428,6 +1659,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </xsl:if>
         </div>
         <a href="{@href}">
+            <xsl:if test="@service"><xsl:attribute name="data-service"><xsl:value-of select="@service"/></xsl:attribute></xsl:if>
             <xsl:choose>
                 <xsl:when test="position() = 1">
                     <xsl:attribute name="style">text-decoration: none; color: inherit; display: block; margin-top: 1rem;</xsl:attribute>
@@ -1457,43 +1689,145 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </xsl:template>
 
 
-  <xsl:template match="ContactForm">
-    <section class="form-section">
-      <div class="form-left">
-          <span class="label">Contact</span>
-          <h1>New Inquiry</h1>
-          <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
-              <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc" />
-              <input type="hidden" name="_replyto" value="" />
-              <div class="instrument-field">
-                  <span class="label">01 / Principal Contact</span>
-                  <input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual" />
-              </div>
-              <div class="instrument-field">
-                  <span class="label">02 / Email</span>
-                  <input type="email" name="email" required="required" class="instrument-input" placeholder="your-email@domain.com" />
-              </div>
-              <div class="instrument-field" id="deliverable-field" style="display: none;">
-                  <span class="label">03 / Specific Deliverable (Optional)</span>
-                  <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
-                      <option value="">Select a deliverable...</option>
-                  </select>
-              </div>
-              <div class="instrument-field">
-                  <span class="label" id="scope-label">03 / Project Scope / Brief</span>
-                  <textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
-              </div>
-              <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
-              <button type="submit" class="btn-submit" id="submit-btn">Send Message ↗</button>
-          </form>
+  <!-- Inquiry form as a dialog. Rendered on every page; scripts/inquiry.js opens it
+       from any a[href="#inquire"] (optionally with data-service) or a #inquire URL hash. -->
+  <xsl:template name="InquiryDialog">
+    <dialog class="inquiry" id="inquire" aria-labelledby="inquiry-title">
+      <div class="inquiry-bar">
+          <span class="label">New Inquiry <span class="inquiry-re" id="inquiry-re"></span></span>
+          <button type="button" class="inquiry-close" id="inquiry-close" aria-label="Close inquiry form">Close ✕</button>
       </div>
-      <div class="form-right">
-          <div style="margin-top: 4rem;">
-              <span class="label">Response Times</span>
-              <p>We typically respond within 48–72 hours.</p>
-          </div>
+      <div class="form-section">
+        <div class="form-left">
+            <h2 id="inquiry-title">Start a conversation.</h2>
+            <form id="inquiry-form" action="https://formspree.io/f/mrearkjn" method="POST">
+                <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc" />
+                <input type="hidden" name="_replyto" value="" />
+                <input type="hidden" name="service" id="inquiry-service" value="" />
+                <input type="hidden" name="page" id="inquiry-page" value="" />
+                <div class="instrument-field">
+                    <label class="label" for="inquiry-name">01 / Principal Contact</label>
+                    <input type="text" name="name" id="inquiry-name" required="required" autocomplete="name" class="instrument-input" placeholder="Organization or Individual" />
+                </div>
+                <div class="instrument-field">
+                    <label class="label" for="inquiry-email">02 / Email</label>
+                    <input type="email" name="email" id="inquiry-email" required="required" autocomplete="email" class="instrument-input" placeholder="your-email@domain.com" />
+                </div>
+                <div class="instrument-field" id="inquiry-deliverable-field" hidden="hidden">
+                    <label class="label" for="inquiry-deliverable">03 / Specific Deliverable (Optional)</label>
+                    <select name="deliverable" id="inquiry-deliverable" class="instrument-input">
+                        <option value="">Select a deliverable...</option>
+                    </select>
+                </div>
+                <div class="instrument-field">
+                    <label class="label" for="inquiry-message" id="inquiry-scope-label">03 / Project Scope / Brief</label>
+                    <textarea name="message" id="inquiry-message" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
+                </div>
+                <div id="inquiry-status" role="status" aria-live="polite" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+                <button type="submit" class="btn-submit" id="inquiry-submit">Send Message ↗</button>
+            </form>
+        </div>
+        <div class="form-right">
+            <div>
+                <span class="label">Response Times</span>
+                <p>We typically respond within 48–72 hours.</p>
+            </div>
+            <div class="inquiry-direct">
+                <span class="label">Or reach us directly</span>
+                <p>
+                    <span class="city">Toronto</span>
+                    <a href="tel:+16136613550">+1 613 661 3550</a><br/>
+                    <a href="mailto:innovation@ajared.ca">innovation@ajared.ca</a>
+                    <span class="city">Abuja</span>
+                    <a href="tel:+2348050644454">+234 805 064 4454</a><br/>
+                    <a href="mailto:emeka@ajared.ng">emeka@ajared.ng</a>
+                </p>
+            </div>
+            <div>
+                <span class="label">Prefer to talk?</span>
+                <p><a href="/talk/" style="color: var(--color-terra);">Book a 30-minute call →</a></p>
+            </div>
+        </div>
       </div>
+    </dialog>
+  </xsl:template>
+
+  <!-- About & Contact page: offices with click-to-call phones -->
+  <xsl:template match="Offices">
+    <section class="offices" aria-label="Offices">
+      <xsl:for-each select="Office">
+        <div class="office">
+            <span class="label"><span style="color: var(--color-terra);"><xsl:value-of select="format-number(position(), '00')"/></span> — <xsl:value-of select="@country"/></span>
+            <h2><xsl:value-of select="@city"/></h2>
+            <span class="office-coords"><xsl:value-of select="@lat"/>, <xsl:value-of select="@lng"/></span>
+            <div class="office-lines">
+                <span class="label">Phone</span>
+                <a href="tel:{@tel}"><xsl:value-of select="@phone"/></a>
+                <span class="label">Email</span>
+                <a href="mailto:{@email}"><xsl:value-of select="@email"/></a>
+                <xsl:if test="Address">
+                  <span class="label">Address</span>
+                  <address><xsl:copy-of select="Address/node()"/></address>
+                </xsl:if>
+            </div>
+        </div>
+      </xsl:for-each>
     </section>
+    <xsl:if test="Actions">
+      <div class="contact-actions">
+          <p><xsl:copy-of select="Actions/Lead/node()"/></p>
+          <xsl:for-each select="Actions/Action">
+            <a href="{@href}">
+              <xsl:attribute name="class">btn<xsl:if test="@primary='true'"> btn-solid</xsl:if></xsl:attribute>
+              <xsl:value-of select="."/>
+            </a>
+          </xsl:for-each>
+      </div>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- About & Contact page: short About drawn from the V/TO -->
+  <xsl:template match="About">
+    <section class="about-intro" id="about">
+        <div>
+            <span class="label">About Ajared</span>
+            <h2><xsl:copy-of select="Purpose/node()"/></h2>
+        </div>
+        <div>
+            <xsl:for-each select="Intro/P">
+              <p><xsl:copy-of select="node()"/></p>
+            </xsl:for-each>
+        </div>
+    </section>
+    <xsl:for-each select="Group">
+      <section class="about-row">
+          <div class="about-row-label">
+              <span class="label"><xsl:value-of select="@title"/></span>
+              <xsl:if test="@note"><p><xsl:value-of select="@note"/></p></xsl:if>
+          </div>
+          <div class="about-cells">
+            <xsl:for-each select="Item">
+              <div class="about-cell">
+                  <span class="n"><xsl:value-of select="format-number(position(), '00')"/></span>
+                  <h3>
+                    <xsl:choose>
+                      <xsl:when test="../@initials='true'"><span class="initial"><xsl:value-of select="substring(@name, 1, 1)"/></span><xsl:value-of select="substring(@name, 2)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+                    </xsl:choose>
+                  </h3>
+                  <p><xsl:copy-of select="node()"/></p>
+                  <xsl:if test="@href"><a href="{@href}"><xsl:value-of select="@link"/> →</a></xsl:if>
+              </div>
+            </xsl:for-each>
+          </div>
+      </section>
+    </xsl:for-each>
+    <xsl:if test="Guarantee">
+      <section class="about-guarantee">
+          <span class="label">Our Guarantee</span>
+          <p><xsl:copy-of select="Guarantee/node()"/></p>
+      </section>
+    </xsl:if>
   </xsl:template>
 
 
@@ -1529,6 +1863,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <xsl:template match="CapHero">
     <section class="hero-fullbleed">
+        <xsl:if test="@compact='true'"><xsl:attribute name="class">hero-fullbleed hero-compact</xsl:attribute></xsl:if>
         <canvas class="moire-canvas" id="moireCanvas"></canvas>
         <div class="hero-center-text">
             <span class="label"><xsl:value-of select="@label"/></span>
@@ -1555,30 +1890,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </xsl:template>
 
   <xsl:template match="Capability">
-    <xsl:variable name="idx"><xsl:value-of select="position() - 1"/></xsl:variable>
-
-    <div class="capability-row" data-cap="{@number}">
-        <div class="capability-header" onclick="toggleCap({$idx})" id="header-{$idx}">
-            <span class="cap-number"><xsl:value-of select="@number"/></span>
-            <span class="cap-title"><xsl:value-of select="@title"/></span>
-            <span class="cap-subtitle"><xsl:value-of select="@subtitle"/></span>
-            <span class="cap-toggle" id="toggle-{$idx}">+</span>
+    <article class="cap-row" data-cap="{@number}">
+        <span class="cap-number"><xsl:value-of select="@number"/></span>
+        <div class="cap-summary">
+            <h2><a href="{@href}"><xsl:value-of select="@title"/></a></h2>
+            <span class="cap-subtitle label"><xsl:value-of select="@subtitle"/></span>
+            <p class="cap-desc"><xsl:copy-of select="Description/node()"/></p>
+            <a href="{@href}" class="detail-link">
+                <span class="link-label">How we work</span>
+                <span class="link-arrow">↗</span>
+            </a>
         </div>
-        <div class="header-peek" id="peek-{$idx}"><xsl:value-of select="Peek"/></div>
-        <div class="capability-detail" id="detail-{$idx}">
-            <div class="detail-inner">
-                <p class="detail-brief"><xsl:copy-of select="Description/node()"/></p>
-                <div class="detail-block detail-row-link">
-                    <a href="{@href}" class="detail-link">
-                        <span class="link-label">Learn more</span>
-                        <span class="link-arrow">↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+        <ul class="cap-does" aria-label="What we do in {@title}">
+          <xsl:for-each select="Does/Do">
+            <li><strong><xsl:value-of select="@name"/></strong><span><xsl:copy-of select="node()"/></span></li>
+          </xsl:for-each>
+        </ul>
+    </article>
   </xsl:template>
-
 
   <xsl:template match="DeliverableList">
     <div class="deliverable-list">
@@ -1598,6 +1927,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </xsl:template>
 
+  <xsl:template match="CapabilityHero[../Header/Nav/Breadcrumbs]" />
   <xsl:template match="CapabilityHero">
     <div class="hero-detail">
       <canvas class="hero-detail-moire" id="heroMoire"></canvas>
@@ -1609,119 +1939,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <xsl:template match="PageBody">
     <div class="page-body">
+      <xsl:if test="Section[1]/Intro">
+        <div class="cap-lead">
+          <xsl:for-each select="Section[1]/Intro/p"><p><xsl:copy-of select="node()"/></p></xsl:for-each>
+        </div>
+      </xsl:if>
       <xsl:apply-templates select="Section" />
     </div>
   </xsl:template>
 
   <xsl:template match="Section">
-    <div class="essay-section">
-      <div class="essay-section-label"><xsl:value-of select="@title"/></div>
-      <!-- Main content column -->
-      <div class="essay-main">
-        <xsl:copy-of select="Intro/node()"/>
-        <xsl:apply-templates select="Offerings" />
-        <xsl:apply-templates select="Process" />
-        <!-- Deliverables render in main only when no Intro exists; otherwise they migrate to sidenote -->
-        <xsl:if test="not(Intro)">
-          <xsl:apply-templates select="Deliverables" />
-        </xsl:if>
-      </div>
-      <!-- Margin / sidenote column -->
-      <div class="sidenote">
-        <xsl:choose>
-          <xsl:when test="Offerings">
-            <span class="sidenote-heading">Disciplines</span>
-            <xsl:for-each select="Offerings/Offering">
-              <div class="sidenote-item"><xsl:value-of select="Title"/></div>
-            </xsl:for-each>
-          </xsl:when>
-          <xsl:when test="Process">
-            <span class="sidenote-heading">Steps</span>
-            <xsl:for-each select="Process/Step">
-              <div class="sidenote-item">
-                <span class="sidenote-item-num"><xsl:value-of select="@num"/></span>
-                <xsl:value-of select="Title"/>
-              </div>
-            </xsl:for-each>
-          </xsl:when>
-          <!-- Deliverables section: when Intro is present, the list lives here -->
-          <!-- Uses @label attribute for short sidenote display; falls back to full text -->
-          <xsl:when test="Deliverables and Intro">
-            <span class="sidenote-heading">Included</span>
-            <xsl:for-each select="Deliverables/Row">
-              <xsl:choose>
-                <xsl:when test="@checked='false'">
-                  <div class="sidenote-item sidenote-item--opt">
-                    <xsl:choose>
-                      <xsl:when test="@label"><xsl:value-of select="@label"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
-                    </xsl:choose>
-                  </div>
-                </xsl:when>
-                <xsl:otherwise>
-                  <div class="sidenote-item">
-                    <xsl:choose>
-                      <xsl:when test="@label"><xsl:value-of select="@label"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
-                    </xsl:choose>
-                  </div>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:for-each>
-          </xsl:when>
-          <!-- Deliverables section: fallback when no Intro, sidenote shows count label -->
-          <xsl:when test="Deliverables">
-            <span class="sidenote-heading">Included</span>
-            <xsl:for-each select="Deliverables/Row[@checked='true']">
-              <div class="sidenote-item"><xsl:value-of select="."/></div>
-            </xsl:for-each>
-          </xsl:when>
-        </xsl:choose>
-      </div>
-    </div>
+    <section>
+      <xsl:attribute name="class">cap-section cap-section--<xsl:choose>
+          <xsl:when test="Offerings">what</xsl:when>
+          <xsl:when test="Process">how</xsl:when>
+          <xsl:otherwise>deliverables</xsl:otherwise>
+        </xsl:choose></xsl:attribute>
+      <h2 class="cap-section-title"><xsl:value-of select="@title"/></h2>
+      <xsl:if test="position() != 1">
+        <xsl:for-each select="Intro/p"><p class="cap-section-intro"><xsl:copy-of select="node()"/></p></xsl:for-each>
+      </xsl:if>
+      <xsl:apply-templates select="Offerings" />
+      <xsl:apply-templates select="Process" />
+      <xsl:apply-templates select="Deliverables" />
+    </section>
   </xsl:template>
 
   <xsl:template match="Offerings">
-    <div class="essay-offerings">
+    <div class="cap-offerings">
       <xsl:for-each select="Offering">
-        <p class="essay-offering-para">
-          <strong><xsl:value-of select="Title"/></strong>&#160;&#8212;&#160;<xsl:copy-of select="Description/node()"/>
-        </p>
+        <div class="cap-card">
+          <h3><xsl:value-of select="Title"/></h3>
+          <p><xsl:copy-of select="Description/node()"/></p>
+        </div>
       </xsl:for-each>
     </div>
   </xsl:template>
 
+  <!-- How we work: one line of step names -->
   <xsl:template match="Process">
-    <ol class="essay-steps">
+    <ol class="cap-flow">
       <xsl:for-each select="Step">
-        <li>
-          <strong><xsl:value-of select="Title"/></strong>
-          <xsl:copy-of select="Description/node()"/>
-        </li>
+        <li><span class="n"><xsl:value-of select="@num"/></span><xsl:value-of select="Title"/></li>
       </xsl:for-each>
     </ol>
   </xsl:template>
 
   <xsl:template match="Deliverables">
-    <div class="essay-deliverables">
+    <ul class="cap-deliverables">
       <xsl:for-each select="Row">
-        <div>
-          <xsl:attribute name="class">
-            <xsl:choose>
-              <xsl:when test="@checked='false'">essay-deliverable optional</xsl:when>
-              <xsl:otherwise>essay-deliverable</xsl:otherwise>
-            </xsl:choose>
-          </xsl:attribute>
-          <span class="d-mark">
+        <li>
+          <xsl:if test="@checked='false'"><xsl:attribute name="class">optional</xsl:attribute></xsl:if>
+          <span class="d-mark" aria-hidden="true">
             <xsl:choose>
               <xsl:when test="@checked='false'">+</xsl:when>
-              <xsl:otherwise>&#8212;</xsl:otherwise>
+              <xsl:otherwise>✓</xsl:otherwise>
             </xsl:choose>
           </span>
-          <xsl:value-of select="."/>
-        </div>
+          <span><xsl:value-of select="."/></span>
+        </li>
       </xsl:for-each>
-    </div>
+    </ul>
   </xsl:template>
 
   <xsl:template match="CapNav">
@@ -1757,6 +2035,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </xsl:if>
       </div>
       <a href="{Button/@href}" style="text-decoration:none;">
+        <xsl:if test="Button/@service"><xsl:attribute name="data-service"><xsl:value-of select="Button/@service"/></xsl:attribute></xsl:if>
         <div class="cta-btn"><xsl:value-of select="Button"/></div>
       </a>
     </div>

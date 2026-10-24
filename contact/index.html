@@ -13,18 +13,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
-<title>Contact — Ajared Research Inc</title>
-<meta name="description" content="Get in touch with Ajared Research Inc. Start a conversation about applied AI, enterprise agents, or your next AI initiative.">
+<title>About &amp; Contact — Ajared Research Inc</title>
+<meta name="description" content="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ajared.ca/contact/">
-<meta property="og:title" content="Contact — Ajared Research Inc">
-<meta property="og:description" content="Get in touch with Ajared Research Inc. Start a conversation about applied AI, enterprise agents, or your next AI initiative.">
+<meta property="og:title" content="About &amp; Contact — Ajared Research Inc">
+<meta property="og:description" content="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses.">
 <meta property="og:image" content="https://ajared.ca/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact — Ajared Research Inc">
-<meta name="twitter:description" content="Get in touch with Ajared Research Inc. Start a conversation about applied AI, enterprise agents, or your next AI initiative.">
+<meta name="twitter:title" content="About &amp; Contact — Ajared Research Inc">
+<meta name="twitter:description" content="Call or email Ajared Research Inc. in Toronto (+1 613 661 3550) or Abuja (+234 805 064 4454). An applied research and product studio that builds data products and information systems for businesses.">
 <meta name="twitter:image" content="https://ajared.ca/social-card.png">
 <style>
         /* iA Writer Quattro S Font */
@@ -787,6 +787,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
         .brief-textarea::placeholder { color: var(--color-ink-light); }
 
+        /* Inquiry dialog: the inquiry form, opened from any a[href="#inquire"] */
+        :root:has(.inquiry[open]) { overflow: hidden; }
+        .inquiry { border: none; padding: 0; margin: auto; width: min(1040px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); background: var(--color-bg); color: var(--color-ink); border-top: 3px solid var(--color-terra); border-radius: var(--radius-sm); box-shadow: 0 30px 80px rgba(2, 59, 59, 0.35); overflow: auto; overscroll-behavior: contain; }
+        .inquiry:focus { outline: none; }
+        .inquiry::backdrop { background: rgba(2, 59, 59, 0.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+        .inquiry[open] { animation: inquiryIn 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .inquiry[open]::backdrop { animation: inquiryFade 0.28s ease; }
+        @keyframes inquiryIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+        @keyframes inquiryFade { from { opacity: 0; } to { opacity: 1; } }
+        .inquiry-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 2rem; background: var(--color-bg); border-bottom: var(--grid-line); }
+        .inquiry-bar .label { margin: 0; }
+        .inquiry-re { color: var(--color-terra); }
+        .inquiry-close { background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-dark); padding: 0.4rem 0; }
+        .inquiry-close:hover, .inquiry-close:focus-visible { color: var(--color-terra); }
+        .inquiry .form-section { min-height: 0; }
+        .inquiry .form-left { padding: 2.5rem 2rem 2rem; }
+        .inquiry .form-left h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 0.95; margin-bottom: 2.25rem; }
+        .inquiry .instrument-field { margin-bottom: 2.25rem; }
+        .inquiry .btn-submit { padding: 1.4rem 1.5rem; font-size: 1rem; margin-top: 1rem; }
+        .inquiry .btn-submit:disabled { opacity: 0.6; }
+        .inquiry .form-right { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        .inquiry .form-right p { font-size: 0.9rem; line-height: 1.6; }
+        .inquiry-direct a { color: var(--color-ink-darkest); text-decoration: none; border-bottom: 1px solid var(--color-ink-light); }
+        .inquiry-direct a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .inquiry-direct .city { display: block; font-weight: 700; color: var(--color-ink-darkest); margin-top: 0.9rem; }
+        @media (max-width: 768px) {
+            .inquiry { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+            .inquiry-bar { padding: 0.85rem 1rem; }
+            .inquiry .form-section { grid-template-columns: 1fr; }
+            .inquiry .form-left { padding: 2rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .inquiry .form-right { padding: 2rem 1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .inquiry[open], .inquiry[open]::backdrop { animation: none; }
+        }
+
+        /* About & Contact page */
+        .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
+        .office { padding: 3rem 2rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 1.5rem; }
+        .office:last-child { border-right: none; }
+        .office h2 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; margin: 0; }
+        .office-coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
+        .office-lines { display: grid; grid-template-columns: 7rem 1fr; gap: 0.9rem 1rem; align-items: baseline; margin-top: 0.5rem; }
+        .office-lines .label { margin: 0; }
+        .office-lines a, .office-lines address { font-style: normal; font-size: 1.15rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
+        .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .contact-actions { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.5rem; padding: 2rem; border-bottom: var(--grid-line); background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
+        .contact-actions p { font-size: 1rem; color: var(--color-ink-darkest); background: var(--color-bg); justify-self: start; padding: 0.25rem 0.5rem 0.25rem 0; }
+        .contact-actions .btn { margin-top: 0; background: var(--color-bg); }
+        .contact-actions .btn:hover { background: var(--color-terra); }
+        .contact-actions .btn-solid { background: var(--color-terra); color: var(--color-bg); }
+        .contact-actions .btn-solid:hover { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); }
+        .about-intro { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--grid-line); }
+        .about-intro > div { padding: 4rem 2rem; }
+        .about-intro > div:first-child { border-right: var(--grid-line); }
+        .about-intro h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 0.95; margin: 1rem 0 0; }
+        .about-intro h2 .accent { color: var(--color-terra); }
+        .about-intro p { font-size: 1.1rem; line-height: 1.65; color: var(--color-neutral-dark); max-width: 36rem; }
+        .about-intro p + p { margin-top: 1.1rem; }
+        .about-row { display: grid; grid-template-columns: 220px 1fr; border-bottom: var(--grid-line); }
+        .about-row-label { padding: 2rem; border-right: var(--grid-line); }
+        .about-row-label .label { margin: 0; }
+        .about-row-label p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--color-ink-dark); line-height: 1.5; }
+        .about-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .about-cell { padding: 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
+        .about-cell:last-child { border-right: none; }
+        .about-cell .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-terra); letter-spacing: 0.08em; }
+        .about-cell h3 { font-size: 1.35rem; line-height: 1; }
+        .about-cell h3 .initial { color: var(--color-terra); }
+        .about-cell p { font-size: 0.92rem; line-height: 1.55; color: var(--color-neutral-dark); }
+        .about-cell a { color: var(--color-ink-dark); font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin-top: auto; padding-top: 0.5rem; }
+        .about-cell a:hover { color: var(--color-terra); }
+        .about-guarantee { background: var(--color-ink-darkest); color: #fff; padding: 2.5rem 2rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; border-top: 3px solid var(--color-terra); }
+        .about-guarantee .label { color: var(--color-terra); margin: 0; }
+        .about-guarantee p { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #fff; max-width: none; }
+        @media (max-width: 900px) {
+            .about-row, .about-guarantee { grid-template-columns: 1fr; }
+            .about-row-label { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell:last-child { border-bottom: none; }
+        }
+        @media (max-width: 768px) {
+            .offices, .about-intro { grid-template-columns: 1fr; }
+            .office { border-right: none; border-bottom: var(--grid-line); padding: 2.5rem 1rem; }
+            .office:last-child { border-bottom: none; }
+            .office-lines { grid-template-columns: 5.5rem 1fr; }
+            .about-intro > div { padding: 2.5rem 1rem; }
+            .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
+            .about-row-label, .about-cell { padding: 1.75rem 1rem; }
+            .about-guarantee { padding: 2rem 1rem; gap: 0.75rem; }
+            .contact-actions { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+            .contact-actions .btn { text-align: center; }
+        }
+
         /* Project Rows */
         .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
         .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -805,10 +900,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .hero-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; pointer-events: none; }
         .hero-center-text h1 { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--color-ink-darkest); mix-blend-mode: multiply; }
         .hero-center-text .label { font-size: 1rem; margin-bottom: 2rem; color: var(--color-ink-dark); }
-        .capability-row[data-cap="001"] { --cap-accent: #a1665e; }
-        .capability-row[data-cap="002"] { --cap-accent: #3d7878; }
-        .capability-row[data-cap="003"] { --cap-accent: #046363; }
-        .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+        .hero-fullbleed.hero-compact { height: clamp(96px, 13vh, 140px); }
+        .hero-compact .hero-center-text { display: flex; flex-direction: column; align-items: center; gap: 1rem; white-space: nowrap; }
+        .hero-compact .hero-center-text .label { order: 2; margin: 0; font-size: 0.8rem; }
+        .hero-compact .hero-center-text h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+        /* Capability rows: everything we do is visible without a click */
+        .cap-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 2.5rem; padding: 2.75rem 2rem; border-bottom: var(--grid-line); }
+        .cap-row .cap-number { padding-top: 0.45rem; }
+        .cap-summary { display: flex; flex-direction: column; gap: 0.9rem; }
+        .cap-row h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin: 0; }
+        .cap-row h2 a { color: inherit; text-decoration: none; }
+        .cap-row h2 a:hover { color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-subtitle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-desc { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 34rem; }
+        .cap-row .detail-link { padding: 0.25rem 0 0; margin-top: auto; }
+        .cap-row .detail-link .link-label, .cap-row .detail-link .link-arrow { font-size: 1rem; }
+        .cap-does { list-style: none; border-left: 3px solid var(--cap-accent, var(--color-terra)); align-self: start; }
+        .cap-does li { padding: 0.95rem 0 0.95rem 1.4rem; border-bottom: 1px solid var(--color-ink-lighter); }
+        .cap-does li:last-child { border-bottom: none; }
+        .cap-does strong { display: block; font-size: 1.05rem; color: var(--color-ink-darkest); margin-bottom: 0.25rem; }
+        .cap-does span { font-size: 0.88rem; line-height: 1.5; color: var(--color-neutral-dark); }
+        @media (max-width: 900px) {
+            .cap-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 2.25rem 1.2rem; }
+            .cap-row .cap-number { padding-top: 0; }
+        }
+        [data-cap="001"] { --cap-accent: #a1665e; }
+        [data-cap="002"] { --cap-accent: #3d7878; }
+        [data-cap="003"] { --cap-accent: #046363; }
+        [data-cap="004"] { --cap-accent: #7a6050; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
         .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
@@ -998,6 +1118,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
         .cap-nav-center:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
         .cap-nav-next { justify-content: flex-end; }
+
+        /* ── Capability detail pages: one-row header, full-width sections ── */
+        header.header-detail { display: block; }
+        .detail-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; min-height: 76px; }
+        .detail-head-logo { display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; border-right: var(--grid-line); text-decoration: none; }
+        .detail-head-logo img { height: 30px; width: auto; display: block; }
+        .detail-head-logo .logo-text { font-size: 0.75rem; line-height: 1.15; }
+        .detail-head-title { position: relative; overflow: hidden; background: var(--color-ink-darkest); border-bottom: 3px solid var(--color-terra); display: flex; align-items: baseline; gap: 0.9rem; padding: 0 1.8rem; align-content: center; flex-wrap: wrap; }
+        .detail-head-title > * { position: relative; z-index: 1; }
+        .detail-head-title .hero-detail-moire { position: absolute; z-index: 0; }
+        .detail-head-crumb { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-light); text-decoration: none; align-self: center; }
+        .detail-head-crumb:hover { color: #fff; }
+        .detail-head-title h1 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1; letter-spacing: -0.04em; color: #fff; margin: 0; align-self: center; }
+        .detail-head-nav { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.5rem; border-left: var(--grid-line); }
+        .detail-head-nav a { font-size: 0.75rem; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
+        .detail-head-nav a:hover, .detail-head-nav a[aria-current] { color: var(--color-terra); }
+        .detail-head-nav a[aria-current] { text-decoration: underline; font-weight: 600; }
+
+        /* Shared section styles */
+        .cap-lead { padding: 2.5rem 2rem 2.25rem; border-bottom: var(--grid-line); }
+        .cap-lead p { font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.5; letter-spacing: -0.01em; color: var(--color-ink-darkest); max-width: 64rem; }
+        .cap-section { padding: 2.25rem 2rem 2.5rem; border-bottom: var(--grid-line); }
+        .cap-section:last-child { border-bottom: none; }
+        .cap-section-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; color: var(--color-terra); margin: 0 0 1.4rem; }
+        .cap-section-intro { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 64rem; margin-bottom: 1.25rem; }
+        .cap-card h3 { font-size: 1.2rem; line-height: 1.15; letter-spacing: -0.02em; }
+        .cap-card p { font-size: 0.95rem; line-height: 1.6; color: var(--color-neutral-dark); max-width: none; }
+        .cap-flow { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 0.6rem; }
+        .cap-flow li { display: flex; align-items: baseline; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink-darkest); }
+        .cap-flow .n { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; color: var(--color-terra); margin-right: 0.5rem; }
+        .cap-flow li:not(:last-child)::after { content: '→'; margin: 0 1.2rem; font-weight: 400; color: var(--color-ink-light); }
+        .cap-deliverables { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 2rem; }
+        .cap-deliverables li { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.8rem 0; border-bottom: 1px solid var(--color-ink-lighter); font-size: 0.95rem; line-height: 1.45; color: var(--color-ink-darkest); }
+        .cap-deliverables .d-mark { font-family: var(--font-mono); color: var(--color-terra); min-width: 1rem; }
+        .cap-deliverables li.optional { color: var(--color-ink-dark); font-style: italic; }
+        .cap-deliverables li.optional .d-mark { color: var(--color-ink-light); font-style: normal; }
+
+
+        /* Detail layout: overview band (lead + steps), accent cards, deliverables as chips */
+        .page-capability-detail .page-body { display: flex; flex-direction: column; }
+        .page-capability-detail .cap-lead { order: 0; background: #f1f8f8; border-bottom: none; padding-bottom: 1.25rem; }
+        .page-capability-detail .cap-section--how { order: 1; background: #f1f8f8; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem 1.5rem; padding-top: 0.5rem; padding-bottom: 2.25rem; }
+        .page-capability-detail .cap-section--how .cap-section-title { margin: 0; }
+        .page-capability-detail .cap-section--what { order: 2; }
+        .page-capability-detail .cap-section--deliverables { order: 3; }
+        .page-capability-detail .cap-offerings { display: flex; flex-wrap: wrap; gap: 1.75rem 2rem; }
+        .page-capability-detail .cap-card { flex: 1 1 340px; border-top: 3px solid var(--color-terra); padding-top: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables li { border: 1px solid var(--color-ink-light); border-radius: 999px; padding: 0.5rem 1rem; font-size: 0.88rem; gap: 0.5rem; }
+
+
+        @media (max-width: 1100px) {
+            .detail-head .logo-text, .detail-head-nav .nav-index { display: none; }
+            .detail-head-nav { gap: 1rem; }
+        }
+        @media (max-width: 900px) {
+            .page-capability-detail .grid-container { grid-template-columns: 1fr; }
+            .page-capability-detail .ruler-y { display: none; }
+            .page-capability-detail .main-content { grid-column: 1 / -1; min-width: 0; }
+            .page-capability-detail .ruler-x { height: 14px; }
+            .detail-head { grid-template-columns: auto 1fr; min-height: 0; }
+            .detail-head-logo { padding: 0.7rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .detail-head-logo img { height: 24px; }
+            .detail-head-nav { justify-content: flex-end; flex-wrap: wrap; min-width: 0; border-left: none; border-bottom: var(--grid-line); padding: 0.7rem 1rem; gap: 0.3rem 0.9rem; }
+            .detail-head-nav a { font-size: 0.7rem; }
+            .detail-head-title { grid-column: 1 / -1; grid-row: 2; padding: 0.85rem 1rem; gap: 0.25rem 0.6rem; }
+            .detail-head-title h1 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+            .detail-head-crumb { font-size: 0.62rem; }
+            .cap-lead { padding: 1.75rem 1rem 1.5rem; }
+            .cap-section { padding: 1.75rem 1rem 2rem; }
+            .cap-card { padding-left: 1rem; padding-right: 1rem; }
+            .page-capability-detail .cap-card { padding-left: 0; padding-right: 0; }
+            .cap-flow { flex-wrap: nowrap; }
+            .cap-flow li { font-size: clamp(0.82rem, 3.9vw, 1rem); white-space: nowrap; }
+            .cap-flow .n { display: none; }
+            .cap-flow li:not(:last-child)::after { margin: 0 0.45rem; }
+            .page-capability-detail .cap-nav-center { display: none; }
+            .page-capability-detail .cta-block { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1rem; }
+            .page-capability-detail .cta-btn { white-space: normal; text-align: center; }
+            .cap-deliverables { grid-template-columns: 1fr !important; }
+            .page-capability-detail .cap-deliverables { display: flex; }
+            .page-capability-detail .cap-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .page-capability-detail .cap-nav-prev, .page-capability-detail .cap-nav-next { padding: 0.9rem 1rem; font-size: 0.7rem; line-height: 1.4; }
+        }
+        @media (max-width: 420px) {
+            .detail-head-logo { padding: 0.7rem 0.75rem 0.7rem 1rem; }
+            .detail-head-logo img { height: 20px; }
+            .detail-head-nav { padding-left: 0.25rem; gap: 0.3rem 0.6rem; }
+            .detail-head-nav a { font-size: 0.64rem; letter-spacing: -0.01em; }
+        }
         
         .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
         .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
@@ -1093,15 +1303,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "name": "Ajared Research Inc.",
           "url": "https://ajared.ca",
           "logo": "https://ajared.ca/logo.png",
-          "description": "An AI research and product studio helping enterprises move from AI proof-of-concept to production-ready solutions.",
+          "description": "An applied research and product studio that builds data products and information systems for businesses.",
+          "slogan": "Make things better by making better things.",
           "email": "innovation@ajared.ca",
+          "telephone": "+16136613550",
           "sameAs": ["https://ajared.ng"],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "areaServed": ["CA", "US"],
+              "telephone": "+16136613550",
+              "email": "innovation@ajared.ca",
+              "availableLanguage": "English"
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "areaServed": "NG",
+              "telephone": "+2348050644454",
+              "email": "emeka@ajared.ng",
+              "availableLanguage": "English"
+            }
+          ],
           "location": [
             {
               "@type": "Place",
               "name": "Toronto",
+              "telephone": "+16136613550",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "68 Abell St",
+                "postalCode": "M6J 0B1",
                 "addressLocality": "Toronto",
                 "addressRegion": "Ontario",
                 "addressCountry": "CA"
@@ -1110,6 +1343,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {
               "@type": "Place",
               "name": "Abuja",
+              "telephone": "+2348050644454",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Abuja",
@@ -1129,22 +1363,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
-            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://ajared.ca/contact/" }
+            { "@type": "ListItem", "position": 2, "name": "About & Contact", "item": "https://ajared.ca/contact/" }
           ]
         },
         {
-          "@type": "ContactPage",
+          "@type": ["ContactPage", "AboutPage"],
           "@id": "https://ajared.ca/contact/#webpage",
           "url": "https://ajared.ca/contact/",
-          "name": "Contact Ajared Research Inc.",
-          "description": "Get in touch with Ajared Research Inc. for collaboration on AI product development and applied research.",
+          "name": "About & Contact — Ajared Research Inc.",
+          "description": "Who Ajared Research is, how we work, and how to reach our Toronto and Abuja offices.",
           "mainEntity": { "@id": "https://ajared.ca/#organization" }
         }
       ]
     }
   </script>
 </head>
-<body>
+<body class="page-contact">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="grid-container">
 <div class="ruler-y">
@@ -1156,7 +1390,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="label" style="color: var(--color-ink);">Information Architecture</span><a href="/" style="text-decoration: none; display: block;"><img src="/logo.png" alt="Ajared Logo" style="height: 60px; width: auto; display: block; margin-bottom: 0.4rem;"><div class="logo-text" style="font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Research Inc.</div></a>
 </div>
 <div class="header-cell">
-<span class="label">Description</span><p>Start a project or ask a question.</p>
+<span class="label">Description</span><p>Who we are, how we work, and how to reach us in Toronto and Abuja.</p>
 </div>
 <div class="header-cell">
 <span class="label">Navigation</span><nav><p><a href="/">Index</a></p>
@@ -1164,30 +1398,140 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><a href="/capabilities/">Capabilities</a></p>
 <p><a href="/contact/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Contact</a></p>
 <p><a href="https://www.ajared.ng">Read</a></p></nav><div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↗</div>
-</div></header><section class="form-section"><div class="form-left">
-<span class="label">Contact</span><h1>New Inquiry</h1>
-<form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
-<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><div class="instrument-field">
-<span class="label">01 / Principal Contact</span><input type="text" name="name" required="required" class="instrument-input" placeholder="Organization or Individual">
+</div></header><section class="offices" aria-label="Offices"><div class="office">
+<span class="label"><span style="color: var(--color-terra);">01</span> — Canada</span><h2>Toronto</h2>
+<span class="office-coords">43.6332° N, 79.4141° W</span><div class="office-lines">
+<span class="label">Phone</span><a href="tel:+16136613550">+1 613 661 3550</a><span class="label">Email</span><a href="mailto:innovation@ajared.ca">innovation@ajared.ca</a><span class="label">Address</span><address>68 Abell St<br>Toronto, ON M6J 0B1</address>
+</div>
+</div>
+<div class="office">
+<span class="label"><span style="color: var(--color-terra);">02</span> — Nigeria</span><h2>Abuja</h2>
+<span class="office-coords">8.9976° N, 7.4674° E</span><div class="office-lines">
+<span class="label">Phone</span><a href="tel:+2348050644454">+234 805 064 4454</a><span class="label">Email</span><a href="mailto:emeka@ajared.ng">emeka@ajared.ng</a>
+</div>
+</div></section><div class="contact-actions">
+<p>Have a project in mind? Tell us about it. We reply within 48–72 hours.</p>
+<a href="/talk/" class="btn">Book a 30-min call</a><a href="#inquire" class="btn btn-solid">Start an inquiry ↗</a>
+</div>
+<section class="about-intro" id="about"><div>
+<span class="label">About Ajared</span><h2>Make things better by making <span class="accent">better things.</span>
+</h2>
+</div>
+<div>
+<p>Ajared Research Inc. is an applied research and product studio. We build data products and information systems for businesses, using technology to solve real business problems.</p>
+<p>We work with founder-led startups and small teams across North America and Nigeria who want AI and data working in a real product or workflow now, not another proof of concept. Over the long run we are building toward a platform of products and systems for cities.</p>
+</div></section><section class="about-row"><div class="about-row-label"><span class="label">Why Ajared</span></div>
+<div class="about-cells">
+<div class="about-cell">
+<span class="n">01</span><h3>Practical value</h3>
+<p>We cut out the fluff and deliver what is actually useful.</p>
+</div>
+<div class="about-cell">
+<span class="n">02</span><h3>End-to-end ownership</h3>
+<p>Strategy, PRD, design and build under one roof, so nothing gets lost between handoffs.</p>
+</div>
+<div class="about-cell">
+<span class="n">03</span><h3>International team</h3>
+<p>Delivery from Canada and Nigeria: high-quality work with diverse perspectives.</p>
+</div>
+</div></section><section class="about-row"><div class="about-row-label">
+<span class="label">The Ajared Way</span><p>Our proven process. Each step stands alone, so start wherever you are.</p>
+</div>
+<div class="about-cells">
+<div class="about-cell">
+<span class="n">01</span><h3>Assess</h3>
+<p>A free readiness check of your business, data and technology, with an action plan.</p>
+<a href="/ai-readiness/">Take the check →</a>
+</div>
+<div class="about-cell">
+<span class="n">02</span><h3>Advise</h3>
+<p>A 30-minute conversation with a practitioner about fit and priorities.</p>
+<a href="/talk/">Book a call →</a>
+</div>
+<div class="about-cell">
+<span class="n">03</span><h3>Shape</h3>
+<p>A PRD, user journeys and flows, so everyone knows what is being built.</p>
+</div>
+<div class="about-cell">
+<span class="n">04</span><h3>Sprint</h3>
+<p>We build and ship in four weeks.</p>
+<a href="/ai-sprint/">See the sprint →</a>
+</div>
+<div class="about-cell">
+<span class="n">05</span><h3>Enable</h3>
+<p>Learnings, embedded tools and systems, and a roadmap forward.</p>
+</div>
+</div></section><section class="about-row"><div class="about-row-label">
+<span class="label">Core Values</span><p>SIRE</p>
+</div>
+<div class="about-cells">
+<div class="about-cell">
+<span class="n">01</span><h3>
+<span class="initial">S</span>implicity</h3>
+<p>Simple is not easy, but it is still useful.</p>
+</div>
+<div class="about-cell">
+<span class="n">02</span><h3>
+<span class="initial">I</span>nnovation</h3>
+<p>Curious, always learning, improving through tiny experiments.</p>
+</div>
+<div class="about-cell">
+<span class="n">03</span><h3>
+<span class="initial">R</span>eliability</h3>
+<p>We keep our commitments, and renegotiate early when we need to.</p>
+</div>
+<div class="about-cell">
+<span class="n">04</span><h3>
+<span class="initial">E</span>xcellence</h3>
+<p>A possibility mentality, plus discipline, plus capacity.</p>
+</div>
+</div></section><section class="about-guarantee"><span class="label">Our Guarantee</span><p>We always deliver added value.</p></section><div class="footer">
+<div>
+<span class="label" style="color: var(--color-terra);">Inquiries</span><h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
+</div>
+<div style="text-align:right; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:0.5rem;">
+<p style="font-weight:700; color: var(--color-ink-darkest); max-width:none;">Applied Intelligence for Enterprises</p>
+<p>© 2026 Ajared Research Inc.</p>
+<span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
+                <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
+</div>
+</div>
+</div>
+</div>
+<dialog class="inquiry" id="inquire" aria-labelledby="inquiry-title"><div class="inquiry-bar">
+<span class="label">New Inquiry <span class="inquiry-re" id="inquiry-re"></span></span><button type="button" class="inquiry-close" id="inquiry-close" aria-label="Close inquiry form">Close ✕</button>
+</div>
+<div class="form-section">
+<div class="form-left">
+<h2 id="inquiry-title">Start a conversation.</h2>
+<form id="inquiry-form" action="https://formspree.io/f/mrearkjn" method="POST">
+<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><input type="hidden" name="service" id="inquiry-service" value=""><input type="hidden" name="page" id="inquiry-page" value=""><div class="instrument-field">
+<label class="label" for="inquiry-name">01 / Principal Contact</label><input type="text" name="name" id="inquiry-name" required="required" autocomplete="name" class="instrument-input" placeholder="Organization or Individual">
 </div>
 <div class="instrument-field">
-<span class="label">02 / Email</span><input type="email" name="email" required="required" class="instrument-input" placeholder="your-email@domain.com">
+<label class="label" for="inquiry-email">02 / Email</label><input type="email" name="email" id="inquiry-email" required="required" autocomplete="email" class="instrument-input" placeholder="your-email@domain.com">
 </div>
-<div class="instrument-field" id="deliverable-field" style="display: none;">
-<span class="label">03 / Specific Deliverable (Optional)</span><select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;"><option value="">Select a deliverable...</option></select>
+<div class="instrument-field" id="inquiry-deliverable-field" hidden="hidden">
+<label class="label" for="inquiry-deliverable">03 / Specific Deliverable (Optional)</label><select name="deliverable" id="inquiry-deliverable" class="instrument-input"><option value="">Select a deliverable...</option></select>
 </div>
 <div class="instrument-field">
-<span class="label" id="scope-label">03 / Project Scope / Brief</span><textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
+<label class="label" for="inquiry-message" id="inquiry-scope-label">03 / Project Scope / Brief</label><textarea name="message" id="inquiry-message" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
 </div>
-<div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
-<button type="submit" class="btn-submit" id="submit-btn">Send Message ↗</button>
+<div id="inquiry-status" role="status" aria-live="polite" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+<button type="submit" class="btn-submit" id="inquiry-submit">Send Message ↗</button>
 </form>
 </div>
-<div class="form-right"><div style="margin-top: 4rem;">
+<div class="form-right">
+<div>
 <span class="label">Response Times</span><p>We typically respond within 48–72 hours.</p>
-</div></div></section>
+</div>
+<div class="inquiry-direct">
+<span class="label">Or reach us directly</span><p><span class="city">Toronto</span><a href="tel:+16136613550">+1 613 661 3550</a><br><a href="mailto:innovation@ajared.ca">innovation@ajared.ca</a><span class="city">Abuja</span><a href="tel:+2348050644454">+234 805 064 4454</a><br><a href="mailto:emeka@ajared.ng">emeka@ajared.ng</a></p>
+</div>
+<div>
+<span class="label">Prefer to talk?</span><p><a href="/talk/" style="color: var(--color-terra);">Book a 30-minute call →</a></p>
 </div>
 </div>
-<script src="/scripts/contact.js" defer></script>
+</div></dialog><script src="/scripts/inquiry.js" defer></script>
 </body>
 </html>

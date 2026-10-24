@@ -158,7 +158,7 @@
 
   <CTABlock>
     <Title>Ready to automate the right things?</Title>
-    <Button href="/contact/">Get in touch &#8594;</Button>
+    <Button href="#inquire" service="Enterprise AI Agents">Get in touch &#8594;</Button>
   </CTABlock>
 
   <Footer email="innovation@ajared.ca" year="2026" />

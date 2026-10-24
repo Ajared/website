@@ -787,6 +787,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .brief-textarea:focus { border-color: #a1665e; box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1); }
         .brief-textarea::placeholder { color: var(--color-ink-light); }
 
+        /* Inquiry dialog: the inquiry form, opened from any a[href="#inquire"] */
+        :root:has(.inquiry[open]) { overflow: hidden; }
+        .inquiry { border: none; padding: 0; margin: auto; width: min(1040px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); background: var(--color-bg); color: var(--color-ink); border-top: 3px solid var(--color-terra); border-radius: var(--radius-sm); box-shadow: 0 30px 80px rgba(2, 59, 59, 0.35); overflow: auto; overscroll-behavior: contain; }
+        .inquiry:focus { outline: none; }
+        .inquiry::backdrop { background: rgba(2, 59, 59, 0.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+        .inquiry[open] { animation: inquiryIn 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .inquiry[open]::backdrop { animation: inquiryFade 0.28s ease; }
+        @keyframes inquiryIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+        @keyframes inquiryFade { from { opacity: 0; } to { opacity: 1; } }
+        .inquiry-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 2rem; background: var(--color-bg); border-bottom: var(--grid-line); }
+        .inquiry-bar .label { margin: 0; }
+        .inquiry-re { color: var(--color-terra); }
+        .inquiry-close { background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-dark); padding: 0.4rem 0; }
+        .inquiry-close:hover, .inquiry-close:focus-visible { color: var(--color-terra); }
+        .inquiry .form-section { min-height: 0; }
+        .inquiry .form-left { padding: 2.5rem 2rem 2rem; }
+        .inquiry .form-left h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 0.95; margin-bottom: 2.25rem; }
+        .inquiry .instrument-field { margin-bottom: 2.25rem; }
+        .inquiry .btn-submit { padding: 1.4rem 1.5rem; font-size: 1rem; margin-top: 1rem; }
+        .inquiry .btn-submit:disabled { opacity: 0.6; }
+        .inquiry .form-right { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        .inquiry .form-right p { font-size: 0.9rem; line-height: 1.6; }
+        .inquiry-direct a { color: var(--color-ink-darkest); text-decoration: none; border-bottom: 1px solid var(--color-ink-light); }
+        .inquiry-direct a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .inquiry-direct .city { display: block; font-weight: 700; color: var(--color-ink-darkest); margin-top: 0.9rem; }
+        @media (max-width: 768px) {
+            .inquiry { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+            .inquiry-bar { padding: 0.85rem 1rem; }
+            .inquiry .form-section { grid-template-columns: 1fr; }
+            .inquiry .form-left { padding: 2rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .inquiry .form-right { padding: 2rem 1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .inquiry[open], .inquiry[open]::backdrop { animation: none; }
+        }
+
+        /* About & Contact page */
+        .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
+        .office { padding: 3rem 2rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 1.5rem; }
+        .office:last-child { border-right: none; }
+        .office h2 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; margin: 0; }
+        .office-coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
+        .office-lines { display: grid; grid-template-columns: 7rem 1fr; gap: 0.9rem 1rem; align-items: baseline; margin-top: 0.5rem; }
+        .office-lines .label { margin: 0; }
+        .office-lines a, .office-lines address { font-style: normal; font-size: 1.15rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
+        .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+        .contact-actions { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 1.5rem; padding: 2rem; border-bottom: var(--grid-line); background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0); background-size: 40px 40px; }
+        .contact-actions p { font-size: 1rem; color: var(--color-ink-darkest); background: var(--color-bg); justify-self: start; padding: 0.25rem 0.5rem 0.25rem 0; }
+        .contact-actions .btn { margin-top: 0; background: var(--color-bg); }
+        .contact-actions .btn:hover { background: var(--color-terra); }
+        .contact-actions .btn-solid { background: var(--color-terra); color: var(--color-bg); }
+        .contact-actions .btn-solid:hover { background: var(--color-ink-darkest); border-color: var(--color-ink-darkest); }
+        .about-intro { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--grid-line); }
+        .about-intro > div { padding: 4rem 2rem; }
+        .about-intro > div:first-child { border-right: var(--grid-line); }
+        .about-intro h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 0.95; margin: 1rem 0 0; }
+        .about-intro h2 .accent { color: var(--color-terra); }
+        .about-intro p { font-size: 1.1rem; line-height: 1.65; color: var(--color-neutral-dark); max-width: 36rem; }
+        .about-intro p + p { margin-top: 1.1rem; }
+        .about-row { display: grid; grid-template-columns: 220px 1fr; border-bottom: var(--grid-line); }
+        .about-row-label { padding: 2rem; border-right: var(--grid-line); }
+        .about-row-label .label { margin: 0; }
+        .about-row-label p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--color-ink-dark); line-height: 1.5; }
+        .about-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .about-cell { padding: 2rem 1.5rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.6rem; }
+        .about-cell:last-child { border-right: none; }
+        .about-cell .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-terra); letter-spacing: 0.08em; }
+        .about-cell h3 { font-size: 1.35rem; line-height: 1; }
+        .about-cell h3 .initial { color: var(--color-terra); }
+        .about-cell p { font-size: 0.92rem; line-height: 1.55; color: var(--color-neutral-dark); }
+        .about-cell a { color: var(--color-ink-dark); font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin-top: auto; padding-top: 0.5rem; }
+        .about-cell a:hover { color: var(--color-terra); }
+        .about-guarantee { background: var(--color-ink-darkest); color: #fff; padding: 2.5rem 2rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; border-top: 3px solid var(--color-terra); }
+        .about-guarantee .label { color: var(--color-terra); margin: 0; }
+        .about-guarantee p { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #fff; max-width: none; }
+        @media (max-width: 900px) {
+            .about-row, .about-guarantee { grid-template-columns: 1fr; }
+            .about-row-label { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell { border-right: none; border-bottom: var(--grid-line); }
+            .about-cell:last-child { border-bottom: none; }
+        }
+        @media (max-width: 768px) {
+            .offices, .about-intro { grid-template-columns: 1fr; }
+            .office { border-right: none; border-bottom: var(--grid-line); padding: 2.5rem 1rem; }
+            .office:last-child { border-bottom: none; }
+            .office-lines { grid-template-columns: 5.5rem 1fr; }
+            .about-intro > div { padding: 2.5rem 1rem; }
+            .about-intro > div:first-child { border-right: none; border-bottom: var(--grid-line); }
+            .about-row-label, .about-cell { padding: 1.75rem 1rem; }
+            .about-guarantee { padding: 2rem 1rem; gap: 0.75rem; }
+            .contact-actions { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+            .contact-actions .btn { text-align: center; }
+        }
+
         /* Project Rows */
         .moire-static { position: absolute; top: 50%; right: -10%; width: 600px; height: 600px; border-radius: 50%; border: 2px solid var(--color-ink); opacity: 0.15; pointer-events: none; }
         .calibration-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -805,10 +900,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .hero-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; pointer-events: none; }
         .hero-center-text h1 { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--color-ink-darkest); mix-blend-mode: multiply; }
         .hero-center-text .label { font-size: 1rem; margin-bottom: 2rem; color: var(--color-ink-dark); }
-        .capability-row[data-cap="001"] { --cap-accent: #a1665e; }
-        .capability-row[data-cap="002"] { --cap-accent: #3d7878; }
-        .capability-row[data-cap="003"] { --cap-accent: #046363; }
-        .capability-row[data-cap="004"] { --cap-accent: #7a6050; }
+        .hero-fullbleed.hero-compact { height: clamp(96px, 13vh, 140px); }
+        .hero-compact .hero-center-text { display: flex; flex-direction: column; align-items: center; gap: 1rem; white-space: nowrap; }
+        .hero-compact .hero-center-text .label { order: 2; margin: 0; font-size: 0.8rem; }
+        .hero-compact .hero-center-text h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+        /* Capability rows: everything we do is visible without a click */
+        .cap-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 2.5rem; padding: 2.75rem 2rem; border-bottom: var(--grid-line); }
+        .cap-row .cap-number { padding-top: 0.45rem; }
+        .cap-summary { display: flex; flex-direction: column; gap: 0.9rem; }
+        .cap-row h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin: 0; }
+        .cap-row h2 a { color: inherit; text-decoration: none; }
+        .cap-row h2 a:hover { color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-subtitle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cap-accent, var(--color-terra)); }
+        .cap-row .cap-desc { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 34rem; }
+        .cap-row .detail-link { padding: 0.25rem 0 0; margin-top: auto; }
+        .cap-row .detail-link .link-label, .cap-row .detail-link .link-arrow { font-size: 1rem; }
+        .cap-does { list-style: none; border-left: 3px solid var(--cap-accent, var(--color-terra)); align-self: start; }
+        .cap-does li { padding: 0.95rem 0 0.95rem 1.4rem; border-bottom: 1px solid var(--color-ink-lighter); }
+        .cap-does li:last-child { border-bottom: none; }
+        .cap-does strong { display: block; font-size: 1.05rem; color: var(--color-ink-darkest); margin-bottom: 0.25rem; }
+        .cap-does span { font-size: 0.88rem; line-height: 1.5; color: var(--color-neutral-dark); }
+        @media (max-width: 900px) {
+            .cap-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 2.25rem 1.2rem; }
+            .cap-row .cap-number { padding-top: 0; }
+        }
+        [data-cap="001"] { --cap-accent: #a1665e; }
+        [data-cap="002"] { --cap-accent: #3d7878; }
+        [data-cap="003"] { --cap-accent: #046363; }
+        [data-cap="004"] { --cap-accent: #7a6050; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .capability-row { display: grid; grid-template-columns: 80px 2fr 1fr 60px; border-bottom: var(--grid-line); align-items: center; padding: 0; transition: background 0.3s, color 0.3s; overflow: hidden; }
         .capability-header { display: grid; grid-template-columns: 80px 2fr 1fr 60px; grid-column: 1 / -1; padding: 2rem; align-items: center; transition: background 0.3s, color 0.3s; cursor: crosshair; color: inherit; }
@@ -998,6 +1118,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .cap-nav-center { border-left: var(--grid-line); border-right: var(--grid-line); justify-content: center; color: var(--color-ink); }
         .cap-nav-center:hover { color: var(--color-terra); background: rgba(218, 234, 234, 0.5); }
         .cap-nav-next { justify-content: flex-end; }
+
+        /* ── Capability detail pages: one-row header, full-width sections ── */
+        header.header-detail { display: block; }
+        .detail-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; min-height: 76px; }
+        .detail-head-logo { display: flex; align-items: center; gap: 0.6rem; padding: 0 1.5rem; border-right: var(--grid-line); text-decoration: none; }
+        .detail-head-logo img { height: 30px; width: auto; display: block; }
+        .detail-head-logo .logo-text { font-size: 0.75rem; line-height: 1.15; }
+        .detail-head-title { position: relative; overflow: hidden; background: var(--color-ink-darkest); border-bottom: 3px solid var(--color-terra); display: flex; align-items: baseline; gap: 0.9rem; padding: 0 1.8rem; align-content: center; flex-wrap: wrap; }
+        .detail-head-title > * { position: relative; z-index: 1; }
+        .detail-head-title .hero-detail-moire { position: absolute; z-index: 0; }
+        .detail-head-crumb { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-light); text-decoration: none; align-self: center; }
+        .detail-head-crumb:hover { color: #fff; }
+        .detail-head-title h1 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1; letter-spacing: -0.04em; color: #fff; margin: 0; align-self: center; }
+        .detail-head-nav { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.5rem; border-left: var(--grid-line); }
+        .detail-head-nav a { font-size: 0.75rem; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
+        .detail-head-nav a:hover, .detail-head-nav a[aria-current] { color: var(--color-terra); }
+        .detail-head-nav a[aria-current] { text-decoration: underline; font-weight: 600; }
+
+        /* Shared section styles */
+        .cap-lead { padding: 2.5rem 2rem 2.25rem; border-bottom: var(--grid-line); }
+        .cap-lead p { font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.5; letter-spacing: -0.01em; color: var(--color-ink-darkest); max-width: 64rem; }
+        .cap-section { padding: 2.25rem 2rem 2.5rem; border-bottom: var(--grid-line); }
+        .cap-section:last-child { border-bottom: none; }
+        .cap-section-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; color: var(--color-terra); margin: 0 0 1.4rem; }
+        .cap-section-intro { font-size: 1rem; line-height: 1.6; color: var(--color-ink-dark); max-width: 64rem; margin-bottom: 1.25rem; }
+        .cap-card h3 { font-size: 1.2rem; line-height: 1.15; letter-spacing: -0.02em; }
+        .cap-card p { font-size: 0.95rem; line-height: 1.6; color: var(--color-neutral-dark); max-width: none; }
+        .cap-flow { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 0.6rem; }
+        .cap-flow li { display: flex; align-items: baseline; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink-darkest); }
+        .cap-flow .n { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; color: var(--color-terra); margin-right: 0.5rem; }
+        .cap-flow li:not(:last-child)::after { content: '→'; margin: 0 1.2rem; font-weight: 400; color: var(--color-ink-light); }
+        .cap-deliverables { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 2rem; }
+        .cap-deliverables li { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.8rem 0; border-bottom: 1px solid var(--color-ink-lighter); font-size: 0.95rem; line-height: 1.45; color: var(--color-ink-darkest); }
+        .cap-deliverables .d-mark { font-family: var(--font-mono); color: var(--color-terra); min-width: 1rem; }
+        .cap-deliverables li.optional { color: var(--color-ink-dark); font-style: italic; }
+        .cap-deliverables li.optional .d-mark { color: var(--color-ink-light); font-style: normal; }
+
+
+        /* Detail layout: overview band (lead + steps), accent cards, deliverables as chips */
+        .page-capability-detail .page-body { display: flex; flex-direction: column; }
+        .page-capability-detail .cap-lead { order: 0; background: #f1f8f8; border-bottom: none; padding-bottom: 1.25rem; }
+        .page-capability-detail .cap-section--how { order: 1; background: #f1f8f8; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem 1.5rem; padding-top: 0.5rem; padding-bottom: 2.25rem; }
+        .page-capability-detail .cap-section--how .cap-section-title { margin: 0; }
+        .page-capability-detail .cap-section--what { order: 2; }
+        .page-capability-detail .cap-section--deliverables { order: 3; }
+        .page-capability-detail .cap-offerings { display: flex; flex-wrap: wrap; gap: 1.75rem 2rem; }
+        .page-capability-detail .cap-card { flex: 1 1 340px; border-top: 3px solid var(--color-terra); padding-top: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .page-capability-detail .cap-deliverables li { border: 1px solid var(--color-ink-light); border-radius: 999px; padding: 0.5rem 1rem; font-size: 0.88rem; gap: 0.5rem; }
+
+
+        @media (max-width: 1100px) {
+            .detail-head .logo-text, .detail-head-nav .nav-index { display: none; }
+            .detail-head-nav { gap: 1rem; }
+        }
+        @media (max-width: 900px) {
+            .page-capability-detail .grid-container { grid-template-columns: 1fr; }
+            .page-capability-detail .ruler-y { display: none; }
+            .page-capability-detail .main-content { grid-column: 1 / -1; min-width: 0; }
+            .page-capability-detail .ruler-x { height: 14px; }
+            .detail-head { grid-template-columns: auto 1fr; min-height: 0; }
+            .detail-head-logo { padding: 0.7rem 1rem; border-right: none; border-bottom: var(--grid-line); }
+            .detail-head-logo img { height: 24px; }
+            .detail-head-nav { justify-content: flex-end; flex-wrap: wrap; min-width: 0; border-left: none; border-bottom: var(--grid-line); padding: 0.7rem 1rem; gap: 0.3rem 0.9rem; }
+            .detail-head-nav a { font-size: 0.7rem; }
+            .detail-head-title { grid-column: 1 / -1; grid-row: 2; padding: 0.85rem 1rem; gap: 0.25rem 0.6rem; }
+            .detail-head-title h1 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+            .detail-head-crumb { font-size: 0.62rem; }
+            .cap-lead { padding: 1.75rem 1rem 1.5rem; }
+            .cap-section { padding: 1.75rem 1rem 2rem; }
+            .cap-card { padding-left: 1rem; padding-right: 1rem; }
+            .page-capability-detail .cap-card { padding-left: 0; padding-right: 0; }
+            .cap-flow { flex-wrap: nowrap; }
+            .cap-flow li { font-size: clamp(0.82rem, 3.9vw, 1rem); white-space: nowrap; }
+            .cap-flow .n { display: none; }
+            .cap-flow li:not(:last-child)::after { margin: 0 0.45rem; }
+            .page-capability-detail .cap-nav-center { display: none; }
+            .page-capability-detail .cta-block { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1rem; }
+            .page-capability-detail .cta-btn { white-space: normal; text-align: center; }
+            .cap-deliverables { grid-template-columns: 1fr !important; }
+            .page-capability-detail .cap-deliverables { display: flex; }
+            .page-capability-detail .cap-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .page-capability-detail .cap-nav-prev, .page-capability-detail .cap-nav-next { padding: 0.9rem 1rem; font-size: 0.7rem; line-height: 1.4; }
+        }
+        @media (max-width: 420px) {
+            .detail-head-logo { padding: 0.7rem 0.75rem 0.7rem 1rem; }
+            .detail-head-logo img { height: 20px; }
+            .detail-head-nav { padding-left: 0.25rem; gap: 0.3rem 0.6rem; }
+            .detail-head-nav a { font-size: 0.64rem; letter-spacing: -0.01em; }
+        }
         
         .cta-block { background: var(--color-ink-darkest); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 3.5rem 2.5rem; gap: 2.5rem; border-top: 3px solid var(--color-terra); }
         .cta-block h3 { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #fff; }
@@ -1150,29 +1360,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "ItemList",
           "name": "Ajared Research Capabilities",
-          "description": "The four core service disciplines offered by Ajared Research Inc.",
+          "description": "The three core service disciplines offered by Ajared Research Inc.",
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
-              "url": "https://ajared.ca/capabilities/001-applied-research.html",
-              "name": "Applied Research"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
               "url": "https://ajared.ca/capabilities/002-ai-product.html",
               "name": "AI Product Development & Management"
             },
             {
               "@type": "ListItem",
-              "position": 3,
+              "position": 2,
               "url": "https://ajared.ca/capabilities/003-enterprise-agents.html",
               "name": "Enterprise AI Agents"
             },
             {
               "@type": "ListItem",
-              "position": 4,
+              "position": 3,
               "url": "https://ajared.ca/capabilities/004-data-strategy.html",
               "name": "Data and AI Strategy"
             }
@@ -1182,7 +1386,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   </script>
 </head>
-<body>
+<body class="page-capabilities">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQXWR2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="grid-container">
 <div class="ruler-y">
@@ -1196,7 +1400,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="header-cell">
 <span class="label">Section / 03</span><h2>What We Do</h2>
 <div style="margin-top:auto">
-<span class="label">Disciplines</span><p>4 Disciplines</p>
+<span class="label">Disciplines</span><p>3 Disciplines</p>
 </div>
 </div>
 <div class="header-cell">
@@ -1205,68 +1409,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><a href="/capabilities/" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Capabilities</a></p>
 <p><a href="/contact/">Contact</a></p>
 <p><a href="https://www.ajared.ng">Read</a></p></nav><div style="font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
-</div></header><section class="hero-fullbleed"><canvas class="moire-canvas" id="moireCanvas"></canvas><div class="hero-center-text">
+</div></header><section class="hero-fullbleed hero-compact"><canvas class="moire-canvas" id="moireCanvas"></canvas><div class="hero-center-text">
 <span class="label">What We Do</span><h1>Capabilities</h1>
-</div></section><div class="stats-bar">
-<div class="stat-cell">
-<div class="stat-number">7</div>
-<div class="stat-label">Projects Delivered</div>
-</div>
-<div class="stat-cell">
-<div class="stat-number">4</div>
-<div class="stat-label">Core Disciplines</div>
-</div>
-<div class="stat-cell">
-<div class="stat-number">12</div>
-<div class="stat-label">Researchers</div>
-</div>
-<div class="stat-cell">
-<div class="stat-number">98%</div>
-<div class="stat-label">Retention Rate</div>
-</div>
-</div>
-<div class="ruler-x" style="position:relative; z-index:1;"></div>
+</div></section><div class="ruler-x" style="position:relative; z-index:1;"></div>
 <div id="capabilities">
-<div class="capability-row" data-cap="001">
-<div class="capability-header" onclick="toggleCap(0)" id="header-0">
-<span class="cap-number">001</span><span class="cap-title">Applied Research</span><span class="cap-subtitle">How We Learn What's True</span><span class="cap-toggle" id="toggle-0">+</span>
+<article class="cap-row" data-cap="001"><span class="cap-number">001</span><div class="cap-summary">
+<h2><a href="/capabilities/002-ai-product.html">AI Product Development &amp; Management</a></h2>
+<span class="cap-subtitle label">Strategy &amp; Delivery</span><p class="cap-desc">We help you build and manage products in this AI age. It starts with finding out what's true about your users and your market, then runs from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</p>
+<a href="/capabilities/002-ai-product.html" class="detail-link"><span class="link-label">How we work</span><span class="link-arrow">↗</span></a>
 </div>
-<div class="header-peek" id="peek-0">We figure out what's actually going on before anyone starts building.</div>
-<div class="capability-detail" id="detail-0"><div class="detail-inner">
-<p class="detail-brief">We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</p>
-<div class="detail-block detail-row-link"><a href="/capabilities/001-applied-research.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
-</div></div>
+<ul class="cap-does" aria-label="What we do in AI Product Development &amp; Management">
+<li>
+<strong>Applied Research</strong><span>UX research, market research and testing business ideas, so what we build rests on evidence.</span>
+</li>
+<li>
+<strong>Concept Development</strong><span>Workshops, assumption pressure-testing, feasibility and positioning.</span>
+</li>
+<li>
+<strong>Design Thinking</strong><span>Research-led UX, information architecture, prototyping and user testing.</span>
+</li>
+<li>
+<strong>Product Management</strong><span>Roadmaps, OKRs, prioritisation, stakeholder alignment and go-to-market.</span>
+</li>
+<li>
+<strong>AI-Powered Engineering</strong><span>Full-stack development, API integration, QA and deployment.</span>
+</li>
+</ul></article><article class="cap-row" data-cap="002"><span class="cap-number">002</span><div class="cap-summary">
+<h2><a href="/capabilities/003-enterprise-agents.html">Enterprise AI Agents</a></h2>
+<span class="cap-subtitle label">Autonomous AI Systems</span><p class="cap-desc">Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</p>
+<a href="/capabilities/003-enterprise-agents.html" class="detail-link"><span class="link-label">How we work</span><span class="link-arrow">↗</span></a>
 </div>
-<div class="capability-row" data-cap="002">
-<div class="capability-header" onclick="toggleCap(1)" id="header-1">
-<span class="cap-number">002</span><span class="cap-title">AI Product Development &amp; Management</span><span class="cap-subtitle">Strategy &amp; Delivery</span><span class="cap-toggle" id="toggle-1">+</span>
+<ul class="cap-does" aria-label="What we do in Enterprise AI Agents">
+<li>
+<strong>AI Agents</strong><span>Task-specific agents with tools, memory, decision logic and human oversight.</span>
+</li>
+<li>
+<strong>Graph RAG</strong><span>Knowledge-graph retrieval for interconnected data, with fewer hallucinations.</span>
+</li>
+<li>
+<strong>Task Automation</strong><span>End-to-end workflows across your existing systems, edge cases included.</span>
+</li>
+</ul></article><article class="cap-row" data-cap="003"><span class="cap-number">003</span><div class="cap-summary">
+<h2><a href="/capabilities/004-data-strategy.html">Data and AI Strategy</a></h2>
+<span class="cap-subtitle label">Governance, Advisory and Adoption</span><p class="cap-desc">Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</p>
+<a href="/capabilities/004-data-strategy.html" class="detail-link"><span class="link-label">How we work</span><span class="link-arrow">↗</span></a>
 </div>
-<div class="header-peek" id="peek-1">We help you build and manage AI products from concept to launch.</div>
-<div class="capability-detail" id="detail-1"><div class="detail-inner">
-<p class="detail-brief">We help you build and manage products in this AI age from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</p>
-<div class="detail-block detail-row-link"><a href="/capabilities/002-ai-product.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
-</div></div>
-</div>
-<div class="capability-row" data-cap="003">
-<div class="capability-header" onclick="toggleCap(2)" id="header-2">
-<span class="cap-number">003</span><span class="cap-title">Enterprise AI Agents</span><span class="cap-subtitle">Autonomous AI Systems</span><span class="cap-toggle" id="toggle-2">+</span>
-</div>
-<div class="header-peek" id="peek-2">Our enterprise agents can do real work inside your company.</div>
-<div class="capability-detail" id="detail-2"><div class="detail-inner">
-<p class="detail-brief">Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</p>
-<div class="detail-block detail-row-link"><a href="/capabilities/003-enterprise-agents.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
-</div></div>
-</div>
-<div class="capability-row" data-cap="004">
-<div class="capability-header" onclick="toggleCap(3)" id="header-3">
-<span class="cap-number">004</span><span class="cap-title">Data and AI Strategy</span><span class="cap-subtitle">Governance, Advisory and Adoption</span><span class="cap-toggle" id="toggle-3">+</span>
-</div>
-<div class="header-peek" id="peek-3">Together we'll figure out where AI fits in your organization.</div>
-<div class="capability-detail" id="detail-3"><div class="detail-inner">
-<p class="detail-brief">Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</p>
-<div class="detail-block detail-row-link"><a href="/capabilities/004-data-strategy.html" class="detail-link"><span class="link-label">Learn more</span><span class="link-arrow">↗</span></a></div>
-</div></div>
-</div>
+<ul class="cap-does" aria-label="What we do in Data and AI Strategy">
+<li>
+<strong>Reliable AI</strong><span>Knowledge graphs and ontologies for consistent, trustworthy outputs.</span>
+</li>
+<li>
+<strong>Location Intelligence</strong><span>Geospatial data strategy and location-aware AI applications.</span>
+</li>
+<li>
+<strong>Generative Engine Optimization</strong><span>Making your organisation visible in AI-generated answers.</span>
+</li>
+<li>
+<strong>Executive AI Coaching</strong><span>One-to-one advisory for leaders making AI decisions.</span>
+</li>
+</ul></article>
 </div>
 <div class="cta-block">
 <div>
@@ -1288,6 +1489,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 </div>
-<script src="/scripts/cap-moire.js" defer></script><script src="/scripts/accordion.js" defer></script>
+<dialog class="inquiry" id="inquire" aria-labelledby="inquiry-title"><div class="inquiry-bar">
+<span class="label">New Inquiry <span class="inquiry-re" id="inquiry-re"></span></span><button type="button" class="inquiry-close" id="inquiry-close" aria-label="Close inquiry form">Close ✕</button>
+</div>
+<div class="form-section">
+<div class="form-left">
+<h2 id="inquiry-title">Start a conversation.</h2>
+<form id="inquiry-form" action="https://formspree.io/f/mrearkjn" method="POST">
+<input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc"><input type="hidden" name="_replyto" value=""><input type="hidden" name="service" id="inquiry-service" value=""><input type="hidden" name="page" id="inquiry-page" value=""><div class="instrument-field">
+<label class="label" for="inquiry-name">01 / Principal Contact</label><input type="text" name="name" id="inquiry-name" required="required" autocomplete="name" class="instrument-input" placeholder="Organization or Individual">
+</div>
+<div class="instrument-field">
+<label class="label" for="inquiry-email">02 / Email</label><input type="email" name="email" id="inquiry-email" required="required" autocomplete="email" class="instrument-input" placeholder="your-email@domain.com">
+</div>
+<div class="instrument-field" id="inquiry-deliverable-field" hidden="hidden">
+<label class="label" for="inquiry-deliverable">03 / Specific Deliverable (Optional)</label><select name="deliverable" id="inquiry-deliverable" class="instrument-input"><option value="">Select a deliverable...</option></select>
+</div>
+<div class="instrument-field">
+<label class="label" for="inquiry-message" id="inquiry-scope-label">03 / Project Scope / Brief</label><textarea name="message" id="inquiry-message" class="brief-textarea" placeholder="Tell us what you're working on and we'll let you know how we can help..."></textarea>
+</div>
+<div id="inquiry-status" role="status" aria-live="polite" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+<button type="submit" class="btn-submit" id="inquiry-submit">Send Message ↗</button>
+</form>
+</div>
+<div class="form-right">
+<div>
+<span class="label">Response Times</span><p>We typically respond within 48–72 hours.</p>
+</div>
+<div class="inquiry-direct">
+<span class="label">Or reach us directly</span><p><span class="city">Toronto</span><a href="tel:+16136613550">+1 613 661 3550</a><br><a href="mailto:innovation@ajared.ca">innovation@ajared.ca</a><span class="city">Abuja</span><a href="tel:+2348050644454">+234 805 064 4454</a><br><a href="mailto:emeka@ajared.ng">emeka@ajared.ng</a></p>
+</div>
+<div>
+<span class="label">Prefer to talk?</span><p><a href="/talk/" style="color: var(--color-terra);">Book a 30-minute call →</a></p>
+</div>
+</div>
+</div></dialog><script src="/scripts/inquiry.js" defer></script><script src="/scripts/cap-moire.js" defer></script>
 </body>
 </html>

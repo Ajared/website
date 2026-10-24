@@ -69,29 +69,23 @@
         {
           "@type": "ItemList",
           "name": "Ajared Research Capabilities",
-          "description": "The four core service disciplines offered by Ajared Research Inc.",
+          "description": "The three core service disciplines offered by Ajared Research Inc.",
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
-              "url": "https://ajared.ca/capabilities/001-applied-research.html",
-              "name": "Applied Research"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
               "url": "https://ajared.ca/capabilities/002-ai-product.html",
               "name": "AI Product Development & Management"
             },
             {
               "@type": "ListItem",
-              "position": 3,
+              "position": 2,
               "url": "https://ajared.ca/capabilities/003-enterprise-agents.html",
               "name": "Enterprise AI Agents"
             },
             {
               "@type": "ListItem",
-              "position": 4,
+              "position": 3,
               "url": "https://ajared.ca/capabilities/004-data-strategy.html",
               "name": "Data and AI Strategy"
             }
@@ -105,38 +99,42 @@
     <ArchiveBox label="Section / 03">
       <Title>What We Do</Title>
       <StatLabel>Disciplines</StatLabel>
-      <StatValue>4 Disciplines</StatValue>
+      <StatValue>3 Disciplines</StatValue>
     </ArchiveBox>
     <Nav active="capabilities" arrow="↓" />
   </Header>
 
-  <CapHero label="What We Do">
+  <CapHero label="What We Do" compact="true">
     <Headline>Capabilities</Headline>
   </CapHero>
 
-  <StatsBar>
-    <Stat val="7" label="Projects Delivered" />
-    <Stat val="4" label="Core Disciplines" />
-    <Stat val="12" label="Researchers" />
-    <Stat val="98%" label="Retention Rate" />
-  </StatsBar>
-
   <CapabilityList>
-    <Capability number="001" title="Applied Research" subtitle="How We Learn What's True" href="/capabilities/001-applied-research.html">
-        <Peek>We figure out what's actually going on before anyone starts building.</Peek>
-        <Description>We figure out what's actually going on before anyone starts building. That means talking to users, studying the market, running experiments, and reviewing the existing evidence. We draw on behavioral science, statistics, and deep domain knowledge.</Description>
+    <Capability number="001" title="AI Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
+        <Description>We help you build and manage products in this AI age. It starts with finding out what's true about your users and your market, then runs from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
+        <Does>
+          <Do name="Applied Research">UX research, market research and testing business ideas, so what we build rests on evidence.</Do>
+          <Do name="Concept Development">Workshops, assumption pressure-testing, feasibility and positioning.</Do>
+          <Do name="Design Thinking">Research-led UX, information architecture, prototyping and user testing.</Do>
+          <Do name="Product Management">Roadmaps, OKRs, prioritisation, stakeholder alignment and go-to-market.</Do>
+          <Do name="AI-Powered Engineering">Full-stack development, API integration, QA and deployment.</Do>
+        </Does>
     </Capability>
-    <Capability number="002" title="AI Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
-        <Peek>We help you build and manage AI products from concept to launch.</Peek>
-        <Description>We help you build and manage products in this AI age from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
-    </Capability>
-    <Capability number="003" title="Enterprise AI Agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
-        <Peek>Our enterprise agents can do real work inside your company.</Peek>
+    <Capability number="002" title="Enterprise AI Agents" subtitle="Autonomous AI Systems" href="/capabilities/003-enterprise-agents.html">
         <Description>Our enterprise agents can do real work inside your company — processing documents, coordinating between systems, handling the tasks your team shouldn't be doing manually, while running reliably, at scale.</Description>
+        <Does>
+          <Do name="AI Agents">Task-specific agents with tools, memory, decision logic and human oversight.</Do>
+          <Do name="Graph RAG">Knowledge-graph retrieval for interconnected data, with fewer hallucinations.</Do>
+          <Do name="Task Automation">End-to-end workflows across your existing systems, edge cases included.</Do>
+        </Does>
     </Capability>
-    <Capability number="004" title="Data and AI Strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
-        <Peek>Together we'll figure out where AI fits in your organization.</Peek>
+    <Capability number="003" title="Data and AI Strategy" subtitle="Governance, Advisory and Adoption" href="/capabilities/004-data-strategy.html">
         <Description>Together we'll figure out where AI fits in your organization, what data you need to get there, and how to adopt it without the usual mess. Governance plans, adoption playbooks, and honest assessments of what's ready and what isn't.</Description>
+        <Does>
+          <Do name="Reliable AI">Knowledge graphs and ontologies for consistent, trustworthy outputs.</Do>
+          <Do name="Location Intelligence">Geospatial data strategy and location-aware AI applications.</Do>
+          <Do name="Generative Engine Optimization">Making your organisation visible in AI-generated answers.</Do>
+          <Do name="Executive AI Coaching">One-to-one advisory for leaders making AI decisions.</Do>
+        </Does>
     </Capability>
   </CapabilityList>
 

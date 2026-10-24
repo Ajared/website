@@ -12,7 +12,7 @@ There is **no build step required for local authoring**. All layouts, styling, c
 
 ### How to Edit Content
 1. **Never edit the `.html` files directly.** They are entirely generated.
-2. Open the corresponding `.xml` file (e.g., `index.xml` or `capabilities/001-applied-research.xml`).
+2. Open the corresponding `.xml` file (e.g., `index.xml` or `capabilities/002-ai-product.xml`).
 3. Modify the text inside the semantic tags (e.g. `<Title>`, `<Description>`).
 4. **To preview live:** Open the `.xml` file directly in any modern web browser. The browser's native XSLT engine will download `site-renderer.xslt` and render the page instantly.
 
@@ -29,10 +29,10 @@ The repository includes a Git `pre-commit` hook that automatically runs `./scrip
 ajared.ca/
 ├── site-renderer.xslt                       # Single source of truth for all CSS, layout, and rendering logic
 ├── index.xml                                # Homepage
-├── contact/index.xml                        # Contact form and advisory booking
+├── contact/index.xml                        # About & Contact: offices, phones, short About (from the EOS V/TO)
 ├── case-studies/index.xml                   # Case Studies archive
 ├── capabilities/index.xml                   # Capabilities overview
-│   ├── 001-applied-research.xml             # Service Detail
+│   ├── 001-applied-research.html            # Redirect → 002 (Applied Research folded in; no .xml)
 │   ├── 002-ai-product.xml                   # Service Detail
 │   ├── 003-enterprise-agents.xml            # Service Detail
 │   └── 004-data-strategy.xml                # Service Detail
@@ -48,8 +48,7 @@ ajared.ca/
 │   └── prep/index.html                      # Talk prep (static, no XML source)
 ├── scripts/                                 # Page-specific JS logic
 │   ├── build.sh                             # XSLT compiler script
-│   ├── accordion.js                         # Capabilities toggle logic
-│   ├── contact.js                           # Contact map and deliverables logic
+│   ├── inquiry.js                           # Inquiry dialog (opens from any href="#inquire" link; data-service prefills)
 │   ├── sprint.js                            # AI Sprint page logic
 │   └── moire.js, cap-moire.js, cap-detail-moire.js   # Hero canvas effects
 ```
