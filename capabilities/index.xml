@@ -75,7 +75,7 @@
               "@type": "ListItem",
               "position": 1,
               "url": "https://ajared.ca/capabilities/002-ai-product.html",
-              "name": "AI Product Development & Management"
+              "name": "Product Development & Management"
             },
             {
               "@type": "ListItem",
@@ -109,7 +109,7 @@
   </CapHero>
 
   <CapabilityList>
-    <Capability number="001" title="AI Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
+    <Capability number="001" title="Product Development &amp; Management" subtitle="Strategy &amp; Delivery" href="/capabilities/002-ai-product.html">
         <Description>We help you build and manage products in this AI age. It starts with finding out what's true about your users and your market, then runs from concept to the first prototype through what ships and what happens after. That includes choosing the right models, designing how people interact with them, and making sure they keep working as things change.</Description>
         <Does>
           <Do name="Applied Research">UX research, market research and testing business ideas, so what we build rests on evidence.</Do>

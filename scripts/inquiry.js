@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Service-specific deliverables mapping
     const deliverables = {
-        'AI Product Development': ['UX & Market Research', 'Testing Business Ideas', 'Product Strategy', 'Roadmap', 'Model Selection & Integration', 'Launch', 'Product Analytics'],
+        'Product Development & Management': ['UX & Market Research', 'Testing Business Ideas', 'Product Strategy', 'Roadmap', 'Model Selection & Integration', 'Launch', 'Product Analytics'],
         'Enterprise AI Agents': ['AI Agents', 'Task Automation', 'Multi-Agent Coordination', 'RAG Pipelines', 'Production LLM Ops'],
         'Data & AI Strategy': ['Data Audit', 'Readiness Assessment', 'Knowledge Graph', 'Governance', 'GEO (Generative Engine Optimization)']
     };

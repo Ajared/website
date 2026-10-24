@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/site-renderer.xslt"?>
-<Page id="capability-detail" title="Product Development">
+<Page id="capability-detail" title="Product Development &amp; Management">
   <Schema><![CDATA[
     {
       "@context": "https://schema.org",
@@ -48,13 +48,13 @@
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ajared.ca" },
             { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://ajared.ca/capabilities/" },
-            { "@type": "ListItem", "position": 3, "name": "AI Product Development & Management", "item": "https://ajared.ca/capabilities/002-ai-product.html" }
+            { "@type": "ListItem", "position": 3, "name": "Product Development & Management", "item": "https://ajared.ca/capabilities/002-ai-product.html" }
           ]
         },
         {
           "@type": "Service",
           "@id": "https://ajared.ca/capabilities/002-ai-product.html#service",
-          "name": "AI Product Development & Management",
+          "name": "Product Development & Management",
           "alternateName": "Strategy & Delivery",
           "description": "Full lifecycle AI product development from applied research and concept through launch and optimization. Covers UX and market research, testing business ideas, product strategy, roadmap planning, model selection, launch coordination, and performance analytics.",
           "provider": { "@id": "https://ajared.ca/#organization" },
@@ -70,13 +70,13 @@
   <Header compact="true">
     <Nav>
       <Breadcrumbs>
-        <Current>Product Development</Current>
+        <Current>Product Development &amp; Management</Current>
       </Breadcrumbs>
     </Nav>
   </Header>
 
   <CapabilityHero>
-    <Title>Product Development</Title>
+    <Title>Product Development &amp; Management</Title>
   </CapabilityHero>
 
   <PageBody>
@@ -137,7 +137,7 @@
 
   <CTABlock>
     <Title>Ready to build something that works?</Title>
-    <Button href="#inquire" service="AI Product Development">Get in touch &#8594;</Button>
+    <Button href="#inquire" service="Product Development &amp; Management">Get in touch &#8594;</Button>
   </CTABlock>
 
   <Footer email="innovation@ajared.ca" year="2026" />

@@ -18,7 +18,7 @@ Chu, Founder/Owner of Ajared Research Inc. Running an AI research and product st
 ## Capabilities (Services)
 | # | Name | What |
 |---|------|------|
-| 002 | **AI Product Development** | Applied research (UX, market, testing ideas) → concept → design → build → launch, full-stack AI engineering |
+| 002 | **Product Development & Management** | Applied research (UX, market, testing ideas) → concept → design → build → launch, full-stack AI engineering |
 | 003 | **Enterprise AI Agents** | Production agents, Graph RAG, task automation |
 | 004 | **Data & AI Strategy** | Audits, readiness assessments, governance, GEO, exec coaching |
 

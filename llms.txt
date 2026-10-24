@@ -6,7 +6,7 @@ Ajared is led by Chu Nnodu, an enterprise product manager and AI product builder
 
 ## Services
 
-- [AI Product Development](https://ajared.ca/capabilities/002-ai-product.html): Full-cycle AI product work — applied research (UX research, market research, testing business ideas), concept development, UX design, product management, and full-stack AI engineering from idea through production launch.
+- [Product Development & Management](https://ajared.ca/capabilities/002-ai-product.html): Full-cycle AI product work — applied research (UX research, market research, testing business ideas), concept development, UX design, product management, and full-stack AI engineering from idea through production launch.
 - [Enterprise AI Agents](https://ajared.ca/capabilities/003-enterprise-agents.html): Production AI agents, Graph RAG systems, and task automation. Built to handle real workflows at scale, with human oversight where it matters.
 - [Data & AI Strategy](https://ajared.ca/capabilities/004-data-strategy.html): Data audits, AI readiness assessments, governance frameworks, Generative Engine Optimization (GEO), location intelligence, and executive AI coaching.
 
