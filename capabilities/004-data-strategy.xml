@@ -82,76 +82,44 @@
   <PageBody>
     <Section title="What We Do">
       <Intro>
-        <p>We audit your data, figure out what’s missing, and build a plan to get AI working inside your
-              organization. That includes governance structures, realistic adoption plans, and honest assessments of
-              what you’re ready for — and what you’re not.</p>
+        <p>We find out what your data can support, close the gaps, and plan how AI gets adopted, with an honest view of what you’re ready for.</p>
       </Intro>
       <Offerings>
         <Offering>
           <Title>Reliable AI</Title>
-          <Description>AI that produces consistent, trustworthy outputs starts with structured knowledge. We build knowledge
-                  graphs and ontologies that give your AI systems a foundation they can reason from — rather than one
-                  they’re guessing around.</Description>
+          <Description>Knowledge graphs and ontologies that give AI a solid base, so its answers stay consistent.</Description>
         </Offering>
         <Offering>
           <Title>Location Intelligence</Title>
-          <Description>Spatial context changes what data means. We develop geospatial data strategies, build location-aware
-                  AI applications, and integrate spatial analysis into decision-making workflows that were previously
-                  blind to geography.</Description>
+          <Description>Geospatial data strategy and location-aware AI for decisions that depend on where things are.</Description>
         </Offering>
         <Offering>
           <Title>Generative Engine Optimization</Title>
-          <Description>As AI reshapes search, your organization’s presence in AI-generated answers matters as much as its
-                  traditional search ranking. We make sure you appear accurately and prominently in the outputs that now
-                  shape how people find information.</Description>
+          <Description>Make sure AI assistants describe your organization accurately when people ask about you.</Description>
         </Offering>
         <Offering>
           <Title>Executive AI Coaching</Title>
-          <Description>One-to-one advisory for leaders who need to understand AI well enough to make decisions about it —
-                  without wading through hype. Strategy, governance, and an honest assessment of what your organization
-                  is actually ready for and when.</Description>
+          <Description>One-to-one advice for leaders making AI decisions, without the hype.</Description>
         </Offering>
       </Offerings>
     </Section>
-    
+
     <Section title="How We Work">
       <Process>
-        <Step num="01">
-          <Title>Audit</Title>
-          <Description>We take full inventory of your data: what you have, where it lives, what quality it’s in, and where
-                    the gaps are. Nothing proceeds on assumptions about the state of your data infrastructure.</Description>
-        </Step>
-        <Step num="02">
-          <Title>Assessment</Title>
-          <Description>We map your AI capabilities against realistic benchmarks, identify specific risks, and score your
-                    readiness across the dimensions that matter for your context — not against a generic maturity
-                    framework.</Description>
-        </Step>
-        <Step num="03">
-          <Title>Strategy</Title>
-          <Description>A concrete roadmap with sequenced initiatives, a governance framework that can actually be followed
-                    by real teams, and an adoption plan grounded in your organizational reality rather than best-case
-                    projections.</Description>
-        </Step>
-        <Step num="04">
-          <Title>Handoff</Title>
-          <Description>We don’t disappear after delivery. You receive implementation playbooks, training materials, and an
-                    executive alignment session to ensure the strategy lands and the people responsible for it
-                    understand what they’re holding.</Description>
-        </Step>
+        <Step num="01"><Title>Audit</Title></Step>
+        <Step num="02"><Title>Assessment</Title></Step>
+        <Step num="03"><Title>Strategy</Title></Step>
+        <Step num="04"><Title>Handoff</Title></Step>
       </Process>
     </Section>
 
     <Section title="Deliverables">
-      <Intro>
-        <p>The engagement delivers a complete picture of where you stand and a clear path forward — a data audit report, an AI readiness assessment with scoring, a strategic roadmap with governance framework, and an executive presentation paired with an adoption playbook your team can actually use. For organizations that want ongoing strategic support as the landscape shifts, an advisory retainer is available.</p>
-      </Intro>
       <Deliverables>
-        <Row checked="true" label="Data audit + gap analysis">Data audit report + gap analysis</Row>
-        <Row checked="true" label="AI readiness assessment">AI readiness assessment + scoring</Row>
-        <Row checked="true" label="Roadmap + governance">Strategic roadmap + governance framework</Row>
-        <Row checked="true" label="Exec deck + playbook">Executive presentation + adoption playbook</Row>
-        <Row checked="false" label="Optional: advisory retainer">Optional: Ongoing advisory retainer</Row>
+        <Row checked="true">Data audit + gap analysis</Row>
+        <Row checked="true">AI readiness score</Row>
+        <Row checked="true">Roadmap + governance</Row>
+        <Row checked="true">Executive briefing + adoption playbook</Row>
+        <Row checked="false">Optional: ongoing advisory</Row>
       </Deliverables>
     </Section>
   </PageBody>

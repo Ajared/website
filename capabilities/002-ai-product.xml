@@ -82,86 +82,50 @@
   <PageBody>
     <Section title="What We Do">
       <Intro>
-        <p>We help you build products and keep them running. It starts with finding out what’s actually true about your
-              users and your market, and runs from the first idea through launch, growth, and the ongoing work of making
-              them better — applied research, concept development, UX design, product management, and full-stack
-              engineering under one roof.</p>
+        <p>We take products from first idea to launch, and keep making them better. Research, design, product management and engineering, under one roof.</p>
       </Intro>
       <Offerings>
         <Offering>
           <Title>Applied Research</Title>
-          <Description>We figure out what’s actually going on before anyone starts building. UX research goes to where
-                  your users are — interviews, diary studies, usability tests, in-context observation. Market research
-                  maps the landscape — competitive analysis, sizing, segmentation, trends. And lean experiments — demand
-                  tests, concierge MVPs, causal inference — show which assumptions to kill early. Early failure is cheap.
-                  Late failure is not.</Description>
+          <Description>We find out what’s true before anyone builds: user interviews, usability tests, market sizing and quick experiments that kill bad ideas early.</Description>
         </Offering>
         <Offering>
           <Title>Concept Development</Title>
-          <Description>From rough idea to defined product. We run structured workshops to frame the opportunity,
-                  pressure-test the underlying assumptions, assess feasibility, and set the strategic positioning — so
-                  design and engineering start with a foundation that holds up.</Description>
+          <Description>Workshops that turn a rough idea into a defined product, with the assumptions tested and the positioning set.</Description>
         </Offering>
         <Offering>
           <Title>Design Thinking</Title>
-          <Description>Research-led UX built from first principles. We map information architecture, design interaction
-                  flows, prototype at the right fidelity, and test with real users iteratively — so the product feels
-                  right before production engineering begins.</Description>
+          <Description>Research-led UX: flows and prototypes tested with real users before engineering starts.</Description>
         </Offering>
         <Offering>
           <Title>Product Management</Title>
-          <Description>The connective tissue between vision and execution. We set the roadmap, define OKRs, manage
-                  prioritisation trade-offs, align stakeholders, and coordinate go-to-market — so the team stays pointed
-                  at the right problem at the right time.</Description>
+          <Description>Roadmap, priorities and go-to-market, so the team works on the right problem at the right time.</Description>
         </Offering>
         <Offering>
           <Title>AI-Powered Engineering</Title>
-          <Description>Full-stack development augmented by AI tooling. API integration, backend services, front-end
-                  interfaces, QA, and deployment — built for production and long-term operability, not for demos that
-                  work once under ideal conditions.</Description>
+          <Description>Full-stack development with AI tooling, built for production rather than demos.</Description>
         </Offering>
       </Offerings>
     </Section>
-    
+
     <Section title="How We Work">
       <Process>
-        <Step num="01">
-          <Title>Discovery</Title>
-          <Description>Research your users and your market, define the vision, identify the right success metrics, and
-                    establish the opportunity clearly enough that every subsequent decision has a reference point to
-                    return to.</Description>
-        </Step>
-        <Step num="02">
-          <Title>Design</Title>
-          <Description>Concept development feeds directly into UX design, prototyping, and user validation. We test with
-                    real people before writing a line of production code — catching misaligned assumptions when they’re
-                    still cheap to fix.</Description>
-        </Step>
-        <Step num="03">
-          <Title>Build</Title>
-          <Description>Iterative development cycles with continuous QA, integration testing, and performance tuning. We
-                    ship incrementally to reduce risk and maintain feedback loops throughout the build.</Description>
-        </Step>
-        <Step num="04">
-          <Title>Launch</Title>
-          <Description>Staged rollout with monitoring instrumentation in place from the start — not added after something
-                    breaks. Analytics, alerting, and a structured feedback loop that feeds the next iteration.</Description>
-        </Step>
+        <Step num="01"><Title>Discovery</Title></Step>
+        <Step num="02"><Title>Design</Title></Step>
+        <Step num="03"><Title>Build</Title></Step>
+        <Step num="04"><Title>Launch</Title></Step>
       </Process>
     </Section>
 
     <Section title="Deliverables">
-      <Intro>
-        <p>The engagement closes with a complete product package — research findings, concept brief, strategy, and roadmap through to a UX design system with tested prototypes and a production-ready working product. Launch plan and analytics instrumentation are included as standard, along with a one-month MVP sprint. Teams that want ongoing ownership support can extend into a fractional product management retainer.</p>
-      </Intro>
       <Deliverables>
-        <Row checked="true" label="Research findings">Research brief + findings report + evidence archive</Row>
-        <Row checked="true" label="Concept brief + roadmap">Concept brief + product strategy + roadmap</Row>
-        <Row checked="true" label="UX design system">UX design system + tested prototypes</Row>
-        <Row checked="true" label="Working product">Working product — production-ready</Row>
-        <Row checked="true" label="Launch plan">Launch plan + analytics instrumentation</Row>
-        <Row checked="true" label="1 Month MVP Sprint">1 Month MVP Development Sprint</Row>
-        <Row checked="false" label="Optional: PM retainer">Optional: Fractional product management retainer</Row>
+        <Row checked="true">Research findings</Row>
+        <Row checked="true">Product strategy + roadmap</Row>
+        <Row checked="true">Tested prototypes + design system</Row>
+        <Row checked="true">Production-ready product</Row>
+        <Row checked="true">Launch plan + analytics</Row>
+        <Row checked="true">1-month MVP sprint</Row>
+        <Row checked="false">Optional: fractional product management</Row>
       </Deliverables>
     </Section>
   </PageBody>
