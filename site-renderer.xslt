@@ -846,11 +846,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         .offices { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: var(--grid-line); }
         .office { padding: 1rem 2rem 1.1rem; border-right: var(--grid-line); display: flex; flex-direction: column; gap: 0.45rem; }
         .office:last-child { border-right: none; }
-        .office h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1; margin: 0; display: inline; }
+        .office h2 { font-size: 14px; line-height: 1; margin: 0; display: inline; letter-spacing: -0.02em; }
         .office-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
-        .office-coords { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
+        .office-coords { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--color-terra); text-transform: uppercase; }
         .office-lines { display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; }
-        .office-lines a { font-size: 0.95rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
+        .office-lines a { font-size: 0.88rem; line-height: 1.45; color: var(--color-ink-darkest); text-decoration: none; }
         .office-lines a { border-bottom: 1px solid var(--color-ink-light); }
         .office-lines a:hover { color: var(--color-terra); border-bottom-color: var(--color-terra); }
         .contact-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 1.25rem 1.5rem; padding: 2.25rem 2rem; background: var(--color-ink-darkest); border-top: 3px solid var(--color-terra); }
@@ -887,11 +887,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         @media (prefers-reduced-motion: no-preference) { .seal-spin { animation: seal-spin 24s linear infinite; transform-origin: 100px 100px; } }
         @keyframes seal-spin { to { transform: rotate(360deg); } }
         .about-prose-text { font-size: clamp(1.25rem, 2.2vw, 1.9rem); line-height: 1.4; letter-spacing: -0.015em; color: var(--color-ink-dark); max-width: 58rem; }
-        .about-prose-text strong { color: var(--color-ink-darkest); font-weight: 700; }
+        .about-prose-text strong { color: var(--color-ink-darkest); font-weight: 700; white-space: nowrap; }
         .way-track { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
         .way-track li { position: relative; display: flex; flex-direction: column; gap: 1rem; }
-        .way-track li:not(:last-child)::before { content: ''; position: absolute; top: calc(1.2rem - 1px); left: 2.4rem; right: -1.5rem; height: 2px; background: repeating-linear-gradient(to right, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
-        .way-node { position: relative; z-index: 1; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px solid var(--color-terra); background: var(--color-bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-terra); }
+        .way-track li:not(:last-child)::before { content: ''; position: absolute; top: calc(1.5rem - 1px); left: 3rem; right: -1.5rem; height: 2px; background: repeating-linear-gradient(to right, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
+        .way-node { position: relative; z-index: 1; width: 3rem; height: 3rem; border-radius: 50%; border: 2px solid var(--color-terra); background: var(--color-bg); display: flex; align-items: center; justify-content: center; color: var(--color-terra); }
+        .way-node svg { width: 1.45rem; height: 1.45rem; display: block; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
         .way-node { transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease; }
         .way-track li.is-active .way-node { background: var(--color-terra); color: #fff; transform: scale(1.12); }
         .way-body h3 { transition: color 0.4s ease; }
@@ -912,13 +914,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         @media (max-width: 900px) {
             .about-block { padding: 2rem 1rem 2.25rem; }
-            .about-prose-row { grid-template-columns: 1fr; gap: 1.5rem; }
-            .seal { width: 150px; height: 150px; }
+            .about-prose-row { gap: 1rem; }
+            .about-prose .about-prose-text { font-size: 1.05rem; line-height: 1.45; text-wrap: balance; }
+            .seal { width: 104px; height: 104px; }
             .why-grid { grid-template-columns: 1fr; gap: 1.75rem; }
             .way-track { grid-template-columns: 1fr; gap: 0; }
             .way-track li { flex-direction: row; gap: 1rem; padding-bottom: 1.5rem; }
             .way-track li:last-child { padding-bottom: 0; }
-            .way-track li:not(:last-child)::before { top: 2.4rem; bottom: 0; left: calc(1.2rem - 1px); right: auto; width: 2px; height: auto; background: repeating-linear-gradient(to bottom, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
+            .way-track li:not(:last-child)::before { top: 3rem; bottom: 0; left: calc(1.5rem - 1px); right: auto; width: 2px; height: auto; background: repeating-linear-gradient(to bottom, var(--color-ink-lighter) 0 5px, transparent 5px 11px); }
             .way-node { flex-shrink: 0; }
             .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .value-word { font-size: 1.3rem; }
@@ -1744,7 +1747,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <xsl:for-each select="Item">
                 <li>
                   <xsl:if test="position() = 1"><xsl:attribute name="class">is-active</xsl:attribute></xsl:if>
-                  <span class="way-node"><xsl:value-of select="format-number(position(), '00')"/></span>
+                  <span class="way-node" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <xsl:choose>
+                        <xsl:when test="@icon='assess'"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.3" fill="currentColor"/><path d="M6.3 11.2l1.2.8M12 8v1.4M17.7 11.2l-1.2.8"/></xsl:when>
+                        <xsl:when test="@icon='advise'"><path d="M5 4.5h12a2.5 2.5 0 0 1 2.5 2.5v6.5a2.5 2.5 0 0 1-2.5 2.5h-6.5l-4.5 3.5v-3.5H5a2.5 2.5 0 0 1-2.5-2.5V7A2.5 2.5 0 0 1 5 4.5z"/><circle cx="7.5" cy="10.3" r="0.9" fill="currentColor"/><circle cx="11" cy="10.3" r="0.9" fill="currentColor"/><circle cx="14.5" cy="10.3" r="0.9" fill="currentColor"/></xsl:when>
+                        <xsl:when test="@icon='shape'"><path d="M6.5 3h8l4.5 4.5V21h-12.5z"/><path d="M14.5 3v4.5H19"/><path d="M9.5 12h6.5M9.5 15.5h6.5M9.5 19h3.5"/></xsl:when>
+                        <xsl:when test="@icon='sprint'"><path d="M12 2.5c3.2 2.2 5 6.3 4 11l-1.8 2.2H9.8L8 13.5c-1-4.7.8-8.8 4-11z"/><circle cx="12" cy="9" r="1.7"/><path d="M8.3 12.8L5.5 15l1 3.2 2.8-1.6M15.7 12.8l2.8 2.2-1 3.2-2.8-1.6"/><path d="M10.7 18.5L12 21.5l1.3-3"/></xsl:when>
+                        <xsl:otherwise><path d="M3.5 18.5l5.5-5.5 4 3.5 7.5-8"/><path d="M15.5 8.5h5v5"/><path d="M3.5 21.5h17"/></xsl:otherwise>
+                      </xsl:choose>
+                    </svg>
+                  </span>
+                  <span class="visually-hidden">Step <xsl:value-of select="position()"/>: </span>
                   <div class="way-body">
                     <h3><xsl:value-of select="@name"/></h3>
                     <p><xsl:copy-of select="node()"/></p>
