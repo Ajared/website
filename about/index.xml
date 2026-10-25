@@ -118,7 +118,7 @@
       <P>We deliver <strong>practical value</strong>: what is actually useful, by cutting out the fluff, and taking <strong>ownership end-to-end</strong> with a <strong>diverse team</strong>.</P>
     </Group>
     <Group title="The Ajared Way" layout="track" note="Start where you are.">
-      <Item name="Assess" icon="assess" href="/ai-readiness/" link="Take the check">A free readiness check of your business, data and technology, with an action plan.</Item>
+      <Item name="Assess" icon="assess" href="/ai-readiness/" link="Take the check">A free readiness check of your product, data or business, with an action plan.</Item>
       <Item name="Advise" icon="advise" href="/talk/" link="Book a call">A 30-minute conversation with a practitioner about fit and priorities.</Item>
       <Item name="Shape" icon="shape">A PRD, user journeys and flows, so everyone knows what is being built.</Item>
       <Item name="Sprint" icon="sprint" href="/ai-sprint/" link="See the sprint">We build and ship in four weeks.</Item>
