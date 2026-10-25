@@ -109,7 +109,7 @@
   </CapHero>
 
   <CapabilityList>
-    <Capability number="001" title="Product Development &amp; Management" icon="product" subtitle="From idea to a product customers use" href="/capabilities/002-ai-product.html">
+    <Capability number="001" title="Product Development &amp; Management" icon="product" subtitle="From idea to a product your customers use" href="/capabilities/002-ai-product.html">
         <Description>Get a working product in front of customers without hiring a product team first. We find out what your users actually need, then design, build and ship it with you, and keep improving it after launch.</Description>
         <Does>
           <Do name="Applied Research">Know what customers will pay for before you spend money building it.</Do>
