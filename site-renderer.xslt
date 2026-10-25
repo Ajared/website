@@ -1230,15 +1230,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 
         /* Detail layout: overview band (lead + steps), accent cards, deliverables as chips */
         .page-capability-detail .page-body { display: flex; flex-direction: column; }
-        .page-capability-detail .cap-lead { order: 0; background: #f1f8f8; border-bottom: none; padding-bottom: 1.25rem; }
+        .page-capability-detail .cap-lead { order: 0; background: #f1f8f8; }
         .page-capability-detail .cap-section--how { order: 1; background: #f1f8f8; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem 1.5rem; padding-top: 0.5rem; padding-bottom: 2.25rem; }
         .page-capability-detail .cap-section--how .cap-section-title { margin: 0; }
         .page-capability-detail .cap-section--what { order: 2; }
         .page-capability-detail .cap-section--deliverables { order: 3; }
         .page-capability-detail .cap-offerings { display: flex; flex-wrap: wrap; gap: 1.75rem 2rem; }
-        .page-capability-detail .cap-card { flex: 1 1 340px; border-top: 3px solid var(--color-terra); padding-top: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
-        .page-capability-detail .cap-deliverables { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .page-capability-detail .cap-deliverables li { border: 1px solid var(--color-ink-light); border-radius: 6px; padding: 0.5rem 1rem; font-size: 0.88rem; gap: 0.5rem; }
+        .page-capability-detail .cap-card { flex: 1 1 340px; display: flex; flex-direction: column; gap: 0.6rem; }
+        .page-capability-detail .cap-card h3 { align-self: flex-start; text-decoration: underline; text-decoration-color: var(--color-terra); text-decoration-thickness: 2px; text-underline-offset: 0.35em; text-decoration-skip-ink: none; padding-bottom: 0.2rem; }
+        .page-capability-detail .cap-deliverables { display: block; color: var(--color-ink-darkest); }
+        .page-capability-detail .cap-deliverables li { display: inline-block; border: 0; padding: 0; margin-right: 1.6rem; font-size: 1.05rem; line-height: 2.1; text-decoration: underline; text-decoration-color: var(--color-terra); text-decoration-thickness: 2px; text-underline-offset: 0.35em; text-decoration-skip-ink: none; }
+        .page-capability-detail .cap-deliverables .d-mark { display: none; }
+        .page-capability-detail .cap-deliverables li.optional { display: block; margin: 1rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--color-ink-lighter); font-size: 0.92rem; font-style: normal; color: var(--color-ink-dark); text-decoration: none; }
+        .page-capability-detail .cap-deliverables .d-also { margin-right: 0.5rem; }
+        .page-capability-detail .cap-deliverables .d-opt { text-decoration: underline dashed var(--color-ink-light); text-decoration-thickness: 1.5px; text-underline-offset: 0.35em; text-decoration-skip-ink: none; }
 
 
         @media (max-width: 1100px) {
@@ -1259,7 +1264,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
             .page-capability-detail .cta-block { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1rem; }
             .page-capability-detail .cta-btn { white-space: normal; text-align: center; }
             .cap-deliverables { grid-template-columns: 1fr !important; }
-            .page-capability-detail .cap-deliverables { display: flex; }
+            .page-capability-detail .cap-deliverables { display: block; }
             .page-capability-detail .cap-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
             .page-capability-detail .cap-nav-prev, .page-capability-detail .cap-nav-next { padding: 0.9rem 1rem; font-size: 0.7rem; line-height: 1.4; }
         }
@@ -2003,7 +2008,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <xsl:otherwise>✓</xsl:otherwise>
             </xsl:choose>
           </span>
-          <span><xsl:value-of select="."/></span>
+          <xsl:choose>
+            <xsl:when test="@checked='false'">
+              <span class="d-also">Also available:</span>
+              <span class="d-opt"><xsl:choose>
+                <xsl:when test="starts-with(., 'Optional: ')"><xsl:value-of select="substring-after(., 'Optional: ')"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+              </xsl:choose></span>
+            </xsl:when>
+            <xsl:otherwise><span><xsl:value-of select="."/></span></xsl:otherwise>
+          </xsl:choose>
         </li>
       </xsl:for-each>
     </ul>

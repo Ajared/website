@@ -104,14 +104,6 @@
       </Offerings>
     </Section>
 
-    <Section title="How We Work">
-      <Process>
-        <Step num="01"><Title>Audit</Title></Step>
-        <Step num="02"><Title>Assessment</Title></Step>
-        <Step num="03"><Title>Strategy</Title></Step>
-        <Step num="04"><Title>Handoff</Title></Step>
-      </Process>
-    </Section>
 
     <Section title="Deliverables">
       <Deliverables>

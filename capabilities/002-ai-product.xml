@@ -108,14 +108,6 @@
       </Offerings>
     </Section>
 
-    <Section title="How We Work">
-      <Process>
-        <Step num="01"><Title>Discovery</Title></Step>
-        <Step num="02"><Title>Design</Title></Step>
-        <Step num="03"><Title>Build</Title></Step>
-        <Step num="04"><Title>Launch</Title></Step>
-      </Process>
-    </Section>
 
     <Section title="Deliverables">
       <Deliverables>
